@@ -80,15 +80,6 @@ object ResourceHelper {
     }
   }
 
-  private def readFile(file: File): Try[List[String]] = {
-    val sourceTry = Try(Source.fromFile(file))
-
-    val lines = sourceTry.flatMap(source => Try(source.getLines().toList))
-
-    Try(sourceTry.foreach(_.close()))
-
-    lines
-  }
 
   def writeFile(path: Path, content: String): Try[Path] = {
     Try(Files.write(
