@@ -1,0 +1,471 @@
+[
+  {
+    "patternId": "LongParameterList",
+    "title": "The more parameters a method has the more complex it is. Long parameter lists are often used to control complex algorithms and violate the Single Responsibility Principle. Prefer methods with short parameter lists.",
+    "timeToFix": 5,
+    "description": "The more parameters a method has the more complex it is. Long parameter lists are often used to control complex algorithms and violate the Single Responsibility Principle. Prefer methods with short parameter lists."
+  },
+  {
+    "patternId": "LongMethod",
+    "title": "One method should have one responsibility. Long methods tend to handle many things at once. Prefer smaller methods to make them easier to understand.",
+    "timeToFix": 5,
+    "description": "One method should have one responsibility. Long methods tend to handle many things at once. Prefer smaller methods to make them easier to understand."
+  },
+  {
+    "patternId": "LargeClass",
+    "title": "One class should have one responsibility. Large classes tend to handle many things at once. Split up large classes into smaller classes that are easier to understand.",
+    "timeToFix": 5,
+    "description": "One class should have one responsibility. Large classes tend to handle many things at once. Split up large classes into smaller classes that are easier to understand."
+  },
+  {
+    "patternId": "ComplexMethod",
+    "title": "Prefer splitting up complex methods into smaller, easier to understand methods.",
+    "timeToFix": 5,
+    "description": "Prefer splitting up complex methods into smaller, easier to understand methods."
+  },
+  {
+    "patternId": "StringLiteralDuplication",
+    "title": "Multiple occurrences of the same string literal within a single kt file detected.",
+    "timeToFix": 5,
+    "description": "Multiple occurrences of the same string literal within a single kt file detected."
+  },
+  {
+    "patternId": "NestedBlockDepth",
+    "title": "Excessive nesting leads to hidden complexity. Prefer extracting code to make it easier to understand.",
+    "timeToFix": 5,
+    "description": "Excessive nesting leads to hidden complexity. Prefer extracting code to make it easier to understand."
+  },
+  {
+    "patternId": "TooManyFunctions",
+    "title": "Classes with many functions tend to do too many things and often come in conjunction with large classes and can quickly become God classes. Consider extracting methods to (new) classes better matching their responsibility.",
+    "timeToFix": 5,
+    "description": "Classes with many functions tend to do too many things and often come in conjunction with large classes and can quickly become God classes. Consider extracting methods to (new) classes better matching their responsibility."
+  },
+  {
+    "patternId": "ComplexCondition",
+    "title": "Complex conditions should be simplified and extracted into well-named methods if necessary.",
+    "timeToFix": 5,
+    "description": "Complex conditions should be simplified and extracted into well-named methods if necessary."
+  },
+  {
+    "patternId": "LabeledExpression",
+    "title": "Expression with labels increase complexity and affect maintainability.",
+    "timeToFix": 5,
+    "description": "Expression with labels increase complexity and affect maintainability."
+  },
+  {
+    "patternId": "ReturnCount",
+    "title": "Restrict the number of return statements in methods.",
+    "timeToFix": 5,
+    "description": "Restrict the number of return statements in methods."
+  },
+  {
+    "patternId": "NewLineAtEndOfFile",
+    "title": "Checks whether files end with a line separator.",
+    "timeToFix": 5,
+    "description": "Checks whether files end with a line separator."
+  },
+  {
+    "patternId": "WildcardImport",
+    "title": "Wildcard imports should be replaced with imports using fully qualified class names. Wildcard imports can lead to naming conflicts. A library update can introduce naming clashes with your classes which results in compilation errors.",
+    "timeToFix": 5,
+    "description": "Wildcard imports should be replaced with imports using fully qualified class names. Wildcard imports can lead to naming conflicts. A library update can introduce naming clashes with your classes which results in compilation errors."
+  },
+  {
+    "patternId": "MaxLineLength",
+    "title": "Line detected that is longer than the defined maximum line length in the code style.",
+    "timeToFix": 5,
+    "description": "Line detected that is longer than the defined maximum line length in the code style."
+  },
+  {
+    "patternId": "EqualsNullCall",
+    "title": "Equals() method is called with null as parameter. Consider using == to compare to null.",
+    "timeToFix": 5,
+    "description": "Equals() method is called with null as parameter. Consider using == to compare to null."
+  },
+  {
+    "patternId": "ForbiddenComment",
+    "title": "Flags a forbidden comment. Defaults values are TODO:, FIXME: or STOPSHIP:",
+    "timeToFix": 5,
+    "description": "Flags a forbidden comment. Defaults values are TODO:, FIXME: or STOPSHIP:"
+  },
+  {
+    "patternId": "ForbiddenImport",
+    "title": "Mark forbidden imports. A forbidden import could be an import for an unstable / experimental apiand hence you might want to mark it as forbidden in order to get warned about the usage.",
+    "timeToFix": 5,
+    "description": "Mark forbidden imports. A forbidden import could be an import for an unstable / experimental apiand hence you might want to mark it as forbidden in order to get warned about the usage."
+  },
+  {
+    "patternId": "PackageDeclarationStyle",
+    "title": "Violation of the package declaration style.There should be exactly one blank line after the package and import declaration",
+    "timeToFix": 5,
+    "description": "Violation of the package declaration style.There should be exactly one blank line after the package and import declaration"
+  },
+  {
+    "patternId": "VariableNaming",
+    "title": "VariableNaming",
+    "timeToFix": 5
+  },
+  {
+    "patternId": "VariableMinLength",
+    "title": "VariableMinLength",
+    "timeToFix": 5
+  },
+  {
+    "patternId": "VariableMaxLength",
+    "title": "VariableMaxLength",
+    "timeToFix": 5
+  },
+  {
+    "patternId": "ConstantNaming",
+    "title": "ConstantNaming",
+    "timeToFix": 5
+  },
+  {
+    "patternId": "PackageNaming",
+    "title": "PackageNaming",
+    "timeToFix": 5
+  },
+  {
+    "patternId": "ClassNaming",
+    "title": "ClassNaming",
+    "timeToFix": 5
+  },
+  {
+    "patternId": "EnumNaming",
+    "title": "EnumNaming",
+    "timeToFix": 5
+  },
+  {
+    "patternId": "FunctionNaming",
+    "title": "FunctionNaming",
+    "timeToFix": 5
+  },
+  {
+    "patternId": "FunctionMaxLength",
+    "title": "FunctionMaxLength",
+    "timeToFix": 5
+  },
+  {
+    "patternId": "FunctionMinLength",
+    "title": "FunctionMinLength",
+    "timeToFix": 5
+  },
+  {
+    "patternId": "ForbiddenClassName",
+    "title": "ForbiddenClassName",
+    "timeToFix": 5
+  },
+  {
+    "patternId": "SafeCast",
+    "title": "Safe cast instead of if-else-null",
+    "timeToFix": 5,
+    "description": "Safe cast instead of if-else-null"
+  },
+  {
+    "patternId": "UnnecessaryAbstractClass",
+    "title": "An abstract class is unnecessary and can be refactored. An abstract class should have both abstract and concrete properties or functions. An abstract class without a concrete member can be refactored to an interface. An abstract class without an abstract member can be refactored to a concrete class.",
+    "timeToFix": 5,
+    "description": "An abstract class is unnecessary and can be refactored. An abstract class should have both abstract and concrete properties or functions. An abstract class without a concrete member can be refactored to an interface. An abstract class without an abstract member can be refactored to a concrete class."
+  },
+  {
+    "patternId": "UnnecessaryParentheses",
+    "title": "These parentheses are unnecessary and can be removed.",
+    "timeToFix": 5,
+    "description": "These parentheses are unnecessary and can be removed."
+  },
+  {
+    "patternId": "OptionalAbstractKeyword",
+    "title": "Unnecessary abstract modifier in interface",
+    "timeToFix": 5,
+    "description": "Unnecessary abstract modifier in interface"
+  },
+  {
+    "patternId": "OptionalWhenBraces",
+    "title": "Optional braces in when expression",
+    "timeToFix": 5,
+    "description": "Optional braces in when expression"
+  },
+  {
+    "patternId": "ProtectedMemberInFinalClass",
+    "title": "Member with protected visibility in final class is private. Consider using private or internal as modifier.",
+    "timeToFix": 5,
+    "description": "Member with protected visibility in final class is private. Consider using private or internal as modifier."
+  },
+  {
+    "patternId": "MagicNumber",
+    "title": "Report magic numbers. Magic number is a numeric literal that is not defined as a constant and hence it's unclear what the purpose of this number is. It's better to declare such numbers as constants and give them a proper name. By default, -1, 0, 1, and 2 are not considered to be magic numbers.",
+    "timeToFix": 5,
+    "description": "Report magic numbers. Magic number is a numeric literal that is not defined as a constant and hence it's unclear what the purpose of this number is. It's better to declare such numbers as constants and give them a proper name. By default, -1, 0, 1, and 2 are not considered to be magic numbers."
+  },
+  {
+    "patternId": "ModifierOrder",
+    "title": "Line detected that is longer than the defined maximum line length in the code style.",
+    "timeToFix": 5,
+    "description": "Line detected that is longer than the defined maximum line length in the code style."
+  },
+  {
+    "patternId": "DataClassContainsFunctions",
+    "title": "Data classes should mainly be used to store data and should not have any extra functions.(Compiler will automatically generate equals, toString and hashCode functions)",
+    "timeToFix": 5,
+    "description": "Data classes should mainly be used to store data and should not have any extra functions.(Compiler will automatically generate equals, toString and hashCode functions)"
+  },
+  {
+    "patternId": "UseDataClass",
+    "title": "Classes that do nothing but hold data should be replaced with a data class.",
+    "timeToFix": 5,
+    "description": "Classes that do nothing but hold data should be replaced with a data class."
+  },
+  {
+    "patternId": "CommentOverPrivateFunction",
+    "title": "Comments for private functions should be avoided. Prefer giving the function an expressive name. Split it up in smaller, self-explaining functions if necessary.",
+    "timeToFix": 5,
+    "description": "Comments for private functions should be avoided. Prefer giving the function an expressive name. Split it up in smaller, self-explaining functions if necessary."
+  },
+  {
+    "patternId": "CommentOverPrivateProperty",
+    "title": "Private properties should be named such that they explain themselves even without a comment.",
+    "timeToFix": 5,
+    "description": "Private properties should be named such that they explain themselves even without a comment."
+  },
+  {
+    "patternId": "UndocumentedPublicClass",
+    "title": "Public classes, interfaces and objects require documentation.",
+    "timeToFix": 5,
+    "description": "Public classes, interfaces and objects require documentation."
+  },
+  {
+    "patternId": "UndocumentedPublicFunction",
+    "title": "Public functions require documentation.",
+    "timeToFix": 5,
+    "description": "Public functions require documentation."
+  },
+  {
+    "patternId": "EmptyCatchBlock",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptyClassBlock",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptyDefaultConstructor",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptyDoWhileBlock",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptyElseBlock",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptyFinallyBlock",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptyForBlock",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptyFunctionBlock",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptyIfBlock",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptyInitBlock",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptySecondaryConstructor",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptyWhenBlock",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "EmptyWhileBlock",
+    "title": "Empty block of code detected. As they serve no purpose they should be removed.",
+    "timeToFix": 5,
+    "description": "Empty block of code detected. As they serve no purpose they should be removed."
+  },
+  {
+    "patternId": "ForEachOnRange",
+    "title": "Using the forEach method on ranges has a heavy performance cost. Prefer using simple for loops",
+    "timeToFix": 5,
+    "description": "Using the forEach method on ranges has a heavy performance cost. Prefer using simple for loops"
+  },
+  {
+    "patternId": "SpreadOperator",
+    "title": "Using spread operator, which causes a full copy of the array to be created before calling a method, has a very high performance penalty.",
+    "timeToFix": 5,
+    "description": "Using spread operator, which causes a full copy of the array to be created before calling a method, has a very high performance penalty."
+  },
+  {
+    "patternId": "UnnecessaryTemporaryInstantiation",
+    "title": "Avoid temporary objects when converting primitive types to String",
+    "timeToFix": 5,
+    "description": "Avoid temporary objects when converting primitive types to String"
+  },
+  {
+    "patternId": "DuplicateCaseInWhenExpression",
+    "title": "Duplicated case statements in when expression. Both cases should be merged.",
+    "timeToFix": 5,
+    "description": "Duplicated case statements in when expression. Both cases should be merged."
+  },
+  {
+    "patternId": "EqualsAlwaysReturnsTrueOrFalse",
+    "title": "Having an equals method which always returns true or false is not a good idea. It does not follow the contract of this method. Consider a good default implementation. For example this == other",
+    "timeToFix": 5,
+    "description": "Having an equals method which always returns true or false is not a good idea. It does not follow the contract of this method. Consider a good default implementation. For example this == other"
+  },
+  {
+    "patternId": "EqualsWithHashCodeExist",
+    "title": "Always override hashCode when you override equals. All hash-based collections depend on objects meeting the equals-contract. Two equal objects must produce the same hashcode. When inheriting equals or hashcode, override the inherited and call the super method for clarification.",
+    "timeToFix": 5,
+    "description": "Always override hashCode when you override equals. All hash-based collections depend on objects meeting the equals-contract. Two equal objects must produce the same hashcode. When inheriting equals or hashcode, override the inherited and call the super method for clarification."
+  },
+  {
+    "patternId": "UselessPostfixExpression",
+    "title": "The incremented or decremented value is unused. This value is replaced with the original value.",
+    "timeToFix": 5,
+    "description": "The incremented or decremented value is unused. This value is replaced with the original value."
+  },
+  {
+    "patternId": "WrongEqualsTypeParameter",
+    "title": "Wrong parameter type for equals() method found. To correctly override the equals() method use Any?",
+    "timeToFix": 5,
+    "description": "Wrong parameter type for equals() method found. To correctly override the equals() method use Any?"
+  },
+  {
+    "patternId": "ExplicitGarbageCollectionCall",
+    "title": "Don't try to be smarter than the JVM. Your code should work independently if the garbage collector is disabled or not. If you face memory issues, try tuning the JVM options instead of relying on code itself.",
+    "timeToFix": 5,
+    "description": "Don't try to be smarter than the JVM. Your code should work independently if the garbage collector is disabled or not. If you face memory issues, try tuning the JVM options instead of relying on code itself."
+  },
+  {
+    "patternId": "LateinitUsage",
+    "title": "Usage of lateinit. Using lateinit for property initialization is error prone, try using constructor injection or delegation.",
+    "timeToFix": 5,
+    "description": "Usage of lateinit. Using lateinit for property initialization is error prone, try using constructor injection or delegation."
+  },
+  {
+    "patternId": "UnreachableCode",
+    "title": "Unreachable code detected. This code should be removed",
+    "timeToFix": 5,
+    "description": "Unreachable code detected. This code should be removed"
+  },
+  {
+    "patternId": "UnsafeCallOnNullableType",
+    "title": "It will throw NullPointerException at runtime if your nullable value is null.",
+    "timeToFix": 5,
+    "description": "It will throw NullPointerException at runtime if your nullable value is null."
+  },
+  {
+    "patternId": "UnsafeCast",
+    "title": "Cast operator throws an exception if the cast is not possible.",
+    "timeToFix": 5,
+    "description": "Cast operator throws an exception if the cast is not possible."
+  },
+  {
+    "patternId": "TooGenericExceptionCaught",
+    "title": "Thrown exception is too generic. Prefer throwing project specific exceptions to handle error cases.",
+    "timeToFix": 5,
+    "description": "Thrown exception is too generic. Prefer throwing project specific exceptions to handle error cases."
+  },
+  {
+    "patternId": "ExceptionRaisedInUnexpectedLocation",
+    "title": "This method is not expected to throw exceptions. This can cause weird behavior.",
+    "timeToFix": 5,
+    "description": "This method is not expected to throw exceptions. This can cause weird behavior."
+  },
+  {
+    "patternId": "TooGenericExceptionThrown",
+    "title": "Thrown exception is too generic. Prefer throwing project specific exceptions to handle error cases.",
+    "timeToFix": 5,
+    "description": "Thrown exception is too generic. Prefer throwing project specific exceptions to handle error cases."
+  },
+  {
+    "patternId": "PrintExceptionStackTrace",
+    "title": "Do not print an exception stack trace. Use a logger instead.",
+    "timeToFix": 5,
+    "description": "Do not print an exception stack trace. Use a logger instead."
+  },
+  {
+    "patternId": "InstanceOfCheckForException",
+    "title": "Instead of checking for a general exception type and checking for a specific exception type use multiple catch blocks.",
+    "timeToFix": 5,
+    "description": "Instead of checking for a general exception type and checking for a specific exception type use multiple catch blocks."
+  },
+  {
+    "patternId": "ReturnFromFinally",
+    "title": "Do not return within a finally statement. This can discard exceptions.",
+    "timeToFix": 5,
+    "description": "Do not return within a finally statement. This can discard exceptions."
+  },
+  {
+    "patternId": "ThrowingExceptionFromFinally",
+    "title": "Do not throw an exception within a finally statement. This can discard exceptions and is confusing.",
+    "timeToFix": 5,
+    "description": "Do not throw an exception within a finally statement. This can discard exceptions and is confusing."
+  },
+  {
+    "patternId": "ThrowingExceptionInMain",
+    "title": "The main method should not throw an exception.",
+    "timeToFix": 5,
+    "description": "The main method should not throw an exception."
+  },
+  {
+    "patternId": "RethrowCaughtException",
+    "title": "Do not rethrow a caught exception of the same type",
+    "timeToFix": 5,
+    "description": "Do not rethrow a caught exception of the same type"
+  },
+  {
+    "patternId": "ThrowingNewInstanceOfSameException",
+    "title": "Avoid catch blocks that rethrow a caught exception wrapped inside a new instance of the same exception.",
+    "timeToFix": 5,
+    "description": "Avoid catch blocks that rethrow a caught exception wrapped inside a new instance of the same exception."
+  },
+  {
+    "patternId": "SwallowedException",
+    "title": "The caught exception is swallowed. The original exception could be lost.",
+    "timeToFix": 5,
+    "description": "The caught exception is swallowed. The original exception could be lost."
+  },
+  {
+    "patternId": "IteratorNotThrowingNoSuchElementException",
+    "title": "The next() method of an Iterator implementation should throw a NoSuchElementException when there are no more elements to return",
+    "timeToFix": 5,
+    "description": "The next() method of an Iterator implementation should throw a NoSuchElementException when there are no more elements to return"
+  }
+]
