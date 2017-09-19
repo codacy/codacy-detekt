@@ -129,13 +129,12 @@ object Detekt extends Tool {
     val settings = new ProcessingSettings(path, yamlConf, List.empty[PathFilter], parallel, false, List.empty[Path])
 
     val detektion: Detektion = filesOpt.fold {
-      DetektFacade.INSTANCE.instance(settings).run(new KtTreeCompiler(path, settings.getPathFilters, parallel))
+      DetektFacade.INSTANCE.instance(settings, new RuleSetLocator(settings).load(), List.empty[FileProcessListener]).run(new KtTreeCompiler(path, settings.getPathFilters, parallel))
     } { files =>
       val compiler = new KtCompiler(path)
 
       val ktFiles: Seq[KtFile] = files.par.map(file => compiler.compile(Paths.get(file.path)))(collection.breakOut)
-
-      DetektFacade.INSTANCE.instance(settings).run(new util.ArrayList(ktFiles))
+      DetektFacade.INSTANCE.instance(settings, new RuleSetLocator(settings).load(), List.empty[FileProcessListener]).run(new util.ArrayList(ktFiles))
     }
 
     detektion.getFindings.values.flatten.toList
