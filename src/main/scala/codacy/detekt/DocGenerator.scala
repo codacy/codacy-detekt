@@ -32,10 +32,31 @@ object DocGenerator {
 
   private def generatePatterns(rules: List[Rule]): JsArray = {
     val codacyPatterns = rules.collect { case (rule) =>
+
+      val category = if (rule.getIssue.getSeverity.name.startsWith("Defect") ||
+        rule.getIssue.getSeverity.name.startsWith("Maintainability") ||
+        rule.getIssue.getSeverity.name.startsWith("Minor")) {
+        "ErrorProne"
+      } else if (rule.getIssue.getSeverity.name.startsWith("Performance")) {
+        "Performance"
+      } else {
+        "CodeStyle"
+      }
+
+      val level = if (rule.getIssue.getSeverity.name.startsWith("Maintainability") ||
+        rule.getIssue.getSeverity.name.startsWith("Warning") ||
+        rule.getIssue.getSeverity.name.startsWith("Minor") ||
+        rule.getIssue.getSeverity.name.startsWith("Performance") ||
+        rule.getIssue.getSeverity.name.startsWith("Defect")) {
+        "Warning"
+      } else {
+        "Info"
+      }
+
       Json.obj(
         "patternId" -> rule.getIssue.getId,
-        "level" -> (if (rule.getIssue.getSeverity.name.startsWith("Maintainability") || rule.getIssue.getSeverity.name.startsWith("Warning") || rule.getIssue.getSeverity.name.startsWith("Minor") || rule.getIssue.getSeverity.name.startsWith("Performance") || rule.getIssue.getSeverity.name.startsWith("Defect")) "Warning" else "Info"),
-        "category" -> (if (rule.getIssue.getSeverity.name.startsWith("Defect") || rule.getIssue.getSeverity.name.startsWith("Maintainability") || rule.getIssue.getSeverity.name.startsWith("Minor")) "ErrorProne" else if (rule.getIssue.getSeverity.name.startsWith("Performance")) "Performance" else "CodeStyle")
+        "level" -> level,
+        "category" -> category
       )
     }
     Json.parse(Json.toJson(codacyPatterns).toString).as[JsArray]
@@ -44,7 +65,7 @@ object DocGenerator {
   private def generateDescriptions(rules: List[Rule], descriptionsRoot: java.io.File): JsArray = {
     val codacyPatternsDescs = rules.collect { case (rule) =>
 
-      if(rule.getIssue.getDescription.length > 495) {
+      if (rule.getIssue.getDescription.length > 495) {
         val descriptionsFile = new java.io.File(descriptionsRoot, s"${rule.getIssue.getId}.md")
         ResourceHelper.writeFile(descriptionsFile.toPath, rule.getIssue.getDescription)
       }
