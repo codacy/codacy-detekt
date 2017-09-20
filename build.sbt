@@ -32,9 +32,9 @@ libraryDependencies ++= {
     "com.typesafe.play" %% "play-json" % "2.4.8",
     "com.codacy" %% "codacy-engine-scala-seed" % "2.7.7" withSources(),
     "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
-    "io.gitlab.arturbosch.detekt" % "detekt" % "1.0.0.RC4-3",
-    "io.gitlab.arturbosch.detekt" % "detekt-cli" % "1.0.0.RC4-3",
-    "io.gitlab.arturbosch.detekt" % "detekt-core" % "1.0.0.RC4-3",
+    "io.gitlab.arturbosch.detekt" % "detekt" % toolVersion,
+    "io.gitlab.arturbosch.detekt" % "detekt-cli" % toolVersion,
+    "io.gitlab.arturbosch.detekt" % "detekt-core" % toolVersion,
     "org.yaml" % "snakeyaml" % "1.18",
     "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.8.4"
   )

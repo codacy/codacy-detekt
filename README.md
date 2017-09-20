@@ -29,9 +29,11 @@ docker run -it -v $srcDir:/src  <DOCKER_NAME>:<DOCKER_VERSION>
 We use the [codacy-plugins-test](https://github.com/codacy/codacy-plugins-test) to test our external tools integration.
 You can follow the instructions there to make sure your tool is working as expected.
 
-## Scripts
+## Generate Docs
 
-You can find the script to update patterns and description files [here](scripts/INSTRUCTIONS.md).
+```sh
+sbt "run-main codacy.detekt.DocGenerator <version-of-the-tool>"
+```
 
 ## What is Codacy?
 
