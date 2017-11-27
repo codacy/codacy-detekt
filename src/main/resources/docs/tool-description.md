@@ -1,0 +1,1 @@
+Meet detekt, a static code analysis tool for the Kotlin programming language. It operates on the abstract syntax tree provided by the Kotlin compiler. [Learn more](https://github.com/arturbosch/detekt)
