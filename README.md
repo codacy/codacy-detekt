@@ -4,17 +4,20 @@ This is the docker engine we use at Codacy to have [Detekt](https://github.com/a
 You can also create a docker to integrate the tool and language of your choice!
 Check the **Docs** section for more information.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ccdc504c39e44ae998bcc9e948c9fae3)](https://www.codacy.com/app/Codacy/codacy-detekt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codacy/codacy-detekt&amp;utm_campaign=Badge_Grade)
+[![CircleCI](https://circleci.com/gh/codacy/codacy-detekt.svg?style=svg)](https://circleci.com/gh/codacy/codacy-detekt)
+
 ## Usage
 
 You can create the docker by doing:
 
-```
+```bash
 sbt docker:publishLocal
 ```
 
 The docker is ran with the following command:
 
-```
+```bash
 docker run -it -v $srcDir:/src  <DOCKER_NAME>:<DOCKER_VERSION>
 ```
 
@@ -35,11 +38,11 @@ You can follow the instructions there to make sure your tool is working as expec
 sbt "run-main codacy.detekt.DocGenerator <version-of-the-tool>"
 ```
 
-## What is Codacy?
+## What is Codacy
 
 [Codacy](https://www.codacy.com/) is an Automated Code Review Tool that monitors your technical debt, helps you improve your code quality, teaches best practices to your developers, and helps you save time in Code Reviews.
 
-### Among Codacy’s features:
+### Among Codacy’s features
 
 - Identify new Static Analysis issues
 - Commit and Pull Request Analysis with GitHub, BitBucket/Stash, GitLab (and also direct git repositories)
