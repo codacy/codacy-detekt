@@ -2,7 +2,7 @@
 fun x() {
     try {
     } catch (e: IllegalStateException) {
-        //#Warn: RethrowCaughtException
+        //#Info: RethrowCaughtException
         throw e
     }
 }

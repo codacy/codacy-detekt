@@ -8,7 +8,7 @@ name := "codacy-detekt"
 
 version := "1.0.0-SNAPSHOT"
 
-val languageVersion = "2.11.11"
+val languageVersion = "2.11.12"
 
 scalaVersion := languageVersion
 
@@ -29,12 +29,12 @@ toolVersionKey := {
 libraryDependencies ++= {
   val toolVersion = toolVersionKey.value
   Seq(
-    "com.typesafe.play" %% "play-json" % "2.4.8",
     "com.codacy" %% "codacy-engine-scala-seed" % "2.7.7" withSources(),
     "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
-    "io.gitlab.arturbosch.detekt" % "detekt" % toolVersion,
+    "io.gitlab.arturbosch.detekt" % "detekt-api" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-cli" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-core" % toolVersion,
+    "io.gitlab.arturbosch.detekt" % "detekt-rules" % toolVersion,
     "org.yaml" % "snakeyaml" % "1.18",
     "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.8.4"
   )
