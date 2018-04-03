@@ -17,17 +17,23 @@ import scala.io.Source
 import scala.util.Try
 
 object Detekt extends Tool {
+  case class DetektCategory(value:String) extends AnyVal
+
   val configFiles = Set("default-detekt-config.yml", "detekt.yml")
-  private lazy val rules: Map[String, Seq[Rule]] = getRules
+  private lazy val patternIdToCategory: Map[Pattern.Id, DetektCategory] = {
+    for{
+      (cat,rules) <- getRules
+      rule <- rules
+    } yield Pattern.Id(rule.getId)->cat
+  }
 
   override def apply(source: api.Source.Directory, configuration: Option[List[Pattern.Definition]], filesOpt: Option[Set[api.Source.File]])
                     (implicit specification: Tool.Specification): Try[List[Result]] = {
     Try {
       val sourcePath = Paths.get(source.path)
-      val parallel = true
       val yamlConfig = getYamlConfig(configuration, sourcePath)
 
-      val findings = getResults(sourcePath, filesOpt, yamlConfig, parallel)
+      val findings = getResults(sourcePath, filesOpt, yamlConfig, parallel = true)
 
       findings.map { finding =>
         Result.Issue(
@@ -40,16 +46,8 @@ object Detekt extends Tool {
     }
   }
 
-  private def mapRules: Map[String, String] = (for {
-    (category, rules) <- rules
-    r <- rules
-  } yield r.getId -> category) (collection.breakOut)
-
-
-  private def category(p: Pattern.Definition): String = mapRules(p.patternId.value)
-
-
-  private def getYamlConfig(config: Option[List[Pattern.Definition]], source: Path): YamlConfig = {
+  private def getYamlConfig(config: Option[List[Pattern.Definition]], source: Path)
+                                   (implicit specification:Tool.Specification): YamlConfig = {
     config.fold {
       defaultConfig(source)
     } {
@@ -68,36 +66,39 @@ object Detekt extends Tool {
     new YamlConfig(map)
   }
 
-  private def mapConfig(config: List[Pattern.Definition]): YamlConfig = {
-    val configByCategory = config.groupBy(category)
+  private def mapConfig(config: List[Pattern.Definition])(implicit specification:Tool.Specification): YamlConfig = {
 
-    val configMapGen: Map[String, Any] = (for {
-      category <- rules.keys.toList
-      patternsRaw = configByCategory.getOrElse(category, List.empty[Pattern.Definition])
-    } yield {
-      val patterns: Map[String, Any] = patternsRaw.map { p =>
-        val parameters: Map[String, Any] = p.parameters.getOrElse(Set.empty)
+    val configPatternsById  = config.map{ case patternDef => (patternDef.patternId, patternDef) }.toMap
+
+    val configMapGen = specification.patterns.groupBy(patDef => patternIdToCategory(patDef.patternId) ).map{
+      case (cat, patternSpecs) =>
+        cat->patternSpecs.map( spec => (spec.patternId,configPatternsById.get(spec.patternId)))
+    }.map{ case (category, patternsRaw) =>
+
+      val patterns: Map[String, Any] = patternsRaw.map { case (patternId, patternDef) =>
+        val parameters: Map[String, Any] = patternDef.flatMap(_.parameters).getOrElse(Set.empty)
           .map { param =>
             val pValue = JsonApi.paramValueToJsValue(param.value) match {
               case JsString(value) => value
               case value => Json.stringify(value)
             }
-
             (param.name.value, pValue)
           }(collection.breakOut)
 
-        (p.patternId.value, new util.LinkedHashMap[String, Any](Map(("active", true)) ++ parameters))
+        val isInConfig = patternDef.isDefined
+        (patternId.value, new util.LinkedHashMap[String, Any](Map(("active", isInConfig)) ++ parameters))
       }(collection.breakOut)
 
-      (category.toLowerCase, new util.LinkedHashMap[String, Any](Map(("active", patternsRaw.nonEmpty)) ++ patterns))
-    }).toMap
+      (category.value.toLowerCase, new util.LinkedHashMap[String, Any](Map(("active", patternsRaw.nonEmpty)) ++ patterns))
+
+    }
 
     val ourConf = new util.LinkedHashMap[String, Any](Map(("autoCorrect", false), ("failFast", false)) ++ configMapGen)
 
     new YamlConfig(ourConf)
   }
 
-  private def getRules: Map[String, Seq[Rule]] = {
+  private def getRules: Map[DetektCategory, Seq[Rule]] = {
     val config = readEmptyConfigFile
 
     _root_.codacy.helpers.ResourceHelper
@@ -105,18 +106,18 @@ object Detekt extends Tool {
       .get //This is just a script, is better get the error
       .map {
       clazz =>
-        val provider = Class.forName(clazz)
+        val provider: RuleSet = Class.forName(clazz)
           .getDeclaredConstructor()
           .newInstance()
           .asInstanceOf[RuleSetProvider]
           .instance(config)
 
-        (provider.getId, provider.getRules
+        (DetektCategory(provider.getId), provider.getRules
           .flatMap {
             case r: MultiRule =>
-              r.asInstanceOf[MultiRule].getRules
+              r.getRules
             case r: Rule =>
-              Seq(r.asInstanceOf[Rule])
+              Seq(r)
           })
     }(collection.breakOut)
   }
