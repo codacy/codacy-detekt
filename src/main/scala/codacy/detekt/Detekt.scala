@@ -1,5 +1,6 @@
 package codacy.detekt
 
+import java.io.FileInputStream
 import java.nio.file.{Path, Paths}
 import java.util
 
@@ -8,12 +9,10 @@ import codacy.docker.api._
 import codacy.dockerApi.utils.FileHelper
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.core._
-import org.jetbrains.kotlin.psi.KtFile
 import org.yaml.snakeyaml.Yaml
 import play.api.libs.json.{JsString, Json}
 
 import scala.collection.JavaConversions._
-import scala.io.Source
 import scala.util.Try
 
 object Detekt extends Tool {
@@ -38,7 +37,7 @@ object Detekt extends Tool {
       findings.map { finding =>
         Result.Issue(
           api.Source.File(finding.getFile),
-          Result.Message(finding.compact()),
+          Result.Message(finding.getMessage()),
           Pattern.Id(finding.getId),
           codacy.docker.api.Source.Line(finding.getLocation.getSource.getLine)
         )
@@ -47,26 +46,20 @@ object Detekt extends Tool {
   }
 
   private def getYamlConfig(config: Option[List[Pattern.Definition]], source: Path)
-                                   (implicit specification:Tool.Specification): YamlConfig = {
-    config.fold {
-      defaultConfig(source)
-    } {
-      mapConfig
-    }
+                                   (implicit specification:Tool.Specification): Config = {
+    config.map(fromPatterns).getOrElse(defaultConfig(source))
   }
 
-  private def defaultConfig(source: Path): YamlConfig = {
-    val map = FileHelper.findConfigurationFile(configFiles, source)
-      .fold(new util.LinkedHashMap[String, Any]()) {
-        configFile =>
-          new Yaml()
-            .load(Source.fromFile(configFile.toFile).getLines().mkString("\n"))
-            .asInstanceOf[util.LinkedHashMap[String, Any]]
-      }
-    new YamlConfig(map)
+  private def defaultConfig(source: Path): Config = {
+    val inputStream = FileHelper.findConfigurationFile(configFiles, source)
+      .map( path => new FileInputStream(path.toFile) )
+      .getOrElse( getClass.getResourceAsStream("/default-detekt-config.yml") )
+
+    val yaml = new Yaml().load[util.LinkedHashMap[String,Any]](inputStream)
+    new YamlConfig(yaml)
   }
 
-  private def mapConfig(config: List[Pattern.Definition])(implicit specification:Tool.Specification): YamlConfig = {
+  private def fromPatterns(config: List[Pattern.Definition])(implicit specification:Tool.Specification): Config = {
 
     val configPatternsById  = config.map{ case patternDef => (patternDef.patternId, patternDef) }.toMap
 
@@ -126,19 +119,22 @@ object Detekt extends Tool {
     new YamlConfig(new util.LinkedHashMap[String, Any](Map(("autoCorrect", false), ("failFast", false))))
   }
 
-  private def getResults(path: Path, filesOpt: Option[Set[api.Source.File]], yamlConf: YamlConfig, parallel: Boolean): List[Finding] = {
+  private def getResults(path: Path, filesOpt: Option[Set[api.Source.File]], yamlConf: Config, parallel: Boolean): List[Finding] = {
     val settings = new ProcessingSettings(path, yamlConf, List.empty[PathFilter], parallel, false, List.empty[Path])
+    val providers = new RuleSetLocator(settings).load()
+    val processors = List.empty[FileProcessListener]
+    val detektor = new Detektor(settings, providers, processors)
+    val compiler = new KtTreeCompiler(new KtCompiler(), settings.getPathFilters, parallel)
 
-    val detektion: Detektion = filesOpt.fold {
-      DetektFacade.INSTANCE.instance(settings, new RuleSetLocator(settings).load(), List.empty[FileProcessListener]).run(new KtTreeCompiler(path, settings.getPathFilters, parallel))
+    val detektion = filesOpt.fold {
+      val ktFiles = compiler.compile(path)
+      detektor.run(ktFiles)
     } { files =>
-      val compiler = new KtCompiler(path)
-
-      val ktFiles: Seq[KtFile] = files.par.map(file => compiler.compile(Paths.get(file.path)))(collection.breakOut)
-      DetektFacade.INSTANCE.instance(settings, new RuleSetLocator(settings).load(), List.empty[FileProcessListener]).run(new util.ArrayList(ktFiles))
+      val ktFiles = files.par.flatMap(file => compiler.compile(Paths.get(file.path))).to[List]
+      detektor.run(ktFiles)
     }
 
-    detektion.getFindings.values.flatten.toList
+    detektion.values.flatten.toList
   }
 
 }
