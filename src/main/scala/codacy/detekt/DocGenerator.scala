@@ -11,7 +11,7 @@ import scala.collection.JavaConversions._
 object DocGenerator {
   def main(args: Array[String]): Unit = {
     args.headOption.fold {
-      throw new Exception("Version parameter is required (ex: 1.0.0.RC4-3)")
+      throw new Exception("Version parameter is required (ex: 1.0.0.RC6-4)")
     } { version =>
       val rules = generateRules
 
@@ -31,7 +31,7 @@ object DocGenerator {
   }
 
   private def generatePatterns(rules: List[Rule]): JsArray = {
-    val codacyPatterns = rules.collect { case (rule) =>
+    val codacyPatterns = rules.collect { case rule =>
 
       val category = if (rule.getIssue.getSeverity.name.startsWith("Defect") ||
         rule.getIssue.getSeverity.name.startsWith("Maintainability") ||
@@ -63,7 +63,7 @@ object DocGenerator {
   }
 
   private def generateDescriptions(rules: List[Rule], descriptionsRoot: java.io.File): JsArray = {
-    val codacyPatternsDescs = rules.collect { case (rule) =>
+    val codacyPatternsDescs = rules.collect { case rule =>
 
       if (rule.getIssue.getDescription.length > 495) {
         val descriptionsFile = new java.io.File(descriptionsRoot, s"${rule.getIssue.getId}.md")

@@ -8,7 +8,6 @@ import codacy.docker.api._
 import codacy.dockerApi.utils.FileHelper
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.core._
-import org.jetbrains.kotlin.psi.KtFile
 import org.yaml.snakeyaml.Yaml
 import play.api.libs.json.{JsString, Json}
 
@@ -17,14 +16,15 @@ import scala.io.Source
 import scala.util.Try
 
 object Detekt extends Tool {
-  case class DetektCategory(value:String) extends AnyVal
+
+  case class DetektCategory(value: String) extends AnyVal
 
   val configFiles = Set("default-detekt-config.yml", "detekt.yml")
   private lazy val patternIdToCategory: Map[Pattern.Id, DetektCategory] = {
-    for{
-      (cat,rules) <- getRules
+    for {
+      (cat, rules) <- getRules
       rule <- rules
-    } yield Pattern.Id(rule.getId)->cat
+    } yield Pattern.Id(rule.getId) -> cat
   }
 
   override def apply(source: api.Source.Directory, configuration: Option[List[Pattern.Definition]], filesOpt: Option[Set[api.Source.File]])
@@ -47,7 +47,7 @@ object Detekt extends Tool {
   }
 
   private def getYamlConfig(config: Option[List[Pattern.Definition]], source: Path)
-                                   (implicit specification:Tool.Specification): YamlConfig = {
+                           (implicit specification: Tool.Specification): YamlConfig = {
     config.fold {
       defaultConfig(source)
     } {
@@ -66,14 +66,15 @@ object Detekt extends Tool {
     new YamlConfig(map)
   }
 
-  private def mapConfig(config: List[Pattern.Definition])(implicit specification:Tool.Specification): YamlConfig = {
+  private def mapConfig(config: List[Pattern.Definition])(implicit specification: Tool.Specification): YamlConfig = {
 
-    val configPatternsById  = config.map{ case patternDef => (patternDef.patternId, patternDef) }.toMap
+    val configPatternsById: Map[Pattern.Id, Pattern.Definition] =
+      config.map(patternDef => (patternDef.patternId, patternDef))(collection.breakOut)
 
-    val configMapGen = specification.patterns.groupBy(patDef => patternIdToCategory(patDef.patternId) ).map{
+    val configMapGen = specification.patterns.groupBy(patDef => patternIdToCategory(patDef.patternId)).map {
       case (cat, patternSpecs) =>
-        cat->patternSpecs.map( spec => (spec.patternId,configPatternsById.get(spec.patternId)))
-    }.map{ case (category, patternsRaw) =>
+        cat -> patternSpecs.map(spec => (spec.patternId, configPatternsById.get(spec.patternId)))
+    }.map { case (category, patternsRaw) =>
 
       val patterns: Map[String, Any] = patternsRaw.map { case (patternId, patternDef) =>
         val parameters: Map[String, Any] = patternDef.flatMap(_.parameters).getOrElse(Set.empty)
@@ -128,17 +129,21 @@ object Detekt extends Tool {
 
   private def getResults(path: Path, filesOpt: Option[Set[api.Source.File]], yamlConf: YamlConfig, parallel: Boolean): List[Finding] = {
     val settings = new ProcessingSettings(path, yamlConf, List.empty[PathFilter], parallel, false, List.empty[Path])
+    val providers = new RuleSetLocator(settings).load()
+    val processors = List.empty[FileProcessListener]
+    val detektor = new Detektor(settings, providers, processors)
+    val compiler = new KtTreeCompiler(new KtCompiler(), settings.getPathFilters, parallel)
 
-    val detektion: Detektion = filesOpt.fold {
-      DetektFacade.INSTANCE.instance(settings, new RuleSetLocator(settings).load(), List.empty[FileProcessListener]).run(new KtTreeCompiler(path, settings.getPathFilters, parallel))
+
+    val detektion = filesOpt.fold {
+      val ktFiles = compiler.compile(path)
+      detektor.run(ktFiles)
     } { files =>
-      val compiler = new KtCompiler(path)
-
-      val ktFiles: Seq[KtFile] = files.par.map(file => compiler.compile(Paths.get(file.path)))(collection.breakOut)
-      DetektFacade.INSTANCE.instance(settings, new RuleSetLocator(settings).load(), List.empty[FileProcessListener]).run(new util.ArrayList(ktFiles))
+      val ktFiles = files.par.flatMap(file => compiler.compile(Paths.get(file.path))).to[List]
+      detektor.run(ktFiles)
     }
 
-    detektion.getFindings.values.flatten.toList
+    detektion.values.flatten.toList
   }
 
 }
