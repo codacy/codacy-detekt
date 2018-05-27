@@ -1,6 +1,4 @@
-```kotlin
-//Bad:
-    do {} while (bar != foo)
-```
+# EmptyDoWhileBlock
 
-[Source](https://github.com/arturbosch/detekt)
+Reports empty `do`/`while` loops. Empty blocks of code serve no purpose and should be removed.
+

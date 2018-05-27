@@ -1,3 +1,4 @@
-Variable names should not be shorter than the minimum set in the configuration.
+# VariableMinLength
 
-[Source](https://github.com/arturbosch/detekt)
+Reports when very short variable names are used.
+

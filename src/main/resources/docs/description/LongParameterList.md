@@ -1,10 +1,4 @@
-It is hard to understand such lists, which become contradictory and hard to use as they grow longer.
+# LongParameterList
 
-```kotlin
-//Bad:
-fun foo (foo1, foo2, foo3, foo4, foo5) {
-    //...
-}
-```
+Reports functions which have more parameters than a certain threshold (default: 6).
 
-[Source](https://refactoring.guru/smells/long-parameter-list)

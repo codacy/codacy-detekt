@@ -1,3 +1,7 @@
-A method that contains a high level of nesting can be very difficult to understand.
+# NestedBlockDepth
 
-[Source](https://help.semmle.com/wiki/display/JAVA/Statement+nesting+depth)
+This rule reports excessive nesting depth in functions. Excessively nested code becomes harder to read and increases
+its hidden complexity. It might become harder to understand edge-cases of the function.
+
+Prefer extracting the nested code into well-named functions to make it easier to understand.
+

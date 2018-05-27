@@ -1,17 +1,4 @@
-A function name should be written in lowerCamelCase.
+# FunctionNaming
 
-```kotlin
-//Bad:
+Reports when function names which do not follow the specified naming convention are used.
 
-fun FooBar () {
-    ...
-}
-
-//Good:
-
-fun fooBar () {
-    ...
-}
-```
-
-[Source](https://github.com/raywenderlich/kotlin-style-guide#classes--interfaces)

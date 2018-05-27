@@ -1,3 +1,4 @@
-Function names should not be longer than the maximum set in the project configuration.
+# FunctionMaxLength
 
-[Source](https://github.com/arturbosch/detekt/)
+Reports when very long function names are used.
+

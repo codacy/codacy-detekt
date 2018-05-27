@@ -1,19 +1,15 @@
-The main purpose of data classes is to hold data.
- This type of class should not have any extra function.
- 
- ```kotlin
- //Bad:
- 
- data class User (val name: String, val age: Int) {
-    override fun toString () : String {
-         return "Person(name=$name, age=$age)"
-    }
- }
- 
- //Good:
- 
- data class User (val name: String, val age: Int)
+# DataClassContainsFunctions
 
- ```
- 
-[Source](https://kotlinlang.org/docs/reference/data-classes.html)
+This rule reports functions inside data classes which have not been whitelisted as a conversion function.
+
+Data classes should mainly be used to store data. This rule assumes that they should not contain any extra functions
+aside functions that help with converting objects from/to one another.
+Data classes will automatically have a generated `equals`, `toString` and `hashCode` function by the compiler.
+
+## Noncompliant Code
+
+```kotlin
+data class DataClassWithFunctions(val i: Int) {
+    fun foo() { }
+}
+```

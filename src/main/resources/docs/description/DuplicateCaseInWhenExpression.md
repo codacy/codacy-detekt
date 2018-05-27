@@ -1,22 +1,24 @@
-If cases are handled in the same way, they should be merged.
-Always include the else case.
+# DuplicateCaseInWhenExpression
+
+Flags duplicate case statements in when expressions.
+
+If a when expression contains the same case statement multiple times they should be merged. Otherwise it might be
+easy to miss one of the cases when reading the code, leading to unwanted side effects.
+
+## Noncompliant Code
+
 ```kotlin
-//Bad:
-
-when (anInput) {
-  1 -> doSomethingForCaseOne()
-  2 -> doSomethingForCaseOneOrTwo()
-  3 -> doSomethingForCaseThree()
+when (i) {
+    1 -> println("one")
+    1 -> println("one")
+    else -> println("else")
 }
-
-//Good:
-
-when (anInput) {
-  1, 2 -> doSomethingForCaseOneOrTwo()
-  3 -> doSomethingForCaseThree()
-  else -> println("No case satisfied")
-}
-
 ```
+## Compliant Code
 
-[Source](https://github.com/raywenderlich/kotlin-style-guide#when-statements)
+```kotlin
+when (i) {
+    1 -> println("one")
+    else -> println("else")
+}
+```

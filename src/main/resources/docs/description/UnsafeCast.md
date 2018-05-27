@@ -1,14 +1,18 @@
-Cast operator throws an exception if the cast is not possible. 
-To avoid an exception being thrown, you can use a safe cast operator as? that returns null on failure.
+# UnsafeCast
+
+Reports casts which are unsafe. In case the cast is not possible it will throw an exception.
+
+## Noncompliant Code
 
 ```kotlin
-//Bad:
-
-val x: String = y as String
-
-//Good:
-
-val x: String? = y as? String
+fun foo(s: Any) {
+    println(s as Int)
+}
 ```
+## Compliant Code
 
-[Source](https://kotlinlang.org/docs/reference/typecasts.html)
+```kotlin
+fun foo(s: Any) {
+    println((s as? Int) ?: 0)
+}
+```

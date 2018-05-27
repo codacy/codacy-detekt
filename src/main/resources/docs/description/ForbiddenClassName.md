@@ -1,3 +1,6 @@
-The class name belongs to one of the forbidden class names. You should change it.
+# ForbiddenClassName
 
-[Source](https://github.com/arturbosch/detekt/)
+Reports class names which are forbidden per configuration.
+By default this rule does not report any classes.
+Examples for forbidden names might be too generic class names like `...Manager`.
+

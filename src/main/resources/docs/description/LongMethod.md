@@ -1,4 +1,7 @@
-One method should have one responsibility.
- Generally, any method longer than ten lines should make you start asking questions.
- 
-[Source](https://refactoring.guru/smells/long-method)
+# LongMethod
+
+Methods should have one responsibility. Long methods can indicate that a method handles too many cases at once.
+Prefer smaller methods with clear names that describe their functionality clearly.
+
+Extract parts of the functionality of long methods into separate, smaller methods.
+

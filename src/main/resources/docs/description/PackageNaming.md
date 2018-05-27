@@ -1,15 +1,4 @@
-A package name should be written in  lower-case, multiple words concatenated together,
- without hyphens or underscores.
+# PackageNaming
 
-```kotlin
-//Bad:
+Reports when package names which do not follow the specified naming convention are used.
 
-com.Foo.bar
-
-//Good:
-
-com.foo.bar
-
-```
-
-[Source](https://github.com/raywenderlich/kotlin-style-guide#packages)

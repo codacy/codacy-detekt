@@ -1,23 +1,4 @@
-```kotlin
-//Bad:
+# EmptyFinallyBlock
 
-try {
-    ...
-}
-catch (e: SomeException) {
-    ...
-}
-finally {}
+Reports empty `finally` blocks. Empty blocks of code serve no purpose and should be removed.
 
-//Good:
-
-try {
-    ...
-}
-catch (e: SomeException) {
-    ...
-}
-
-```
-
-[Source](https://github.com/arturbosch/detekt)

@@ -1,16 +1,4 @@
-No empty class bodies.
-````kotlin
-//Bad:
+# EmptyClassBlock
 
-class A {}
-interface B {}
+Reports empty classes. Empty blocks of code serve no purpose and should be removed.
 
-//Good:
-
-class A
-interface B
-
-````
-
-
-[Source](https://ktlint.github.io/#rule-empty-class-body)

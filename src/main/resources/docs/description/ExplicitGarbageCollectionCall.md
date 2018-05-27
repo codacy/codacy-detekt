@@ -1,4 +1,13 @@
-Any code that depends on explicit garbage collection calls has certainly problems.
-Try to fix those problems instead of explicit call the garbage collection.
+# ExplicitGarbageCollectionCall
 
-[Source](https://stackoverflow.com/questions/2414105/why-is-it-bad-practice-to-call-system-gc)
+Reports all calls to explicitly trigger the Garbage Collector.
+Code should work independently of the garbage collector and should not require the GC to be triggered in certain
+points in time.
+
+## Noncompliant Code
+
+```kotlin
+System.gc()
+Runtime.getRuntime().gc()
+System.runFinalization()
+```

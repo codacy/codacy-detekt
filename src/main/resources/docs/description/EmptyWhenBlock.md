@@ -1,7 +1,4 @@
-```kotlin
-//Bad:
+# EmptyWhenBlock
 
-when (foo) {}
-```
+Reports empty `when` expressions. Empty blocks of code serve no purpose and should be removed.
 
-[Source](https://github.com/arturbosch/detekt)

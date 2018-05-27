@@ -1,16 +1,20 @@
-Use safe cast instead of if-else-null.
+# SafeCast
+
+This rule inspects casts and reports casts which could be replaced with safe casts instead.
+
+## Noncompliant Code
 
 ```kotlin
-//Bad:
-
-if(foo != null) {
-    foo.length
+fun numberMagic(number: Number) {
+    val i = if (number is Int) number else null
+    // ...
 }
-
-//Good:
-
-foo?.length
-
 ```
+## Compliant Code
 
-[Source](https://github.com/arturbosch/detekt/)
+```kotlin
+fun numberMagic(number: Number) {
+    val i = number as? Int
+    // ...
+}
+```

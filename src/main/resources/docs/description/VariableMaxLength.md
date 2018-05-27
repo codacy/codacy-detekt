@@ -1,3 +1,4 @@
-Variable names should not be longer than the maximum set in the configuration.
+# VariableMaxLength
 
-[Source](https://github.com/arturbosch/detekt)
+Reports when very long variable names are used.
+

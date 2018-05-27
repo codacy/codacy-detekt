@@ -1,14 +1,4 @@
-```kotlin
-//Bad:
+# EmptyForBlock
 
-for (i in foo.size) {}
+Reports empty `for` loops. Empty blocks of code serve no purpose and should be removed.
 
-//Good:
-
-for (i in foo.size) {
-    ...
-}
-
-```
-
-[Source](https://github.com/arturbosch/detekt)

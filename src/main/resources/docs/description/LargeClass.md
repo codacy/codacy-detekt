@@ -1,3 +1,7 @@
-A class should use the Single Responsibility Principle.  Large classes tend to handle many things at once.
+# LargeClass
 
-[Source](https://softwareengineering.stackexchange.com/questions/11846/how-large-is-ok-for-a-class)
+This rule reports large classes. Classes should generally have one responsibility. Large classes can indicate that
+the class does instead handle multiple responsibilities. Instead of doing many things at once prefer to
+split up large classes into smaller classes. These smaller classes are then easier to understand and handle less
+things.
+

@@ -1,4 +1,35 @@
-Magic number is a numeric literal that is not defined as a constant and hence it's unclear what the purpose of this number is. 
-    By default, -1, 0, 1 and 2 are not considered to be magic numbers.
-    
-[Source](https://github.com/arturbosch/detekt/blob/bbeb9bc3e280f0bca944496495c91eb7d215b7d8/detekt-rules/src/main/kotlin/io/gitlab/arturbosch/detekt/rules/style/MagicNumber.kt)
+# MagicNumber
+
+This rule detects and reports usages of magic numbers in the code. Prefer defining constants with clear names
+describing what the magic number means.
+
+## Noncompliant Code
+
+```kotlin
+class User {
+
+    fun checkName(name: String) {
+        if (name.length > 42) {
+            throw IllegalArgumentException("username is too long")
+        }
+        // ...
+    }
+}
+```
+## Compliant Code
+
+```kotlin
+class User {
+
+    fun checkName(name: String) {
+        if (name.length > MAX_USERNAME_SIZE) {
+            throw IllegalArgumentException("username is too long")
+        }
+        // ...
+    }
+
+    companion object {
+        private const val MAX_USERNAME_SIZE = 42
+    }
+}
+```
