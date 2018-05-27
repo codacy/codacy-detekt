@@ -22,3 +22,5 @@ when (i) {
     else -> println("else")
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#duplicatecaseinwhenexpression)

@@ -14,3 +14,5 @@ fun foo() {
     }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/exceptions.html#throwingexceptionfromfinally)

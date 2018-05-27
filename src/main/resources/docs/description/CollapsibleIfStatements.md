@@ -23,3 +23,5 @@ if (i > 0 && i < 5) {
     println(i)
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#collapsibleifstatements)

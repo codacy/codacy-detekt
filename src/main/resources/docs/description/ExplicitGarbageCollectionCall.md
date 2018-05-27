@@ -11,3 +11,5 @@ System.gc()
 Runtime.getRuntime().gc()
 System.runFinalization()
 ```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#explicitgarbagecollectioncall)

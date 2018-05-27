@@ -9,3 +9,5 @@ Instead of simply removing the comment to solve this issue prefer renaming the p
 name. If this property is inside a bigger class it could make senes to refactor and split up the class. This can
 increase readability and make the documentation obsolete.
 
+
+[Source](https://arturbosch.github.io/detekt/comments.html#commentoverprivateproperty)

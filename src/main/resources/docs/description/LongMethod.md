@@ -5,3 +5,5 @@ Prefer smaller methods with clear names that describe their functionality clearl
 
 Extract parts of the functionality of long methods into separate, smaller methods.
 
+
+[Source](https://arturbosch.github.io/detekt/complexity.html#longmethod)

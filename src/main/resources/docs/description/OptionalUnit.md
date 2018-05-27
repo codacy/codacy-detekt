@@ -13,3 +13,5 @@ fun foo(): Unit { }
 ```kotlin
 fun foo() { }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#optionalunit)

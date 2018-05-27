@@ -9,3 +9,5 @@ removed.
 class A : Any()
 class B : Object()
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#unnecessaryinheritance)

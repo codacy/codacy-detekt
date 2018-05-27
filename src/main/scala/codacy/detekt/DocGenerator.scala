@@ -51,35 +51,34 @@ object DocGenerator {
   }
 
   private def generatePatterns(rules: List[Rule]): JsArray = {
-    val codacyPatterns = rules.collect {
-      case rule =>
-        val category =
-          if (rule.getIssue.getSeverity.name.startsWith("Defect") ||
-              rule.getIssue.getSeverity.name.startsWith("Maintainability") ||
-              rule.getIssue.getSeverity.name.startsWith("Minor")) {
-            "ErrorProne"
-          } else if (rule.getIssue.getSeverity.name.startsWith("Performance")) {
-            "Performance"
-          } else {
-            "CodeStyle"
-          }
+    val codacyPatterns = rules.map { rule =>
+      val category =
+        if (rule.getIssue.getSeverity.name.startsWith("Defect") ||
+            rule.getIssue.getSeverity.name.startsWith("Maintainability") ||
+            rule.getIssue.getSeverity.name.startsWith("Minor")) {
+          "ErrorProne"
+        } else if (rule.getIssue.getSeverity.name.startsWith("Performance")) {
+          "Performance"
+        } else {
+          "CodeStyle"
+        }
 
-        val level =
-          if (rule.getIssue.getSeverity.name.startsWith("Maintainability") ||
-              rule.getIssue.getSeverity.name.startsWith("Warning") ||
-              rule.getIssue.getSeverity.name.startsWith("Minor") ||
-              rule.getIssue.getSeverity.name.startsWith("Performance") ||
-              rule.getIssue.getSeverity.name.startsWith("Defect")) {
-            "Warning"
-          } else {
-            "Info"
-          }
+      val level =
+        if (rule.getIssue.getSeverity.name.startsWith("Maintainability") ||
+            rule.getIssue.getSeverity.name.startsWith("Warning") ||
+            rule.getIssue.getSeverity.name.startsWith("Minor") ||
+            rule.getIssue.getSeverity.name.startsWith("Performance") ||
+            rule.getIssue.getSeverity.name.startsWith("Defect")) {
+          "Warning"
+        } else {
+          "Info"
+        }
 
-        Json.obj(
-          "patternId" -> rule.getIssue.getId,
-          "level" -> level,
-          "category" -> category
-        )
+      Json.obj(
+        "patternId" -> rule.getIssue.getId,
+        "level" -> level,
+        "category" -> category
+      )
     }
     Json.parse(Json.toJson(codacyPatterns).toString).as[JsArray]
   }
@@ -181,19 +180,22 @@ object DocGenerator {
     collector.getItems
       .to[List]
       .flatMap(
-        _.getRules
-          .to[List]
-          .map(
-            rule =>
-              (rule.getName,
-               generateMarkdown(rule.getName,
-                                rule.getDescription,
-                                rule.getNonCompliantCodeExample,
-                                rule.getCompliantCodeExample))))(
+        ruleSet =>
+          ruleSet.getRules
+            .to[List]
+            .map(
+              rule =>
+                (rule.getName,
+                 generateMarkdown(ruleSet.getRuleSet.getName,
+                                  rule.getName,
+                                  rule.getDescription,
+                                  rule.getNonCompliantCodeExample,
+                                  rule.getCompliantCodeExample))))(
         collection.breakOut)
   }
 
-  private def generateMarkdown(name: String,
+  private def generateMarkdown(ruleSetName: String,
+                               ruleName: String,
                                description: String,
                                nonCompliantCodeExample: String,
                                compliantCodeExample: String): String = {
@@ -217,10 +219,12 @@ object DocGenerator {
             |```""".stripMargin
       } else { "" }
 
-    s"""|# $name
+    s"""|# $ruleName
         |
         |$description
         |$nonCompliantCodeExampleMarkdown$compliantCodeExampleMarkdown
+        |
+        |[Source](https://arturbosch.github.io/detekt/${ruleSetName.toLowerCase}.html#${ruleName.toLowerCase})
         |""".stripMargin
   }
 }

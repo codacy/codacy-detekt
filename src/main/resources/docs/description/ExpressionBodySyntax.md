@@ -15,3 +15,5 @@ fun stuff(): Int {
 ```kotlin
 fun stuff() = 5
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#expressionbodysyntax)

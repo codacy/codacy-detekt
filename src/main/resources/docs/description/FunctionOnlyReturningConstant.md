@@ -13,3 +13,5 @@ fun functionReturningConstantString() = "1"
 ```kotlin
 const val constantString = "1"
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#functiononlyreturningconstant)

@@ -20,3 +20,5 @@ internal class NestedClassesVisibility {
     internal class NestedPublicClass
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#nestedclassesvisibility)

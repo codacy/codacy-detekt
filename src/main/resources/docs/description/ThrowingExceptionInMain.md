@@ -11,3 +11,5 @@ fun main(args: Array<String>) {
     throw IOException() // exception should not be thrown here
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/exceptions.html#throwingexceptioninmain)

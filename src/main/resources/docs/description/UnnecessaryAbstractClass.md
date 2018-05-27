@@ -19,3 +19,5 @@ abstract class OnlyConcreteMembersInAbstractClass { // violation: no abstract me
     fun f() { }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#unnecessaryabstractclass)

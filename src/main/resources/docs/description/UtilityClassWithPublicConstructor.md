@@ -31,3 +31,5 @@ class UtilityClass {
     }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#utilityclasswithpublicconstructor)

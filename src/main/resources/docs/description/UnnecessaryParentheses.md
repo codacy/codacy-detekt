@@ -27,3 +27,5 @@ fun foo() {
     function { input -> println(input) }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#unnecessaryparentheses)

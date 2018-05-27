@@ -15,3 +15,5 @@ class Foo {
     }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/exceptions.html#exceptionraisedinunexpectedlocation)

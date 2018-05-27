@@ -16,3 +16,5 @@ fun foo(s: Any) {
     println((s as? Int) ?: 0)
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#unsafecast)

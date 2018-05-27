@@ -20,3 +20,5 @@ when (1) {
     else -> println("else")
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#optionalwhenbraces)

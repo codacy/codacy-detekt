@@ -33,3 +33,5 @@ class User {
     }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#magicnumber)

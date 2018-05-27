@@ -20,3 +20,5 @@ override fun equals(other: Any?): Boolean {
     return this == other
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#equalsalwaysreturnstrueorfalse)

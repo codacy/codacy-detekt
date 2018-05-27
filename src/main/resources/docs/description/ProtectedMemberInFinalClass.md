@@ -17,3 +17,5 @@ class ProtectedMemberInFinalClass {
     private var i = 0
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#protectedmemberinfinalclass)

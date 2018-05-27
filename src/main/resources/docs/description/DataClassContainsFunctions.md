@@ -13,3 +13,5 @@ data class DataClassWithFunctions(val i: Int) {
     fun foo() { }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#dataclasscontainsfunctions)

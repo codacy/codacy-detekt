@@ -20,3 +20,5 @@ interface Foo {
     var y: Int
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#optionalabstractkeyword)

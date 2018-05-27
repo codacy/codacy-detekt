@@ -18,3 +18,5 @@ class DataClassCandidate(val i: Int) {
 ```kotlin
 data class DataClass(val i: Int, val i2: Int)
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#usedataclass)

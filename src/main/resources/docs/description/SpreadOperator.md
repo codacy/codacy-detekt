@@ -16,3 +16,5 @@ fun bar(vararg strs: String) {
     strs.forEach { println(it) }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/performance.html#spreadoperator)

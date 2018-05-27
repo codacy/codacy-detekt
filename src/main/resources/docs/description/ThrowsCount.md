@@ -23,3 +23,5 @@ fun foo(i: Int) {
     }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#throwscount)

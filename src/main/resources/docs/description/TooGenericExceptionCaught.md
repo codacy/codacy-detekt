@@ -22,3 +22,5 @@ fun foo() {
     } catch(e: IOException) { }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/exceptions.html#toogenericexceptioncaught)

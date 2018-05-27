@@ -13,3 +13,5 @@ fun isNull(str: String) = str.equals(null)
 ```kotlin
 fun isNull(str: String) = str == null
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#equalsnullcall)

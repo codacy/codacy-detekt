@@ -25,3 +25,5 @@ fun foo(bar: Int) {
     // ...
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/exceptions.html#throwingexceptionswithoutmessageorcause)

@@ -13,3 +13,5 @@ class Foo {
     @JvmField @SinceKotlin("1.0.0") lateinit var i2: Int
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#lateinitusage)

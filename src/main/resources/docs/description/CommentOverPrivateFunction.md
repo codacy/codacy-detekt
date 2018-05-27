@@ -9,3 +9,5 @@ Instead of simply removing this comment to solve this issue prefer to split up t
 with better names if necessary. Giving the function a better, more descriptive name can also help in
 solving this issue.
 
+
+[Source](https://arturbosch.github.io/detekt/comments.html#commentoverprivatefunction)

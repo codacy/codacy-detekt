@@ -14,3 +14,5 @@ class MyIterator : Iterator<String> {
     }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#iteratorhasnextcallsnextmethod)

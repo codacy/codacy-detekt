@@ -30,3 +30,5 @@ class DetektElements {
     val element2 = DetektElement2()
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#wildcardimport)

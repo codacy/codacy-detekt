@@ -33,3 +33,5 @@ fun foo(): Int {
     return i
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#uselesspostfixexpression)

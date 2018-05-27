@@ -24,3 +24,5 @@ class Foo {
     }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#wrongequalstypeparameter)

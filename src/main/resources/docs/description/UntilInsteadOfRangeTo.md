@@ -16,3 +16,5 @@ val range = 0 .. 10 - 1
 for (i in 0 until 10) {}
 val range = 0 until 10
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#untilinsteadofrangeto)

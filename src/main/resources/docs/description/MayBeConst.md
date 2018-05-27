@@ -14,3 +14,5 @@ val myConstant = "abc"
 ```kotlin
 const val MY_CONSTANT = "abc"
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#maybeconst)

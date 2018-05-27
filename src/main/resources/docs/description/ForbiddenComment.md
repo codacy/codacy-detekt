@@ -9,3 +9,5 @@ development. Offending code comments will then be reported.
 // TODO:,FIXME:,STOPSHIP:
 fun foo() { }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#forbiddencomment)

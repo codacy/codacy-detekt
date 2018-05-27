@@ -13,3 +13,5 @@ lateinit internal private val str: String
 ```kotlin
 private internal lateinit val str: String
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#modifierorder)

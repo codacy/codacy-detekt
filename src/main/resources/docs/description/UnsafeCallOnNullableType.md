@@ -18,3 +18,5 @@ fun foo(str: String?) {
     println(str?.length)
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#unsafecallonnullabletype)

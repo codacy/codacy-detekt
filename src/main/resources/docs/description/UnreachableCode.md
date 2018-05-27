@@ -20,3 +20,5 @@ fun f() {
     println() // unreachable
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#unreachablecode)

@@ -27,3 +27,5 @@ class Foo {
     }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/complexity.html#stringliteralduplication)

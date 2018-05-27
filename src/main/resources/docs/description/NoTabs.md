@@ -6,3 +6,5 @@ According to
 the only whitespace chars that are allowed in a source file are the line terminator sequence
 and the ASCII horizontal space character (0x20).
 
+
+[Source](https://arturbosch.github.io/detekt/style.html#notabs)

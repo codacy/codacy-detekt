@@ -21,3 +21,5 @@ for (i in 1..10) {
     println(i)
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/performance.html#foreachonrange)

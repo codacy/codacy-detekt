@@ -21,3 +21,5 @@ for (r in range) {
     println(r)
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/complexity.html#labeledexpression)

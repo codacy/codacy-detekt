@@ -16,3 +16,5 @@ for (i in 1..2) {
     if (i == 1) break
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#unconditionaljumpstatementinloop)

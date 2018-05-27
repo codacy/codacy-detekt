@@ -15,3 +15,5 @@ for (str in strs) {
     }
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#loopwithtoomanyjumpstatements)

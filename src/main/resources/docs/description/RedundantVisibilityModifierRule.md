@@ -18,3 +18,5 @@ interface Foo {
     fun bar()
 }
 ```
+
+[Source](https://arturbosch.github.io/detekt/style.html#redundantvisibilitymodifierrule)
