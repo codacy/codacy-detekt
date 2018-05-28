@@ -1,15 +1,25 @@
+# ForEachOnRange
+
 Using the forEach method on ranges has a heavy performance cost. Prefer using simple for loops.
 
+Benchmarks have shown that using forEach on a range can have a huge performance cost in comparison to
+simple for loops. Hence in most contexts a simple for loop should be used instead.
+See more details here: https://sites.google.com/a/athaydes.com/renato-athaydes/posts/kotlinshiddencosts-benchmarks
+To solve this CodeSmell, the forEach usage should be replaced by a for loop.
+
+## Noncompliant Code
+
 ```kotlin
-//Bad:
+(1..10).forEach {
+    println(it)
+}
+```
+## Compliant Code
 
-var total = one
-(two rangeTo x).forEach{i -> total *= i}
-
-//Good:
-
-var total = one
-for (i in two rangeTo x) { total *= i }
+```kotlin
+for (i in 1..10) {
+    println(i)
+}
 ```
 
-[Source](https://sites.google.com/a/athaydes.com/renato-athaydes/posts/kotlinshiddencosts-benchmarks)
+[Source](https://arturbosch.github.io/detekt/performance.html#foreachonrange)

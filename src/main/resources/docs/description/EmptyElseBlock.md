@@ -1,15 +1,6 @@
-```kotlin
-//Bad: 
+# EmptyElseBlock
 
-if(foo) {
-    //...
-} else {}
+Reports empty `else` blocks. Empty blocks of code serve no purpose and should be removed.
 
-//Good:
 
-if(foo) {
-    //...
-}
-```
-
-[Source](https://github.com/arturbosch/detekt)
+[Source](https://arturbosch.github.io/detekt/empty-blocks.html#emptyelseblock)

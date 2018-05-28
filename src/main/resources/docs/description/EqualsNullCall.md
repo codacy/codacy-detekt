@@ -1,20 +1,17 @@
-Consider using `==` to compare to null instead of `.equals(null)`.
+# EqualsNullCall
+
+To compare an object with `null` prefer using `==`. This rule detects and reports instances in the code where the
+`equals()` method is used to compare a value with `null`.
+
+## Noncompliant Code
+
 ```kotlin
-//Bad:
+fun isNull(str: String) = str.equals(null)
+```
+## Compliant Code
 
-if (b.equals(null) && b.length > 0) {
-    print("String of length ${b.length}")
-} else {
-    print("Empty string")
-}
-
-//Good:
-
-if (b != null && b.length > 0) {
-    print("String of length ${b.length}")
-} else {
-    print("Empty string")
-}
+```kotlin
+fun isNull(str: String) = str == null
 ```
 
-[Source](https://kotlinlang.org/docs/reference/null-safety.html)
+[Source](https://arturbosch.github.io/detekt/style.html#equalsnullcall)

@@ -1,5 +1,34 @@
-Always override hashCode when you override equals.
- A hashCode is a function that takes an object and outputs a numeric value.
-  The hashcode for an object is always the same if the object does not change.
-  
-[Source](https://eclipsesource.com/blogs/2012/09/04/the-3-things-you-should-know-about-hashcode/)
+# EqualsWithHashCodeExist
+
+When a class overrides the equals() method it should also override the hashCode() method.
+
+All hash-based collections depend on objects meeting the equals-contract. Two equal objects must produce the
+same hashcode. When inheriting equals or hashcode, override the inherited and call the super method for
+clarification.
+
+## Noncompliant Code
+
+```kotlin
+class Foo {
+
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other)
+    }
+}
+```
+## Compliant Code
+
+```kotlin
+class Foo {
+
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other)
+    }
+
+    override fun hashCode(): Int {
+        return super.hashCode()
+    }
+}
+```
+
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#equalswithhashcodeexist)

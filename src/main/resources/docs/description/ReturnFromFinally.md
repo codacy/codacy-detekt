@@ -1,13 +1,18 @@
-Returning from inside a `finnaly` block will cause exceptions to be lost.
+# ReturnFromFinally
 
-```
-try {
-	  ...
-	  throw BarException()
-} finally {
-	  return foo;
+Reports all `return` statements in `finally` blocks.
+Using `return` statements in `finally` blocks can discard and hide exceptions that are thrown in the `try` block.
+
+## Noncompliant Code
+
+```kotlin
+fun foo() {
+    try {
+        throw MyException()
+    } finally {
+        return // prevents MyException from being propagated
+    }
 }
 ```
 
-
-[Source](htt`ps://stackoverflow.com/questions/18205493/can-we-use-return-in-finally-block)
+[Source](https://arturbosch.github.io/detekt/exceptions.html#returnfromfinally)

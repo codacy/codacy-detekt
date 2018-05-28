@@ -40,6 +40,7 @@ libraryDependencies ++= {
     "io.gitlab.arturbosch.detekt" % "detekt-api" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-rules" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-cli" % toolVersion,
+    "io.gitlab.arturbosch.detekt" % "detekt-generator" % toolVersion,
     "org.yaml" % "snakeyaml" % "1.18",
     "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.8.4"
   )

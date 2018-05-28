@@ -1,17 +1,6 @@
-A class name should be written in UpperCamelCase.
+# ClassNaming
 
-```kotlin
-//Bad:
+Reports when class names which do not follow the specified naming convention are used.
 
-class myClass{
-    //...
-}
 
-//Good:
-
-class MyClass {
-    //...
-}
-```
-
-[Source](https://github.com/raywenderlich/kotlin-style-guide#classes--interfaces)
+[Source](https://arturbosch.github.io/detekt/naming.html#classnaming)

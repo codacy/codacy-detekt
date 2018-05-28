@@ -1,3 +1,10 @@
-Classes with many functions tend to do too many things. Try to hold your classes small.
+# TooManyFunctions
 
-[Source](https://softwareengineering.stackexchange.com/questions/125357/keep-my-classes-and-methods-as-small-as-possible)
+This rule reports files, classes, interfaces, objects and enums which contain too many functions.
+Each element can be configured with different thresholds.
+
+Too many functions indicate a violation of the single responsibility principle. Prefer extracting functionality
+which clearly belongs together in separate parts of the code.
+
+
+[Source](https://arturbosch.github.io/detekt/complexity.html#toomanyfunctions)

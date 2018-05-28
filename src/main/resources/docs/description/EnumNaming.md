@@ -1,17 +1,6 @@
-A enum name should be written in UpperCamelCase.
+# EnumNaming
 
-```kotlin
-//Bad:
+Reports when enum names which do not follow the specified naming convention are used.
 
-enum class mobileColor {
-    GOLD, SILVER, WHITE, BLACK, RED
-}
 
-//Good:
-
-enum class MobileColor {
-    GOLD, SILVER, WHITE, BLACK, RED
-}
-```
-
-[Source](https://www.tutorialkart.com/kotlin/enum-classes-in-kotlin/)
+[Source](https://arturbosch.github.io/detekt/naming.html#enumnaming)

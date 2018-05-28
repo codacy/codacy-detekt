@@ -1,11 +1,24 @@
-Having an equals method which always returns true or false is not a good idea.
+# EqualsAlwaysReturnsTrueOrFalse
+
+Reports equals() methods which will always return true or false.
+
+Equals methods should always report if some other object is equal to the current object.
+See the Kotlin documentation for Any.equals(other: Any?):
+https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/equals.html
+
+## Noncompliant Code
 
 ```kotlin
-//Bad:
+override fun equals(other: Any?): Boolean {
+    return true
+}
+```
+## Compliant Code
 
-if (true) {
-    ...
+```kotlin
+override fun equals(other: Any?): Boolean {
+    return this == other
 }
 ```
 
-[Source](https://github.com/arturbosch/detekt/)
+[Source](https://arturbosch.github.io/detekt/potential-bugs.html#equalsalwaysreturnstrueorfalse)

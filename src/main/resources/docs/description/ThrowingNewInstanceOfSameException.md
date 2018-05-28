@@ -1,3 +1,29 @@
-Avoid `catch` blocks that rethrow a caught exception wrapped inside a new instance of the same exception.
+# ThrowingNewInstanceOfSameException
 
-[Source](https://github.com/arturbosch/detekt/)
+Exceptions should not be wrapped inside the same exception type and then rethrown. Prefer wrapping exceptions in more
+meaningful exception types.
+
+## Noncompliant Code
+
+```kotlin
+fun foo() {
+    try {
+        // ...
+    } catch (e: IllegalStateException) {
+        throw IllegalStateException(e) // rethrows the same exception
+    }
+}
+```
+## Compliant Code
+
+```kotlin
+fun foo() {
+    try {
+        // ...
+    } catch (e: IllegalStateException) {
+        throw MyException(e)
+    }
+}
+```
+
+[Source](https://arturbosch.github.io/detekt/exceptions.html#throwingnewinstanceofsameexception)

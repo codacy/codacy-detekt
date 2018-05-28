@@ -1,3 +1,31 @@
-Multiple occurrences of the same string literal within a single file detected.
+# StringLiteralDuplication
 
-[Source](https://github.com/arturbosch/detekt/)
+This rule detects and reports duplicated String literals. Repeatedly typing out the same String literal across the
+codebase makes it harder to change and maintain.
+
+Instead, prefer extracting the String literal into a property or constant.
+
+## Noncompliant Code
+
+```kotlin
+class Foo {
+
+    val s1 = "lorem"
+    fun bar(s: String = "lorem") {
+        s1.equals("lorem")
+    }
+}
+```
+## Compliant Code
+
+```kotlin
+class Foo {
+    val lorem = "lorem"
+    val s1 = lorem
+    fun bar(s: String = lorem) {
+        s1.equals(lorem)
+    }
+}
+```
+
+[Source](https://arturbosch.github.io/detekt/complexity.html#stringliteralduplication)

@@ -1,15 +1,34 @@
-Explicit imports clearly document what external classes a class is directly using, provided that you don't leave redundant imports in your code.
+# WildcardImport
 
-Explicit imports avoid problems with name collisions arising when you import two packages that contain classes with the same class name.
+Wildcard imports should be replaced with imports using fully qualified class names. This helps increase clarity of
+which classes are imported and helps prevent naming conflicts.
+
+Library updates can introduce naming clashes with your own classes which might result in compilation errors.
+
+## Noncompliant Code
+
 ```kotlin
-//Bad:
+package test
 
-import com.foo.*
+import io.gitlab.arturbosch.detekt.*
 
-//Good:
+class DetektElements {
+    val element1 = DetektElement1()
+    val element2 = DetektElement2()
+}
+```
+## Compliant Code
 
-import com.foo.bar
+```kotlin
+package test
 
+import io.gitlab.arturbosch.detekt.DetektElement1
+import io.gitlab.arturbosch.detekt.DetektElement2
+
+class DetektElements {
+    val element1 = DetektElement1()
+    val element2 = DetektElement2()
+}
 ```
 
-[Source](https://stackoverflow.com/questions/7128348/performance-difference-between-a-wild-card-import-and-the-required-class-import)
+[Source](https://arturbosch.github.io/detekt/style.html#wildcardimport)

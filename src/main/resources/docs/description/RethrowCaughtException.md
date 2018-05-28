@@ -1,14 +1,28 @@
-Do not rethrow a caught exception of the same type.
+# RethrowCaughtException
+
+This rule reports all exceptions that are caught and then later re-thrown without modification.
+
+## Noncompliant Code
 
 ```kotlin
-//Bad:
-
-try {
-    //...
+fun foo() {
+    try {
+        // ...
+    } catch (e: IOException) {
+        throw e
+    }
 }
-catch (e: SomeException) {
-    throw e
+```
+## Compliant Code
+
+```kotlin
+fun foo() {
+    try {
+        // ...
+    } catch (e: IOException) {
+        throw MyException(e)
+    }
 }
 ```
 
-[Source](https://github.com/arturbosch/detekt/)
+[Source](https://arturbosch.github.io/detekt/exceptions.html#rethrowcaughtexception)

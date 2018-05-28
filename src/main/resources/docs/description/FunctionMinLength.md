@@ -1,3 +1,6 @@
-Function names should not be shorter than the minimum defined in the configuration.
+# FunctionMinLength
 
-[Source](https://github.com/arturbosch/detekt/)
+Reports when very short function names are used.
+
+
+[Source](https://arturbosch.github.io/detekt/naming.html#functionminlength)

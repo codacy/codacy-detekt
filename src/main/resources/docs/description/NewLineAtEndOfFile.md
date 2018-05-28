@@ -1,3 +1,6 @@
-The file should end with an empty new line.
+# NewLineAtEndOfFile
 
-[Source](https://github.com/arturbosch/detekt/)
+This rule reports files which do not end with a line separator.
+
+
+[Source](https://arturbosch.github.io/detekt/style.html#newlineatendoffile)

@@ -1,12 +1,29 @@
-The caught exception is swallowed. The original exception could be lost.
+# SwallowedException
+
+Exceptions should not be swallowed. This rule reports all instances where exceptions are `caught` and not correctly
+passed into a newly thrown exception.
+
+## Noncompliant Code
 
 ```kotlin
-//Bad:
+fun foo() {
+    try {
+        // ...
+    } catch(e: IOException) {
+        throw MyException(e.message) // e is swallowed
+    }
+}
+```
+## Compliant Code
 
-try {
-  //...
-} catch (e: Exception) {}
-
+```kotlin
+fun foo() {
+    try {
+        // ...
+    } catch(e: IOException) {
+        throw MyException(e)
+    }
+}
 ```
 
-[Source](https://lostechies.com/jimmybogard/2007/04/30/swallowing-exceptions-is-hazardous-to-your-health/)
+[Source](https://arturbosch.github.io/detekt/exceptions.html#swallowedexception)

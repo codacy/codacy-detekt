@@ -1,7 +1,6 @@
-```kotlin
-//Bad:
+# EmptyWhileBlock
 
-while (foo) {}
-```
+Reports empty `while` expressions. Empty blocks of code serve no purpose and should be removed.
 
-[Source](https://github.com/arturbosch/detekt)
+
+[Source](https://arturbosch.github.io/detekt/empty-blocks.html#emptywhileblock)

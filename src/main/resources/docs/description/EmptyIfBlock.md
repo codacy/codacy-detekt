@@ -1,10 +1,6 @@
-```kotlin
-//Bad: 
+# EmptyIfBlock
 
-if(foo) {}
- else {
-    ...
-}
-```
+Reports empty `if` blocks. Empty blocks of code serve no purpose and should be removed.
 
-[Source](https://github.com/arturbosch/detekt)
+
+[Source](https://arturbosch.github.io/detekt/empty-blocks.html#emptyifblock)

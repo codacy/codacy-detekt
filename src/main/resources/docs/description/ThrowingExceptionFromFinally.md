@@ -1,19 +1,18 @@
-An exception thrown from the `finally` block will replace any exception that was thrown from the `try`,
- and information about the real problem is likely to be lost.
- 
- ```kotlin
- //Bad:
- 
- try {
-     ...
- }
- catch (e: SomeException) {
-     // handler
- }
- finally {
-     throw FooExeption
- }
- 
- ```
- 
- [Source](https://stackoverflow.com/questions/31725629/is-throwing-an-exception-inside-a-finally-block-a-performance-issue)
+# ThrowingExceptionFromFinally
+
+This rule reports all cases where exceptions are thrown from a `finally` block. Throwing exceptions from a `finally`
+block should be avoided as it can lead to confusion and discarded exceptions.
+
+## Noncompliant Code
+
+```kotlin
+fun foo() {
+    try {
+        // ...
+    } finally {
+        throw IOException()
+    }
+}
+```
+
+[Source](https://arturbosch.github.io/detekt/exceptions.html#throwingexceptionfromfinally)
