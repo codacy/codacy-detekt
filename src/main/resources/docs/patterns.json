@@ -1,6 +1,6 @@
 {
   "name" : "Detekt",
-  "version" : "1.0.0.RC6-4",
+  "version" : "1.0.0.RC8",
   "patterns" : [ {
     "patternId" : "LongParameterList",
     "level" : "Warning",
