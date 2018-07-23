@@ -14,6 +14,13 @@ fun stuff(): Int {
 
 ```kotlin
 fun stuff() = 5
+
+fun stuff() {
+    return
+        moreStuff()
+            .getStuff()
+            .stuffStuff()
+}
 ```
 
 [Source](https://arturbosch.github.io/detekt/style.html#expressionbodysyntax)

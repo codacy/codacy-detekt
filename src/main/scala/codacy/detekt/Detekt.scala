@@ -128,7 +128,7 @@ object Detekt extends Tool {
   }
 
   private def getResults(path: Path, filesOpt: Option[Set[api.Source.File]], yamlConf: YamlConfig, parallel: Boolean): List[Finding] = {
-    val settings = new ProcessingSettings(path, yamlConf, List.empty[PathFilter], parallel, false, List.empty[Path])
+    val settings = new ProcessingSettings(path, yamlConf, List.empty[PathFilter], parallel, false, List.empty[Path], null, null)
     val providers = new RuleSetLocator(settings).load()
     val processors = List.empty[FileProcessListener]
     val detektor = new Detektor(settings, providers, processors)
