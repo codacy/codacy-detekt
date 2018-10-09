@@ -1,6 +1,6 @@
 package codacy
 
-import codacy.dockerApi.DockerEngine
+import com.codacy.tools.scala.seed.DockerEngine
 import codacy.detekt.Detekt
 
-object Engine extends DockerEngine(Detekt)
+object Engine extends DockerEngine(Detekt)()
