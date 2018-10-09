@@ -24,7 +24,7 @@ object Detekt extends Tool {
     for {
       (cat, rules) <- getRules
       rule <- rules
-    } yield Pattern.Id(rule.getId) -> cat
+    } yield Pattern.Id(rule.getRuleId) -> cat
   }
 
   override def apply(source: api.Source.Directory, configuration: Option[List[Pattern.Definition]], filesOpt: Option[Set[api.Source.File]])
@@ -132,7 +132,7 @@ object Detekt extends Tool {
     val providers = new RuleSetLocator(settings).load()
     val processors = List.empty[FileProcessListener]
     val detektor = new Detektor(settings, providers, processors)
-    val compiler = new KtTreeCompiler(new KtCompiler(), settings.getPathFilters, parallel)
+    val compiler = new KtTreeCompiler(new KtCompiler(), settings.getPathFilters, parallel, false)
 
 
     val detektion = filesOpt.fold {

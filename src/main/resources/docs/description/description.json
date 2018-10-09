@@ -180,8 +180,9 @@
   "description" : "Report magic numbers. Magic number is a numeric literal that is not defined as a constant and hence it's unclear what the purpose of this number is. It's better to declare such numbers as constants and give them a proper name. By default, -1, 0, 1, and 2 are not considered to be magic numbers."
 }, {
   "patternId" : "ModifierOrder",
-  "title" : "ModifierOrder",
-  "timeToFix" : 5
+  "title" : "Modifiers are not in the correct order.",
+  "timeToFix" : 5,
+  "description" : "Modifiers are not in the correct order."
 }, {
   "patternId" : "DataClassContainsFunctions",
   "title" : "Data classes should mainly be used to store data and should not have any extra functions. (Compiler will automatically generate equals, toString and hashCode functions)",
@@ -223,10 +224,35 @@
   "timeToFix" : 5,
   "description" : "'..' call can be replaced with 'until'"
 }, {
+  "patternId" : "UnnecessaryLet",
+  "title" : "The `let` usage is unnecessary",
+  "timeToFix" : 5,
+  "description" : "The `let` usage is unnecessary"
+}, {
   "patternId" : "MayBeConst",
   "title" : "Reports vals that can be const val instead.",
   "timeToFix" : 5,
   "description" : "Reports vals that can be const val instead."
+}, {
+  "patternId" : "PreferToOverPairSyntax",
+  "title" : "Pair was created using the Pair constructor, using the to syntax is preferred.",
+  "timeToFix" : 5,
+  "description" : "Pair was created using the Pair constructor, using the to syntax is preferred."
+}, {
+  "patternId" : "MandatoryBracesIfStatements",
+  "title" : "Multi-line if statement was found that does not have braces. These should be added to improve readability.",
+  "timeToFix" : 5,
+  "description" : "Multi-line if statement was found that does not have braces. These should be added to improve readability."
+}, {
+  "patternId" : "VarCouldBeVal",
+  "title" : "Var declaration could be val.",
+  "timeToFix" : 5,
+  "description" : "Var declaration could be val."
+}, {
+  "patternId" : "ForbiddenVoid",
+  "title" : "`Unit` should be used instead of `Void`.",
+  "timeToFix" : 5,
+  "description" : "`Unit` should be used instead of `Void`."
 }, {
   "patternId" : "CommentOverPrivateFunction",
   "title" : "Comments for private functions should be avoided. Prefer giving the function an expressive name. Split it up in smaller, self-explaining functions if necessary.",
@@ -384,9 +410,9 @@
   "description" : "Don't try to be smarter than the JVM. Your code should work independently if the garbage collector is disabled or not. If you face memory issues, try tuning the JVM options instead of relying on code itself."
 }, {
   "patternId" : "LateinitUsage",
-  "title" : "Usage of lateinit. Using lateinit for property initialization is error prone, try using constructor injection or delegation.",
+  "title" : "Usage of lateinit detected. Using lateinit for property initialization is error prone, try using constructor injection or delegation.",
   "timeToFix" : 5,
-  "description" : "Usage of lateinit. Using lateinit for property initialization is error prone, try using constructor injection or delegation."
+  "description" : "Usage of lateinit detected. Using lateinit for property initialization is error prone, try using constructor injection or delegation."
 }, {
   "patternId" : "UnconditionalJumpStatementInLoop",
   "title" : "An unconditional jump statement in a loop is useless. The loop itself is only executed once.",
@@ -399,9 +425,9 @@
   "description" : "Unreachable code detected. This code should be removed"
 }, {
   "patternId" : "UnsafeCallOnNullableType",
-  "title" : "It will throw NullPointerException at runtime if your nullable value is null.",
+  "title" : "It will throw a NullPointerException at runtime if your nullable value is null.",
   "timeToFix" : 5,
-  "description" : "It will throw NullPointerException at runtime if your nullable value is null."
+  "description" : "It will throw a NullPointerException at runtime if your nullable value is null."
 }, {
   "patternId" : "UnsafeCast",
   "title" : "Cast operator throws an exception if the cast is not possible.",
@@ -499,9 +525,9 @@
   "description" : "Variable names should not be longer than the maximum set in the configuration."
 }, {
   "patternId" : "TopLevelPropertyNaming",
-  "title" : "Top level constant names should follow the naming convention set in the projects configuration.",
+  "title" : "Top level property names should follow the naming convention set in the projects configuration.",
   "timeToFix" : 5,
-  "description" : "Top level constant names should follow the naming convention set in the projects configuration."
+  "description" : "Top level property names should follow the naming convention set in the projects configuration."
 }, {
   "patternId" : "ObjectPropertyNaming",
   "title" : "Property names inside objects should follow the naming convention set in the projects configuration.",
@@ -539,6 +565,17 @@
   "description" : "Function names should not be shorter than the minimum defined in the configuration."
 }, {
   "patternId" : "ForbiddenClassName",
-  "title" : "ForbiddenClassName",
-  "timeToFix" : 5
+  "title" : "Forbidden class name as per configuration detected.",
+  "timeToFix" : 5,
+  "description" : "Forbidden class name as per configuration detected."
+}, {
+  "patternId" : "ConstructorParameterNaming",
+  "title" : "Constructor parameter names should follow the naming convention set in the projects configuration.",
+  "timeToFix" : 5,
+  "description" : "Constructor parameter names should follow the naming convention set in the projects configuration."
+}, {
+  "patternId" : "FunctionParameterNaming",
+  "title" : "Function parameter names should follow the naming convention set in the projects configuration.",
+  "timeToFix" : 5,
+  "description" : "Function parameter names should follow the naming convention set in the projects configuration."
 } ]

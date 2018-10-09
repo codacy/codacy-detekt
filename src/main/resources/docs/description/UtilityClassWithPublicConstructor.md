@@ -1,11 +1,13 @@
 # UtilityClassWithPublicConstructor
 
-A class which only contains utility functions and no concrete implementation can be refactored into an `object`.
+A class which only contains utility variables and functions with no concrete implementation can be refactored
+into an `object` or an class with a non-public constructor.
+Furthermore, this rule reports utility classes which are not final.
 
 ## Noncompliant Code
 
 ```kotlin
-class UtilityClass {
+class UtilityClassViolation {
 
     // public constructor here
     constructor() {
@@ -15,6 +17,11 @@ class UtilityClass {
     companion object {
         val i = 0
     }
+}
+
+open class UtilityClassViolation private constructor() {
+
+    // ...
 }
 ```
 ## Compliant Code
@@ -29,6 +36,10 @@ class UtilityClass {
     companion object {
         val i = 0
     }
+}
+object UtilityClass {
+
+    val i = 0
 }
 ```
 
