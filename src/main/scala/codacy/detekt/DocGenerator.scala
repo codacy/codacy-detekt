@@ -92,7 +92,7 @@ object DocGenerator {
         val descriptionsFile =
           new java.io.File(descriptionsRoot, s"${rule.getIssue.getId}.md")
         ResourceHelper.writeFile(descriptionsFile.toPath,
-                                 extendedDescriptions(rule.getId))
+                                 extendedDescriptions(rule.getRuleId))
 
         Json.obj(
           "patternId" -> rule.getIssue.getId,

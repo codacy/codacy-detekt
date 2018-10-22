@@ -1,6 +1,6 @@
 {
   "name" : "Detekt",
-  "version" : "1.0.0.RC8",
+  "version" : "1.0.0.RC9.2",
   "patterns" : [ {
     "patternId" : "LongParameterList",
     "level" : "Warning",
@@ -182,7 +182,27 @@
     "level" : "Info",
     "category" : "CodeStyle"
   }, {
+    "patternId" : "UnnecessaryLet",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
     "patternId" : "MayBeConst",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "PreferToOverPairSyntax",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "MandatoryBracesIfStatements",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "VarCouldBeVal",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
+    "patternId" : "ForbiddenVoid",
     "level" : "Info",
     "category" : "CodeStyle"
   }, {
@@ -435,6 +455,14 @@
     "category" : "CodeStyle"
   }, {
     "patternId" : "ForbiddenClassName",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "ConstructorParameterNaming",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "FunctionParameterNaming",
     "level" : "Info",
     "category" : "CodeStyle"
   } ]

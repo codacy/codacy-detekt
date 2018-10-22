@@ -3,9 +3,12 @@ package codacy.detekt
 import java.nio.file.{Path, Paths}
 import java.util
 
-import codacy.docker.api
-import codacy.docker.api._
-import codacy.dockerApi.utils.FileHelper
+import better.files.File
+import com.codacy.plugins.api
+import com.codacy.plugins.api._
+import com.codacy.plugins.api.results.{Parameter, Pattern, Result, Tool}
+import com.codacy.tools.scala.seed.utils.FileHelper
+import com.codacy.tools.scala.seed.utils.ToolHelper._
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.core._
 import org.yaml.snakeyaml.Yaml
@@ -24,23 +27,25 @@ object Detekt extends Tool {
     for {
       (cat, rules) <- getRules
       rule <- rules
-    } yield Pattern.Id(rule.getId) -> cat
+    } yield Pattern.Id(rule.getRuleId) -> cat
   }
 
-  override def apply(source: api.Source.Directory, configuration: Option[List[Pattern.Definition]], filesOpt: Option[Set[api.Source.File]])
-                    (implicit specification: Tool.Specification): Try[List[Result]] = {
+    def apply(source: api.Source.Directory,
+              configuration: Option[List[Pattern.Definition]],
+              files: Option[Set[api.Source.File]],
+              options: Map[Options.Key, Options.Value])(implicit specification: Tool.Specification): Try[List[Result]] = {
     Try {
       val sourcePath = Paths.get(source.path)
       val yamlConfig = getYamlConfig(configuration, sourcePath)
 
-      val findings = getResults(sourcePath, filesOpt, yamlConfig, parallel = true)
+      val findings = getResults(sourcePath, files, yamlConfig, parallel = true)
 
       findings.map { finding =>
         Result.Issue(
           api.Source.File(finding.getFile),
           Result.Message(finding.compact()),
           Pattern.Id(finding.getId),
-          codacy.docker.api.Source.Line(finding.getLocation.getSource.getLine)
+          api.Source.Line(finding.getLocation.getSource.getLine)
         )
       }
     }
@@ -56,7 +61,7 @@ object Detekt extends Tool {
   }
 
   private def defaultConfig(source: Path): YamlConfig = {
-    val map = FileHelper.findConfigurationFile(configFiles, source)
+    val map = FileHelper.findConfigurationFile(source, configFiles)
       .fold(new util.LinkedHashMap[String, Any]()) {
         configFile =>
           new Yaml()
@@ -79,7 +84,7 @@ object Detekt extends Tool {
       val patterns: Map[String, Any] = patternsRaw.map { case (patternId, patternDef) =>
         val parameters: Map[String, Any] = patternDef.flatMap(_.parameters).getOrElse(Set.empty)
           .map { param =>
-            val pValue = JsonApi.paramValueToJsValue(param.value) match {
+            val pValue = paramValueToJsValue(param.value) match {
               case JsString(value) => value
               case value => Json.stringify(value)
             }
@@ -132,7 +137,7 @@ object Detekt extends Tool {
     val providers = new RuleSetLocator(settings).load()
     val processors = List.empty[FileProcessListener]
     val detektor = new Detektor(settings, providers, processors)
-    val compiler = new KtTreeCompiler(new KtCompiler(), settings.getPathFilters, parallel)
+    val compiler = new KtTreeCompiler(new KtCompiler(), settings.getPathFilters, parallel, false)
 
 
     val detektion = filesOpt.fold {
