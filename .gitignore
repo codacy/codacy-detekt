@@ -12,3 +12,6 @@
 *.sc
 
 .vscode
+
+.metals
+.bloop

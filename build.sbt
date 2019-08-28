@@ -1,6 +1,7 @@
-import com.typesafe.sbt.packager.docker.{Cmd, ExecCmd}
-import scala.util.parsing.json.JSON
-import scala.io.Source
+import com.typesafe.sbt.packager.docker.Cmd
+import sjsonnew._
+import sjsonnew.BasicJsonProtocol._
+import sjsonnew.support.scalajson.unsafe._
 
 organization := "codacy"
 
@@ -8,7 +9,7 @@ name := "codacy-detekt"
 
 version := "1.0.0-SNAPSHOT"
 
-val languageVersion = "2.12.7"
+val languageVersion = "2.12.9"
 
 scalaVersion := languageVersion
 
@@ -19,11 +20,16 @@ resolvers ++= Seq(
 lazy val toolVersionKey = settingKey[String]("The version of the underlying tool retrieved from patterns.json")
 
 toolVersionKey := {
+  case class Patterns(name: String, version: String)
+  implicit val patternsIso: IsoLList[Patterns] =
+    LList.isoCurried((p: Patterns) => ("name", p.name) :*: ("version", p.version) :*: LNil) {
+      case (_, n) :*: (_, v) :*: LNil => Patterns(n, v)
+    }
+
   val jsonFile = (resourceDirectory in Compile).value / "docs" / "patterns.json"
-  val toolMap = JSON.parseFull(Source.fromFile(jsonFile).getLines().mkString)
-    .getOrElse(throw new Exception("patterns.json is not a valid json"))
-    .asInstanceOf[Map[String, String]]
-  toolMap.getOrElse[String]("version", throw new Exception("Failed to retrieve 'version' from patterns.json"))
+  val json = Parser.parseFromFile(jsonFile)
+  val patterns = json.flatMap(Converter.fromJson[Patterns])
+  patterns.get.version
 }
 
 libraryDependencies ++= {

@@ -3,37 +3,34 @@ package codacy.detekt
 import java.nio.file.{Path, Paths}
 import java.util
 
-import better.files.File
 import com.codacy.plugins.api
 import com.codacy.plugins.api._
-import com.codacy.plugins.api.results.{Parameter, Pattern, Result, Tool}
+import com.codacy.plugins.api.results.{Pattern, Result, Tool}
 import com.codacy.tools.scala.seed.utils.FileHelper
-import com.codacy.tools.scala.seed.utils.ToolHelper._
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.core._
+import org.jetbrains.kotlin.resolve.BindingContext
 import org.yaml.snakeyaml.Yaml
 import play.api.libs.json.{JsString, Json}
 
-import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 import scala.io.Source
 import scala.util.Try
 
 object Detekt extends Tool {
 
-  case class DetektCategory(value: String) extends AnyVal
-
-  val configFiles = Set("default-detekt-config.yml", "detekt.yml")
   private lazy val patternIdToCategory: Map[Pattern.Id, DetektCategory] = {
     for {
       (cat, rules) <- getRules
       rule <- rules
     } yield Pattern.Id(rule.getRuleId) -> cat
   }
+  val configFiles = Set("default-detekt-config.yml", "detekt.yml")
 
-    def apply(source: api.Source.Directory,
-              configuration: Option[List[Pattern.Definition]],
-              files: Option[Set[api.Source.File]],
-              options: Map[Options.Key, Options.Value])(implicit specification: Tool.Specification): Try[List[Result]] = {
+  def apply(source: api.Source.Directory,
+            configuration: Option[List[Pattern.Definition]],
+            files: Option[Set[api.Source.File]],
+            options: Map[Options.Key, Options.Value])(implicit specification: Tool.Specification): Try[List[Result]] = {
     Try {
       val sourcePath = Paths.get(source.path)
       val yamlConfig = getYamlConfig(configuration, sourcePath)
@@ -65,10 +62,18 @@ object Detekt extends Tool {
       .fold(new util.LinkedHashMap[String, Any]()) {
         configFile =>
           new Yaml()
-            .load(Source.fromFile(configFile.toFile).getLines().mkString("\n"))
+            .load {
+              val f = Source.fromFile(configFile.toFile)
+              try {
+                f.getLines().mkString("\n")
+              }
+              finally {
+                f.close()
+              }
+            }
             .asInstanceOf[util.LinkedHashMap[String, Any]]
       }
-    new YamlConfig(map)
+    new YamlConfig(map, null)
   }
 
   private def mapConfig(config: List[Pattern.Definition])(implicit specification: Tool.Specification): YamlConfig = {
@@ -92,16 +97,34 @@ object Detekt extends Tool {
           }(collection.breakOut)
 
         val isInConfig = patternDef.isDefined
-        (patternId.value, new util.LinkedHashMap[String, Any](Map(("active", isInConfig)) ++ parameters))
+        (patternId.value, (Map(("active", isInConfig)) ++ parameters).asJava)
       }(collection.breakOut)
 
-      (category.value.toLowerCase, new util.LinkedHashMap[String, Any](Map(("active", patternsRaw.nonEmpty)) ++ patterns))
-
+      (category.value.toLowerCase, (Map(("active", patternsRaw.nonEmpty)) ++ patterns).asJava)
     }
 
-    val ourConf = new util.LinkedHashMap[String, Any](Map(("autoCorrect", false), ("failFast", false)) ++ configMapGen)
+    val ourConf = Map(("autoCorrect", false), ("failFast", false)) ++ configMapGen
 
-    new YamlConfig(ourConf)
+    new YamlConfig(ourConf.asJava, null)
+  }
+
+  private def getResults(path: Path, filesOpt: Option[Set[api.Source.File]], yamlConf: YamlConfig, parallel: Boolean): List[Finding] = {
+    val settings = new ProcessingSettings(List(path).asJava, yamlConf, null, parallel)
+    val providers = new RuleSetLocator(settings).load()
+    val processors = List.empty[FileProcessListener]
+    val detektor = new Detektor(settings, providers, processors.asJava)
+    val compiler = new KtTreeCompiler(settings, new KtCompiler())
+
+
+    val detektion = filesOpt.fold {
+      val ktFiles = compiler.compile(path)
+      detektor.run(ktFiles, BindingContext.EMPTY)
+    } { files =>
+      val ktFiles = files.par.flatMap(file => compiler.compile(Paths.get(file.path)).asScala).toList.asJava
+      detektor.run(ktFiles, BindingContext.EMPTY)
+    }
+
+    detektion.values.asScala.flatMap(_.asScala).toList
   }
 
   private def getRules: Map[DetektCategory, Seq[Rule]] = {
@@ -111,44 +134,27 @@ object Detekt extends Tool {
       .getResourceContent("META-INF/services/io.gitlab.arturbosch.detekt.api.RuleSetProvider")
       .get //This is just a script, is better get the error
       .map {
-      clazz =>
-        val provider: RuleSet = Class.forName(clazz)
-          .getDeclaredConstructor()
-          .newInstance()
-          .asInstanceOf[RuleSetProvider]
-          .instance(config)
+        clazz =>
+          val provider: RuleSet = Class.forName(clazz)
+            .getDeclaredConstructor()
+            .newInstance()
+            .asInstanceOf[RuleSetProvider]
+            .instance(config)
 
-        (DetektCategory(provider.getId), provider.getRules
-          .flatMap {
-            case r: MultiRule =>
-              r.getRules
-            case r: Rule =>
-              Seq(r)
-          })
-    }(collection.breakOut)
+          (DetektCategory(provider.getId), provider.getRules.asScala
+            .flatMap {
+              case r: MultiRule =>
+                r.getRules.asScala
+              case r: Rule =>
+                Seq(r)
+            })
+      }(collection.breakOut)
   }
 
   private def readEmptyConfigFile: Config = {
-    new YamlConfig(new util.LinkedHashMap[String, Any](Map(("autoCorrect", false), ("failFast", false))))
+    new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null)
   }
 
-  private def getResults(path: Path, filesOpt: Option[Set[api.Source.File]], yamlConf: YamlConfig, parallel: Boolean): List[Finding] = {
-    val settings = new ProcessingSettings(path, yamlConf, List.empty[PathFilter], parallel, false, List.empty[Path], null, null)
-    val providers = new RuleSetLocator(settings).load()
-    val processors = List.empty[FileProcessListener]
-    val detektor = new Detektor(settings, providers, processors)
-    val compiler = new KtTreeCompiler(new KtCompiler(), settings.getPathFilters, parallel, false)
-
-
-    val detektion = filesOpt.fold {
-      val ktFiles = compiler.compile(path)
-      detektor.run(ktFiles)
-    } { files =>
-      val ktFiles = files.par.flatMap(file => compiler.compile(Paths.get(file.path))).to[List]
-      detektor.run(ktFiles)
-    }
-
-    detektion.values.flatten.toList
-  }
+  case class DetektCategory(value: String) extends AnyVal
 
 }

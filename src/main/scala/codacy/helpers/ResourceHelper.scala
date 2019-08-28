@@ -24,11 +24,34 @@ object ResourceHelper {
     }
   }
 
+  private def getResourceContent(url: URL): Try[List[String]] = {
+    getResourceStream(url).flatMap { stream =>
+      val lines = Try {
+        Source.fromInputStream(stream)
+          .mkString
+          .split(Properties.lineSeparator)
+          .toList
+      }
+
+      Try(stream.close())
+
+      lines
+    }
+  }
+
   def getResourceStream(path: String): Try[InputStream] = {
     Option(getClass.getClassLoader.getResource(path)).map { url =>
       getResourceStream(url)
     }.getOrElse {
       Failure(new Exception("The path provided was not found"))
+    }
+  }
+
+  private def getResourceStream(url: URL): Try[InputStream] = {
+    Some(url).map { file =>
+      Try(file.openStream())
+    }.getOrElse {
+      Failure(new Exception("The URL provided is not valid"))
     }
   }
 
@@ -56,30 +79,6 @@ object ResourceHelper {
         List.empty
     })
   }
-
-  private def getResourceContent(url: URL): Try[List[String]] = {
-    getResourceStream(url).flatMap { stream =>
-      val lines = Try {
-        Source.fromInputStream(stream)
-          .mkString
-          .split(Properties.lineSeparator)
-          .toList
-      }
-
-      Try(stream.close())
-
-      lines
-    }
-  }
-
-  private def getResourceStream(url: URL): Try[InputStream] = {
-    Some(url).map { file =>
-      Try(file.openStream())
-    }.getOrElse {
-      Failure(new Exception("The URL provided is not valid"))
-    }
-  }
-
 
   def writeFile(path: Path, content: String): Try[Path] = {
     Try(Files.write(

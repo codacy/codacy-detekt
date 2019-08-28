@@ -40,9 +40,9 @@
   "description" : "Excessive nesting leads to hidden complexity. Prefer extracting code to make it easier to understand."
 }, {
   "patternId" : "TooManyFunctions",
-  "title" : "Too many functions inside a/an file/class/object/interface always indicate a violation of the single responsibility principle. Maybe the file/class/object/interface wants to manage to many things at once.",
+  "title" : "Too many functions inside a/an file/class/object/interface always indicate a violation of the single responsibility principle. Maybe the file/class/object/interface wants to manage too many things at once.",
   "timeToFix" : 5,
-  "description" : "Too many functions inside a/an file/class/object/interface always indicate a violation of the single responsibility principle. Maybe the file/class/object/interface wants to manage to many things at once. Extract functionality which clearly belongs together."
+  "description" : "Too many functions inside a/an file/class/object/interface always indicate a violation of the single responsibility principle. Maybe the file/class/object/interface wants to manage too many things at once. Extract functionality which clearly belongs together."
 }, {
   "patternId" : "ComplexCondition",
   "title" : "Complex conditions should be simplified and extracted into well-named methods if necessary.",
@@ -93,6 +93,11 @@
   "title" : "Checks if tabs are used in Kotlin files.",
   "timeToFix" : 5,
   "description" : "Checks if tabs are used in Kotlin files."
+}, {
+  "patternId" : "EqualsOnSignatureLine",
+  "title" : "Equals signs for expression style functions should be on the same line as the signature",
+  "timeToFix" : 5,
+  "description" : "Equals signs for expression style functions should be on the same line as the signature"
 }, {
   "patternId" : "EqualsNullCall",
   "title" : "Equals() method is called with null as parameter. Consider using == to compare to null.",
@@ -189,6 +194,11 @@
   "timeToFix" : 5,
   "description" : "Data classes should mainly be used to store data and should not have any extra functions. (Compiler will automatically generate equals, toString and hashCode functions)"
 }, {
+  "patternId" : "DataClassShouldBeImmutable",
+  "title" : "Data classes should mainly be immutable and should not have any side effects. (To copy an object altering some of its properties use the copy function)",
+  "timeToFix" : 5,
+  "description" : "Data classes should mainly be immutable and should not have any side effects. (To copy an object altering some of its properties use the copy function)"
+}, {
   "patternId" : "UseDataClass",
   "title" : "Classes that do nothing but hold data should be replaced with a data class.",
   "timeToFix" : 5,
@@ -198,6 +208,11 @@
   "title" : "Unused Imports are dead code and should be removed.",
   "timeToFix" : 5,
   "description" : "Unused Imports are dead code and should be removed."
+}, {
+  "patternId" : "UnusedPrivateClass",
+  "title" : "Private class is unused.",
+  "timeToFix" : 5,
+  "description" : "Private class is unused."
 }, {
   "patternId" : "UnusedPrivateMember",
   "title" : "Private member is unused.",
@@ -223,6 +238,11 @@
   "title" : "'..' call can be replaced with 'until'",
   "timeToFix" : 5,
   "description" : "'..' call can be replaced with 'until'"
+}, {
+  "patternId" : "UnnecessaryApply",
+  "title" : "The `apply` usage is unnecessary",
+  "timeToFix" : 5,
+  "description" : "The `apply` usage is unnecessary"
 }, {
   "patternId" : "UnnecessaryLet",
   "title" : "The `let` usage is unnecessary",
@@ -253,6 +273,36 @@
   "title" : "`Unit` should be used instead of `Void`.",
   "timeToFix" : 5,
   "description" : "`Unit` should be used instead of `Void`."
+}, {
+  "patternId" : "ExplicitItLambdaParameter",
+  "title" : "Declaring lambda parameters as `it` is redundant.",
+  "timeToFix" : 5,
+  "description" : "Declaring lambda parameters as `it` is redundant."
+}, {
+  "patternId" : "UselessCallOnNotNull",
+  "title" : "This call on non-null reference may be reduced or removed. Some calls are intended to be called on nullable collection or text types (e.g. String?). When this call is used on a reference to a non-null type (e.g.",
+  "timeToFix" : 5,
+  "description" : "This call on non-null reference may be reduced or removed. Some calls are intended to be called on nullable collection or text types (e.g. String?). When this call is used on a reference to a non-null type (e.g. String) it is redundant and will have no effect, so it can be removed."
+}, {
+  "patternId" : "UnderscoresInNumericLiterals",
+  "title" : "Report missing or invalid underscores in decimal base 10 numeric literals. Numeric literals should be underscore separated to increase readability. Underscores that do not make groups of 3 digits are also reported.",
+  "timeToFix" : 5,
+  "description" : "Report missing or invalid underscores in decimal base 10 numeric literals. Numeric literals should be underscore separated to increase readability. Underscores that do not make groups of 3 digits are also reported."
+}, {
+  "patternId" : "UseRequire",
+  "title" : "Use require() instead of throwing an IllegalArgumentException.",
+  "timeToFix" : 5,
+  "description" : "Use require() instead of throwing an IllegalArgumentException."
+}, {
+  "patternId" : "UseCheckOrError",
+  "title" : "Use check() or error() instead of throwing an IllegalStateException.",
+  "timeToFix" : 5,
+  "description" : "Use check() or error() instead of throwing an IllegalStateException."
+}, {
+  "patternId" : "LibraryCodeMustSpecifyReturnType",
+  "title" : "Library functions/properties should have an explicit return type. Inferred return type can easily be changed by mistake which may lead to breaking changes.",
+  "timeToFix" : 5,
+  "description" : "Library functions/properties should have an explicit return type. Inferred return type can easily be changed by mistake which may lead to breaking changes."
 }, {
   "patternId" : "CommentOverPrivateFunction",
   "title" : "Comments for private functions should be avoided. Prefer giving the function an expressive name. Split it up in smaller, self-explaining functions if necessary.",
@@ -355,14 +405,19 @@
   "description" : "Using the forEach method on ranges has a heavy performance cost. Prefer using simple for loops."
 }, {
   "patternId" : "SpreadOperator",
-  "title" : "Using a spread operator causes a full copy of the array to be created before calling a method has a very high performance penalty.",
+  "title" : "In most cases using a spread operator causes a full copy of the array to be created before calling a method which has a very high performance penalty.",
   "timeToFix" : 5,
-  "description" : "Using a spread operator causes a full copy of the array to be created before calling a method has a very high performance penalty."
+  "description" : "In most cases using a spread operator causes a full copy of the array to be created before calling a method which has a very high performance penalty."
 }, {
   "patternId" : "UnnecessaryTemporaryInstantiation",
   "title" : "Avoid temporary objects when converting primitive types to String.",
   "timeToFix" : 5,
   "description" : "Avoid temporary objects when converting primitive types to String."
+}, {
+  "patternId" : "ArrayPrimitive",
+  "title" : "Using Array<Primitive> leads to implicit boxing and a performance hit",
+  "timeToFix" : 5,
+  "description" : "Using Array<Primitive> leads to implicit boxing and a performance hit"
 }, {
   "patternId" : "DuplicateCaseInWhenExpression",
   "title" : "Duplicated case statements in when expression. Both cases should be merged.",
@@ -413,6 +468,16 @@
   "title" : "Usage of lateinit detected. Using lateinit for property initialization is error prone, try using constructor injection or delegation.",
   "timeToFix" : 5,
   "description" : "Usage of lateinit detected. Using lateinit for property initialization is error prone, try using constructor injection or delegation."
+}, {
+  "patternId" : "MissingWhenCase",
+  "title" : "Check usage of `when` used as a statement and don't compare all enum or sealed class cases.",
+  "timeToFix" : 5,
+  "description" : "Check usage of `when` used as a statement and don't compare all enum or sealed class cases."
+}, {
+  "patternId" : "RedundantElseInWhen",
+  "title" : "Check for redundant `else` case in `when` expression when used as statement.",
+  "timeToFix" : 5,
+  "description" : "Check for redundant `else` case in `when` expression when used as statement."
 }, {
   "patternId" : "UnconditionalJumpStatementInLoop",
   "title" : "An unconditional jump statement in a loop is useless. The loop itself is only executed once.",
@@ -505,9 +570,9 @@
   "description" : "If a source file contains only a single non-private top-level class or object, the file name should reflect the case-sensitive name plus the .kt extension."
 }, {
   "patternId" : "MemberNameEqualsClassName",
-  "title" : "A member should not given the same name as its parent class or object.",
+  "title" : "A member should not be given the same name as its parent class or object.",
   "timeToFix" : 5,
-  "description" : "A member should not given the same name as its parent class or object."
+  "description" : "A member should not be given the same name as its parent class or object."
 }, {
   "patternId" : "VariableNaming",
   "title" : "Variable names should follow the naming convention set in the projects configuration.",
@@ -540,9 +605,9 @@
   "description" : "Package names should match the naming convention set in the configuration."
 }, {
   "patternId" : "ClassNaming",
-  "title" : "A classes name should fit the naming pattern defined in the projects configuration.",
+  "title" : "A class or object's name should fit the naming pattern defined in the projects configuration.",
   "timeToFix" : 5,
-  "description" : "A classes name should fit the naming pattern defined in the projects configuration."
+  "description" : "A class or object's name should fit the naming pattern defined in the projects configuration."
 }, {
   "patternId" : "EnumNaming",
   "title" : "Enum names should follow the naming convention set in the projects configuration.",
@@ -578,4 +643,9 @@
   "title" : "Function parameter names should follow the naming convention set in the projects configuration.",
   "timeToFix" : 5,
   "description" : "Function parameter names should follow the naming convention set in the projects configuration."
+}, {
+  "patternId" : "InvalidPackageDeclaration",
+  "title" : "Kotlin source files should be stored in the directory corresponding to its package statement.",
+  "timeToFix" : 5,
+  "description" : "Kotlin source files should be stored in the directory corresponding to its package statement."
 } ]

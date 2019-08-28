@@ -12,12 +12,6 @@ fun foo() {
     } catch (e: IOException) {
         throw e
     }
-    try {
-        // ...
-    } catch (e: IOException) {
-        print(e.message)
-        throw e
-    }
 }
 ```
 ## Compliant Code
@@ -33,6 +27,12 @@ fun foo() {
         // ...
     } catch (e: IOException) {
         print(e)
+        throw e
+    }
+    try {
+        // ...
+    } catch (e: IOException) {
+        print(e.message)
         throw e
     }
 }
