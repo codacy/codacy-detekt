@@ -1,6 +1,7 @@
 package codacy.detekt
 
 import java.nio.file.{Path, Paths}
+import better.files._
 import java.util
 
 import com.codacy.plugins.api
@@ -14,7 +15,6 @@ import org.yaml.snakeyaml.Yaml
 import play.api.libs.json.{JsString, Json}
 
 import scala.collection.JavaConverters._
-import scala.io.Source
 import scala.util.Try
 
 object Detekt extends Tool {
@@ -65,14 +65,7 @@ object Detekt extends Tool {
       .findConfigurationFile(source, configFiles)
       .fold(new util.LinkedHashMap[String, Any]()) { configFile =>
         new Yaml()
-          .load {
-            val f = Source.fromFile(configFile.toFile)
-            try {
-              f.getLines().mkString("\n")
-            } finally {
-              f.close()
-            }
-          }
+          .load(File(configFile).contentAsString)
           .asInstanceOf[util.LinkedHashMap[String, Any]]
       }
     new YamlConfig(map, null)

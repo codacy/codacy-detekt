@@ -73,6 +73,8 @@ dockerBaseImage := "openjdk:8-jre-alpine"
 
 mainClass in Compile := Some("codacy.Engine")
 
+scalacOptions := scalacOptions.value.filter(_ != "-Ywarn-dead-code")
+
 dockerCommands := dockerCommands.value.flatMap {
   case cmd @ Cmd("ADD", _) =>
     List(Cmd("RUN", s"adduser -u 2004 -D $dockerUser"), cmd, Cmd("RUN", "mv /opt/docker/docs /docs"))
