@@ -17,17 +17,20 @@ object ResourceHelper {
   codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
 
   def getResourceContent(path: String): Try[List[String]] = {
-    Option(getClass.getClassLoader.getResource(path)).map { url =>
-      getResourceContent(url)
-    }.getOrElse {
-      Failure(new Exception("The path provided was not found"))
-    }
+    Option(getClass.getClassLoader.getResource(path))
+      .map { url =>
+        getResourceContent(url)
+      }
+      .getOrElse {
+        Failure(new Exception("The path provided was not found"))
+      }
   }
 
   private def getResourceContent(url: URL): Try[List[String]] = {
     getResourceStream(url).flatMap { stream =>
       val lines = Try {
-        Source.fromInputStream(stream)
+        Source
+          .fromInputStream(stream)
           .mkString
           .split(Properties.lineSeparator)
           .toList
@@ -40,25 +43,31 @@ object ResourceHelper {
   }
 
   def getResourceStream(path: String): Try[InputStream] = {
-    Option(getClass.getClassLoader.getResource(path)).map { url =>
-      getResourceStream(url)
-    }.getOrElse {
-      Failure(new Exception("The path provided was not found"))
-    }
+    Option(getClass.getClassLoader.getResource(path))
+      .map { url =>
+        getResourceStream(url)
+      }
+      .getOrElse {
+        Failure(new Exception("The path provided was not found"))
+      }
   }
 
   private def getResourceStream(url: URL): Try[InputStream] = {
-    Some(url).map { file =>
-      Try(file.openStream())
-    }.getOrElse {
-      Failure(new Exception("The URL provided is not valid"))
-    }
+    Some(url)
+      .map { file =>
+        Try(file.openStream())
+      }
+      .getOrElse {
+        Failure(new Exception("The URL provided is not valid"))
+      }
   }
 
   def listResourceDirectory(path: String): Try[List[String]] = {
     Try(getClass.getClassLoader.getResources(path)).map(_.toList.flatMap {
       case directory if directory.getProtocol == "file" =>
-        new File(directory.toURI).list().toList
+        new File(directory.toURI)
+          .list()
+          .toList
           .map(_.stripPrefix(File.pathSeparator).stripPrefix(File.separator).trim())
           .filter(_.nonEmpty)
 
@@ -81,11 +90,15 @@ object ResourceHelper {
   }
 
   def writeFile(path: Path, content: String): Try[Path] = {
-    Try(Files.write(
-      path,
-      content.getBytes(StandardCharsets.UTF_8),
-      StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE
-    ))
+    Try(
+      Files.write(
+        path,
+        content.getBytes(StandardCharsets.UTF_8),
+        StandardOpenOption.CREATE,
+        StandardOpenOption.TRUNCATE_EXISTING,
+        StandardOpenOption.WRITE
+      )
+    )
   }
 
 }

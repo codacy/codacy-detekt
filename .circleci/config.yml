@@ -17,10 +17,15 @@ workflows:
           requires:
             - codacy/checkout_and_version
       - codacy/sbt:
+          name: check_fmt
+          cmd: sbt ";scalafmt::test;test:scalafmt::test;sbt:scalafmt::test"
+          requires:
+            - populate_cache
+      - codacy/sbt:
           name: compile
           cmd: sbt compile
           requires:
-            - populate_cache
+            - check_fmt
       - codacy/sbt:
           name: test_patterns
           # codacy-plugins-test can be saved before and restored from cache

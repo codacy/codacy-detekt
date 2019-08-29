@@ -13,9 +13,7 @@ val languageVersion = "2.12.9"
 
 scalaVersion := languageVersion
 
-resolvers ++= Seq(
-  "Arturbosch Detekt" at "https://dl.bintray.com/arturbosch/code-analysis/"
-)
+resolvers ++= Seq("Arturbosch Detekt" at "https://dl.bintray.com/arturbosch/code-analysis/")
 
 lazy val toolVersionKey = settingKey[String]("The version of the underlying tool retrieved from patterns.json")
 
@@ -77,10 +75,6 @@ mainClass in Compile := Some("codacy.Engine")
 
 dockerCommands := dockerCommands.value.flatMap {
   case cmd @ Cmd("ADD", _) =>
-    List(
-      Cmd("RUN", s"adduser -u 2004 -D $dockerUser"),
-      cmd,
-      Cmd("RUN", "mv /opt/docker/docs /docs")
-    )
+    List(Cmd("RUN", s"adduser -u 2004 -D $dockerUser"), cmd, Cmd("RUN", "mv /opt/docker/docs /docs"))
   case other => List(other)
 }
