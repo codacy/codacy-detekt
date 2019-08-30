@@ -1,18 +1,18 @@
 package codacy.detekt
 
-import java.util
-
 import better.files.File
 import codacy.helpers.ResourceHelper
 import io.gitlab.arturbosch.detekt.api._
-import io.gitlab.arturbosch.detekt.core.KtTreeCompiler
+import io.gitlab.arturbosch.detekt.core.{KtCompiler, KtTreeCompiler, ProcessingSettings}
 import io.gitlab.arturbosch.detekt.generator.collection.DetektCollector
+import org.jetbrains.kotlin.psi.KtFile
 import play.api.libs.json.{JsArray, Json}
 
-import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 import scala.sys.process.Process
 
 object DocGenerator {
+
   def main(args: Array[String]): Unit = {
     args.headOption.fold {
       throw new Exception("Version parameter is required (ex: 1.0.0.RC6-4)")
@@ -29,21 +29,24 @@ object DocGenerator {
       val extendedDescriptions = getExtendedDescriptions(version)
 
       val patterns = Json.prettyPrint(
-        Json.obj("name" -> "Detekt",
-                 "version" -> version,
-                 "patterns" -> Json
-                   .parse(Json.toJson(generatePatterns(rules)).toString)
-                   .as[JsArray]))
+        Json.obj(
+          "name" -> "Detekt",
+          "version" -> version,
+          "patterns" -> Json
+            .parse(Json.toJson(generatePatterns(rules)).toString)
+            .as[JsArray]
+        )
+      )
 
       val descriptions = Json.prettyPrint(
         Json
           .parse(
             Json
-              .toJson(generateDescriptions(rules,
-                                           descriptionsRoot,
-                                           extendedDescriptions))
-              .toString)
-          .as[JsArray])
+              .toJson(generateDescriptions(rules, descriptionsRoot, extendedDescriptions))
+              .toString
+          )
+          .as[JsArray]
+      )
 
       ResourceHelper.writeFile(patternsFile.toPath, patterns)
       ResourceHelper.writeFile(descriptionsFile.toPath, descriptions)
@@ -54,8 +57,8 @@ object DocGenerator {
     val codacyPatterns = rules.map { rule =>
       val category =
         if (rule.getIssue.getSeverity.name.startsWith("Defect") ||
-            rule.getIssue.getSeverity.name.startsWith("Maintainability") ||
-            rule.getIssue.getSeverity.name.startsWith("Minor")) {
+          rule.getIssue.getSeverity.name.startsWith("Maintainability") ||
+          rule.getIssue.getSeverity.name.startsWith("Minor")) {
           "ErrorProne"
         } else if (rule.getIssue.getSeverity.name.startsWith("Performance")) {
           "Performance"
@@ -65,20 +68,16 @@ object DocGenerator {
 
       val level =
         if (rule.getIssue.getSeverity.name.startsWith("Maintainability") ||
-            rule.getIssue.getSeverity.name.startsWith("Warning") ||
-            rule.getIssue.getSeverity.name.startsWith("Minor") ||
-            rule.getIssue.getSeverity.name.startsWith("Performance") ||
-            rule.getIssue.getSeverity.name.startsWith("Defect")) {
+          rule.getIssue.getSeverity.name.startsWith("Warning") ||
+          rule.getIssue.getSeverity.name.startsWith("Minor") ||
+          rule.getIssue.getSeverity.name.startsWith("Performance") ||
+          rule.getIssue.getSeverity.name.startsWith("Defect")) {
           "Warning"
         } else {
           "Info"
         }
 
-      Json.obj(
-        "patternId" -> rule.getIssue.getId,
-        "level" -> level,
-        "category" -> category
-      )
+      Json.obj("patternId" -> rule.getIssue.getId, "level" -> level, "category" -> category)
     }
     Json.parse(Json.toJson(codacyPatterns).toString).as[JsArray]
   }
@@ -86,20 +85,21 @@ object DocGenerator {
   private def generateDescriptions(
       rules: List[Rule],
       descriptionsRoot: java.io.File,
-      extendedDescriptions: Map[String, String]): JsArray = {
+      extendedDescriptions: Map[String, String]
+  ): JsArray = {
     val codacyPatternsDescs = rules.collect {
       case rule =>
         val descriptionsFile =
           new java.io.File(descriptionsRoot, s"${rule.getIssue.getId}.md")
-        ResourceHelper.writeFile(descriptionsFile.toPath,
-                                 extendedDescriptions(rule.getRuleId))
+        ResourceHelper.writeFile(descriptionsFile.toPath, extendedDescriptions(rule.getRuleId))
 
         Json.obj(
           "patternId" -> rule.getIssue.getId,
           "title" -> Json.toJsFieldJsValueWrapper(
             Option(truncateText(rule, 250))
               .filter(_.nonEmpty)
-              .getOrElse(rule.getIssue.getId)),
+              .getOrElse(rule.getIssue.getId)
+          ),
           "timeToFix" -> 5
         ) ++
           Option(truncateText(rule, 495))
@@ -124,13 +124,10 @@ object DocGenerator {
   }
 
   private def generateRules: List[Rule] = {
-    val config = new YamlConfig(
-      new util.LinkedHashMap[String, Any](
-        Map(("autoCorrect", false), ("failFast", false))))
+    val config = new YamlConfig((Map(("autoCorrect", false), ("failFast", false))).asJava, null)
 
     _root_.codacy.helpers.ResourceHelper
-      .getResourceContent(
-        "META-INF/services/io.gitlab.arturbosch.detekt.api.RuleSetProvider")
+      .getResourceContent("META-INF/services/io.gitlab.arturbosch.detekt.api.RuleSetProvider")
       .get //This is just a script, is better get the error
       .flatMap { clazz =>
         Class
@@ -140,9 +137,10 @@ object DocGenerator {
           .asInstanceOf[RuleSetProvider]
           .instance(config)
           .getRules
+          .asScala
           .flatMap {
             case r: MultiRule =>
-              r.asInstanceOf[MultiRule].getRules
+              r.asInstanceOf[MultiRule].getRules.asScala
             case r: Rule =>
               Seq(r.asInstanceOf[Rule])
           }
@@ -150,19 +148,9 @@ object DocGenerator {
   }
 
   private def getExtendedDescriptions(version: String): Map[String, String] = {
-    val collector = new DetektCollector()
-    val compiler = new KtTreeCompiler()
-
     val tmpDirectory = File.newTemporaryDirectory()
 
-    val versionSuffix = version.split('.').last
-
-    Process(
-      Seq("git",
-          "clone",
-          "git://github.com/arturbosch/detekt",
-          tmpDirectory.pathAsString)).!
-    Process(Seq("git", "reset", "--hard", versionSuffix), tmpDirectory.toJava).!
+    Process(Seq("git", "clone", "--branch", version, "git://github.com/arturbosch/detekt", tmpDirectory.pathAsString)).!
 
     val filePaths = better.files
       .File(s"${tmpDirectory.pathAsString}/detekt-rules/src/main")
@@ -170,35 +158,44 @@ object DocGenerator {
       .filter(_.pathAsString.endsWith(".kt"))
       .map(_.path)
 
-    val ktFiles = filePaths
+    val collector = new DetektCollector()
+    val compiler = new KtTreeCompiler(new ProcessingSettings(List.empty.asJava), new KtCompiler())
+
+    val ktFiles: Array[KtFile] = filePaths
       .to[Array]
-      .flatMap(file => compiler.compile(file))
+      .flatMap(file => compiler.compile(file).asScala)
     ktFiles.foreach(file => collector.visit(file))
 
     tmpDirectory.delete(swallowIOExceptions = true)
 
-    collector.getItems
+    collector.getItems.asScala
       .to[List]
       .flatMap(
         ruleSet =>
-          ruleSet.getRules
-            .to[List]
+          ruleSet.getRules.asScala
             .map(
               rule =>
-                (rule.getName,
-                 generateMarkdown(ruleSet.getRuleSet.getName,
-                                  rule.getName,
-                                  rule.getDescription,
-                                  rule.getNonCompliantCodeExample,
-                                  rule.getCompliantCodeExample))))(
-        collection.breakOut)
+                (
+                  rule.getName,
+                  generateMarkdown(
+                    ruleSet.getRuleSet.getName,
+                    rule.getName,
+                    rule.getDescription,
+                    rule.getNonCompliantCodeExample,
+                    rule.getCompliantCodeExample
+                  )
+              )
+          )
+      )(collection.breakOut)
   }
 
-  private def generateMarkdown(ruleSetName: String,
-                               ruleName: String,
-                               description: String,
-                               nonCompliantCodeExample: String,
-                               compliantCodeExample: String): String = {
+  private def generateMarkdown(
+      ruleSetName: String,
+      ruleName: String,
+      description: String,
+      nonCompliantCodeExample: String,
+      compliantCodeExample: String
+  ): String = {
     val nonCompliantCodeExampleMarkdown =
       if (nonCompliantCodeExample.trim.nonEmpty) {
         s"""|
@@ -207,7 +204,9 @@ object DocGenerator {
             |```kotlin
             |$nonCompliantCodeExample
             |```""".stripMargin
-      } else { "" }
+      } else {
+        ""
+      }
 
     val compliantCodeExampleMarkdown =
       if (compliantCodeExample.trim.nonEmpty) {
@@ -217,7 +216,9 @@ object DocGenerator {
             |```kotlin
             |$compliantCodeExample
             |```""".stripMargin
-      } else { "" }
+      } else {
+        ""
+      }
 
     s"""|# $ruleName
         |

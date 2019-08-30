@@ -13,6 +13,14 @@ loop@ for (r in range) {
     if (r == "bar") break@loop
     println(r)
 }
+
+class Outer {
+    inner class Inner {
+        fun f() {
+            val i = this@Inner // referencing itself, use `this instead
+        }
+    }
+}
 ```
 ## Compliant Code
 
@@ -27,6 +35,9 @@ class Outer {
     inner class Inner {
         fun f() {
             val outer = this@Outer
+        }
+        fun Int.extend() {
+            val inner = this@Inner // this would reference Int and not Inner
         }
     }
 }

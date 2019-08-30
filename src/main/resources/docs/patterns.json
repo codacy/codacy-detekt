@@ -1,6 +1,6 @@
 {
   "name" : "Detekt",
-  "version" : "1.0.0.RC9.2",
+  "version" : "1.0.1",
   "patterns" : [ {
     "patternId" : "LongParameterList",
     "level" : "Warning",
@@ -75,6 +75,10 @@
     "category" : "CodeStyle"
   }, {
     "patternId" : "NoTabs",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "EqualsOnSignatureLine",
     "level" : "Info",
     "category" : "CodeStyle"
   }, {
@@ -154,6 +158,10 @@
     "level" : "Info",
     "category" : "CodeStyle"
   }, {
+    "patternId" : "DataClassShouldBeImmutable",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
     "patternId" : "UseDataClass",
     "level" : "Info",
     "category" : "CodeStyle"
@@ -161,6 +169,10 @@
     "patternId" : "UnusedImports",
     "level" : "Info",
     "category" : "CodeStyle"
+  }, {
+    "patternId" : "UnusedPrivateClass",
+    "level" : "Warning",
+    "category" : "ErrorProne"
   }, {
     "patternId" : "UnusedPrivateMember",
     "level" : "Warning",
@@ -179,6 +191,10 @@
     "category" : "CodeStyle"
   }, {
     "patternId" : "UntilInsteadOfRangeTo",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "UnnecessaryApply",
     "level" : "Info",
     "category" : "CodeStyle"
   }, {
@@ -203,6 +219,30 @@
     "category" : "ErrorProne"
   }, {
     "patternId" : "ForbiddenVoid",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "ExplicitItLambdaParameter",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "UselessCallOnNotNull",
+    "level" : "Warning",
+    "category" : "Performance"
+  }, {
+    "patternId" : "UnderscoresInNumericLiterals",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "UseRequire",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "UseCheckOrError",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "LibraryCodeMustSpecifyReturnType",
     "level" : "Info",
     "category" : "CodeStyle"
   }, {
@@ -294,6 +334,10 @@
     "level" : "Warning",
     "category" : "Performance"
   }, {
+    "patternId" : "ArrayPrimitive",
+    "level" : "Warning",
+    "category" : "Performance"
+  }, {
     "patternId" : "DuplicateCaseInWhenExpression",
     "level" : "Warning",
     "category" : "CodeStyle"
@@ -333,6 +377,14 @@
     "patternId" : "LateinitUsage",
     "level" : "Warning",
     "category" : "ErrorProne"
+  }, {
+    "patternId" : "MissingWhenCase",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
+    "patternId" : "RedundantElseInWhen",
+    "level" : "Warning",
+    "category" : "CodeStyle"
   }, {
     "patternId" : "UnconditionalJumpStatementInLoop",
     "level" : "Warning",
@@ -465,5 +517,9 @@
     "patternId" : "FunctionParameterNaming",
     "level" : "Info",
     "category" : "CodeStyle"
+  }, {
+    "patternId" : "InvalidPackageDeclaration",
+    "level" : "Warning",
+    "category" : "ErrorProne"
   } ]
 }
