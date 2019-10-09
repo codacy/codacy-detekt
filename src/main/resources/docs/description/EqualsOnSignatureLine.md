@@ -7,10 +7,10 @@ rest of the function signature.
 
 ```kotlin
 fun stuff(): Int
-= 5
+    = 5
 
 fun <V> foo(): Int where V : Int
-= 5
+    = 5
 ```
 ## Compliant Code
 
@@ -18,7 +18,7 @@ fun <V> foo(): Int where V : Int
 fun stuff() = 5
 
 fun stuff() =
-foo.bar()
+    foo.bar()
 
 fun <V> foo(): Int where V : Int = 5
 ```
