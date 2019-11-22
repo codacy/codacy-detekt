@@ -14,8 +14,10 @@ import org.jetbrains.kotlin.resolve.BindingContext
 import org.yaml.snakeyaml.Yaml
 import play.api.libs.json.{JsString, Json}
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.util.Try
+
+import scala.collection.parallel.CollectionConverters._
 
 object Detekt extends Tool {
 
@@ -65,8 +67,7 @@ object Detekt extends Tool {
       .findConfigurationFile(source, configFiles)
       .fold(new util.LinkedHashMap[String, Any]()) { configFile =>
         new Yaml()
-          .load(File(configFile).contentAsString)
-          .asInstanceOf[util.LinkedHashMap[String, Any]]
+          .load[util.LinkedHashMap[String, Any]](File(configFile).contentAsString)
       }
     new YamlConfig(map, null)
   }
@@ -74,7 +75,7 @@ object Detekt extends Tool {
   private def mapConfig(config: List[Pattern.Definition])(implicit specification: Tool.Specification): YamlConfig = {
 
     val configPatternsById: Map[Pattern.Id, Pattern.Definition] =
-      config.map(patternDef => (patternDef.patternId, patternDef))(collection.breakOut)
+      config.view.map(patternDef => (patternDef.patternId, patternDef)).to(Map)
 
     val configMapGen = specification.patterns
       .groupBy(patDef => patternIdToCategory(patDef.patternId))
@@ -84,9 +85,9 @@ object Detekt extends Tool {
       }
       .map {
         case (category, patternsRaw) =>
-          val patterns: Map[String, Any] = patternsRaw.map {
+          val patterns = patternsRaw.view.map {
             case (patternId, patternDef) =>
-              val parameters: Map[String, Any] = patternDef
+              val parameters = patternDef
                 .flatMap(_.parameters)
                 .getOrElse(Set.empty)
                 .map { param =>
@@ -95,11 +96,11 @@ object Detekt extends Tool {
                     case value => Json.stringify(value)
                   }
                   (param.name.value, pValue)
-                }(collection.breakOut)
+                }
 
               val isInConfig = patternDef.isDefined
               (patternId.value, (Map(("active", isInConfig)) ++ parameters).asJava)
-          }(collection.breakOut)
+          }
 
           (category.value.toLowerCase, (Map(("active", patternsRaw.nonEmpty)) ++ patterns).asJava)
       }
@@ -125,7 +126,7 @@ object Detekt extends Tool {
       val ktFiles = compiler.compile(path)
       detektor.run(ktFiles, BindingContext.EMPTY)
     } { files =>
-      val ktFiles = files.par.flatMap(file => compiler.compile(Paths.get(file.path)).asScala).toList.asJava
+      val ktFiles = files.par.flatMap(file => compiler.compile(Paths.get(file.path)).asScala).seq.asJava
       detektor.run(ktFiles, BindingContext.EMPTY)
     }
 
@@ -135,9 +136,10 @@ object Detekt extends Tool {
   private def getRules: Map[DetektCategory, Seq[Rule]] = {
     val config = readEmptyConfigFile
 
-    _root_.codacy.helpers.ResourceHelper
+    codacy.helpers.ResourceHelper
       .getResourceContent("META-INF/services/io.gitlab.arturbosch.detekt.api.RuleSetProvider")
       .get //This is just a script, is better get the error
+      .view
       .map { clazz =>
         val provider: RuleSet = Class
           .forName(clazz)
@@ -146,17 +148,14 @@ object Detekt extends Tool {
           .asInstanceOf[RuleSetProvider]
           .instance(config)
 
-        (
-          DetektCategory(provider.getId),
-          provider.getRules.asScala
-            .flatMap {
-              case r: MultiRule =>
-                r.getRules.asScala
-              case r: Rule =>
-                Seq(r)
-            }
-        )
-      }(collection.breakOut)
+        (DetektCategory(provider.getId), provider.getRules.asScala.flatMap {
+          case r: MultiRule =>
+            r.getRules.asScala
+          case r: Rule =>
+            Seq(r)
+        }.toSeq)
+      }
+      .toMap
   }
 
   private def readEmptyConfigFile: Config = {

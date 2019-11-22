@@ -8,7 +8,7 @@ import io.gitlab.arturbosch.detekt.generator.collection.DetektCollector
 import org.jetbrains.kotlin.psi.KtFile
 import play.api.libs.json.{JsArray, Json}
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.sys.process.Process
 
 object DocGenerator {
@@ -129,6 +129,7 @@ object DocGenerator {
     _root_.codacy.helpers.ResourceHelper
       .getResourceContent("META-INF/services/io.gitlab.arturbosch.detekt.api.RuleSetProvider")
       .get //This is just a script, is better get the error
+      .view
       .flatMap { clazz =>
         Class
           .forName(clazz)
@@ -144,7 +145,8 @@ object DocGenerator {
             case r: Rule =>
               Seq(r.asInstanceOf[Rule])
           }
-      }(collection.breakOut)
+      }
+      .to(List)
   }
 
   private def getExtendedDescriptions(version: String): Map[String, String] = {
@@ -162,14 +164,13 @@ object DocGenerator {
     val compiler = new KtTreeCompiler(new ProcessingSettings(List.empty.asJava), new KtCompiler())
 
     val ktFiles: Array[KtFile] = filePaths
-      .to[Array]
+      .to(Array)
       .flatMap(file => compiler.compile(file).asScala)
     ktFiles.foreach(file => collector.visit(file))
 
     tmpDirectory.delete(swallowIOExceptions = true)
 
-    collector.getItems.asScala
-      .to[List]
+    collector.getItems.asScala.view
       .flatMap(
         ruleSet =>
           ruleSet.getRules.asScala
@@ -186,7 +187,8 @@ object DocGenerator {
                   )
               )
           )
-      )(collection.breakOut)
+      )
+      .to(Map)
   }
 
   private def generateMarkdown(

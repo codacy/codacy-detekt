@@ -1,0 +1,6 @@
+<module name="root">
+    <module name="BeforeExecutionExclusionFileFilter">
+        <property name="fileNamePattern" value="detekt\.yml"/>
+    </module>
+    <module name="MagicNumber" />
+</module>
