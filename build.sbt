@@ -3,17 +3,9 @@ import sjsonnew._
 import sjsonnew.BasicJsonProtocol._
 import sjsonnew.support.scalajson.unsafe._
 
-organization := "codacy"
-
 name := "codacy-detekt"
 
-version := "1.0.0-SNAPSHOT"
-
-val languageVersion = "2.12.9"
-
-scalaVersion := languageVersion
-
-resolvers ++= Seq("Arturbosch Detekt" at "https://dl.bintray.com/arturbosch/code-analysis/")
+scalaVersion := "2.13.1"
 
 lazy val toolVersionKey = settingKey[String]("The version of the underlying tool retrieved from patterns.json")
 
@@ -33,13 +25,14 @@ toolVersionKey := {
 libraryDependencies ++= {
   val toolVersion = toolVersionKey.value
   Seq(
-    "com.codacy" %% "codacy-engine-scala-seed" % "3.0.183" withSources (),
-    "org.scala-lang.modules" %% "scala-xml" % "1.1.0",
+    "com.codacy" %% "codacy-engine-scala-seed" % "3.1.0" withSources (),
+    "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
     "io.gitlab.arturbosch.detekt" % "detekt-core" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-api" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-rules" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-cli" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-generator" % toolVersion,
+    "org.scala-lang.modules" %% "scala-parallel-collections" % "0.2.0",
     "org.yaml" % "snakeyaml" % "1.23",
     "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.8.4"
   )
@@ -48,8 +41,6 @@ libraryDependencies ++= {
 enablePlugins(AshScriptPlugin)
 
 enablePlugins(DockerPlugin)
-
-version in Docker := "1.0"
 
 mappings in Universal ++= {
   (resourceDirectory in Compile) map { (resourceDir: File) =>
@@ -72,8 +63,6 @@ daemonGroup in Docker := dockerGroup
 dockerBaseImage := "openjdk:8-jre-alpine"
 
 mainClass in Compile := Some("codacy.Engine")
-
-scalacOptions := scalacOptions.value.filter(_ != "-Ywarn-dead-code")
 
 dockerCommands := dockerCommands.value.flatMap {
   case cmd @ Cmd("ADD", _) =>

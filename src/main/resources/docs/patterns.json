@@ -1,6 +1,6 @@
 {
   "name" : "Detekt",
-  "version" : "1.1.0",
+  "version" : "1.1.1",
   "patterns" : [ {
     "patternId" : "LongParameterList",
     "level" : "Warning",
@@ -242,7 +242,19 @@
     "level" : "Info",
     "category" : "CodeStyle"
   }, {
+    "patternId" : "UseIfInsteadOfWhen",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "RedundantExplicitType",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
     "patternId" : "LibraryCodeMustSpecifyReturnType",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "UseArrayLiteralsInAnnotations",
     "level" : "Info",
     "category" : "CodeStyle"
   }, {
@@ -263,6 +275,10 @@
     "category" : "ErrorProne"
   }, {
     "patternId" : "UndocumentedPublicFunction",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
+    "patternId" : "UndocumentedPublicProperty",
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
@@ -338,6 +354,10 @@
     "level" : "Warning",
     "category" : "Performance"
   }, {
+    "patternId" : "Deprecation",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
     "patternId" : "DuplicateCaseInWhenExpression",
     "level" : "Warning",
     "category" : "CodeStyle"
@@ -347,6 +367,10 @@
     "category" : "ErrorProne"
   }, {
     "patternId" : "EqualsWithHashCodeExist",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
+    "patternId" : "HasPlatformType",
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
