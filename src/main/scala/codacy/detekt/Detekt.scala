@@ -54,12 +54,9 @@ object Detekt extends Tool {
 
   private def getYamlConfig(config: Option[List[Pattern.Definition]], source: Path)(
       implicit specification: Tool.Specification
-  ): YamlConfig = {
-    config.fold {
-      defaultConfig(source)
-    } {
-      mapConfig
-    }
+  ): YamlConfig = config match {
+    case None => defaultConfig(source)
+    case Some(patternDefinition) => mapConfig(patternDefinition)
   }
 
   private def defaultConfig(source: Path): YamlConfig = {
@@ -122,12 +119,13 @@ object Detekt extends Tool {
     val detektor = new Detektor(settings, providers, processors.asJava)
     val compiler = new KtTreeCompiler(settings, new KtCompiler())
 
-    val detektion = filesOpt.fold {
-      val ktFiles = compiler.compile(path)
-      detektor.run(ktFiles, BindingContext.EMPTY)
-    } { files =>
-      val ktFiles = files.par.flatMap(file => compiler.compile(Paths.get(file.path)).asScala).seq.asJava
-      detektor.run(ktFiles, BindingContext.EMPTY)
+    val detektion = filesOpt match {
+      case None =>
+        val ktFiles = compiler.compile(path)
+        detektor.run(ktFiles, BindingContext.EMPTY)
+      case Some(files) =>
+        val ktFiles = files.par.flatMap(file => compiler.compile(Paths.get(file.path)).asScala).seq.asJava
+        detektor.run(ktFiles, BindingContext.EMPTY)
     }
 
     detektion.values.asScala.flatMap(_.asScala).toList
@@ -136,26 +134,15 @@ object Detekt extends Tool {
   private def getRules: Map[DetektCategory, Seq[Rule]] = {
     val config = readEmptyConfigFile
 
-    codacy.helpers.ResourceHelper
-      .getResourceContent("META-INF/services/io.gitlab.arturbosch.detekt.api.RuleSetProvider")
-      .get //This is just a script, is better get the error
-      .view
-      .map { clazz =>
-        val provider: RuleSet = Class
-          .forName(clazz)
-          .getDeclaredConstructor()
-          .newInstance()
-          .asInstanceOf[RuleSetProvider]
-          .instance(config)
-
-        (DetektCategory(provider.getId), provider.getRules.asScala.flatMap {
-          case r: MultiRule =>
-            r.getRules.asScala
-          case r: Rule =>
-            Seq(r)
-        }.toSeq)
-      }
-      .toMap
+    Providers.list.view.map { provider =>
+      val ruleSet: RuleSet = provider.instance(config)
+      DetektCategory(ruleSet.getId) -> ruleSet.getRules.asScala.flatMap {
+        case r: MultiRule =>
+          r.getRules.asScala
+        case r: Rule =>
+          Seq(r)
+      }.toSeq
+    }.toMap
   }
 
   private def readEmptyConfigFile: Config = {

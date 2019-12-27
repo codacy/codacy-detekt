@@ -6,12 +6,12 @@ The latter should be preferred as it is more readable.
 ## Noncompliant Code
 
 ```kotlin
-&#064;PositiveCase(arrayOf("..."))
+@PositiveCase(arrayOf("..."))
 ```
 ## Compliant Code
 
 ```kotlin
-&#064;NegativeCase(["..."])
+@NegativeCase(["..."])
 ```
 
 [Source](https://arturbosch.github.io/detekt/style.html#usearrayliteralsinannotations)
