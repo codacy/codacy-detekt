@@ -125,17 +125,17 @@ object DocGenerator {
     for {
       provider <- Providers.list
       config = new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null)
-      res <- provider
+      rules <- provider
         .instance(config)
         .getRules
         .asScala
-        .flatMap {
-          case r: MultiRule =>
-            r.getRules.asScala
-          case r: Rule =>
-            Seq(r)
-        }
-    } yield res
+      flattenedRules <- rules match {
+        case r: MultiRule =>
+          r.getRules.asScala
+        case r: Rule =>
+          Seq(r)
+      }
+    } yield flattenedRules
 
   private def getExtendedDescriptions(version: String): Map[String, String] = {
     val tmpDirectory = File.newTemporaryDirectory()
