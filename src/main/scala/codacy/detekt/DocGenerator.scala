@@ -121,11 +121,10 @@ object DocGenerator {
     }
   }
 
-  private def generateRules: List[Rule] = {
-    val config = new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null)
-
-    val result = for {
+  private def generateRules: List[Rule] =
+    for {
       provider <- Providers.list
+      config = new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null)
       res <- provider
         .instance(config)
         .getRules
@@ -137,8 +136,6 @@ object DocGenerator {
             Seq(r)
         }
     } yield res
-    result.to(List)
-  }
 
   private def getExtendedDescriptions(version: String): Map[String, String] = {
     val tmpDirectory = File.newTemporaryDirectory()
