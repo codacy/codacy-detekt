@@ -125,9 +125,8 @@ object DocGenerator {
     val config = new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null)
 
     val result = for {
-      providerClass <- Providers.classes
-      res <- providerClass
-        .newInstance()
+      provider <- Providers.list
+      res <- provider
         .instance(config)
         .getRules
         .asScala

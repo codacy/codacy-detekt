@@ -5,15 +5,15 @@ import io.gitlab.arturbosch.detekt.rules.providers._
 
 object Providers {
 
-  val classes = List(
-    classOf[CommentSmellProvider],
-    classOf[ComplexityProvider],
-    classOf[EmptyCodeProvider],
-    classOf[ExceptionsProvider],
-    classOf[FormattingProvider],
-    classOf[NamingProvider],
-    classOf[PerformanceProvider],
-    classOf[PotentialBugProvider],
-    classOf[StyleGuideProvider]
+  val list = List(
+    new CommentSmellProvider,
+    new ComplexityProvider,
+    new EmptyCodeProvider,
+    new ExceptionsProvider,
+    new FormattingProvider,
+    new NamingProvider,
+    new PerformanceProvider,
+    new PotentialBugProvider,
+    new StyleGuideProvider
   )
 }

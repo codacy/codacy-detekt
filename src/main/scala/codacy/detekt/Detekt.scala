@@ -134,20 +134,14 @@ object Detekt extends Tool {
   private def getRules: Map[DetektCategory, Seq[Rule]] = {
     val config = readEmptyConfigFile
 
-    val providerClasses = Providers.classes
-
-    providerClasses.view.map { clazz =>
-      val provider: RuleSet = clazz
-        .getDeclaredConstructor()
-        .newInstance()
-        .instance(config)
-
-      (DetektCategory(provider.getId), provider.getRules.asScala.flatMap {
+    Providers.list.view.map { provider =>
+      val ruleSet: RuleSet = provider.instance(config)
+      DetektCategory(ruleSet.getId) -> ruleSet.getRules.asScala.flatMap {
         case r: MultiRule =>
           r.getRules.asScala
         case r: Rule =>
           Seq(r)
-      }.toSeq)
+      }.toSeq
     }.toMap
   }
 
