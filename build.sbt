@@ -22,6 +22,8 @@ toolVersionKey := {
   patterns.get.version
 }
 
+resolvers += Resolver.jcenterRepo
+
 libraryDependencies ++= {
   val toolVersion = toolVersionKey.value
   Seq(
@@ -33,8 +35,8 @@ libraryDependencies ++= {
     "io.gitlab.arturbosch.detekt" % "detekt-cli" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-generator" % toolVersion,
     "org.scala-lang.modules" %% "scala-parallel-collections" % "0.2.0",
-    "org.yaml" % "snakeyaml" % "1.23",
-    "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.8.4"
+    "org.yaml" % "snakeyaml" % "1.25",
+    "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.10.1"
   )
 }
 

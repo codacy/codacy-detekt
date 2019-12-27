@@ -1,7 +1,6 @@
 package codacy.detekt
 
 import better.files.File
-import codacy.helpers.ResourceHelper
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.core.{KtCompiler, KtTreeCompiler, ProcessingSettings}
 import io.gitlab.arturbosch.detekt.generator.collection.DetektCollector
@@ -15,16 +14,17 @@ object DocGenerator {
 
   def main(args: Array[String]): Unit = {
     args.headOption.fold {
-      throw new Exception("Version parameter is required (ex: 1.0.0.RC6-4)")
+      throw new Exception("Version parameter is required (ex: 1.3.0)")
     } { version =>
       val rules = generateRules
 
-      val repoRoot = new java.io.File(".")
-      val docsRoot = new java.io.File(repoRoot, "src/main/resources/docs")
-      val patternsFile = new java.io.File(docsRoot, "patterns.json")
-      val descriptionsRoot = new java.io.File(docsRoot, "description")
-      val descriptionsFile =
-        new java.io.File(descriptionsRoot, "description.json")
+      val repoRoot = File(".")
+      val docsRoot = repoRoot / "src" / "main" / "resources" / "docs"
+      docsRoot.createIfNotExists(asDirectory = true)
+      val patternsFile = docsRoot / "patterns.json"
+      val descriptionsRoot = docsRoot / "description"
+      descriptionsRoot.createIfNotExists(asDirectory = true)
+      val descriptionsFile = descriptionsRoot / "description.json"
 
       val extendedDescriptions = getExtendedDescriptions(version)
 
@@ -48,8 +48,8 @@ object DocGenerator {
           .as[JsArray]
       )
 
-      ResourceHelper.writeFile(patternsFile.toPath, patterns)
-      ResourceHelper.writeFile(descriptionsFile.toPath, descriptions)
+      patternsFile.write(patterns)
+      descriptionsFile.write(descriptions)
     }
   }
 
@@ -84,27 +84,25 @@ object DocGenerator {
 
   private def generateDescriptions(
       rules: List[Rule],
-      descriptionsRoot: java.io.File,
+      descriptionsRoot: File,
       extendedDescriptions: Map[String, String]
   ): JsArray = {
-    val codacyPatternsDescs = rules.collect {
-      case rule =>
-        val descriptionsFile =
-          new java.io.File(descriptionsRoot, s"${rule.getIssue.getId}.md")
-        ResourceHelper.writeFile(descriptionsFile.toPath, extendedDescriptions(rule.getRuleId))
+    val codacyPatternsDescs = rules.map { rule =>
+      val descriptionsFile = descriptionsRoot / s"${rule.getIssue.getId}.md"
+      extendedDescriptions.get(rule.getRuleId).foreach(descriptionsFile.write)
 
-        Json.obj(
-          "patternId" -> rule.getIssue.getId,
-          "title" -> Json.toJsFieldJsValueWrapper(
-            Option(truncateText(rule, 250))
-              .filter(_.nonEmpty)
-              .getOrElse(rule.getIssue.getId)
-          ),
-          "timeToFix" -> 5
-        ) ++
-          Option(truncateText(rule, 495))
+      Json.obj(
+        "patternId" -> rule.getIssue.getId,
+        "title" -> Json.toJsFieldJsValueWrapper(
+          Option(truncateText(rule, 250))
             .filter(_.nonEmpty)
-            .fold(Json.obj())(desc => Json.obj("description" -> desc))
+            .getOrElse(rule.getIssue.getId)
+        ),
+        "timeToFix" -> 5
+      ) ++
+        Option(truncateText(rule, 495))
+          .filter(_.nonEmpty)
+          .fold(Json.obj())(desc => Json.obj("description" -> desc))
     }
 
     Json.parse(Json.toJson(codacyPatternsDescs).toString).as[JsArray]
@@ -124,29 +122,23 @@ object DocGenerator {
   }
 
   private def generateRules: List[Rule] = {
-    val config = new YamlConfig((Map(("autoCorrect", false), ("failFast", false))).asJava, null)
+    val config = new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null)
 
-    _root_.codacy.helpers.ResourceHelper
-      .getResourceContent("META-INF/services/io.gitlab.arturbosch.detekt.api.RuleSetProvider")
-      .get //This is just a script, is better get the error
-      .view
-      .flatMap { clazz =>
-        Class
-          .forName(clazz)
-          .getDeclaredConstructor()
-          .newInstance()
-          .asInstanceOf[RuleSetProvider]
-          .instance(config)
-          .getRules
-          .asScala
-          .flatMap {
-            case r: MultiRule =>
-              r.asInstanceOf[MultiRule].getRules.asScala
-            case r: Rule =>
-              Seq(r.asInstanceOf[Rule])
-          }
-      }
-      .to(List)
+    val result = for {
+      providerClass <- Providers.classes
+      res <- providerClass
+        .newInstance()
+        .instance(config)
+        .getRules
+        .asScala
+        .flatMap {
+          case r: MultiRule =>
+            r.getRules.asScala
+          case r: Rule =>
+            Seq(r)
+        }
+    } yield res
+    result.to(List)
   }
 
   private def getExtendedDescriptions(version: String): Map[String, String] = {
@@ -154,8 +146,7 @@ object DocGenerator {
 
     Process(Seq("git", "clone", "--branch", version, "git://github.com/arturbosch/detekt", tmpDirectory.pathAsString)).!
 
-    val filePaths = better.files
-      .File(s"${tmpDirectory.pathAsString}/detekt-rules/src/main")
+    val filePaths = (File(tmpDirectory.pathAsString) / "detekt-rules" / "src" / "main")
       .listRecursively()
       .filter(_.pathAsString.endsWith(".kt"))
       .map(_.path)
