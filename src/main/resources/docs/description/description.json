@@ -234,6 +234,11 @@
   "timeToFix" : 5,
   "title" : "Checks if comments have the right spacing"
 }, {
+  "patternId" : "EnumEntryNameCase",
+  "description" : "Reports enum entries with names that don't meet standard conventions.",
+  "timeToFix" : 5,
+  "title" : "Reports enum entries with names that don't meet standard conventions."
+}, {
   "patternId" : "Filename",
   "description" : "Checks if top level class matches the filename",
   "timeToFix" : 5,
@@ -283,6 +288,11 @@
   "description" : "Reports empty class bodies",
   "timeToFix" : 5,
   "title" : "Reports empty class bodies"
+}, {
+  "patternId" : "NoEmptyFirstLineInMethodBlock",
+  "description" : "Reports methods that have an empty first line.",
+  "timeToFix" : 5,
+  "title" : "Reports methods that have an empty first line."
 }, {
   "patternId" : "NoLineBreakAfterElse",
   "description" : "Reports line breaks after else",
@@ -644,6 +654,11 @@
   "timeToFix" : 5,
   "title" : "Mark forbidden imports. A forbidden import could be an import for an unstable / experimental apiand hence you might want to mark it as forbidden in order to get warned about the usage."
 }, {
+  "patternId" : "ForbiddenMethodCall",
+  "description" : "Mark forbidden methods. A forbidden method could be an invocation of an unstable / experimental method and hence you might want to mark it as forbidden in order to get warned about the usage.",
+  "timeToFix" : 5,
+  "title" : "Mark forbidden methods. A forbidden method could be an invocation of an unstable / experimental method and hence you might want to mark it as forbidden in order to get warned about the usage."
+}, {
   "patternId" : "ForbiddenPublicDataClass",
   "description" : "The data classes are bad for the binary compatibility in public APIs. Avoid to use it.",
   "timeToFix" : 5,
@@ -765,9 +780,9 @@
   "title" : "Functions with exact one statement, the return statement, can be rewritten with ExpressionBodySyntax."
 }, {
   "patternId" : "NestedClassesVisibility",
-  "description" : "Nested types are often used for implementing private functionality and therefore this should not be public.",
+  "description" : "The explicit public modifier still results in an internal nested class.",
   "timeToFix" : 5,
-  "title" : "Nested types are often used for implementing private functionality and therefore this should not be public."
+  "title" : "The explicit public modifier still results in an internal nested class."
 }, {
   "patternId" : "RedundantVisibilityModifierRule",
   "description" : "Checks for redundant visibility modifiers. Public is the default visibility for classes. The public modifier is redundant.",
@@ -818,6 +833,11 @@
   "description" : "Declaring lambda parameters as `it` is redundant.",
   "timeToFix" : 5,
   "title" : "Declaring lambda parameters as `it` is redundant."
+}, {
+  "patternId" : "ExplicitCollectionElementAccessMethod",
+  "description" : "Prefer usage of indexed access operator [] for map element access or insert methods",
+  "timeToFix" : 5,
+  "title" : "Prefer usage of indexed access operator [] for map element access or insert methods"
 }, {
   "patternId" : "UselessCallOnNotNull",
   "description" : "This call on non-null reference may be reduced or removed. Some calls are intended to be called on nullable collection or text types (e.g. String?). When this call is used on a reference to a non-null type (e.g. String) it is redundant and will have no effect, so it can be removed.",
