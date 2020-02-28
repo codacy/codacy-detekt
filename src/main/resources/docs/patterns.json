@@ -1,6 +1,6 @@
 {
   "name" : "Detekt",
-  "version" : "1.5.0",
+  "version" : "1.6.0",
   "patterns" : [ {
     "patternId" : "CommentOverPrivateFunction",
     "level" : "Warning",
@@ -115,6 +115,10 @@
     "category" : "ErrorProne"
   }, {
     "patternId" : "EmptySecondaryConstructor",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
+    "patternId" : "EmptyTryBlock",
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {

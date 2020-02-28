@@ -144,6 +144,11 @@
   "timeToFix" : 5,
   "title" : "Empty block of code detected. As they serve no purpose they should be removed."
 }, {
+  "patternId" : "EmptyTryBlock",
+  "description" : "Empty block of code detected. As they serve no purpose they should be removed.",
+  "timeToFix" : 5,
+  "title" : "Empty block of code detected. As they serve no purpose they should be removed."
+}, {
   "patternId" : "EmptyWhenBlock",
   "description" : "Empty block of code detected. As they serve no purpose they should be removed.",
   "timeToFix" : 5,
