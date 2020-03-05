@@ -1,0 +1,14 @@
+autoCorrect: false
+failFast: false
+
+style:
+  active: true
+  MaxLineLength:
+    active: true
+    maxLineLength: 120
+    excludePackageStatements: true
+    excludeImportStatements: true
+    excludeCommentStatements: true
+  MaximumLineLength:
+    active: true
+    maxLineLength: 120
