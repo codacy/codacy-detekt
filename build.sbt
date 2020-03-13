@@ -27,7 +27,7 @@ resolvers += Resolver.jcenterRepo
 libraryDependencies ++= {
   val toolVersion = toolVersionKey.value
   Seq(
-    "com.codacy" %% "codacy-engine-scala-seed" % "3.1.0" withSources (),
+    "com.codacy" %% "codacy-engine-scala-seed" % "4.0.2",
     "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
     "io.gitlab.arturbosch.detekt" % "detekt-core" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-api" % toolVersion,
