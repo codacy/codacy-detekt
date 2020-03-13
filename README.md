@@ -4,7 +4,7 @@ This is the docker engine we use at Codacy to have [Detekt](https://github.com/a
 You can also create a docker to integrate the tool and language of your choice!
 Check the **Docs** section for more information.
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ccdc504c39e44ae998bcc9e948c9fae3)](https://www.codacy.com/app/Codacy/codacy-detekt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codacy/codacy-detekt&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ccdc504c39e44ae998bcc9e948c9fae3)](https://www.codacy.com/gh/codacy/codacy-detekt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codacy/codacy-detekt&amp;utm_campaign=Badge_Grade)
 [![CircleCI](https://circleci.com/gh/codacy/codacy-detekt.svg?style=svg)](https://circleci.com/gh/codacy/codacy-detekt)
 
 ## Usage
