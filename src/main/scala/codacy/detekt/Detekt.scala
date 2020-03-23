@@ -2,13 +2,13 @@ package codacy.detekt
 
 import java.nio.file.{Path, Paths}
 import better.files._
-import java.util
 
 import com.codacy.plugins.api
 import com.codacy.plugins.api._
 import com.codacy.plugins.api.results.{Pattern, Result, Tool}
 import com.codacy.tools.scala.seed.utils.FileHelper
 import io.gitlab.arturbosch.detekt.api._
+import io.gitlab.arturbosch.detekt.api.internal.YamlConfig
 import io.gitlab.arturbosch.detekt.core._
 import org.jetbrains.kotlin.resolve.BindingContext
 import org.yaml.snakeyaml.Yaml
@@ -30,11 +30,11 @@ object Detekt extends Tool {
   val configFiles = Set("default-detekt-config.yml", "detekt.yml")
 
   def apply(
-      source: api.Source.Directory,
-      configuration: Option[List[Pattern.Definition]],
-      files: Option[Set[api.Source.File]],
-      options: Map[Options.Key, Options.Value]
-  )(implicit specification: Tool.Specification): Try[List[Result]] = {
+             source: api.Source.Directory,
+             configuration: Option[List[Pattern.Definition]],
+             files: Option[Set[api.Source.File]],
+             options: Map[Options.Key, Options.Value]
+           )(implicit specification: Tool.Specification): Try[List[Result]] = {
     Try {
       val sourcePath = Paths.get(source.path)
       val yamlConfig = getYamlConfig(configuration, sourcePath)
@@ -53,7 +53,7 @@ object Detekt extends Tool {
   }
 
   private def getYamlConfig(config: Option[List[Pattern.Definition]], source: Path)(
-      implicit specification: Tool.Specification
+    implicit specification: Tool.Specification
   ): YamlConfig = config match {
     case None => defaultConfig(source)
     case Some(patternDefinition) => mapConfig(patternDefinition)
@@ -62,11 +62,10 @@ object Detekt extends Tool {
   private def defaultConfig(source: Path): YamlConfig = {
     val map = FileHelper
       .findConfigurationFile(source, configFiles)
-      .fold(new util.LinkedHashMap[String, Any]()) { configFile =>
-        new Yaml()
-          .load[util.LinkedHashMap[String, Any]](File(configFile).contentAsString)
+      .fold(new java.util.LinkedHashMap[String, Any]()) { configFile =>
+        new Yaml().load[java.util.LinkedHashMap[String, Any]](File(configFile).contentAsString)
       }
-    new YamlConfig(map, null)
+    new YamlConfig(map, null, null)
   }
 
   private def mapConfig(config: List[Pattern.Definition])(implicit specification: Tool.Specification): YamlConfig = {
@@ -104,15 +103,15 @@ object Detekt extends Tool {
 
     val ourConf = Map(("autoCorrect", false), ("failFast", false)) ++ configMapGen
 
-    new YamlConfig(ourConf.asJava, null)
+    new YamlConfig(ourConf.asJava, null, null)
   }
 
   private def getResults(
-      path: Path,
-      filesOpt: Option[Set[api.Source.File]],
-      yamlConf: YamlConfig,
-      parallel: Boolean
-  ): List[Finding] = {
+                          path: Path,
+                          filesOpt: Option[Set[api.Source.File]],
+                          yamlConf: YamlConfig,
+                          parallel: Boolean
+                        ): List[Finding] = {
     val settings = new ProcessingSettings(List(path).asJava, yamlConf, null, parallel)
     val providers = new RuleSetLocator(settings).load()
     val processors = List.empty[FileProcessListener]
@@ -146,7 +145,7 @@ object Detekt extends Tool {
   }
 
   private def readEmptyConfigFile: Config = {
-    new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null)
+    new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null,  null)
   }
 
   case class DetektCategory(value: String) extends AnyVal
