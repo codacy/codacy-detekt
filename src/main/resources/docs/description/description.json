@@ -29,6 +29,11 @@
   "timeToFix" : 5,
   "title" : "Public properties require documentation."
 }, {
+  "patternId" : "AbsentOrWrongFileLicense",
+  "description" : "License text is absent or incorrect in the file.",
+  "timeToFix" : 5,
+  "title" : "License text is absent or incorrect in the file."
+}, {
   "patternId" : "LongParameterList",
   "description" : "The more parameters a method has the more complex it is. Long parameter lists are often used to control complex algorithms and violate the Single Responsibility Principle. Prefer methods with short parameter lists.",
   "timeToFix" : 5,

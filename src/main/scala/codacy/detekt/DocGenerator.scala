@@ -2,6 +2,7 @@ package codacy.detekt
 
 import better.files.File
 import io.gitlab.arturbosch.detekt.api._
+import io.gitlab.arturbosch.detekt.api.internal.YamlConfig
 import io.gitlab.arturbosch.detekt.core.{KtCompiler, KtTreeCompiler, ProcessingSettings}
 import io.gitlab.arturbosch.detekt.generator.collection.DetektCollector
 import org.jetbrains.kotlin.psi.KtFile
@@ -14,7 +15,7 @@ object DocGenerator {
 
   def main(args: Array[String]): Unit = {
     args.headOption.fold {
-      throw new Exception("Version parameter is required (ex: 1.5.0)")
+      throw new Exception("Version parameter is required (ex: 1.7.0)")
     } { version =>
       val rules = generateRules
 
@@ -124,7 +125,8 @@ object DocGenerator {
   private def generateRules: List[Rule] =
     for {
       provider <- Providers.list
-      config = new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null)
+      properties = Map("autoCorrect" -> false, "failFast" -> false).asJava
+      config = new YamlConfig(properties, null, null)
       rules <- provider
         .instance(config)
         .getRules

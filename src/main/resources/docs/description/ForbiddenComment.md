@@ -6,8 +6,10 @@ development. Offending code comments will then be reported.
 ## Noncompliant Code
 
 ```kotlin
-// TODO:,FIXME:,STOPSHIP:
+val a = "" // TODO: remove please
+// FIXME: this is a hack
 fun foo() { }
+// STOPSHIP:
 ```
 
 [Source](https://arturbosch.github.io/detekt/style.html#forbiddencomment)

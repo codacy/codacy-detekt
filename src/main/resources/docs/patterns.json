@@ -1,6 +1,6 @@
 {
   "name" : "Detekt",
-  "version" : "1.6.0",
+  "version" : "1.7.0",
   "patterns" : [ {
     "patternId" : "CommentOverPrivateFunction",
     "level" : "Warning",
@@ -23,6 +23,10 @@
     "category" : "ErrorProne"
   }, {
     "patternId" : "UndocumentedPublicProperty",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
+    "patternId" : "AbsentOrWrongFileLicense",
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
