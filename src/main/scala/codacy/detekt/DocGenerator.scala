@@ -128,7 +128,6 @@ object DocGenerator {
       properties = Map("autoCorrect" -> false, "failFast" -> false).asJava
       config = new YamlConfig(properties, null, null)
       rules <- provider
-
         .instance(config)
         .getRules
         .asScala

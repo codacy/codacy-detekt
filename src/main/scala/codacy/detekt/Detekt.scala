@@ -30,11 +30,11 @@ object Detekt extends Tool {
   val configFiles = Set("default-detekt-config.yml", "detekt.yml")
 
   def apply(
-             source: api.Source.Directory,
-             configuration: Option[List[Pattern.Definition]],
-             files: Option[Set[api.Source.File]],
-             options: Map[Options.Key, Options.Value]
-           )(implicit specification: Tool.Specification): Try[List[Result]] = {
+      source: api.Source.Directory,
+      configuration: Option[List[Pattern.Definition]],
+      files: Option[Set[api.Source.File]],
+      options: Map[Options.Key, Options.Value]
+  )(implicit specification: Tool.Specification): Try[List[Result]] = {
     Try {
       val sourcePath = Paths.get(source.path)
       val yamlConfig = getYamlConfig(configuration, sourcePath)
@@ -53,7 +53,7 @@ object Detekt extends Tool {
   }
 
   private def getYamlConfig(config: Option[List[Pattern.Definition]], source: Path)(
-    implicit specification: Tool.Specification
+      implicit specification: Tool.Specification
   ): YamlConfig = config match {
     case None => defaultConfig(source)
     case Some(patternDefinition) => mapConfig(patternDefinition)
@@ -107,11 +107,11 @@ object Detekt extends Tool {
   }
 
   private def getResults(
-                          path: Path,
-                          filesOpt: Option[Set[api.Source.File]],
-                          yamlConf: YamlConfig,
-                          parallel: Boolean
-                        ): List[Finding] = {
+      path: Path,
+      filesOpt: Option[Set[api.Source.File]],
+      yamlConf: YamlConfig,
+      parallel: Boolean
+  ): List[Finding] = {
     val settings = new ProcessingSettings(List(path).asJava, yamlConf, null, parallel)
     val providers = new RuleSetLocator(settings).load()
     val processors = List.empty[FileProcessListener]
@@ -145,7 +145,7 @@ object Detekt extends Tool {
   }
 
   private def readEmptyConfigFile: Config = {
-    new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null,  null)
+    new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null, null)
   }
 
   case class DetektCategory(value: String) extends AnyVal
