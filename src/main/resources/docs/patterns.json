@@ -26,6 +26,10 @@
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
+    "patternId" : "AbsentOrWrongFileLicense",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
     "patternId" : "LongParameterList",
     "level" : "Warning",
     "category" : "ErrorProne"
