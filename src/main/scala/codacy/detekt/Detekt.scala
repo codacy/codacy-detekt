@@ -1,8 +1,8 @@
 package codacy.detekt
 
 import java.nio.file.{Path, Paths}
-import better.files._
 
+import better.files._
 import com.codacy.plugins.api
 import com.codacy.plugins.api._
 import com.codacy.plugins.api.results.{Pattern, Result, Tool}
@@ -16,7 +16,6 @@ import play.api.libs.json.{JsString, Json}
 
 import scala.jdk.CollectionConverters._
 import scala.util.Try
-
 import scala.collection.parallel.CollectionConverters._
 
 object Detekt extends Tool {
@@ -39,7 +38,7 @@ object Detekt extends Tool {
       val sourcePath = Paths.get(source.path)
       val yamlConfig = getYamlConfig(configuration, sourcePath)
 
-      val findings = getResults(sourcePath, files, yamlConfig, parallel = true)
+      val findings = getResults(sourcePath, files, yamlConfig)
 
       findings.map { finding =>
         Result.Issue(
@@ -106,13 +105,8 @@ object Detekt extends Tool {
     new YamlConfig(ourConf.asJava, null, null)
   }
 
-  private def getResults(
-      path: Path,
-      filesOpt: Option[Set[api.Source.File]],
-      yamlConf: YamlConfig,
-      parallel: Boolean
-  ): List[Finding] = {
-    val settings = new ProcessingSettings(List(path).asJava, yamlConf, null, parallel)
+  private def getResults(path: Path, filesOpt: Option[Set[api.Source.File]], yamlConf: YamlConfig): List[Finding] = {
+    val settings = ProcessingSettingsFactory.create(Seq(path).asJava, yamlConf)
     val providers = new RuleSetLocator(settings).load()
     val processors = List.empty[FileProcessListener]
     val detektor = new Detektor(settings, providers, processors.asJava)

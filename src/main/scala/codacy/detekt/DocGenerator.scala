@@ -3,7 +3,7 @@ package codacy.detekt
 import better.files.File
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.api.internal.YamlConfig
-import io.gitlab.arturbosch.detekt.core.{KtCompiler, KtTreeCompiler, ProcessingSettings}
+import io.gitlab.arturbosch.detekt.core.{KtCompiler, KtTreeCompiler}
 import io.gitlab.arturbosch.detekt.generator.collection.DetektCollector
 import org.jetbrains.kotlin.psi.KtFile
 import play.api.libs.json.{JsArray, Json}
@@ -15,7 +15,7 @@ object DocGenerator {
 
   def main(args: Array[String]): Unit = {
     args.headOption.fold {
-      throw new Exception("Version parameter is required (ex: 1.7.0)")
+      throw new Exception("Version parameter is required (ex: 1.7.1)")
     } { version =>
       val rules = generateRules
 
@@ -142,7 +142,9 @@ object DocGenerator {
   private def getExtendedDescriptions(version: String): Map[String, String] = {
     val tmpDirectory = File.newTemporaryDirectory()
 
-    Process(Seq("git", "clone", "--branch", version, "git://github.com/arturbosch/detekt", tmpDirectory.pathAsString)).!
+    Process(
+      Seq("git", "clone", "--branch", s"v$version", "git://github.com/arturbosch/detekt", tmpDirectory.pathAsString)
+    ).!
 
     val filePaths = (File(tmpDirectory.pathAsString) / "detekt-rules" / "src" / "main")
       .listRecursively()
@@ -150,7 +152,7 @@ object DocGenerator {
       .map(_.path)
 
     val collector = new DetektCollector()
-    val compiler = new KtTreeCompiler(new ProcessingSettings(List.empty.asJava), new KtCompiler())
+    val compiler = new KtTreeCompiler(ProcessingSettingsFactory.create(Seq.empty.asJava), new KtCompiler())
 
     val ktFiles: Array[KtFile] = filePaths
       .to(Array)

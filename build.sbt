@@ -27,16 +27,16 @@ resolvers += Resolver.jcenterRepo
 libraryDependencies ++= {
   val toolVersion = toolVersionKey.value
   Seq(
-    "com.codacy" %% "codacy-engine-scala-seed" % "4.0.2",
-    "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
+    "com.codacy" %% "codacy-engine-scala-seed" % "4.0.3",
+    "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
     "io.gitlab.arturbosch.detekt" % "detekt-core" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-api" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-rules" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-cli" % toolVersion,
     "io.gitlab.arturbosch.detekt" % "detekt-generator" % toolVersion,
     "org.scala-lang.modules" %% "scala-parallel-collections" % "0.2.0",
-    "org.yaml" % "snakeyaml" % "1.25",
-    "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.10.1"
+    "org.yaml" % "snakeyaml" % "1.26",
+    "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.10.3"
   )
 }
 
