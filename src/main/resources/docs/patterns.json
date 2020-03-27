@@ -1,6 +1,6 @@
 {
   "name" : "Detekt",
-  "version" : "1.7.0",
+  "version" : "1.7.1",
   "patterns" : [ {
     "patternId" : "CommentOverPrivateFunction",
     "level" : "Warning",

@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  codacy: codacy/base@2.7.1
+  codacy: codacy/base@2.9.3
   codacy_plugins_test: codacy/plugins-test@0.10.6
 
 workflows:
@@ -17,9 +17,8 @@ workflows:
                  scalafmt::test;
                  test:scalafmt::test;
                  sbt:scalafmt::test;
-                 set name := \"$CIRCLE_PROJECT_REPONAME\";
-                 set version in Docker := \"latest\";
-                 clean;
+                 set Docker / version := \"latest\";
+                 set scalacOptions ++= Seq(\"-opt:l:inline\", \"-opt-inline-from:**\");
                  docker:publishLocal"
             docker save --output docker-image.tar $CIRCLE_PROJECT_REPONAME:latest
           persist_to_workspace: true
