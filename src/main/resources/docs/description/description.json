@@ -35,9 +35,9 @@
   "title" : "License text is absent or incorrect in the file."
 }, {
   "patternId" : "LongParameterList",
-  "description" : "The more parameters a method has the more complex it is. Long parameter lists are often used to control complex algorithms and violate the Single Responsibility Principle. Prefer methods with short parameter lists.",
+  "description" : "The more parameters a function has the more complex it is. Long parameter lists are often used to control complex algorithms and violate the Single Responsibility Principle. Prefer functions with short parameter lists.",
   "timeToFix" : 5,
-  "title" : "The more parameters a method has the more complex it is. Long parameter lists are often used to control complex algorithms and violate the Single Responsibility Principle. Prefer methods with short parameter lists."
+  "title" : "The more parameters a function has the more complex it is. Long parameter lists are often used to control complex algorithms and violate the Single Responsibility Principle. Prefer functions with short parameter lists."
 }, {
   "patternId" : "LongMethod",
   "description" : "One method should have one responsibility. Long methods tend to handle many things at once. Prefer smaller methods to make them easier to understand.",
@@ -90,9 +90,9 @@
   "title" : "Expression with labels increase complexity and affect maintainability."
 }, {
   "patternId" : "EmptyCatchBlock",
-  "description" : "Empty block of code detected. As they serve no purpose they should be removed.",
+  "description" : "Empty catch block detected. Empty catch blocks indicate that an exception is ignored and not handled.",
   "timeToFix" : 5,
-  "title" : "Empty block of code detected. As they serve no purpose they should be removed."
+  "title" : "Empty catch block detected. Empty catch blocks indicate that an exception is ignored and not handled."
 }, {
   "patternId" : "EmptyClassBlock",
   "description" : "Empty block of code detected. As they serve no purpose they should be removed.",
@@ -524,40 +524,35 @@
   "timeToFix" : 5,
   "title" : "Always override hashCode when you override equals. All hash-based collections depend on objects meeting the equals-contract. Two equal objects must produce the same hashcode."
 }, {
+  "patternId" : "ExplicitGarbageCollectionCall",
+  "description" : "Don't try to be smarter than the JVM. Your code should work independently if the garbage collector is disabled or not. If you face memory issues, try tuning the JVM options instead of relying on code itself.",
+  "timeToFix" : 5,
+  "title" : "Don't try to be smarter than the JVM. Your code should work independently if the garbage collector is disabled or not. If you face memory issues, try tuning the JVM options instead of relying on code itself."
+}, {
   "patternId" : "HasPlatformType",
   "description" : "Platform types must be declared explicitly in public APIs.",
   "timeToFix" : 5,
   "title" : "Platform types must be declared explicitly in public APIs."
 }, {
-  "patternId" : "IteratorNotThrowingNoSuchElementException",
-  "description" : "The next() method of an Iterator implementation should throw a NoSuchElementException when there are no more elements to return",
+  "patternId" : "ImplicitDefaultLocale",
+  "description" : "Implicit default locale used for string processing. Consider using explicit locale.",
   "timeToFix" : 5,
-  "title" : "The next() method of an Iterator implementation should throw a NoSuchElementException when there are no more elements to return"
-}, {
-  "patternId" : "IteratorHasNextCallsNextMethod",
-  "description" : "The hasNext() method of an Iterator implementation should not call the next() method. The state of the iterator should not be changed inside the hasNext() method. The hasNext() method is not supposed to have any side effects.",
-  "timeToFix" : 5,
-  "title" : "The hasNext() method of an Iterator implementation should not call the next() method. The state of the iterator should not be changed inside the hasNext() method. The hasNext() method is not supposed to have any side effects."
-}, {
-  "patternId" : "UselessPostfixExpression",
-  "description" : "The incremented or decremented value is unused. This value is replaced with the original value.",
-  "timeToFix" : 5,
-  "title" : "The incremented or decremented value is unused. This value is replaced with the original value."
+  "title" : "Implicit default locale used for string processing. Consider using explicit locale."
 }, {
   "patternId" : "InvalidRange",
   "description" : "If a for loops condition is false before the first iteration, the loop will never get executed.",
   "timeToFix" : 5,
   "title" : "If a for loops condition is false before the first iteration, the loop will never get executed."
 }, {
-  "patternId" : "WrongEqualsTypeParameter",
-  "description" : "Wrong parameter type for equals() method found. To correctly override the equals() method use Any?",
+  "patternId" : "IteratorHasNextCallsNextMethod",
+  "description" : "The hasNext() method of an Iterator implementation should not call the next() method. The state of the iterator should not be changed inside the hasNext() method. The hasNext() method is not supposed to have any side effects.",
   "timeToFix" : 5,
-  "title" : "Wrong parameter type for equals() method found. To correctly override the equals() method use Any?"
+  "title" : "The hasNext() method of an Iterator implementation should not call the next() method. The state of the iterator should not be changed inside the hasNext() method. The hasNext() method is not supposed to have any side effects."
 }, {
-  "patternId" : "ExplicitGarbageCollectionCall",
-  "description" : "Don't try to be smarter than the JVM. Your code should work independently if the garbage collector is disabled or not. If you face memory issues, try tuning the JVM options instead of relying on code itself.",
+  "patternId" : "IteratorNotThrowingNoSuchElementException",
+  "description" : "The next() method of an Iterator implementation should throw a NoSuchElementException when there are no more elements to return",
   "timeToFix" : 5,
-  "title" : "Don't try to be smarter than the JVM. Your code should work independently if the garbage collector is disabled or not. If you face memory issues, try tuning the JVM options instead of relying on code itself."
+  "title" : "The next() method of an Iterator implementation should throw a NoSuchElementException when there are no more elements to return"
 }, {
   "patternId" : "LateinitUsage",
   "description" : "Usage of lateinit detected. Using lateinit for property initialization is error prone, try using constructor injection or delegation.",
@@ -584,6 +579,16 @@
   "timeToFix" : 5,
   "title" : "An unconditional jump statement in a loop is useless. The loop itself is only executed once."
 }, {
+  "patternId" : "UnnecessaryNotNullOperator",
+  "description" : "Unnecessary not-null unary operator (!!) detected.",
+  "timeToFix" : 5,
+  "title" : "Unnecessary not-null unary operator (!!) detected."
+}, {
+  "patternId" : "UnnecessarySafeCall",
+  "description" : "Unnecessary safe call operator detected.",
+  "timeToFix" : 5,
+  "title" : "Unnecessary safe call operator detected."
+}, {
   "patternId" : "UnreachableCode",
   "description" : "Unreachable code detected. This code should be removed",
   "timeToFix" : 5,
@@ -599,10 +604,15 @@
   "timeToFix" : 5,
   "title" : "Cast operator throws an exception if the cast is not possible."
 }, {
-  "patternId" : "ImplicitDefaultLocale",
-  "description" : "Implicit default locale used for string processing. Consider using explicit locale.",
+  "patternId" : "UselessPostfixExpression",
+  "description" : "The incremented or decremented value is unused. This value is replaced with the original value.",
   "timeToFix" : 5,
-  "title" : "Implicit default locale used for string processing. Consider using explicit locale."
+  "title" : "The incremented or decremented value is unused. This value is replaced with the original value."
+}, {
+  "patternId" : "WrongEqualsTypeParameter",
+  "description" : "Wrong parameter type for equals() method found. To correctly override the equals() method use Any?",
+  "timeToFix" : 5,
+  "title" : "Wrong parameter type for equals() method found. To correctly override the equals() method use Any?"
 }, {
   "patternId" : "CollapsibleIfStatements",
   "description" : "Two if statements which could be collapsed were detected. These statements can be merged to improve readability.",

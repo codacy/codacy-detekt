@@ -15,7 +15,7 @@ object DocGenerator {
 
   def main(args: Array[String]): Unit = {
     args.headOption.fold {
-      throw new Exception("Version parameter is required (ex: 1.7.1)")
+      throw new Exception("Version parameter is required (ex: 1.8.0)")
     } { version =>
       val rules = generateRules
 

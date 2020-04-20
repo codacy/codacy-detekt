@@ -1,6 +1,6 @@
 {
   "name" : "Detekt",
-  "version" : "1.7.1",
+  "version" : "1.8.0",
   "patterns" : [ {
     "patternId" : "CommentOverPrivateFunction",
     "level" : "Warning",
@@ -422,11 +422,19 @@
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
+    "patternId" : "ExplicitGarbageCollectionCall",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
     "patternId" : "HasPlatformType",
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
-    "patternId" : "IteratorNotThrowingNoSuchElementException",
+    "patternId" : "ImplicitDefaultLocale",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "InvalidRange",
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
@@ -434,19 +442,7 @@
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
-    "patternId" : "UselessPostfixExpression",
-    "level" : "Warning",
-    "category" : "ErrorProne"
-  }, {
-    "patternId" : "InvalidRange",
-    "level" : "Warning",
-    "category" : "ErrorProne"
-  }, {
-    "patternId" : "WrongEqualsTypeParameter",
-    "level" : "Warning",
-    "category" : "ErrorProne"
-  }, {
-    "patternId" : "ExplicitGarbageCollectionCall",
+    "patternId" : "IteratorNotThrowingNoSuchElementException",
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
@@ -470,6 +466,14 @@
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
+    "patternId" : "UnnecessaryNotNullOperator",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
+    "patternId" : "UnnecessarySafeCall",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
     "patternId" : "UnreachableCode",
     "level" : "Warning",
     "category" : "CodeStyle"
@@ -482,9 +486,13 @@
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
-    "patternId" : "ImplicitDefaultLocale",
-    "level" : "Info",
-    "category" : "CodeStyle"
+    "patternId" : "UselessPostfixExpression",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
+    "patternId" : "WrongEqualsTypeParameter",
+    "level" : "Warning",
+    "category" : "ErrorProne"
   }, {
     "patternId" : "CollapsibleIfStatements",
     "level" : "Info",

@@ -6,13 +6,13 @@ IllegalArgumentException.
 ## Noncompliant Code
 
 ```kotlin
-if (value == null) throw new IllegalArgumentException("value should not be null")
-if (value < 0) throw new IllegalArgumentException("value is $value but should be at least 0")
+if (value == null) throw IllegalArgumentException("value should not be null")
+if (value < 0) throw IllegalArgumentException("value is $value but should be at least 0")
 ```
 ## Compliant Code
 
 ```kotlin
-requireNotNull(value) {"value should not be null"}
+requireNotNull(value) { "value should not be null" }
 require(value >= 0) { "value is $value but should be at least 0" }
 ```
 
