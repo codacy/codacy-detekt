@@ -31,7 +31,7 @@ object DocGenerator {
 
       val patterns = Json.prettyPrint(
         Json.obj(
-          "name" -> "Detekt",
+          "name" -> "detekt",
           "version" -> version,
           "patterns" -> Json
             .parse(Json.toJson(generatePatterns(rules)).toString)

@@ -1,5 +1,5 @@
 {
-  "name" : "Detekt",
+  "name" : "detekt",
   "version" : "1.8.0",
   "patterns" : [ {
     "patternId" : "CommentOverPrivateFunction",
