@@ -1,12 +1,9 @@
 package codacy.detekt
 
-import java.util.concurrent.ForkJoinPool
 import java.nio.file.Path
 
 import io.gitlab.arturbosch.detekt.core.ProcessingSettings
 import io.gitlab.arturbosch.detekt.api.Config
-import org.jetbrains.kotlin.config.JvmTarget
-import org.jetbrains.kotlin.config.LanguageVersion
 
 class ProcessingSettingsFactory {
   companion object {

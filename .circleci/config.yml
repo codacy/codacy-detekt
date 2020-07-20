@@ -17,9 +17,9 @@ workflows:
                  scalafmt::test;
                  test:scalafmt::test;
                  sbt:scalafmt::test;
-                 set Docker / version := \"latest\";
                  set scalacOptions ++= Seq(\"-opt:l:inline\", \"-opt-inline-from:**\");
-                 docker:publishLocal"
+                 stage"
+            docker build -t $CIRCLE_PROJECT_REPONAME:latest .
             docker save --output docker-image.tar $CIRCLE_PROJECT_REPONAME:latest
           persist_to_workspace: true
           requires:

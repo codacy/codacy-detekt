@@ -10,6 +10,7 @@ import com.codacy.tools.scala.seed.utils.FileHelper
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.api.internal.YamlConfig
 import io.gitlab.arturbosch.detekt.core._
+import io.github.detekt.parser.KtCompiler
 import org.jetbrains.kotlin.resolve.BindingContext
 import org.yaml.snakeyaml.Yaml
 import play.api.libs.json.{JsString, Json}
@@ -59,12 +60,12 @@ object Detekt extends Tool {
   }
 
   private def defaultConfig(source: Path): YamlConfig = {
-    val map = FileHelper
-      .findConfigurationFile(source, configFiles)
-      .fold(new java.util.LinkedHashMap[String, Any]()) { configFile =>
-        new Yaml().load[java.util.LinkedHashMap[String, Any]](File(configFile).contentAsString)
-      }
-    new YamlConfig(map, null, null)
+    val map: java.util.Map[String, _] = FileHelper
+      .findConfigurationFile(source, configFiles) match {
+      case None => new java.util.HashMap()
+      case Some(configFile) => new Yaml().load[java.util.LinkedHashMap[String, _]](File(configFile).contentAsString)
+    }
+    YamlConfigFactory.create(map)
   }
 
   private def mapConfig(config: List[Pattern.Definition])(implicit specification: Tool.Specification): YamlConfig = {
@@ -102,7 +103,7 @@ object Detekt extends Tool {
 
     val ourConf = Map(("autoCorrect", false), ("failFast", false)) ++ configMapGen
 
-    new YamlConfig(ourConf.asJava, null, null)
+    YamlConfigFactory.create(ourConf.asJava)
   }
 
   private def getResults(path: Path, filesOpt: Option[Set[api.Source.File]], yamlConf: YamlConfig): List[Finding] = {
@@ -139,7 +140,7 @@ object Detekt extends Tool {
   }
 
   private def readEmptyConfigFile: Config = {
-    new YamlConfig(Map(("autoCorrect", false), ("failFast", false)).asJava, null, null)
+    YamlConfigFactory.create(Map(("autoCorrect", false), ("failFast", false)).asJava)
   }
 
   case class DetektCategory(value: String) extends AnyVal
