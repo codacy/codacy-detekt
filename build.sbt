@@ -10,7 +10,7 @@ scalaVersion := "2.13.1"
 lazy val detektVersion = Def.setting("1.10.0")
 
 Compile / sourceGenerators += Def.task {
-  val file = (Compile / sourceManaged).value / "codacy" / "codenarc" / "Versions.scala"
+  val file = (Compile / sourceManaged).value / "codacy" / "detekt" / "Versions.scala"
   IO.write(file, s"""package codacy.detekt
                     |object Versions {
                     |  val detektVersion: String = "${detektVersion.value}"
