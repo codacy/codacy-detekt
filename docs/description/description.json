@@ -369,6 +369,11 @@
   "timeToFix" : 5,
   "title" : "Reports spaces around curly braces"
 }, {
+  "patternId" : "SpacingAroundDoubleColon",
+  "description" : "Reports spaces around double colons",
+  "timeToFix" : 5,
+  "title" : "Reports spaces around double colons"
+}, {
   "patternId" : "SpacingAroundDot",
   "description" : "Reports spaces around member invocation operator (dot).",
   "timeToFix" : 5,
@@ -393,6 +398,16 @@
   "description" : "Reports spaces around range operator",
   "timeToFix" : 5,
   "title" : "Reports spaces around range operator"
+}, {
+  "patternId" : "SpacingBetweenDeclarationsWithAnnotations",
+  "description" : "Declarations and declarations with annotations should have an empty space between.",
+  "timeToFix" : 5,
+  "title" : "Declarations and declarations with annotations should have an empty space between."
+}, {
+  "patternId" : "SpacingBetweenDeclarationsWithComments",
+  "description" : "Declarations and declarations with comments should have an empty space between.",
+  "timeToFix" : 5,
+  "title" : "Declarations and declarations with comments should have an empty space between."
 }, {
   "patternId" : "StringTemplate",
   "description" : "Detects simplifications in template strings",
@@ -613,6 +628,16 @@
   "description" : "Wrong parameter type for equals() method found. To correctly override the equals() method use Any?",
   "timeToFix" : 5,
   "title" : "Wrong parameter type for equals() method found. To correctly override the equals() method use Any?"
+}, {
+  "patternId" : "IgnoredReturnValue",
+  "description" : "This call returns a value which is ignored",
+  "timeToFix" : 5,
+  "title" : "This call returns a value which is ignored"
+}, {
+  "patternId" : "ImplicitUnitReturnType",
+  "description" : "Functions using expression statements have an implicit return type.\nChanging the type of the expression accidentally, changes the function return type.\nThis may lead to backward incompatibility.\nUse a block statement to make clear this function will never return a value.",
+  "timeToFix" : 5,
+  "title" : "Functions using expression statements have an implicit return type.\nChanging the type of the expression accidentally, changes the function return type.\nThis may lead to backward incompatibility."
 }, {
   "patternId" : "CollapsibleIfStatements",
   "description" : "Two if statements which could be collapsed were detected. These statements can be merged to improve readability.",
@@ -838,6 +863,11 @@
   "description" : "Multi-line if statement was found that does not have braces. These should be added to improve readability.",
   "timeToFix" : 5,
   "title" : "Multi-line if statement was found that does not have braces. These should be added to improve readability."
+}, {
+  "patternId" : "MandatoryBracesLoops",
+  "description" : "Multi-line loop was found that does not have braces. These should be added to improve readability.",
+  "timeToFix" : 5,
+  "title" : "Multi-line loop was found that does not have braces. These should be added to improve readability."
 }, {
   "patternId" : "VarCouldBeVal",
   "description" : "Var declaration could be val.",

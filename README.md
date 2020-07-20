@@ -34,8 +34,10 @@ You can follow the instructions there to make sure your tool is working as expec
 
 ## Generate Docs
 
+Change `detektVersion` in `build.sbt`
+
 ```sh
-sbt "run-main codacy.detekt.DocGenerator <version-of-the-tool>"
+sbt "runMain codacy.detekt.DocGenerator"
 ```
 
 ## What is Codacy

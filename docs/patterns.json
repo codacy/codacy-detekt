@@ -1,6 +1,6 @@
 {
   "name" : "detekt",
-  "version" : "1.8.0",
+  "version" : "1.10.0",
   "patterns" : [ {
     "patternId" : "CommentOverPrivateFunction",
     "level" : "Warning",
@@ -298,6 +298,10 @@
     "level" : "Info",
     "category" : "CodeStyle"
   }, {
+    "patternId" : "SpacingAroundDoubleColon",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
     "patternId" : "SpacingAroundDot",
     "level" : "Info",
     "category" : "CodeStyle"
@@ -315,6 +319,14 @@
     "category" : "CodeStyle"
   }, {
     "patternId" : "SpacingAroundRangeOperator",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "SpacingBetweenDeclarationsWithAnnotations",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "SpacingBetweenDeclarationsWithComments",
     "level" : "Info",
     "category" : "CodeStyle"
   }, {
@@ -491,6 +503,14 @@
     "category" : "ErrorProne"
   }, {
     "patternId" : "WrongEqualsTypeParameter",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
+    "patternId" : "IgnoredReturnValue",
+    "level" : "Warning",
+    "category" : "ErrorProne"
+  }, {
+    "patternId" : "ImplicitUnitReturnType",
     "level" : "Warning",
     "category" : "ErrorProne"
   }, {
@@ -671,6 +691,10 @@
     "category" : "CodeStyle"
   }, {
     "patternId" : "MandatoryBracesIfStatements",
+    "level" : "Info",
+    "category" : "CodeStyle"
+  }, {
+    "patternId" : "MandatoryBracesLoops",
     "level" : "Info",
     "category" : "CodeStyle"
   }, {

@@ -2,8 +2,8 @@ package codacy.detekt
 
 import better.files.File
 import io.gitlab.arturbosch.detekt.api._
-import io.gitlab.arturbosch.detekt.api.internal.YamlConfig
-import io.gitlab.arturbosch.detekt.core.{KtCompiler, KtTreeCompiler}
+import io.github.detekt.parser.KtCompiler
+import io.gitlab.arturbosch.detekt.core.KtTreeCompiler
 import io.gitlab.arturbosch.detekt.generator.collection.DetektCollector
 import org.jetbrains.kotlin.psi.KtFile
 import play.api.libs.json.{JsArray, Json}
@@ -14,44 +14,40 @@ import scala.sys.process.Process
 object DocGenerator {
 
   def main(args: Array[String]): Unit = {
-    args.headOption.fold {
-      throw new Exception("Version parameter is required (ex: 1.8.0)")
-    } { version =>
-      val rules = generateRules
+    val rules = generateRules
 
-      val repoRoot = File(".")
-      val docsRoot = repoRoot / "src" / "main" / "resources" / "docs"
-      docsRoot.createIfNotExists(asDirectory = true)
-      val patternsFile = docsRoot / "patterns.json"
-      val descriptionsRoot = docsRoot / "description"
-      descriptionsRoot.createIfNotExists(asDirectory = true)
-      val descriptionsFile = descriptionsRoot / "description.json"
+    val repoRoot = File(".")
+    val docsRoot = repoRoot / "docs"
+    docsRoot.createIfNotExists(asDirectory = true)
+    val patternsFile = docsRoot / "patterns.json"
+    val descriptionsRoot = docsRoot / "description"
+    descriptionsRoot.createIfNotExists(asDirectory = true)
+    val descriptionsFile = descriptionsRoot / "description.json"
 
-      val extendedDescriptions = getExtendedDescriptions(version)
+    val extendedDescriptions = getExtendedDescriptions(Versions.detektVersion)
 
-      val patterns = Json.prettyPrint(
-        Json.obj(
-          "name" -> "detekt",
-          "version" -> version,
-          "patterns" -> Json
-            .parse(Json.toJson(generatePatterns(rules)).toString)
-            .as[JsArray]
-        )
-      )
-
-      val descriptions = Json.prettyPrint(
-        Json
-          .parse(
-            Json
-              .toJson(generateDescriptions(rules, descriptionsRoot, extendedDescriptions))
-              .toString
-          )
+    val patterns = Json.prettyPrint(
+      Json.obj(
+        "name" -> "detekt",
+        "version" -> Versions.detektVersion,
+        "patterns" -> Json
+          .parse(Json.toJson(generatePatterns(rules)).toString)
           .as[JsArray]
       )
+    )
 
-      patternsFile.write(patterns)
-      descriptionsFile.write(descriptions)
-    }
+    val descriptions = Json.prettyPrint(
+      Json
+        .parse(
+          Json
+            .toJson(generateDescriptions(rules, descriptionsRoot, extendedDescriptions))
+            .toString
+        )
+        .as[JsArray]
+    )
+
+    patternsFile.write(patterns)
+    descriptionsFile.write(descriptions)
   }
 
   private def generatePatterns(rules: List[Rule]): JsArray = {
@@ -126,7 +122,7 @@ object DocGenerator {
     for {
       provider <- Providers.list
       properties = Map("autoCorrect" -> false, "failFast" -> false).asJava
-      config = new YamlConfig(properties, null, null)
+      config = YamlConfigFactory.create(properties)
       rules <- provider
         .instance(config)
         .getRules
@@ -142,9 +138,7 @@ object DocGenerator {
   private def getExtendedDescriptions(version: String): Map[String, String] = {
     val tmpDirectory = File.newTemporaryDirectory()
 
-    Process(
-      Seq("git", "clone", "--branch", s"v$version", "git://github.com/arturbosch/detekt", tmpDirectory.pathAsString)
-    ).!
+    Process(Seq("git", "clone", "--branch", s"v$version", "git://github.com/detekt/detekt", tmpDirectory.pathAsString)).!
 
     val filePaths = (File(tmpDirectory.pathAsString) / "detekt-rules" / "src" / "main")
       .listRecursively()
