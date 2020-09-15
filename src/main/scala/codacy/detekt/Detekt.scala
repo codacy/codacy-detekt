@@ -84,7 +84,7 @@ object Detekt extends Tool {
           val patterns = patternsRaw.view.map {
             case (patternId, patternDef) =>
               val parameters = patternDef
-                .flatMap(pattern => Some(pattern.parameters))
+                .map(_.parameters)
                 .getOrElse(Set.empty)
                 .map { param =>
                   val pValue = paramValueToJsValue(param.value) match {
