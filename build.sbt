@@ -1,8 +1,3 @@
-import com.typesafe.sbt.packager.docker.Cmd
-import sjsonnew._
-import sjsonnew.BasicJsonProtocol._
-import sjsonnew.support.scalajson.unsafe._
-
 name := "codacy-detekt"
 
 scalaVersion := "2.13.1"
@@ -23,7 +18,7 @@ resolvers += Resolver.jcenterRepo
 
 libraryDependencies ++= {
   Seq(
-    "com.codacy" %% "codacy-engine-scala-seed" % "4.0.3",
+    "com.codacy" %% "codacy-engine-scala-seed" % "5.0.0",
     "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
     "io.gitlab.arturbosch.detekt" % "detekt-core" % detektVersion.value,
     "io.gitlab.arturbosch.detekt" % "detekt-api" % detektVersion.value,

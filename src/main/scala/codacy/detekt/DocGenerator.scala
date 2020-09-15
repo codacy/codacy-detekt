@@ -1,8 +1,8 @@
 package codacy.detekt
 
 import better.files.File
-import io.gitlab.arturbosch.detekt.api._
 import io.github.detekt.parser.KtCompiler
+import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.core.KtTreeCompiler
 import io.gitlab.arturbosch.detekt.generator.collection.DetektCollector
 import org.jetbrains.kotlin.psi.KtFile
@@ -12,6 +12,52 @@ import scala.jdk.CollectionConverters._
 import scala.sys.process.Process
 
 object DocGenerator {
+
+  val defaultPatterns = List(
+    "EmptyCatchBlock",
+    "StringLiteralDuplication",
+    "CommentOverPrivateFunction",
+    "ComplexCondition",
+    "EqualsWithHashCodeExist",
+    "TooGenericExceptionThrown",
+    "UnsafeCallOnNullableType",
+    "EmptyInitBlock",
+    "UndocumentedPublicClass",
+    "SpreadOperator",
+    "ForEachOnRange",
+    "EmptyIfBlock",
+    "EmptySecondaryConstructor",
+    "LongMethod",
+    "TooGenericExceptionCaught",
+    "LabeledExpression",
+    "RethrowCaughtException",
+    "EqualsAlwaysReturnsTrueOrFalse",
+    "UnnecessaryTemporaryInstantiation",
+    "EmptyFunctionBlock",
+    "EmptyForBlock",
+    "EmptyFinallyBlock",
+    "UndocumentedPublicFunction",
+    "CommentOverPrivateProperty",
+    "ComplexMethod",
+    "EmptyClassBlock",
+    "EmptyDefaultConstructor",
+    "IteratorNotThrowingNoSuchElementException",
+    "LargeClass",
+    "ReturnFromFinally",
+    "ThrowingExceptionFromFinally",
+    "TooManyFunctions",
+    "UnsafeCast",
+    "UselessPostfixExpression",
+    "WrongEqualsTypeParameter",
+    "ExplicitGarbageCollectionCall",
+    "EmptyDoWhileBlock",
+    "NestedBlockDepth",
+    "EmptyElseBlock",
+    "EmptyWhileBlock",
+    "EmptyWhenBlock",
+    "LongParameterList",
+    "ThrowingNewInstanceOfSameException"
+  )
 
   def main(args: Array[String]): Unit = {
     val rules = generateRules
@@ -74,7 +120,12 @@ object DocGenerator {
           "Info"
         }
 
-      Json.obj("patternId" -> rule.getIssue.getId, "level" -> level, "category" -> category)
+      Json.obj(
+        "patternId" -> rule.getIssue.getId,
+        "level" -> level,
+        "category" -> category,
+        "enabled" -> defaultPatterns.contains(rule.getIssue.getId)
+      )
     }
     Json.parse(Json.toJson(codacyPatterns).toString).as[JsArray]
   }
