@@ -13,8 +13,7 @@ workflows:
       - codacy/sbt:
           name: publish_docker_local
           cmd: |
-            sbt "clean;
-                 set scalafmtUseIvy in ThisBuild := false;
+            sbt "set scalafmtUseIvy in ThisBuild := false;
                  scalafmt::test;
                  test:scalafmt::test;
                  sbt:scalafmt::test;
@@ -23,6 +22,7 @@ workflows:
             docker build -t $CIRCLE_PROJECT_REPONAME:latest .
             docker save --output docker-image.tar $CIRCLE_PROJECT_REPONAME:latest
           persist_to_workspace: true
+          cache_prefix: sbt-cache-18092020
           requires:
             - codacy/checkout_and_version
       - codacy_plugins_test/run:
