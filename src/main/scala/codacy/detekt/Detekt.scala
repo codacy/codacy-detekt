@@ -10,7 +10,7 @@ import com.codacy.tools.scala.seed.utils.FileHelper
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.api.internal.YamlConfig
 import io.gitlab.arturbosch.detekt.core._
-import io.github.detekt.parser.KtCompiler
+import io.gitlab.arturbosch.detekt.core.rules.RuleSetLocator
 import org.jetbrains.kotlin.resolve.BindingContext
 import org.yaml.snakeyaml.Yaml
 import play.api.libs.json.{JsString, Json}
@@ -18,6 +18,7 @@ import play.api.libs.json.{JsString, Json}
 import scala.jdk.CollectionConverters._
 import scala.util.Try
 import scala.collection.parallel.CollectionConverters._
+import io.github.detekt.parser.KtCompiler
 
 object Detekt extends Tool {
 
@@ -110,8 +111,8 @@ object Detekt extends Tool {
     val settings = ProcessingSettingsFactory.create(Seq(path).asJava, yamlConf)
     val providers = new RuleSetLocator(settings).load()
     val processors = List.empty[FileProcessListener]
-    val detektor = new Detektor(settings, providers, processors.asJava)
-    val compiler = new KtTreeCompiler(settings, new KtCompiler())
+    val detektor = new Analyzer(settings, providers, processors.asJava)
+    val compiler = new KtTreeCompiler(settings, settings.getSpec.getProjectSpec, new KtCompiler)
 
     val detektion = filesOpt match {
       case None =>

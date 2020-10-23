@@ -191,13 +191,15 @@ object DocGenerator {
 
     Process(Seq("git", "clone", "--branch", s"v$version", "git://github.com/detekt/detekt", tmpDirectory.pathAsString)).!
 
-    val filePaths = (File(tmpDirectory.pathAsString) / "detekt-rules" / "src" / "main")
-      .listRecursively()
+    val filePaths = tmpDirectory.children
+      .filter(_.name.startsWith("detekt-rules-"))
+      .flatMap(dir => (dir / "src" / "main").listRecursively())
       .filter(_.pathAsString.endsWith(".kt"))
       .map(_.path)
 
     val collector = new DetektCollector()
-    val compiler = new KtTreeCompiler(ProcessingSettingsFactory.create(Seq.empty.asJava), new KtCompiler())
+    val settings = ProcessingSettingsFactory.create(Seq.empty.asJava)
+    val compiler = new KtTreeCompiler(settings, settings.getSpec.getProjectSpec, new KtCompiler)
 
     val ktFiles: Array[KtFile] = filePaths
       .to(Array)

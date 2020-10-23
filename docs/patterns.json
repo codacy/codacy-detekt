@@ -1,6 +1,6 @@
 {
   "name" : "detekt",
-  "version" : "1.10.0",
+  "version" : "1.14.2",
   "patterns" : [ {
     "patternId" : "CommentOverPrivateFunction",
     "level" : "Warning",
@@ -91,6 +91,11 @@
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : true
+  }, {
+    "patternId" : "ReplaceSafeCallChainWithRun",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
   }, {
     "patternId" : "EmptyCatchBlock",
     "level" : "Warning",
@@ -233,6 +238,16 @@
     "enabled" : false
   }, {
     "patternId" : "AnnotationOnSeparateLine",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "AnnotationSpacing",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "ArgumentListWrapping",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -452,6 +467,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "NonBooleanPropertyPrefixedWithIs",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "PackageNaming",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -640,6 +660,16 @@
     "patternId" : "ImplicitUnitReturnType",
     "level" : "Warning",
     "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "NullableToStringCall",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "ClassOrdering",
+    "level" : "Info",
+    "category" : "CodeStyle",
     "enabled" : false
   }, {
     "patternId" : "CollapsibleIfStatements",
@@ -922,6 +952,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "LibraryEntitiesShouldNotBePublic",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "LibraryCodeMustSpecifyReturnType",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -930,6 +965,46 @@
     "patternId" : "UseArrayLiteralsInAnnotations",
     "level" : "Info",
     "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "UseEmptyCounterpart",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "UseCheckNotNull",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "UseRequireNotNull",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "GlobalCoroutineUsage",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "RedundantSuspendModifier",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "SuspendFunWithFlowReturnType",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "TooManyFunctions",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : true
+  }, {
+    "patternId" : "TooManyFunctionsTwo",
+    "level" : "Warning",
+    "category" : "ErrorProne",
     "enabled" : false
   } ]
 }
