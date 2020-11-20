@@ -89,6 +89,11 @@
   "timeToFix" : 5,
   "title" : "Expression with labels increase complexity and affect maintainability."
 }, {
+  "patternId" : "ReplaceSafeCallChainWithRun",
+  "description" : "Chains of safe calls on non-nullable types can be surrounded with run {}",
+  "timeToFix" : 5,
+  "title" : "Chains of safe calls on non-nullable types can be surrounded with run {}"
+}, {
   "patternId" : "EmptyCatchBlock",
   "description" : "Empty catch block detected. Empty catch blocks indicate that an exception is ignored and not handled.",
   "timeToFix" : 5,
@@ -233,6 +238,16 @@
   "description" : "Multiple annotations should be placed on separate lines. ",
   "timeToFix" : 5,
   "title" : "Multiple annotations should be placed on separate lines. "
+}, {
+  "patternId" : "AnnotationSpacing",
+  "description" : "There should not be empty lines between an annotation and the object that it's annotating",
+  "timeToFix" : 5,
+  "title" : "There should not be empty lines between an annotation and the object that it's annotating"
+}, {
+  "patternId" : "ArgumentListWrapping",
+  "description" : "Reports incorrect argument list wrapping",
+  "timeToFix" : 5,
+  "title" : "Reports incorrect argument list wrapping"
 }, {
   "patternId" : "ChainWrapping",
   "description" : "Checks if condition chaining is wrapped right",
@@ -449,6 +464,11 @@
   "timeToFix" : 5,
   "title" : "Property names inside objects should follow the naming convention set in the projects configuration."
 }, {
+  "patternId" : "NonBooleanPropertyPrefixedWithIs",
+  "description" : "Only boolean property names can start with 'is' prefix.",
+  "timeToFix" : 5,
+  "title" : "Only boolean property names can start with 'is' prefix."
+}, {
   "patternId" : "PackageNaming",
   "description" : "Package names should match the naming convention set in the configuration.",
   "timeToFix" : 5,
@@ -505,9 +525,9 @@
   "title" : "Using the forEach method on ranges has a heavy performance cost. Prefer using simple for loops."
 }, {
   "patternId" : "SpreadOperator",
-  "description" : "In most cases using a spread operator causes a full copy of the array to be created before calling a method which has a very high performance penalty.",
+  "description" : "In most cases using a spread operator causes a full copy of the array to be created before calling a method. This may result in a performance penalty.",
   "timeToFix" : 5,
-  "title" : "In most cases using a spread operator causes a full copy of the array to be created before calling a method which has a very high performance penalty."
+  "title" : "In most cases using a spread operator causes a full copy of the array to be created before calling a method. This may result in a performance penalty."
 }, {
   "patternId" : "UnnecessaryTemporaryInstantiation",
   "description" : "Avoid temporary objects when converting primitive types to String.",
@@ -638,6 +658,16 @@
   "description" : "Functions using expression statements have an implicit return type.\nChanging the type of the expression accidentally, changes the function return type.\nThis may lead to backward incompatibility.\nUse a block statement to make clear this function will never return a value.",
   "timeToFix" : 5,
   "title" : "Functions using expression statements have an implicit return type.\nChanging the type of the expression accidentally, changes the function return type.\nThis may lead to backward incompatibility."
+}, {
+  "patternId" : "NullableToStringCall",
+  "description" : "This call may return the string \"null\"",
+  "timeToFix" : 5,
+  "title" : "This call may return the string \"null\""
+}, {
+  "patternId" : "ClassOrdering",
+  "description" : "Class contents should be in this order: Property declarations/initializer blocks; secondary constructors; method declarations then companion objects.",
+  "timeToFix" : 5,
+  "title" : "Class contents should be in this order: Property declarations/initializer blocks; secondary constructors; method declarations then companion objects."
 }, {
   "patternId" : "CollapsibleIfStatements",
   "description" : "Two if statements which could be collapsed were detected. These statements can be merged to improve readability.",
@@ -830,9 +860,9 @@
   "title" : "The explicit public modifier still results in an internal nested class."
 }, {
   "patternId" : "RedundantVisibilityModifierRule",
-  "description" : "Checks for redundant visibility modifiers. Public is the default visibility for classes. The public modifier is redundant.",
+  "description" : "Checks for redundant visibility modifiers.",
   "timeToFix" : 5,
-  "title" : "Checks for redundant visibility modifiers. Public is the default visibility for classes. The public modifier is redundant."
+  "title" : "Checks for redundant visibility modifiers."
 }, {
   "patternId" : "UntilInsteadOfRangeTo",
   "description" : "'..' call can be replaced with 'until'",
@@ -919,6 +949,11 @@
   "timeToFix" : 5,
   "title" : "Type does not need to be stated explicitly and can be removed."
 }, {
+  "patternId" : "LibraryEntitiesShouldNotBePublic",
+  "description" : "Library class should not be public",
+  "timeToFix" : 5,
+  "title" : "Library class should not be public"
+}, {
   "patternId" : "LibraryCodeMustSpecifyReturnType",
   "description" : "Library functions/properties should have an explicit return type. Inferred return type can easily be changed by mistake which may lead to breaking changes.",
   "timeToFix" : 5,
@@ -928,4 +963,34 @@
   "description" : "Array literals '[...]' should be preferred as they are more readable than 'arrayOf(...)' expressions.",
   "timeToFix" : 5,
   "title" : "Array literals '[...]' should be preferred as they are more readable than 'arrayOf(...)' expressions."
+}, {
+  "patternId" : "UseEmptyCounterpart",
+  "description" : "Instantiation of an object's \"empty\" state should use the object's \"empty\" initializer",
+  "timeToFix" : 5,
+  "title" : "Instantiation of an object's \"empty\" state should use the object's \"empty\" initializer"
+}, {
+  "patternId" : "UseCheckNotNull",
+  "description" : "Use checkNotNull() instead of check() for checking not-null.",
+  "timeToFix" : 5,
+  "title" : "Use checkNotNull() instead of check() for checking not-null."
+}, {
+  "patternId" : "UseRequireNotNull",
+  "description" : "Use requireNotNull() instead of require() for checking not-null.",
+  "timeToFix" : 5,
+  "title" : "Use requireNotNull() instead of require() for checking not-null."
+}, {
+  "patternId" : "GlobalCoroutineUsage",
+  "description" : "Usage of GlobalScope instance is highly discouraged",
+  "timeToFix" : 5,
+  "title" : "Usage of GlobalScope instance is highly discouraged"
+}, {
+  "patternId" : "RedundantSuspendModifier",
+  "description" : "`suspend` modifier is only needed for functions that contain suspending calls",
+  "timeToFix" : 5,
+  "title" : "`suspend` modifier is only needed for functions that contain suspending calls"
+}, {
+  "patternId" : "SuspendFunWithFlowReturnType",
+  "description" : "`suspend` modifier should not be used for functions that return a Coroutines Flow type. Flows are cold streams and invoking a function that returns one should not produce any side effects.",
+  "timeToFix" : 5,
+  "title" : "`suspend` modifier should not be used for functions that return a Coroutines Flow type. Flows are cold streams and invoking a function that returns one should not produce any side effects."
 } ]
