@@ -2,6 +2,7 @@ package codacy.detekt
 
 import better.files.File
 import io.github.detekt.parser.KtCompiler
+import io.github.detekt.tooling.dsl.ProjectSpecBuilder
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.core.KtTreeCompiler
 import io.gitlab.arturbosch.detekt.generator.collection.DetektCollector
@@ -197,7 +198,8 @@ object DocGenerator {
       .map(_.path)
 
     val collector = new DetektCollector()
-    val compiler = new KtTreeCompiler(ProcessingSettingsFactory.create(Seq.empty.asJava), new KtCompiler())
+    val processingSettings = ProcessingSettingsFactory.create(Seq.empty.asJava)
+    val compiler = new KtTreeCompiler(processingSettings, new ProjectSpecBuilder().build(), new KtCompiler())
 
     val ktFiles: Array[KtFile] = filePaths
       .to(Array)

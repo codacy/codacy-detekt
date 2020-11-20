@@ -310,3 +310,7 @@ style:
     active: true
   UntilInsteadOfRangeTo:
     active: false
+
+formatting:
+  SpacingAroundColon:
+    active: false
