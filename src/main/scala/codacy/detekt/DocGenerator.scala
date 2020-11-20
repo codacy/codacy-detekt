@@ -192,8 +192,11 @@ object DocGenerator {
 
     Process(Seq("git", "clone", "--branch", s"v$version", "git://github.com/detekt/detekt", tmpDirectory.pathAsString)).!
 
-    val filePaths = (File(tmpDirectory.pathAsString) / "detekt-rules" / "src" / "main")
-      .listRecursively()
+    val detektRootFolder = File(tmpDirectory.pathAsString)
+
+    val filePaths = detektRootFolder.children
+      .filter(isDetektRuleFolder)
+      .flatMap(dir => (dir / "src" / "main").listRecursively())
       .filter(_.pathAsString.endsWith(".kt"))
       .map(_.path)
 
@@ -204,6 +207,7 @@ object DocGenerator {
     val ktFiles: Array[KtFile] = filePaths
       .to(Array)
       .flatMap(file => compiler.compile(file).asScala)
+
     ktFiles.foreach(file => collector.visit(file))
 
     tmpDirectory.delete(swallowIOExceptions = true)
@@ -227,6 +231,10 @@ object DocGenerator {
           )
       )
       .to(Map)
+  }
+
+  private def isDetektRuleFolder(file: File) = {
+    file.isDirectory && file.name.startsWith("detekt-rules-")
   }
 
   private def generateMarkdown(
