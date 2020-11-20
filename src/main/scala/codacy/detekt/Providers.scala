@@ -3,6 +3,7 @@ package codacy.detekt
 import io.gitlab.arturbosch.detekt.formatting.FormattingProvider
 import io.gitlab.arturbosch.detekt.rules.bugs.PotentialBugProvider
 import io.gitlab.arturbosch.detekt.rules.complexity.ComplexityProvider
+import io.gitlab.arturbosch.detekt.rules.coroutines.CoroutinesProvider
 import io.gitlab.arturbosch.detekt.rules.documentation.CommentSmellProvider
 import io.gitlab.arturbosch.detekt.rules.empty.EmptyCodeProvider
 import io.gitlab.arturbosch.detekt.rules.exceptions.ExceptionsProvider
@@ -21,6 +22,7 @@ object Providers {
     new NamingProvider,
     new PerformanceProvider,
     new PotentialBugProvider,
-    new StyleGuideProvider
+    new StyleGuideProvider,
+    new CoroutinesProvider
   )
 }

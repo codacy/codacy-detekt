@@ -102,9 +102,7 @@ object Detekt extends Tool {
           (category.value.toLowerCase, (Map(("active", patternsRaw.nonEmpty)) ++ patterns).asJava)
       }
 
-    val ourConf = Map(("autoCorrect", false), ("failFast", false)) ++ configMapGen
-
-    YamlConfigFactory.create(ourConf.asJava)
+    YamlConfigFactory.create(configMapGen.asJava)
   }
 
   private def getResults(path: Path, filesOpt: Option[Set[api.Source.File]], yamlConf: YamlConfig): List[Finding] = {
@@ -112,7 +110,7 @@ object Detekt extends Tool {
     val providers = new RuleSetLocator(settings).load()
     val processors = List.empty[FileProcessListener]
     val analyzer = new Analyzer(settings, providers, processors.asJava)
-    val compiler = new KtTreeCompiler(settings, settings.getSpec.getProjectSpec, new KtCompiler())
+    val compiler = new KtTreeCompiler(settings, settings.getSpec.getProjectSpec, new KtCompiler)
 
     val detektion = filesOpt match {
       case None =>

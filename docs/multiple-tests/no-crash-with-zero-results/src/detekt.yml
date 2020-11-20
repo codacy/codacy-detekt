@@ -1,6 +1,3 @@
-autoCorrect: false
-failFast: false
-
 comments:
   active: true
   CommentOverPrivateFunction:
@@ -95,7 +92,7 @@ exceptions:
   active: true
   TooGenericExceptionCaught:
     active: true
-    exceptions:
+    exceptionNames:
      - ArrayIndexOutOfBoundsException
      - Error
      - Exception
@@ -109,7 +106,7 @@ exceptions:
     methodNames: 'toString,hashCode,equals,finalize'
   TooGenericExceptionThrown:
     active: true
-    exceptions:
+    exceptionNames:
      - Error
      - Exception
      - NullPointerException
@@ -178,6 +175,51 @@ potential-bugs:
     active: false
   UnsafeCast:
     active: false
+naming:
+  PackageNaming:
+    active: true
+    packagePattern: '^[a-z]+(\.[a-z][a-z0-9]*)*$'
+  ClassNaming:
+    active: true
+    classPattern: '[A-Z$][a-zA-Z0-9$]*'
+  EnumNaming:
+    active: true
+    enumEntryPattern: '^[A-Z$][a-zA-Z_$]*$'
+  FunctionNaming:
+    active: true
+    functionPattern: '^([a-z$][a-zA-Z$0-9]*)|(`.*`)$'
+  VariableNaming:
+    active: true
+    variablePattern: '[a-z][A-Za-z0-9]*'
+    privateVariablePattern: '(_)?[a-z][A-Za-z0-9]*'
+  VariableMinLength:
+    active: false
+    minimumVariableNameLength: 1
+  VariableMaxLength:
+    active: false
+    maximumVariableNameLength: 64
+  TopLevelPropertyNaming:
+    active: true
+    constantPattern: '[A-Z][_A-Z0-9]*'
+    propertyPattern: '[a-z][A-Za-z\d]*'
+    privatePropertyPattern: '(_)?[a-z][A-Za-z0-9]*'
+  ObjectPropertyNaming:
+    active: true
+    propertyPattern: '[A-Za-z][_A-Za-z0-9]*'
+  MemberNameEqualsClassName:
+    active: false
+    ignoreOverriddenFunction: true
+  ForbiddenClassName:
+    active: false
+    forbiddenName: ''
+  FunctionMaxLength:
+    active: false
+    maximumFunctionNameLength: 30
+  FunctionMinLength:
+    active: false
+    minimumFunctionNameLength: 3
+  MatchingDeclarationName:
+    active: true
 
 style:
   active: true
@@ -217,48 +259,6 @@ style:
   LoopWithTooManyJumpStatements:
     active: false
     maxJumpCount: 1
-  MemberNameEqualsClassName:
-    active: false
-    ignoreOverriddenFunction: true
-  VariableNaming:
-    active: true
-    variablePattern: '[a-z][A-Za-z0-9]*'
-    privateVariablePattern: '(_)?[a-z][A-Za-z0-9]*'
-  VariableMinLength:
-    active: false
-    minimumVariableNameLength: 1
-  VariableMaxLength:
-    active: false
-    maximumVariableNameLength: 64
-  TopLevelPropertyNaming:
-    active: true
-    constantPattern: '[A-Z][_A-Z0-9]*'
-    propertyPattern: '[a-z][A-Za-z\d]*'
-    privatePropertyPattern: '(_)?[a-z][A-Za-z0-9]*'
-  ObjectPropertyNaming:
-    active: true
-    propertyPattern: '[A-Za-z][_A-Za-z0-9]*'
-  PackageNaming:
-    active: true
-    packagePattern: '^[a-z]+(\.[a-z][a-z0-9]*)*$'
-  ClassNaming:
-    active: true
-    classPattern: '[A-Z$][a-zA-Z0-9$]*'
-  EnumNaming:
-    active: true
-    enumEntryPattern: '^[A-Z$][a-zA-Z_$]*$'
-  FunctionNaming:
-    active: true
-    functionPattern: '^([a-z$][a-zA-Z$0-9]*)|(`.*`)$'
-  FunctionMaxLength:
-    active: false
-    maximumFunctionNameLength: 30
-  FunctionMinLength:
-    active: false
-    minimumFunctionNameLength: 3
-  ForbiddenClassName:
-    active: false
-    forbiddenName: ''
   SafeCast:
     active: true
   UnnecessaryAbstractClass:
@@ -269,11 +269,7 @@ style:
     active: false
   UtilityClassWithPublicConstructor:
     active: false
-  OptionalAbstractKeyworMagicNumberd:
-    active: true
   OptionalWhenBraces:
-    active: false
-  OptionalReturnKeyword:
     active: false
   OptionalUnit:
     active: false
@@ -282,7 +278,7 @@ style:
   SerialVersionUIDInSerializableClass:
     active: false
   MagicNumber:
-    active: true
+    active: false
     ignoreNumbers: '-1,0,1,2'
     ignoreHashCodeFunction: false
     ignorePropertyDeclaration: false
@@ -306,7 +302,9 @@ style:
     active: false
   RedundantVisibilityModifierRule:
     active: false
-  MatchingDeclarationName:
-    active: true
   UntilInsteadOfRangeTo:
+    active: false
+
+formatting:
+  SpacingAroundColon:
     active: false

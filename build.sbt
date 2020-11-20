@@ -18,7 +18,7 @@ resolvers += Resolver.jcenterRepo
 
 libraryDependencies ++= {
   Seq(
-    "com.codacy" %% "codacy-engine-scala-seed" % "5.0.1",
+    "com.codacy" %% "codacy-engine-scala-seed" % "5.0.2",
     "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
     "io.gitlab.arturbosch.detekt" % "detekt-core" % detektVersion.value,
     "io.gitlab.arturbosch.detekt" % "detekt-api" % detektVersion.value,

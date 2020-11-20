@@ -1,5 +1,6 @@
 package codacy.detekt
 
+import io.github.detekt.tooling.api.spec.ProcessingSpec
 import io.github.detekt.tooling.dsl.ProcessingSpecBuilder
 import java.nio.file.Path
 
@@ -10,15 +11,17 @@ class ProcessingSettingsFactory {
   companion object {
     @JvmStatic
     fun create(paths: List<Path>, config: Config): ProcessingSettings {
-      val processingSpec = ProcessingSpecBuilder()
-      processingSpec.project { this.inputPaths = paths }
-      return ProcessingSettings (processingSpec.build(), config)
+      val processingSpec = ProcessingSpec {
+        project {
+          inputPaths = paths
+        }
+        config { useDefaultConfig = true }
+      }
+      return ProcessingSettings(processingSpec, config)
     }
     @JvmStatic
     fun create(paths: List<Path>): ProcessingSettings {
-      val processingSpec = ProcessingSpecBuilder()
-      processingSpec.project { this.inputPaths = paths }
-      return ProcessingSettings (processingSpec.build(), Config.empty)
+      return create(paths, Config.empty)
     }
   }
 }
