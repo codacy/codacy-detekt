@@ -9,8 +9,9 @@ import com.codacy.plugins.api.results.{Pattern, Result, Tool}
 import com.codacy.tools.scala.seed.utils.FileHelper
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.api.internal.YamlConfig
-import io.gitlab.arturbosch.detekt.core._
+import io.gitlab.arturbosch.detekt.core.rules._
 import io.github.detekt.parser.KtCompiler
+import io.gitlab.arturbosch.detekt.core.{Analyzer, KtTreeCompiler}
 import org.jetbrains.kotlin.resolve.BindingContext
 import org.yaml.snakeyaml.Yaml
 import play.api.libs.json.{JsString, Json}
@@ -101,25 +102,23 @@ object Detekt extends Tool {
           (category.value.toLowerCase, (Map(("active", patternsRaw.nonEmpty)) ++ patterns).asJava)
       }
 
-    val ourConf = Map(("autoCorrect", false), ("failFast", false)) ++ configMapGen
-
-    YamlConfigFactory.create(ourConf.asJava)
+    YamlConfigFactory.create(configMapGen.asJava)
   }
 
   private def getResults(path: Path, filesOpt: Option[Set[api.Source.File]], yamlConf: YamlConfig): List[Finding] = {
     val settings = ProcessingSettingsFactory.create(Seq(path).asJava, yamlConf)
     val providers = new RuleSetLocator(settings).load()
     val processors = List.empty[FileProcessListener]
-    val detektor = new Detektor(settings, providers, processors.asJava)
-    val compiler = new KtTreeCompiler(settings, new KtCompiler())
+    val analyzer = new Analyzer(settings, providers, processors.asJava)
+    val compiler = new KtTreeCompiler(settings, settings.getSpec.getProjectSpec, new KtCompiler)
 
     val detektion = filesOpt match {
       case None =>
         val ktFiles = compiler.compile(path)
-        detektor.run(ktFiles, BindingContext.EMPTY)
+        analyzer.run(ktFiles, BindingContext.EMPTY)
       case Some(files) =>
         val ktFiles = files.par.flatMap(file => compiler.compile(Paths.get(file.path)).asScala).seq.asJava
-        detektor.run(ktFiles, BindingContext.EMPTY)
+        analyzer.run(ktFiles, BindingContext.EMPTY)
     }
 
     detektion.values.asScala.flatMap(_.asScala).toList

@@ -8,4 +8,3 @@ fun main(args : Array<String>) {
     val myDouble = 2.0F
     println(getHelloString())
 }
-

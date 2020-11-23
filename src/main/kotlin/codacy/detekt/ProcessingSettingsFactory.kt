@@ -1,5 +1,7 @@
 package codacy.detekt
 
+import io.github.detekt.tooling.api.spec.ProcessingSpec
+import io.github.detekt.tooling.dsl.ProcessingSpecBuilder
 import java.nio.file.Path
 
 import io.gitlab.arturbosch.detekt.core.ProcessingSettings
@@ -9,11 +11,22 @@ class ProcessingSettingsFactory {
   companion object {
     @JvmStatic
     fun create(paths: List<Path>, config: Config): ProcessingSettings {
-      return ProcessingSettings (inputPaths = paths, config = config, outPrinter = System.out, errPrinter = System.err)
+      val processingSpec = ProcessingSpec {
+        project {
+          inputPaths = paths
+        }
+        config { useDefaultConfig = true }
+        rules {
+          autoCorrect = false
+          // this is the same as failFast according to the documentation inside the code
+          activateExperimentalRules = false
+        }
+      }
+      return ProcessingSettings(processingSpec, config)
     }
     @JvmStatic
     fun create(paths: List<Path>): ProcessingSettings {
-      return ProcessingSettings (inputPaths = paths, outPrinter = System.out, errPrinter = System.err)
+      return create(paths, Config.empty)
     }
   }
 }

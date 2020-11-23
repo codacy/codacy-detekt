@@ -2,6 +2,7 @@ package codacy.detekt
 
 import better.files.File
 import io.github.detekt.parser.KtCompiler
+import io.github.detekt.tooling.dsl.ProjectSpecBuilder
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.core.KtTreeCompiler
 import io.gitlab.arturbosch.detekt.generator.collection.DetektCollector
@@ -191,17 +192,22 @@ object DocGenerator {
 
     Process(Seq("git", "clone", "--branch", s"v$version", "git://github.com/detekt/detekt", tmpDirectory.pathAsString)).!
 
-    val filePaths = (File(tmpDirectory.pathAsString) / "detekt-rules" / "src" / "main")
-      .listRecursively()
+    val detektRootFolder = File(tmpDirectory.pathAsString)
+
+    val filePaths = detektRootFolder.children
+      .filter(isDetektRuleFolder)
+      .flatMap(dir => (dir / "src" / "main").listRecursively())
       .filter(_.pathAsString.endsWith(".kt"))
       .map(_.path)
 
     val collector = new DetektCollector()
-    val compiler = new KtTreeCompiler(ProcessingSettingsFactory.create(Seq.empty.asJava), new KtCompiler())
+    val processingSettings = ProcessingSettingsFactory.create(Seq.empty.asJava)
+    val compiler = new KtTreeCompiler(processingSettings, new ProjectSpecBuilder().build(), new KtCompiler())
 
     val ktFiles: Array[KtFile] = filePaths
       .to(Array)
       .flatMap(file => compiler.compile(file).asScala)
+
     ktFiles.foreach(file => collector.visit(file))
 
     tmpDirectory.delete(swallowIOExceptions = true)
@@ -225,6 +231,10 @@ object DocGenerator {
           )
       )
       .to(Map)
+  }
+
+  private def isDetektRuleFolder(file: File) = {
+    file.isDirectory && file.name.startsWith("detekt-rules-")
   }
 
   private def generateMarkdown(
