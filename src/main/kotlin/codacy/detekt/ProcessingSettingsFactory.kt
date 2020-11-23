@@ -16,6 +16,11 @@ class ProcessingSettingsFactory {
           inputPaths = paths
         }
         config { useDefaultConfig = true }
+        rules {
+          autoCorrect = false
+          // this is the same as failFast according to the documentation inside the code
+          activateExperimentalRules = false
+        }
       }
       return ProcessingSettings(processingSpec, config)
     }
