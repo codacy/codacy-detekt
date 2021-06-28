@@ -1,18 +1,18 @@
 # UnnecessarySafeCall
 
-Reports unnecessary safe call operators (`.?`) that can be removed by the user.
+Reports unnecessary safe call operators (`?.`) that can be removed by the user.
 
 ## Noncompliant Code
 
 ```kotlin
 val a: String = ""
-val b = someValue?.length
+val b = a?.length
 ```
 ## Compliant Code
 
 ```kotlin
 val a: String? = null
-val b = someValue?.length
+val b = a?.length
 ```
 
 [Source](https://arturbosch.github.io/detekt/potential-bugs.html#unnecessarysafecall)

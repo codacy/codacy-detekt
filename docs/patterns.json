@@ -1,6 +1,6 @@
 {
   "name" : "detekt",
-  "version" : "1.14.2",
+  "version" : "1.17.1",
   "patterns" : [ {
     "patternId" : "CommentOverPrivateFunction",
     "level" : "Warning",
@@ -11,6 +11,11 @@
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : true
+  }, {
+    "patternId" : "DeprecatedBlockTag",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
   }, {
     "patternId" : "EndOfSentenceFormat",
     "level" : "Warning",
@@ -93,6 +98,11 @@
     "enabled" : true
   }, {
     "patternId" : "ReplaceSafeCallChainWithRun",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "NamedArguments",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
@@ -237,6 +247,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "ObjectExtendsThrowable",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "AnnotationOnSeparateLine",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -372,6 +387,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "SpacingAroundAngleBrackets",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "SpacingAroundColon",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -413,6 +433,11 @@
     "enabled" : false
   }, {
     "patternId" : "SpacingAroundRangeOperator",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "SpacingAroundUnaryOperator",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -522,6 +547,11 @@
     "category" : "ErrorProne",
     "enabled" : false
   }, {
+    "patternId" : "NoNameShadowing",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "ForEachOnRange",
     "level" : "Warning",
     "category" : "Performance",
@@ -547,6 +577,16 @@
     "category" : "ErrorProne",
     "enabled" : false
   }, {
+    "patternId" : "DontDowncastCollectionTypes",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "DoubleMutabilityInCollection",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "DuplicateCaseInWhenExpression",
     "level" : "Warning",
     "category" : "CodeStyle",
@@ -561,6 +601,11 @@
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : true
+  }, {
+    "patternId" : "ExitOutsideMain",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
   }, {
     "patternId" : "ExplicitGarbageCollectionCall",
     "level" : "Warning",
@@ -667,12 +712,32 @@
     "category" : "ErrorProne",
     "enabled" : false
   }, {
+    "patternId" : "UnreachableCatchBlock",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "CastToNullableType",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "UnusedUnaryOperator",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "ClassOrdering",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
   }, {
     "patternId" : "CollapsibleIfStatements",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "DestructuringDeclarationWithTooManyEntries",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -787,6 +852,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "ObjectLiteralToLambda",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "OptionalAbstractKeyword",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -873,6 +943,11 @@
     "enabled" : false
   }, {
     "patternId" : "UnnecessaryApply",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "UnnecessaryFilter",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -982,12 +1057,42 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "RedundantHigherOrderMapUsage",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "UseIfEmptyOrIfBlank",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "MultilineLambdaItParameter",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "UseIsNullOrEmpty",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "UseOrEmpty",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "GlobalCoroutineUsage",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
   }, {
     "patternId" : "RedundantSuspendModifier",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "SleepInsteadOfDelay",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false

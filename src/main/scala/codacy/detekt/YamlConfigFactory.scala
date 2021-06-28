@@ -1,6 +1,6 @@
 package codacy.detekt
 
-import io.gitlab.arturbosch.detekt.api.internal.YamlConfig
+import io.gitlab.arturbosch.detekt.core.config.YamlConfig
 
 object YamlConfigFactory {
 

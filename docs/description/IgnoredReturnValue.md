@@ -10,13 +10,13 @@ fun returnsNoValue() {}
 ## Noncompliant Code
 
 ```kotlin
-    returnsValue()
+returnsValue()
 ```
 ## Compliant Code
 
 ```kotlin
-    if (42 == returnsValue()) {}
-    val x = returnsValue()
+if (42 == returnsValue()) {}
+val x = returnsValue()
 ```
 
 [Source](https://arturbosch.github.io/detekt/potential-bugs.html#ignoredreturnvalue)

@@ -9,6 +9,11 @@
   "timeToFix" : 5,
   "title" : "Private properties should be named such that they explain themselves even without a comment."
 }, {
+  "patternId" : "DeprecatedBlockTag",
+  "description" : "Do not use the @deprecated block tag, which is not supported by KDoc. Use the @Deprecated annotation instead.",
+  "timeToFix" : 5,
+  "title" : "Do not use the @deprecated block tag, which is not supported by KDoc. Use the @Deprecated annotation instead."
+}, {
   "patternId" : "EndOfSentenceFormat",
   "description" : "The first sentence in a KDoc comment should end with correct punctuation.",
   "timeToFix" : 5,
@@ -93,6 +98,11 @@
   "description" : "Chains of safe calls on non-nullable types can be surrounded with run {}",
   "timeToFix" : 5,
   "title" : "Chains of safe calls on non-nullable types can be surrounded with run {}"
+}, {
+  "patternId" : "NamedArguments",
+  "description" : "Function invocation with more than 3 parameters must all be named",
+  "timeToFix" : 5,
+  "title" : "Function invocation with more than 3 parameters must all be named"
 }, {
   "patternId" : "EmptyCatchBlock",
   "description" : "Empty catch block detected. Empty catch blocks indicate that an exception is ignored and not handled.",
@@ -234,6 +244,11 @@
   "timeToFix" : 5,
   "title" : "The caught exception is swallowed. The original exception could be lost."
 }, {
+  "patternId" : "ObjectExtendsThrowable",
+  "description" : "An `object` should not extend and type of Throwable. Throwables are stateful and should be instantiated only when needed for when a specific error occurs. An `object`, being a singleton, that extends any type of Throwable consequently introduces a global singleton exception whose instance may be inadvertently reused from multiple places, thus introducing shared mutable state.",
+  "timeToFix" : 5,
+  "title" : "An `object` should not extend and type of Throwable. Throwables are stateful and should be instantiated only when needed for when a specific error occurs."
+}, {
   "patternId" : "AnnotationOnSeparateLine",
   "description" : "Multiple annotations should be placed on separate lines. ",
   "timeToFix" : 5,
@@ -369,6 +384,11 @@
   "timeToFix" : 5,
   "title" : "Detects mis-aligned parameter lists"
 }, {
+  "patternId" : "SpacingAroundAngleBrackets",
+  "description" : "Reports spaces around angle brackets",
+  "timeToFix" : 5,
+  "title" : "Reports spaces around angle brackets"
+}, {
   "patternId" : "SpacingAroundColon",
   "description" : "Reports spaces around colons",
   "timeToFix" : 5,
@@ -413,6 +433,11 @@
   "description" : "Reports spaces around range operator",
   "timeToFix" : 5,
   "title" : "Reports spaces around range operator"
+}, {
+  "patternId" : "SpacingAroundUnaryOperator",
+  "description" : "Reports spaces around unary operator",
+  "timeToFix" : 5,
+  "title" : "Reports spaces around unary operator"
 }, {
   "patternId" : "SpacingBetweenDeclarationsWithAnnotations",
   "description" : "Declarations and declarations with annotations should have an empty space between.",
@@ -519,6 +544,11 @@
   "timeToFix" : 5,
   "title" : "Kotlin source files should be stored in the directory corresponding to its package statement."
 }, {
+  "patternId" : "NoNameShadowing",
+  "description" : "Disallows shadowing variable declarations.",
+  "timeToFix" : 5,
+  "title" : "Disallows shadowing variable declarations."
+}, {
   "patternId" : "ForEachOnRange",
   "description" : "Using the forEach method on ranges has a heavy performance cost. Prefer using simple for loops.",
   "timeToFix" : 5,
@@ -544,6 +574,16 @@
   "timeToFix" : 5,
   "title" : "Deprecated elements should not be used."
 }, {
+  "patternId" : "DontDowncastCollectionTypes",
+  "description" : "Down-casting immutable collection types is breaking the collection contract",
+  "timeToFix" : 5,
+  "title" : "Down-casting immutable collection types is breaking the collection contract"
+}, {
+  "patternId" : "DoubleMutabilityInCollection",
+  "description" : "Using var with mutable collections leads to double mutability. Consider using val or immutable collection types.",
+  "timeToFix" : 5,
+  "title" : "Using var with mutable collections leads to double mutability. Consider using val or immutable collection types."
+}, {
   "patternId" : "DuplicateCaseInWhenExpression",
   "description" : "Duplicated case statements in when expression. Both cases should be merged.",
   "timeToFix" : 5,
@@ -558,6 +598,11 @@
   "description" : "Always override hashCode when you override equals. All hash-based collections depend on objects meeting the equals-contract. Two equal objects must produce the same hashcode. When inheriting equals or hashcode, override the inherited and call the super method for clarification.",
   "timeToFix" : 5,
   "title" : "Always override hashCode when you override equals. All hash-based collections depend on objects meeting the equals-contract. Two equal objects must produce the same hashcode."
+}, {
+  "patternId" : "ExitOutsideMain",
+  "description" : "Do not directly exit the process outside the `main` function. Throw an exception instead.",
+  "timeToFix" : 5,
+  "title" : "Do not directly exit the process outside the `main` function. Throw an exception instead."
 }, {
   "patternId" : "ExplicitGarbageCollectionCall",
   "description" : "Don't try to be smarter than the JVM. Your code should work independently if the garbage collector is disabled or not. If you face memory issues, try tuning the JVM options instead of relying on code itself.",
@@ -664,6 +709,21 @@
   "timeToFix" : 5,
   "title" : "This call may return the string \"null\""
 }, {
+  "patternId" : "UnreachableCatchBlock",
+  "description" : "Unreachable catch block detected.",
+  "timeToFix" : 5,
+  "title" : "Unreachable catch block detected."
+}, {
+  "patternId" : "CastToNullableType",
+  "description" : "Disallow to cast to nullable types",
+  "timeToFix" : 5,
+  "title" : "Disallow to cast to nullable types"
+}, {
+  "patternId" : "UnusedUnaryOperator",
+  "description" : "This unary operator is not used",
+  "timeToFix" : 5,
+  "title" : "This unary operator is not used"
+}, {
   "patternId" : "ClassOrdering",
   "description" : "Class contents should be in this order: Property declarations/initializer blocks; secondary constructors; method declarations then companion objects.",
   "timeToFix" : 5,
@@ -673,6 +733,11 @@
   "description" : "Two if statements which could be collapsed were detected. These statements can be merged to improve readability.",
   "timeToFix" : 5,
   "title" : "Two if statements which could be collapsed were detected. These statements can be merged to improve readability."
+}, {
+  "patternId" : "DestructuringDeclarationWithTooManyEntries",
+  "description" : "The destructuring declaration contains too many entries, making it difficult to read. Consider refactoring to avoid using a destructuring declaration for this case.",
+  "timeToFix" : 5,
+  "title" : "The destructuring declaration contains too many entries, making it difficult to read. Consider refactoring to avoid using a destructuring declaration for this case."
 }, {
   "patternId" : "ReturnCount",
   "description" : "Restrict the number of return statements in methods.",
@@ -720,9 +785,9 @@
   "title" : "Equals() method is called with null as parameter. Consider using == to compare to null."
 }, {
   "patternId" : "ForbiddenComment",
-  "description" : "Flags a forbidden comment. Defaults values are TODO:, FIXME: or STOPSHIP:",
+  "description" : "Flags a forbidden comment.",
   "timeToFix" : 5,
-  "title" : "Flags a forbidden comment. Defaults values are TODO:, FIXME: or STOPSHIP:"
+  "title" : "Flags a forbidden comment."
 }, {
   "patternId" : "ForbiddenImport",
   "description" : "Mark forbidden imports. A forbidden import could be an import for an unstable / experimental apiand hence you might want to mark it as forbidden in order to get warned about the usage.",
@@ -783,6 +848,11 @@
   "description" : "The class declaration is unnecessary because it only contains utility functions. An object declaration should be used instead.",
   "timeToFix" : 5,
   "title" : "The class declaration is unnecessary because it only contains utility functions. An object declaration should be used instead."
+}, {
+  "patternId" : "ObjectLiteralToLambda",
+  "description" : "Report object literals that can be changed to lambdas.",
+  "timeToFix" : 5,
+  "title" : "Report object literals that can be changed to lambdas."
 }, {
   "patternId" : "OptionalAbstractKeyword",
   "description" : "Unnecessary abstract modifier in interface",
@@ -873,6 +943,11 @@
   "description" : "The `apply` usage is unnecessary",
   "timeToFix" : 5,
   "title" : "The `apply` usage is unnecessary"
+}, {
+  "patternId" : "UnnecessaryFilter",
+  "description" : "filter() with other collection operations may be simplified.",
+  "timeToFix" : 5,
+  "title" : "filter() with other collection operations may be simplified."
 }, {
   "patternId" : "UnnecessaryLet",
   "description" : "The `let` usage is unnecessary",
@@ -979,6 +1054,31 @@
   "timeToFix" : 5,
   "title" : "Use requireNotNull() instead of require() for checking not-null."
 }, {
+  "patternId" : "RedundantHigherOrderMapUsage",
+  "description" : "Checks for Redundant 'map' calls.",
+  "timeToFix" : 5,
+  "title" : "Checks for Redundant 'map' calls."
+}, {
+  "patternId" : "UseIfEmptyOrIfBlank",
+  "description" : "Use 'ifEmpty' or 'ifBlank' instead of 'isEmpty' or 'isBlank' to assign default value.",
+  "timeToFix" : 5,
+  "title" : "Use 'ifEmpty' or 'ifBlank' instead of 'isEmpty' or 'isBlank' to assign default value."
+}, {
+  "patternId" : "MultilineLambdaItParameter",
+  "description" : "Multiline lambdas should not use `it` as a parameter name",
+  "timeToFix" : 5,
+  "title" : "Multiline lambdas should not use `it` as a parameter name"
+}, {
+  "patternId" : "UseIsNullOrEmpty",
+  "description" : "Use 'isNullOrEmpty()' call instead of 'x == null || x.isEmpty()'",
+  "timeToFix" : 5,
+  "title" : "Use 'isNullOrEmpty()' call instead of 'x == null || x.isEmpty()'"
+}, {
+  "patternId" : "UseOrEmpty",
+  "description" : "Use 'orEmpty()' call instead of '?: emptyList()'",
+  "timeToFix" : 5,
+  "title" : "Use 'orEmpty()' call instead of '?: emptyList()'"
+}, {
   "patternId" : "GlobalCoroutineUsage",
   "description" : "Usage of GlobalScope instance is highly discouraged",
   "timeToFix" : 5,
@@ -988,6 +1088,11 @@
   "description" : "`suspend` modifier is only needed for functions that contain suspending calls",
   "timeToFix" : 5,
   "title" : "`suspend` modifier is only needed for functions that contain suspending calls"
+}, {
+  "patternId" : "SleepInsteadOfDelay",
+  "description" : "Usage of Thread.sleep() in coroutines can potentially halt multiple coroutines at once.",
+  "timeToFix" : 5,
+  "title" : "Usage of Thread.sleep() in coroutines can potentially halt multiple coroutines at once."
 }, {
   "patternId" : "SuspendFunWithFlowReturnType",
   "description" : "`suspend` modifier should not be used for functions that return a Coroutines Flow type. Flows are cold streams and invoking a function that returns one should not produce any side effects.",

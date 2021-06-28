@@ -12,3 +12,4 @@ target
 
 .metals
 .bloop
+metals.sbt

@@ -6,14 +6,14 @@ Local properties do not need their type to be explicitly provided when the infer
 
 ```kotlin
 fun function() {
-val x: String = "string"
+    val x: String = "string"
 }
 ```
 ## Compliant Code
 
 ```kotlin
 fun function() {
-val x = "string"
+    val x = "string"
 }
 ```
 

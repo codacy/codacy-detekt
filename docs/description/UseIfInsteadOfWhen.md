@@ -8,8 +8,8 @@ See https://kotlinlang.org/docs/reference/coding-conventions.html#if-versus-when
 
 ```kotlin
 when (x) {
-null -> true
-else -> false
+    null -> true
+    else -> false
 }
 ```
 ## Compliant Code
