@@ -6,12 +6,12 @@ taken from: http://kotlinlang.org/docs/reference/coding-conventions.html#modifie
 ## Noncompliant Code
 
 ```kotlin
-lateinit internal private val str: String
+lateinit internal val str: String
 ```
 ## Compliant Code
 
 ```kotlin
-private internal lateinit val str: String
+internal lateinit val str: String
 ```
 
 [Source](https://arturbosch.github.io/detekt/style.html#modifierorder)
