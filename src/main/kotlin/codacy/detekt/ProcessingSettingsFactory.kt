@@ -18,8 +18,7 @@ class ProcessingSettingsFactory {
         config { useDefaultConfig = true }
         rules {
           autoCorrect = false
-          // this is the same as failFast according to the documentation inside the code
-          activateExperimentalRules = false
+          activateAllRules = false
         }
       }
       return ProcessingSettings(processingSpec, config)

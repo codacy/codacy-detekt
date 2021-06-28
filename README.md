@@ -12,7 +12,7 @@ Check the **Docs** section for more information.
 You can create the docker by doing:
 
 ```bash
-sbt docker:publishLocal
+sbt stage && docker build -t codacy-detekt .
 ```
 
 The docker is ran with the following command:

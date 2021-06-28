@@ -8,7 +8,7 @@ import com.codacy.plugins.api._
 import com.codacy.plugins.api.results.{Pattern, Result, Tool}
 import com.codacy.tools.scala.seed.utils.FileHelper
 import io.gitlab.arturbosch.detekt.api._
-import io.gitlab.arturbosch.detekt.api.internal.YamlConfig
+import io.gitlab.arturbosch.detekt.core.config.YamlConfig
 import io.gitlab.arturbosch.detekt.core.rules._
 import io.github.detekt.parser.KtCompiler
 import io.gitlab.arturbosch.detekt.core.{Analyzer, KtTreeCompiler}
