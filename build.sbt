@@ -1,8 +1,9 @@
 name := "codacy-detekt"
 
 scalaVersion := "2.13.1"
+kotlinVersion := "1.5.21"
 
-lazy val detektVersion = Def.setting("1.17.1")
+lazy val detektVersion = Def.setting("1.18.1")
 
 Compile / sourceGenerators += Def.task {
   val file = (Compile / sourceManaged).value / "codacy" / "detekt" / "Versions.scala"
