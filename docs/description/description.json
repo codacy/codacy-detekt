@@ -100,9 +100,9 @@
   "title" : "Chains of safe calls on non-nullable types can be surrounded with run {}"
 }, {
   "patternId" : "NamedArguments",
-  "description" : "Function invocation with more than 3 parameters must all be named",
+  "description" : "Parameters of function invocation must all be named",
   "timeToFix" : 5,
-  "title" : "Function invocation with more than 3 parameters must all be named"
+  "title" : "Parameters of function invocation must all be named"
 }, {
   "patternId" : "EmptyCatchBlock",
   "description" : "Empty catch block detected. Empty catch blocks indicate that an exception is ignored and not handled.",
@@ -539,6 +539,11 @@
   "timeToFix" : 5,
   "title" : "Function parameter names should follow the naming convention set in the projects configuration."
 }, {
+  "patternId" : "BooleanPropertyNaming",
+  "description" : "Boolean property name should follow the naming convention set in the projects configuration",
+  "timeToFix" : 5,
+  "title" : "Boolean property name should follow the naming convention set in the projects configuration"
+}, {
   "patternId" : "InvalidPackageDeclaration",
   "description" : "Kotlin source files should be stored in the directory corresponding to its package statement.",
   "timeToFix" : 5,
@@ -569,6 +574,11 @@
   "timeToFix" : 5,
   "title" : "Using Array<Primitive> leads to implicit boxing and a performance hit"
 }, {
+  "patternId" : "AvoidReferentialEquality",
+  "description" : "Avoid using referential equality checks",
+  "timeToFix" : 5,
+  "title" : "Avoid using referential equality checks"
+}, {
   "patternId" : "Deprecation",
   "description" : "Deprecated elements should not be used.",
   "timeToFix" : 5,
@@ -579,7 +589,7 @@
   "timeToFix" : 5,
   "title" : "Down-casting immutable collection types is breaking the collection contract"
 }, {
-  "patternId" : "DoubleMutabilityInCollection",
+  "patternId" : "DoubleMutabilityForCollection",
   "description" : "Using var with mutable collections leads to double mutability. Consider using val or immutable collection types.",
   "timeToFix" : 5,
   "title" : "Using var with mutable collections leads to double mutability. Consider using val or immutable collection types."

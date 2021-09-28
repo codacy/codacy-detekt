@@ -1,6 +1,6 @@
 {
   "name" : "detekt",
-  "version" : "1.17.1",
+  "version" : "1.18.1",
   "patterns" : [ {
     "patternId" : "CommentOverPrivateFunction",
     "level" : "Warning",
@@ -542,6 +542,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "BooleanPropertyNaming",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "InvalidPackageDeclaration",
     "level" : "Warning",
     "category" : "ErrorProne",
@@ -572,6 +577,11 @@
     "category" : "Performance",
     "enabled" : false
   }, {
+    "patternId" : "AvoidReferentialEquality",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "Deprecation",
     "level" : "Warning",
     "category" : "ErrorProne",
@@ -582,7 +592,7 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "DoubleMutabilityInCollection",
+    "patternId" : "DoubleMutabilityForCollection",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
