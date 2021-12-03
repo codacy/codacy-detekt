@@ -1,6 +1,6 @@
 # PackageNaming
 
-Reports when package names which do not follow the specified naming convention are used.
+Reports package names that do not follow the specified naming convention.
 
 
 [Source](https://arturbosch.github.io/detekt/naming.html#packagenaming)

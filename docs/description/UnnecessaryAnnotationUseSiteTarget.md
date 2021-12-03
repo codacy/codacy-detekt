@@ -2,7 +2,7 @@
 
 This rule inspects the use of the Annotation use-site Target. In case that the use-site Target is not needed it can
 be removed. For more information check the kotlin documentation:
-https://kotlinlang.org/docs/reference/annotations.html#annotation-use-site-targets
+https://kotlinlang.org/docs/annotations.html#annotation-use-site-targets
 
 ## Noncompliant Code
 

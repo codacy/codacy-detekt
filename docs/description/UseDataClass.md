@@ -3,7 +3,7 @@
 Classes that simply hold data should be refactored into a `data class`. Data classes are specialized to hold data
 and generate `hashCode`, `equals` and `toString` implementations as well.
 
-Read more about `data class`: https://kotlinlang.org/docs/reference/data-classes.html
+Read more about `data class`: https://kotlinlang.org/docs/data-classes.html
 
 ## Noncompliant Code
 

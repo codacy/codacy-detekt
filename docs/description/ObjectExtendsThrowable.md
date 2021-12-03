@@ -5,8 +5,8 @@ This rule reports all `objects` including `companion objects` that extend any ty
 mutable information about a specific exception or error. Hence, global singleton `Throwables`
 should be avoided.
 
-See https://kotlinlang.org/docs/reference/object-declarations.html#object-declarations
-See https://kotlinlang.org/docs/reference/object-declarations.html#companion-objects
+See https://kotlinlang.org/docs/object-declarations.html#object-declarations-overview
+See https://kotlinlang.org/docs/object-declarations.html#companion-objects
 
 ## Noncompliant Code
 

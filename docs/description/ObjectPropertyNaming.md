@@ -1,6 +1,6 @@
 # ObjectPropertyNaming
 
-Reports when property names inside objects which do not follow the specified naming convention are used.
+Reports property names inside objects that do not follow the specified naming convention.
 
 
 [Source](https://arturbosch.github.io/detekt/naming.html#objectpropertynaming)

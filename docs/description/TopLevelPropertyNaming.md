@@ -1,6 +1,6 @@
 # TopLevelPropertyNaming
 
-Reports when top level constant names which do not follow the specified naming convention are used.
+Reports top level constant that which do not follow the specified naming convention.
 
 
 [Source](https://arturbosch.github.io/detekt/naming.html#toplevelpropertynaming)

@@ -1,7 +1,7 @@
 # ExplicitCollectionElementAccessMethod
 
 In Kotlin functions `get` or `set` can be replaced with the shorter operator — `[]`,
-see https://kotlinlang.org/docs/reference/operator-overloading.html#indexed.
+see https://kotlinlang.org/docs/operator-overloading.html#indexed-access-operator.
 Prefer the usage of the indexed access operator `[]` for map or list element access or insert methods.
 
 ## Noncompliant Code
