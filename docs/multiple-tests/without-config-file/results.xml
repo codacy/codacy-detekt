@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <checkstyle version="4.3">
     <file name="results.kt">
-        <error source="MagicNumber" line="6" message="MagicNumber - [myFloat] at /src/results.kt:6:19" severity="info" />
+        <error source="MagicNumber" line="6" message="This expression contains a magic number. Consider defining it to a well named constant." severity="info" />
     </file>
 </checkstyle>
