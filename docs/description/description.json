@@ -19,6 +19,11 @@
   "timeToFix" : 5,
   "title" : "The first sentence in a KDoc comment should end with correct punctuation."
 }, {
+  "patternId" : "OutdatedDocumentation",
+  "description" : "KDoc should match actual function or class signature",
+  "timeToFix" : 5,
+  "title" : "KDoc should match actual function or class signature"
+}, {
   "patternId" : "UndocumentedPublicClass",
   "description" : "Public classes, interfaces and objects require documentation.",
   "timeToFix" : 5,
@@ -249,21 +254,6 @@
   "timeToFix" : 5,
   "title" : "An `object` should not extend and type of Throwable. Throwables are stateful and should be instantiated only when needed for when a specific error occurs."
 }, {
-  "patternId" : "AnnotationOnSeparateLine",
-  "description" : "Multiple annotations should be placed on separate lines. ",
-  "timeToFix" : 5,
-  "title" : "Multiple annotations should be placed on separate lines. "
-}, {
-  "patternId" : "AnnotationSpacing",
-  "description" : "There should not be empty lines between an annotation and the object that it's annotating",
-  "timeToFix" : 5,
-  "title" : "There should not be empty lines between an annotation and the object that it's annotating"
-}, {
-  "patternId" : "ArgumentListWrapping",
-  "description" : "Reports incorrect argument list wrapping",
-  "timeToFix" : 5,
-  "title" : "Reports incorrect argument list wrapping"
-}, {
   "patternId" : "ChainWrapping",
   "description" : "Checks if condition chaining is wrapped right",
   "timeToFix" : 5,
@@ -273,11 +263,6 @@
   "description" : "Checks if comments have the right spacing",
   "timeToFix" : 5,
   "title" : "Checks if comments have the right spacing"
-}, {
-  "patternId" : "EnumEntryNameCase",
-  "description" : "Reports enum entries with names that don't meet standard conventions.",
-  "timeToFix" : 5,
-  "title" : "Reports enum entries with names that don't meet standard conventions."
 }, {
   "patternId" : "Filename",
   "description" : "Checks if top level class matches the filename",
@@ -309,11 +294,6 @@
   "timeToFix" : 5,
   "title" : "Detects modifiers in non default order"
 }, {
-  "patternId" : "MultiLineIfElse",
-  "description" : "Detects multiline if-else statements without braces",
-  "timeToFix" : 5,
-  "title" : "Detects multiline if-else statements without braces"
-}, {
   "patternId" : "NoBlankLineBeforeRbrace",
   "description" : "Detects blank lines before rbraces",
   "timeToFix" : 5,
@@ -328,11 +308,6 @@
   "description" : "Reports empty class bodies",
   "timeToFix" : 5,
   "title" : "Reports empty class bodies"
-}, {
-  "patternId" : "NoEmptyFirstLineInMethodBlock",
-  "description" : "Reports methods that have an empty first line.",
-  "timeToFix" : 5,
-  "title" : "Reports methods that have an empty first line."
 }, {
   "patternId" : "NoLineBreakAfterElse",
   "description" : "Reports line breaks after else",
@@ -374,20 +349,10 @@
   "timeToFix" : 5,
   "title" : "Detects wildcast import usages"
 }, {
-  "patternId" : "PackageName",
-  "description" : "Checks package name is formatted correctly",
-  "timeToFix" : 5,
-  "title" : "Checks package name is formatted correctly"
-}, {
   "patternId" : "ParameterListWrapping",
   "description" : "Detects mis-aligned parameter lists",
   "timeToFix" : 5,
   "title" : "Detects mis-aligned parameter lists"
-}, {
-  "patternId" : "SpacingAroundAngleBrackets",
-  "description" : "Reports spaces around angle brackets",
-  "timeToFix" : 5,
-  "title" : "Reports spaces around angle brackets"
 }, {
   "patternId" : "SpacingAroundColon",
   "description" : "Reports spaces around colons",
@@ -403,11 +368,6 @@
   "description" : "Reports spaces around curly braces",
   "timeToFix" : 5,
   "title" : "Reports spaces around curly braces"
-}, {
-  "patternId" : "SpacingAroundDoubleColon",
-  "description" : "Reports spaces around double colons",
-  "timeToFix" : 5,
-  "title" : "Reports spaces around double colons"
 }, {
   "patternId" : "SpacingAroundDot",
   "description" : "Reports spaces around member invocation operator (dot).",
@@ -434,6 +394,56 @@
   "timeToFix" : 5,
   "title" : "Reports spaces around range operator"
 }, {
+  "patternId" : "StringTemplate",
+  "description" : "Detects simplifications in template strings",
+  "timeToFix" : 5,
+  "title" : "Detects simplifications in template strings"
+}, {
+  "patternId" : "AnnotationOnSeparateLine",
+  "description" : "Multiple annotations should be placed on separate lines. ",
+  "timeToFix" : 5,
+  "title" : "Multiple annotations should be placed on separate lines. "
+}, {
+  "patternId" : "AnnotationSpacing",
+  "description" : "There should not be empty lines between an annotation and the object that it's annotating",
+  "timeToFix" : 5,
+  "title" : "There should not be empty lines between an annotation and the object that it's annotating"
+}, {
+  "patternId" : "ArgumentListWrapping",
+  "description" : "Reports incorrect argument list wrapping",
+  "timeToFix" : 5,
+  "title" : "Reports incorrect argument list wrapping"
+}, {
+  "patternId" : "EnumEntryNameCase",
+  "description" : "Reports enum entries with names that don't meet standard conventions.",
+  "timeToFix" : 5,
+  "title" : "Reports enum entries with names that don't meet standard conventions."
+}, {
+  "patternId" : "MultiLineIfElse",
+  "description" : "Detects multiline if-else statements without braces",
+  "timeToFix" : 5,
+  "title" : "Detects multiline if-else statements without braces"
+}, {
+  "patternId" : "NoEmptyFirstLineInMethodBlock",
+  "description" : "Reports methods that have an empty first line.",
+  "timeToFix" : 5,
+  "title" : "Reports methods that have an empty first line."
+}, {
+  "patternId" : "PackageName",
+  "description" : "Checks package name is formatted correctly",
+  "timeToFix" : 5,
+  "title" : "Checks package name is formatted correctly"
+}, {
+  "patternId" : "SpacingAroundAngleBrackets",
+  "description" : "Reports spaces around angle brackets",
+  "timeToFix" : 5,
+  "title" : "Reports spaces around angle brackets"
+}, {
+  "patternId" : "SpacingAroundDoubleColon",
+  "description" : "Reports spaces around double colons",
+  "timeToFix" : 5,
+  "title" : "Reports spaces around double colons"
+}, {
   "patternId" : "SpacingAroundUnaryOperator",
   "description" : "Reports spaces around unary operator",
   "timeToFix" : 5,
@@ -448,11 +458,6 @@
   "description" : "Declarations and declarations with comments should have an empty space between.",
   "timeToFix" : 5,
   "title" : "Declarations and declarations with comments should have an empty space between."
-}, {
-  "patternId" : "StringTemplate",
-  "description" : "Detects simplifications in template strings",
-  "timeToFix" : 5,
-  "title" : "Detects simplifications in template strings"
 }, {
   "patternId" : "MatchingDeclarationName",
   "description" : "If a source file contains only a single non-private top-level class or object, the file name should reflect the case-sensitive name plus the .kt extension.",
@@ -538,6 +543,11 @@
   "description" : "Function parameter names should follow the naming convention set in the projects configuration.",
   "timeToFix" : 5,
   "title" : "Function parameter names should follow the naming convention set in the projects configuration."
+}, {
+  "patternId" : "LambdaParameterNaming",
+  "description" : "Lambda parameter names should follow the naming convention set in the projects configuration.",
+  "timeToFix" : 5,
+  "title" : "Lambda parameter names should follow the naming convention set in the projects configuration."
 }, {
   "patternId" : "BooleanPropertyNaming",
   "description" : "Boolean property name should follow the naming convention set in the projects configuration",
@@ -653,6 +663,11 @@
   "description" : "map.get() with not-null assertion operator (!!) can result in a NullPointerException. Consider usage of map.getValue(), map.getOrDefault() or map.getOrElse() instead.",
   "timeToFix" : 5,
   "title" : "map.get() with not-null assertion operator (!!) can result in a NullPointerException. Consider usage of map.getValue(), map.getOrDefault() or map.getOrElse() instead."
+}, {
+  "patternId" : "MissingPackageDeclaration",
+  "description" : "Kotlin source files should define a package",
+  "timeToFix" : 5,
+  "title" : "Kotlin source files should define a package"
 }, {
   "patternId" : "MissingWhenCase",
   "description" : "Check usage of `when` used as a statement and don't compare all enum or sealed class cases.",
@@ -1010,9 +1025,9 @@
   "title" : "This call on non-null reference may be reduced or removed. Some calls are intended to be called on nullable collection or text types (e.g. String?). When this call is used on a reference to a non-null type (e.g."
 }, {
   "patternId" : "UnderscoresInNumericLiterals",
-  "description" : "Report missing or invalid underscores in decimal base 10 numeric literals. Numeric literals should be underscore separated to increase readability. Underscores that do not make groups of 3 digits are also reported.",
+  "description" : "Report missing or invalid underscores in base 10 numbers. Numeric literals should be underscore separated to increase readability. Underscores that do not make groups of 3 digits are also reported.",
   "timeToFix" : 5,
-  "title" : "Report missing or invalid underscores in decimal base 10 numeric literals. Numeric literals should be underscore separated to increase readability. Underscores that do not make groups of 3 digits are also reported."
+  "title" : "Report missing or invalid underscores in base 10 numbers. Numeric literals should be underscore separated to increase readability. Underscores that do not make groups of 3 digits are also reported."
 }, {
   "patternId" : "UseRequire",
   "description" : "Use require() instead of throwing an IllegalArgumentException.",
@@ -1089,10 +1104,20 @@
   "timeToFix" : 5,
   "title" : "Use 'orEmpty()' call instead of '?: emptyList()'"
 }, {
+  "patternId" : "UseAnyOrNoneInsteadOfFind",
+  "description" : "Use 'any' or 'none' instead of 'find' and null check",
+  "timeToFix" : 5,
+  "title" : "Use 'any' or 'none' instead of 'find' and null check"
+}, {
   "patternId" : "GlobalCoroutineUsage",
   "description" : "Usage of GlobalScope instance is highly discouraged",
   "timeToFix" : 5,
   "title" : "Usage of GlobalScope instance is highly discouraged"
+}, {
+  "patternId" : "InjectDispatcher",
+  "description" : "Don't hardcode dispatchers when creating new coroutines or calling `withContext`. Use dependency injection for dispatchers to make testing easier.",
+  "timeToFix" : 5,
+  "title" : "Don't hardcode dispatchers when creating new coroutines or calling `withContext`. Use dependency injection for dispatchers to make testing easier."
 }, {
   "patternId" : "RedundantSuspendModifier",
   "description" : "`suspend` modifier is only needed for functions that contain suspending calls",

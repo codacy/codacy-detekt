@@ -1,9 +1,9 @@
 # MultilineLambdaItParameter
 
-Lambda expressions are very useful in a lot of cases and they often include very small chunks of
+Lambda expressions are very useful in a lot of cases, and they often include very small chunks of
 code using only one parameter. In this cases Kotlin can supply the implicit `it` parameter
 to make code more concise. However, when you are dealing with lambdas that contain multiple statements,
-you might end up with a code that is hard to read if you don't specify a readable, descriptive parameter name
+you might end up with code that is hard to read if you don't specify a readable, descriptive parameter name
 explicitly.
 
 ## Noncompliant Code

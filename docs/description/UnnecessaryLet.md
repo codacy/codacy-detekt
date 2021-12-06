@@ -1,8 +1,8 @@
 # UnnecessaryLet
 
 `let` expressions are used extensively in our code for null-checking and chaining functions,
-but sometimes their usage should be replaced with a ordinary method/extension function call
-to reduce visual complexity
+but sometimes their usage should be replaced with an ordinary method/extension function call
+to reduce visual complexity.
 
 ## Noncompliant Code
 

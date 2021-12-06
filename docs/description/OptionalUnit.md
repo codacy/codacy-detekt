@@ -8,7 +8,7 @@ of a lone Unit statement.
 
 ```kotlin
 fun foo(): Unit {
-    return Unit 
+    return Unit
 }
 fun foo() = Unit
 
@@ -19,7 +19,7 @@ fun doesNothing() {
 ## Compliant Code
 
 ```kotlin
-fun foo() { }
+fun foo() { }
 
 // overridden no-op functions are allowed
 override fun foo() = Unit

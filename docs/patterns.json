@@ -1,6 +1,6 @@
 {
   "name" : "detekt",
-  "version" : "1.18.1",
+  "version" : "1.19.0",
   "patterns" : [ {
     "patternId" : "CommentOverPrivateFunction",
     "level" : "Warning",
@@ -18,6 +18,11 @@
     "enabled" : false
   }, {
     "patternId" : "EndOfSentenceFormat",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "OutdatedDocumentation",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
@@ -252,32 +257,12 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "AnnotationOnSeparateLine",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "AnnotationSpacing",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "ArgumentListWrapping",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
     "patternId" : "ChainWrapping",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
   }, {
     "patternId" : "CommentSpacing",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "EnumEntryNameCase",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -312,11 +297,6 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "MultiLineIfElse",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
     "patternId" : "NoBlankLineBeforeRbrace",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -328,11 +308,6 @@
     "enabled" : false
   }, {
     "patternId" : "NoEmptyClassBody",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "NoEmptyFirstLineInMethodBlock",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -377,17 +352,7 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "PackageName",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
     "patternId" : "ParameterListWrapping",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "SpacingAroundAngleBrackets",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -403,11 +368,6 @@
     "enabled" : false
   }, {
     "patternId" : "SpacingAroundCurly",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "SpacingAroundDoubleColon",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -437,6 +397,56 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "StringTemplate",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "AnnotationOnSeparateLine",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "AnnotationSpacing",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "ArgumentListWrapping",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "EnumEntryNameCase",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "MultiLineIfElse",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "NoEmptyFirstLineInMethodBlock",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "PackageName",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "SpacingAroundAngleBrackets",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "SpacingAroundDoubleColon",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "SpacingAroundUnaryOperator",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -448,11 +458,6 @@
     "enabled" : false
   }, {
     "patternId" : "SpacingBetweenDeclarationsWithComments",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "StringTemplate",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -538,6 +543,11 @@
     "enabled" : false
   }, {
     "patternId" : "FunctionParameterNaming",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "LambdaParameterNaming",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -655,6 +665,11 @@
     "patternId" : "MapGetWithNotNullAssertionOperator",
     "level" : "Info",
     "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "MissingPackageDeclaration",
+    "level" : "Warning",
+    "category" : "ErrorProne",
     "enabled" : false
   }, {
     "patternId" : "MissingWhenCase",
@@ -1092,7 +1107,17 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "UseAnyOrNoneInsteadOfFind",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "GlobalCoroutineUsage",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "InjectDispatcher",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false

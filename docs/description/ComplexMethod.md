@@ -16,7 +16,7 @@ Each one of them adds one to the complexity count.
 - __Operators__ `&&`, `||`, `?:`
 - __Exceptions__ - `catch`, `use`
 - __Scope Functions__ - `let`, `run`, `with`, `apply`, and `also` ->
-[Reference](https://kotlinlang.org/docs/reference/scope-functions.html)
+[Reference](https://kotlinlang.org/docs/scope-functions.html)
 
 
 [Source](https://arturbosch.github.io/detekt/complexity.html#complexmethod)

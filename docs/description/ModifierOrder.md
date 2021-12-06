@@ -1,7 +1,7 @@
 # ModifierOrder
 
 This rule reports cases in the code where modifiers are not in the correct order. The default modifier order is
-taken from: http://kotlinlang.org/docs/reference/coding-conventions.html#modifiers
+taken from: https://kotlinlang.org/docs/coding-conventions.html#modifiers-order
 
 ## Noncompliant Code
 

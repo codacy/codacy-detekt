@@ -45,7 +45,7 @@ object Detekt extends Tool {
       findings.map { finding =>
         Result.Issue(
           api.Source.File(finding.getFile),
-          Result.Message(finding.compact()),
+          Result.Message(finding.getMessage),
           Pattern.Id(finding.getId),
           api.Source.Line(finding.getLocation.getSource.getLine)
         )
