@@ -1,6 +1,6 @@
 # OutdatedDocumentation
 
-This rule will report any class, function or constructor with KDoc that does not match declaration signature.
+This rule will report any class, function or constructor with KDoc that does not match the declaration signature.
 If KDoc is not present or does not contain any @param or @property tags, rule violation will not be reported.
 By default, both type and value parameters need to be matched and declarations orders must be preserved. You can
 turn off these features using configuration options.

@@ -1,6 +1,6 @@
 # EqualsAlwaysReturnsTrueOrFalse
 
-Reports equals() methods which will always return true or false.
+Reports `equals()` methods which will always return true or false.
 
 Equals methods should always report if some other object is equal to the current object.
 See the Kotlin documentation for Any.equals(other: Any?):

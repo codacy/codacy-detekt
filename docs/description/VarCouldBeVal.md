@@ -1,7 +1,8 @@
 # VarCouldBeVal
 
-Reports var declarations (locally-scoped variables) that could be val, as they are not re-assigned.
-Val declarations are assign-once (read-only), which makes understanding the current state easier.
+Reports var declarations (both local variables and private class properties) that could be val,
+as they are not re-assigned. Val declarations are assign-once (read-only), which makes understanding
+the current state easier.
 
 ## Noncompliant Code
 

@@ -1,7 +1,12 @@
 # DoubleMutabilityForCollection
 
-Using `var` when declaring a mutable collection leads to double mutability. Consider instead
-declaring your variable with `val` or switching your declaration to use an immutable type.
+Using `var` when declaring a mutable collection or value holder leads to double mutability.
+Consider instead declaring your variable with `val` or switching your declaration to use an
+immutable type.
+
+By default, the rule triggers on standard mutable collections, however it can be configured
+to trigger on other types of mutable value types, such as `MutableState` from Jetpack
+Compose.
 
 ## Noncompliant Code
 

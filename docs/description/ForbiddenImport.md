@@ -6,8 +6,6 @@ or deprecated APIs. Detekt will then report all imports that are forbidden.
 ## Noncompliant Code
 
 ```kotlin
-package foo
-
 import kotlin.jvm.JvmField
 import kotlin.SinceKotlin
 ```
