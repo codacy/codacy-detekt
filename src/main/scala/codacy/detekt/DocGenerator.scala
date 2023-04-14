@@ -190,7 +190,7 @@ object DocGenerator {
   private def getExtendedDescriptions(version: String): Map[String, String] = {
     val tmpDirectory = File.newTemporaryDirectory()
 
-    Process(Seq("git", "clone", "--branch", s"v$version", "git@github.com:detekt/detekt.git", tmpDirectory.pathAsString)).!
+    Process(Seq("git", "clone", "--branch", s"v$version", "https://github.com/detekt/detekt.git", tmpDirectory.pathAsString)).!
 
     val detektRootFolder = File(tmpDirectory.pathAsString)
 
