@@ -1,4 +1,4 @@
-FROM amazoncorretto:8-alpine3.14-jre
+FROM amazoncorretto:8-alpine3.17-jre
 RUN apk add bash
 WORKDIR /opt/docker
 COPY docs /docs
