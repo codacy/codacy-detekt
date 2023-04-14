@@ -13,11 +13,9 @@ workflows:
       - codacy/sbt:
           name: publish_docker_local
           cmd: |
-            sbt "set scalafmtUseIvy in ThisBuild := false;
-                 scalafmt::test;
-                 test:scalafmt::test;
-                 sbt:scalafmt::test;
-                 set scalacOptions ++= Seq(\"-opt:l:inline\", \"-opt-inline-from:**\");
+            sbt "scalafmtCheckAll;
+                 scalafmtSbtCheck;
+                 test;
                  stage"
             docker build -t $CIRCLE_PROJECT_REPONAME:latest .
             docker save --output docker-image.tar $CIRCLE_PROJECT_REPONAME:latest
