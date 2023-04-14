@@ -1,7 +1,6 @@
 # RedundantVisibilityModifierRule
 
 This rule checks for redundant visibility modifiers.
-
 One exemption is the
 [explicit API mode](https://kotlinlang.org/docs/whatsnew14.html#explicit-api-mode-for-library-authors)
 In this mode, the visibility modifier should be defined explicitly even if it is public.

@@ -2,7 +2,7 @@
 
 Lambda expressions are one of the core features of the language. They often include very small chunks of
 code using only one parameter. In this cases Kotlin can supply the implicit `it` parameter
-to make code more concise. It fits most usecases, but when faced larger or nested chunks of code,
+to make code more concise. It fits most use cases, but when faced larger or nested chunks of code,
 you might want to add an explicit name for the parameter. Naming it just `it` is meaningless and only
 makes your code misleading, especially when dealing with nested functions.
 

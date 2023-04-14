@@ -3,8 +3,8 @@
 An anonymous object that does nothing other than the implementation of a single method
 can be used as a lambda.
 
-See https://kotlinlang.org/docs/java-interop.html#sam-conversions
-See https://kotlinlang.org/docs/fun-interfaces.html
+See [SAM conversions](https://kotlinlang.org/docs/java-interop.html#sam-conversions),
+[Functional (SAM) interfaces](https://kotlinlang.org/docs/fun-interfaces.html)
 
 ## Noncompliant Code
 

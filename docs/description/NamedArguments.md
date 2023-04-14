@@ -1,6 +1,7 @@
 # NamedArguments
 
-Reports function invocations which have more parameters than a certain threshold and are all not named.
+Reports function invocations which have more arguments than a certain threshold and are all not named. Calls with
+too many arguments are more difficult to understand so a named arguments help.
 
 ## Noncompliant Code
 

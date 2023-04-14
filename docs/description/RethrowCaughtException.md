@@ -1,7 +1,9 @@
 # RethrowCaughtException
 
 This rule reports all exceptions that are caught and then later re-thrown without modification.
-It ignores caught exceptions that are rethrown if there is work done before that.
+It ignores cases:
+1. When caught exceptions that are rethrown if there is work done before that.
+2. When there are more than one catch in try block and at least one of them has some work.
 
 ## Noncompliant Code
 
@@ -34,6 +36,14 @@ fun foo() {
     } catch (e: IOException) {
         print(e.message)
         throw e
+    }
+
+    try {
+        // ...
+    } catch (e: IOException) {
+        throw e
+    } catch (e: Exception) {
+        print(e.message)
     }
 }
 ```
