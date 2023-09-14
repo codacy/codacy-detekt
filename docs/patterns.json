@@ -2,6 +2,291 @@
   "name" : "detekt",
   "version" : "1.22.0",
   "patterns" : [ {
+    "patternId" : "GlobalCoroutineUsage",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "InjectDispatcher",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "RedundantSuspendModifier",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "SleepInsteadOfDelay",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "SuspendFunWithFlowReturnType",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "SuspendFunWithCoroutineScopeReceiver",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "EmptyCatchBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyClassBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyDefaultConstructor",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyDoWhileBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyElseBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyFinallyBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyForBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyFunctionBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyIfBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyInitBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyKtFile",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "EmptySecondaryConstructor",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyTryBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "EmptyWhenBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EmptyWhileBlock",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "AvoidReferentialEquality",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "Deprecation",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "DontDowncastCollectionTypes",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "DoubleMutabilityForCollection",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "DuplicateCaseInWhenExpression",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "ElseCaseInsteadOfExhaustiveWhen",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "EqualsAlwaysReturnsTrueOrFalse",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "EqualsWithHashCodeExist",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "ExitOutsideMain",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "ExplicitGarbageCollectionCall",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "HasPlatformType",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "ImplicitDefaultLocale",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "InvalidRange",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "IteratorHasNextCallsNextMethod",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "IteratorNotThrowingNoSuchElementException",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "LateinitUsage",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "MapGetWithNotNullAssertionOperator",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "MissingPackageDeclaration",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "MissingWhenCase",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "NullCheckOnMutableProperty",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "RedundantElseInWhen",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "UnconditionalJumpStatementInLoop",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "UnnecessaryNotNullOperator",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "UnnecessaryNotNullCheck",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "UnnecessarySafeCall",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "UnreachableCode",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "UnsafeCallOnNullableType",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "UnsafeCast",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "UselessPostfixExpression",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "WrongEqualsTypeParameter",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : true
+  }, {
+    "patternId" : "IgnoredReturnValue",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "ImplicitUnitReturnType",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "NullableToStringCall",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "UnreachableCatchBlock",
+    "level" : "Warning",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "CastToNullableType",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "UnusedUnaryOperator",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "CommentOverPrivateFunction",
     "level" : "Warning",
     "category" : "ErrorProne",
@@ -126,81 +411,6 @@
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
-  }, {
-    "patternId" : "EmptyCatchBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyClassBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyDefaultConstructor",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyDoWhileBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyElseBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyFinallyBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyForBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyFunctionBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyIfBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyInitBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyKtFile",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "EmptySecondaryConstructor",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyTryBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "EmptyWhenBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EmptyWhileBlock",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
   }, {
     "patternId" : "TooGenericExceptionCaught",
     "level" : "Warning",
@@ -712,186 +922,6 @@
     "category" : "Performance",
     "enabled" : false
   }, {
-    "patternId" : "AvoidReferentialEquality",
-    "level" : "Warning",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "Deprecation",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "DontDowncastCollectionTypes",
-    "level" : "Warning",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "DoubleMutabilityForCollection",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "DuplicateCaseInWhenExpression",
-    "level" : "Warning",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "ElseCaseInsteadOfExhaustiveWhen",
-    "level" : "Warning",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "EqualsAlwaysReturnsTrueOrFalse",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "EqualsWithHashCodeExist",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "ExitOutsideMain",
-    "level" : "Warning",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "ExplicitGarbageCollectionCall",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "HasPlatformType",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "ImplicitDefaultLocale",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "InvalidRange",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "IteratorHasNextCallsNextMethod",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "IteratorNotThrowingNoSuchElementException",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "LateinitUsage",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "MapGetWithNotNullAssertionOperator",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "MissingPackageDeclaration",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "MissingWhenCase",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "NullCheckOnMutableProperty",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "RedundantElseInWhen",
-    "level" : "Warning",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "UnconditionalJumpStatementInLoop",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "UnnecessaryNotNullOperator",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "UnnecessaryNotNullCheck",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "UnnecessarySafeCall",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "UnreachableCode",
-    "level" : "Warning",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "UnsafeCallOnNullableType",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "UnsafeCast",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "UselessPostfixExpression",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "WrongEqualsTypeParameter",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : true
-  }, {
-    "patternId" : "IgnoredReturnValue",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "ImplicitUnitReturnType",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "NullableToStringCall",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "UnreachableCatchBlock",
-    "level" : "Warning",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "CastToNullableType",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "UnusedUnaryOperator",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
     "patternId" : "CanBeNonNullable",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -1292,32 +1322,37 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "GlobalCoroutineUsage",
+    "patternId" : "ForbiddenPublicDataClass",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "LibraryEntitiesShouldNotBePublic",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "LibraryCodeMustSpecifyReturnType",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "ViolatesTypeResolutionRequirements",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
   }, {
-    "patternId" : "InjectDispatcher",
+    "patternId" : "UseEntityAtName",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
   }, {
-    "patternId" : "RedundantSuspendModifier",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
+    "patternId" : "TooManyFunctions",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : true
   }, {
-    "patternId" : "SleepInsteadOfDelay",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "SuspendFunWithFlowReturnType",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
-  }, {
-    "patternId" : "SuspendFunWithCoroutineScopeReceiver",
+    "patternId" : "TooManyFunctionsTwo",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
