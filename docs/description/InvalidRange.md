@@ -22,4 +22,4 @@ for (i in 2 downTo 2) {}
 val range = 2 until 3
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#invalidrange)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#invalidrange)

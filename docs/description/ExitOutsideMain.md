@@ -29,4 +29,4 @@ fun main() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#exitoutsidemain)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#exitoutsidemain)

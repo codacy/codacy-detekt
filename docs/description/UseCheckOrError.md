@@ -24,4 +24,4 @@ when(a) {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#usecheckorerror)
+[Source](https://detekt.github.io/detekt/style.html#usecheckorerror)

@@ -10,4 +10,4 @@ name. If this property is inside a bigger class, it makes sense to refactor and 
 increase readability and make the documentation obsolete.
 
 
-[Source](https://arturbosch.github.io/detekt/comments.html#commentoverprivateproperty)
+[Source](https://detekt.github.io/detekt/comments.html#commentoverprivateproperty)

@@ -21,4 +21,4 @@ emptySequence()
 emptySet()
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#useemptycounterpart)
+[Source](https://detekt.github.io/detekt/style.html#useemptycounterpart)

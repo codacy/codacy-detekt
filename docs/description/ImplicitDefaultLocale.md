@@ -27,4 +27,4 @@ str.toUpperCase(Locale.US)
 str.toLowerCase(Locale.US)
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#implicitdefaultlocale)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#implicitdefaultlocale)

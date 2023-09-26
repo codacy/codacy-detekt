@@ -5,4 +5,4 @@ If these private elements are unused they should be removed. Otherwise, this dea
 can lead to confusion and potential bugs.
 
 
-[Source](https://arturbosch.github.io/detekt/style.html#unusedprivatemember)
+[Source](https://detekt.github.io/detekt/style.html#unusedprivatemember)

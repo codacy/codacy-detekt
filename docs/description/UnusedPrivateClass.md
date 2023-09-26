@@ -4,4 +4,4 @@ Reports unused private classes. If private classes are unused they should be rem
 can lead to confusion and potential bugs.
 
 
-[Source](https://arturbosch.github.io/detekt/style.html#unusedprivateclass)
+[Source](https://detekt.github.io/detekt/style.html#unusedprivateclass)

@@ -38,4 +38,4 @@ class InOrder {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#classordering)
+[Source](https://detekt.github.io/detekt/style.html#classordering)

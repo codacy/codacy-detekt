@@ -32,4 +32,4 @@ class Manager {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/naming.html#membernameequalsclassname)
+[Source](https://detekt.github.io/detekt/naming.html#membernameequalsclassname)

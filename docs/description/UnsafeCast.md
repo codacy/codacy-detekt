@@ -21,4 +21,4 @@ fun foo(s: Any) {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#unsafecast)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#unsafecast)

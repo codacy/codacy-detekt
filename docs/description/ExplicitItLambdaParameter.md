@@ -33,4 +33,4 @@ collection.zipWithNext { prev, next ->
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#explicititlambdaparameter)
+[Source](https://detekt.github.io/detekt/style.html#explicititlambdaparameter)

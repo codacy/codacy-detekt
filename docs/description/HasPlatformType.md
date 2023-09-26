@@ -17,4 +17,4 @@ class Person {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#hasplatformtype)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#hasplatformtype)

@@ -10,4 +10,4 @@ with better names if necessary. Giving the function a better, more descriptive n
 solving this issue.
 
 
-[Source](https://arturbosch.github.io/detekt/comments.html#commentoverprivatefunction)
+[Source](https://detekt.github.io/detekt/comments.html#commentoverprivatefunction)

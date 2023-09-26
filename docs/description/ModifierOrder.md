@@ -14,4 +14,4 @@ lateinit internal val str: String
 internal lateinit val str: String
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#modifierorder)
+[Source](https://detekt.github.io/detekt/style.html#modifierorder)

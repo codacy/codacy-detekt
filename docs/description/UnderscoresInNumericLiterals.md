@@ -15,4 +15,4 @@ const val DEFAULT_AMOUNT = 1000000
 const val DEFAULT_AMOUNT = 1_000_000
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#underscoresinnumericliterals)
+[Source](https://detekt.github.io/detekt/style.html#underscoresinnumericliterals)

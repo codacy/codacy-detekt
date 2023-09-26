@@ -19,4 +19,4 @@ fun foo(str: String?) {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#unsafecallonnullabletype)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#unsafecallonnullabletype)

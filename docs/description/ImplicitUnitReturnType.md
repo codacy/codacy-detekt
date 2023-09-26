@@ -23,4 +23,4 @@ fun blockStatementUnit() {
 fun safeUnitReturn(): Unit = println("Hello Unit")
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#implicitunitreturntype)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#implicitunitreturntype)

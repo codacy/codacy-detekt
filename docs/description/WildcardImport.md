@@ -30,4 +30,4 @@ class DetektElements {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#wildcardimport)
+[Source](https://detekt.github.io/detekt/style.html#wildcardimport)

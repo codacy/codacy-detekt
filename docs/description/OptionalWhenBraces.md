@@ -21,4 +21,4 @@ when (i) {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#optionalwhenbraces)
+[Source](https://detekt.github.io/detekt/style.html#optionalwhenbraces)

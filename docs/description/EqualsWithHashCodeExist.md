@@ -31,4 +31,4 @@ class Foo {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#equalswithhashcodeexist)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#equalswithhashcodeexist)

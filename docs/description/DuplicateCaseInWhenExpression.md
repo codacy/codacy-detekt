@@ -23,4 +23,4 @@ when (i) {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#duplicatecaseinwhenexpression)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#duplicatecaseinwhenexpression)

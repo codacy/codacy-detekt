@@ -21,4 +21,4 @@ override fun equals(other: Any?): Boolean {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#equalsalwaysreturnstrueorfalse)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#equalsalwaysreturnstrueorfalse)

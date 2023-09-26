@@ -28,4 +28,4 @@ fun foo(i: Int): String {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#returncount)
+[Source](https://detekt.github.io/detekt/style.html#returncount)

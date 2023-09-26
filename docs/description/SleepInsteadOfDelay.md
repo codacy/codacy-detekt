@@ -20,4 +20,4 @@ suspend fun foo() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/coroutines.html#sleepinsteadofdelay)
+[Source](https://detekt.github.io/detekt/coroutines.html#sleepinsteadofdelay)
