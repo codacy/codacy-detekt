@@ -13,4 +13,4 @@ require(x != null)
 requireNotNull(x)
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#userequirenotnull)
+[Source](https://detekt.github.io/detekt/style.html#userequirenotnull)

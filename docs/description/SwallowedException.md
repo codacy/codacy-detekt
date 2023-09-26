@@ -46,4 +46,4 @@ fun foo() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/exceptions.html#swallowedexception)
+[Source](https://detekt.github.io/detekt/exceptions.html#swallowedexception)

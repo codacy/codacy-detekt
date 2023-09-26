@@ -25,4 +25,4 @@ fun bar(a: Any?): String {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#nullabletostringcall)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#nullabletostringcall)

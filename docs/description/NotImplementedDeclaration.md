@@ -17,4 +17,4 @@ fun todo() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/exceptions.html#notimplementeddeclaration)
+[Source](https://detekt.github.io/detekt/exceptions.html#notimplementeddeclaration)

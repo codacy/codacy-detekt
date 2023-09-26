@@ -15,4 +15,4 @@ val a = 1
 val b = a
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#unnecessarynotnulloperator)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#unnecessarynotnulloperator)

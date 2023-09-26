@@ -7,4 +7,4 @@ By default, this rule also searches for nested and inner classes and objects. Th
 with the configuration options of this rule.
 
 
-[Source](https://arturbosch.github.io/detekt/comments.html#undocumentedpublicclass)
+[Source](https://detekt.github.io/detekt/comments.html#undocumentedpublicclass)

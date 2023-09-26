@@ -21,4 +21,4 @@ fun baz(x: List<Int>?) {
 if (x.isNullOrEmpty()) return
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#useisnullorempty)
+[Source](https://detekt.github.io/detekt/style.html#useisnullorempty)

@@ -8,4 +8,4 @@ a regular expression produced from the passed template license file (defined via
 option).
 
 
-[Source](https://arturbosch.github.io/detekt/comments.html#absentorwrongfilelicense)
+[Source](https://detekt.github.io/detekt/comments.html#absentorwrongfilelicense)

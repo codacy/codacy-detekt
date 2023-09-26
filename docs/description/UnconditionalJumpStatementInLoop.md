@@ -17,4 +17,4 @@ for (i in 1..2) {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#unconditionaljumpstatementinloop)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#unconditionaljumpstatementinloop)

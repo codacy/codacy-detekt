@@ -14,4 +14,4 @@ a().b().c()
 .d().e().f()
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#maxchainedcallsonsameline)
+[Source](https://detekt.github.io/detekt/style.html#maxchainedcallsonsameline)

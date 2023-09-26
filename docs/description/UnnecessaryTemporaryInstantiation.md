@@ -15,4 +15,4 @@ val i = Integer(1).toString() // temporary Integer instantiation just for the co
 val i = Integer.toString(1)
 ```
 
-[Source](https://arturbosch.github.io/detekt/performance.html#unnecessarytemporaryinstantiation)
+[Source](https://detekt.github.io/detekt/performance.html#unnecessarytemporaryinstantiation)

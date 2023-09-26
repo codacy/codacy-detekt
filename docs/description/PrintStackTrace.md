@@ -32,4 +32,4 @@ fun bar() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/exceptions.html#printstacktrace)
+[Source](https://detekt.github.io/detekt/exceptions.html#printstacktrace)

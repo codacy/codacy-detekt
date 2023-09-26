@@ -21,4 +21,4 @@ fun example() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#varcouldbeval)
+[Source](https://detekt.github.io/detekt/style.html#varcouldbeval)

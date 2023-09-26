@@ -43,4 +43,4 @@ object UtilityClass {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#utilityclasswithpublicconstructor)
+[Source](https://detekt.github.io/detekt/style.html#utilityclasswithpublicconstructor)

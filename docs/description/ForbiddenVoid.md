@@ -17,4 +17,4 @@ runnable: () -> Unit
 Void::class
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#forbiddenvoid)
+[Source](https://detekt.github.io/detekt/style.html#forbiddenvoid)

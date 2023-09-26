@@ -7,4 +7,4 @@ Too many functions indicate a violation of the single responsibility principle. 
 which clearly belongs together in separate parts of the code.
 
 
-[Source](https://arturbosch.github.io/detekt/complexity.html#toomanyfunctions)
+[Source](https://detekt.github.io/detekt/complexity.html#toomanyfunctions)

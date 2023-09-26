@@ -27,4 +27,4 @@ fun foo() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#nullcheckonmutableproperty)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#nullcheckonmutableproperty)

@@ -24,4 +24,4 @@ package foo
 class Bar
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#forbiddensuppress)
+[Source](https://detekt.github.io/detekt/style.html#forbiddensuppress)

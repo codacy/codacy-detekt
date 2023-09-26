@@ -16,4 +16,4 @@ if (i > 0)
 val x = if (condition) 5 else 4
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#mandatorybracesifstatements)
+[Source](https://detekt.github.io/detekt/style.html#mandatorybracesifstatements)

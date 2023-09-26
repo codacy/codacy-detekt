@@ -20,4 +20,4 @@ abstract class OnlyConcreteMembersInAbstractClass { // violation: no abstract me
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#unnecessaryabstractclass)
+[Source](https://detekt.github.io/detekt/style.html#unnecessaryabstractclass)

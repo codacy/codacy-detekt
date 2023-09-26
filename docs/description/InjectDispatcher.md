@@ -21,4 +21,4 @@ coroutineScope(dispatcher)
 class MyRepository(dispatchers: CoroutineDispatcher = Dispatchers.IO)
 ```
 
-[Source](https://arturbosch.github.io/detekt/coroutines.html#injectdispatcher)
+[Source](https://detekt.github.io/detekt/coroutines.html#injectdispatcher)

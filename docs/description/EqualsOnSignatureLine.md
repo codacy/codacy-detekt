@@ -23,4 +23,4 @@ fun stuff() =
 fun <V> foo(): Int where V : Int = 5
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#equalsonsignatureline)
+[Source](https://detekt.github.io/detekt/style.html#equalsonsignatureline)

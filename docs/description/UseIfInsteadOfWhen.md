@@ -18,4 +18,4 @@ when (x) {
 if (x == null) true else false
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#useifinsteadofwhen)
+[Source](https://detekt.github.io/detekt/style.html#useifinsteadofwhen)

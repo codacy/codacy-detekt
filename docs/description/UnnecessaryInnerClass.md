@@ -19,4 +19,4 @@ class A {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#unnecessaryinnerclass)
+[Source](https://detekt.github.io/detekt/style.html#unnecessaryinnerclass)

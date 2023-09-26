@@ -18,4 +18,4 @@ fun sum(a: Int, b: Int, c: Int, d: Int) {
 sum(a = 1, b = 2, c = 3, d = 4)
 ```
 
-[Source](https://arturbosch.github.io/detekt/complexity.html#namedarguments)
+[Source](https://detekt.github.io/detekt/complexity.html#namedarguments)

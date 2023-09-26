@@ -26,4 +26,4 @@ fun foo() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/exceptions.html#throwingnewinstanceofsameexception)
+[Source](https://detekt.github.io/detekt/exceptions.html#throwingnewinstanceofsameexception)

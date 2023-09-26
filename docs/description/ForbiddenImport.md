@@ -10,4 +10,4 @@ import kotlin.jvm.JvmField
 import kotlin.SinceKotlin
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#forbiddenimport)
+[Source](https://detekt.github.io/detekt/style.html#forbiddenimport)

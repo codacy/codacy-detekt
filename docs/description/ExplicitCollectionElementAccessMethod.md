@@ -19,4 +19,4 @@ map["key"] = "value"
 val value = map["key"]
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#explicitcollectionelementaccessmethod)
+[Source](https://detekt.github.io/detekt/style.html#explicitcollectionelementaccessmethod)

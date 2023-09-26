@@ -17,4 +17,4 @@ likely not intentional and may cause unexpected results.
     val areNotEqual = "aString" != otherString
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#avoidreferentialequality)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#avoidreferentialequality)

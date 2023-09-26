@@ -20,4 +20,4 @@ import a.b
 class Bar { }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#spacingbetweenpackageandimports)
+[Source](https://detekt.github.io/detekt/style.html#spacingbetweenpackageandimports)

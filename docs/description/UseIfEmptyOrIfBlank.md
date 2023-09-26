@@ -24,4 +24,4 @@ fun test(list: List<Int>, s: String) {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#useifemptyorifblank)
+[Source](https://detekt.github.io/detekt/style.html#useifemptyorifblank)

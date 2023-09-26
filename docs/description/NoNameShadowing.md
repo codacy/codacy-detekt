@@ -30,4 +30,4 @@ fun test(i: Int, j: Int, k: Int) {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/naming.html#nonameshadowing)
+[Source](https://detekt.github.io/detekt/naming.html#nonameshadowing)
