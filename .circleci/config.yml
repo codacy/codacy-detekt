@@ -8,7 +8,7 @@ workflows:
   version: 2
   compile_test_deploy:
     jobs:
-      - codacy/checkout_and_version:
+      - codacy/checkout_and_version
       - codacy/sbt:
           name: publish_docker_local
           cmd: |
