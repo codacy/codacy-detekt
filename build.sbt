@@ -1,6 +1,6 @@
 name := "codacy-detekt"
 
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.6"
 kotlinVersion := "1.6.21"
 
 lazy val detektVersion = Def.setting("1.22.0")
