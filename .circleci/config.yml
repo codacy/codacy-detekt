@@ -2,22 +2,16 @@ version: 2.1
 
 orbs:
   codacy: codacy/base@11.1.1
-  codacy_plugins_test: codacy/plugins-test@2.0.8
+  codacy_plugins_test: codacy/plugins-test@2.0.9
 
 workflows:
   compile_test_deploy:
     jobs:
       - codacy/checkout_and_version
-      - codacy/sbt:
+      - codacy/shell:
           name: publish_docker_local
           cmd: |
-            sbt "set scalafmtUseIvy in ThisBuild := false;
-                scalafmt::test;
-                test:scalafmt::test;
-                sbt:scalafmt::test;
-                set scalacOptions ++= Seq(\"-opt:l:inline\", \"-opt-inline-from:**\");
-                stage"
-            docker build -t $CIRCLE_PROJECT_REPONAME:latest .
+            docker build -t $CIRCLE_PROJECT_REPONAME:latest . 
             docker save --output docker-image.tar $CIRCLE_PROJECT_REPONAME:latest
           persist_to_workspace: true
           requires:
