@@ -16,4 +16,4 @@ requireNotNull(value) { "value should not be null" }
 require(value >= 0) { "value is $value but should be at least 0" }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#userequire)
+[Source](https://detekt.github.io/detekt/style.html#userequire)

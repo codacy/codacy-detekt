@@ -19,4 +19,4 @@ fun normalFunction() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/coroutines.html#redundantsuspendmodifier)
+[Source](https://detekt.github.io/detekt/coroutines.html#redundantsuspendmodifier)

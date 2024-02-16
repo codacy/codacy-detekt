@@ -26,4 +26,4 @@ class CorrectSerializable : Serializable {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#serialversionuidinserializableclass)
+[Source](https://detekt.github.io/detekt/style.html#serialversionuidinserializableclass)

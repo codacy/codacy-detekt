@@ -22,4 +22,4 @@ val testList3 = listOf("string")
 val testString = ""?.isBlank()
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#uselesscallonnotnull)
+[Source](https://detekt.github.io/detekt/style.html#uselesscallonnotnull)

@@ -15,4 +15,4 @@ var string : String? = "foo"
 println(requireNotNull(string))
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#unnecessarynotnullcheck)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#unnecessarynotnullcheck)

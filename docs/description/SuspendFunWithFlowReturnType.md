@@ -44,4 +44,4 @@ private suspend fun getPollingInterval(): Long {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/coroutines.html#suspendfunwithflowreturntype)
+[Source](https://detekt.github.io/detekt/coroutines.html#suspendfunwithflowreturntype)

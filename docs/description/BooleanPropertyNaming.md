@@ -13,4 +13,4 @@ val progressBar: Boolean = true
 val hasProgressBar: Boolean = true
 ```
 
-[Source](https://arturbosch.github.io/detekt/naming.html#booleanpropertynaming)
+[Source](https://detekt.github.io/detekt/naming.html#booleanpropertynaming)

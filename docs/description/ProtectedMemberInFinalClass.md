@@ -18,4 +18,4 @@ class ProtectedMemberInFinalClass {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#protectedmemberinfinalclass)
+[Source](https://detekt.github.io/detekt/style.html#protectedmemberinfinalclass)

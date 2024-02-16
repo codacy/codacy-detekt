@@ -15,4 +15,4 @@ listOf(1, 2, 3, 4).asSequence().map { it*2 }.filter { it < 4 }.map { it*it }.toL
 listOf(1, 2, 3, 4).map { it*2 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/performance.html#couldbesequence)
+[Source](https://detekt.github.io/detekt/performance.html#couldbesequence)

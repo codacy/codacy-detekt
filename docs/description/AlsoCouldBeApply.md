@@ -27,4 +27,4 @@ return a.also { println(it) }
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#alsocouldbeapply)
+[Source](https://detekt.github.io/detekt/style.html#alsocouldbeapply)

@@ -32,4 +32,4 @@ fun bar(vararg strs: String) {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/performance.html#spreadoperator)
+[Source](https://detekt.github.io/detekt/performance.html#spreadoperator)

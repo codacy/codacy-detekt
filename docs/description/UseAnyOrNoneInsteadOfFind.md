@@ -15,4 +15,4 @@ listOf(1, 2, 3).any { it == 4 }
 listOf(1, 2, 3).none { it == 4 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#useanyornoneinsteadoffind)
+[Source](https://detekt.github.io/detekt/style.html#useanyornoneinsteadoffind)

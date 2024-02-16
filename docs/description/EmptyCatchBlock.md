@@ -5,4 +5,4 @@ In case exceptions are ignored intentionally, this should be made explicit
 by using the specified names in the `allowedExceptionNameRegex`.
 
 
-[Source](https://arturbosch.github.io/detekt/empty-blocks.html#emptycatchblock)
+[Source](https://detekt.github.io/detekt/empty-blocks.html#emptycatchblock)

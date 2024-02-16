@@ -23,4 +23,4 @@ a?.let { it.plus(it) }
 val b = a?.let { 1.plus(1) }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#unnecessarylet)
+[Source](https://detekt.github.io/detekt/style.html#unnecessarylet)

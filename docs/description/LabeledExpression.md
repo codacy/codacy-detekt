@@ -43,4 +43,4 @@ class Outer {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/complexity.html#labeledexpression)
+[Source](https://detekt.github.io/detekt/complexity.html#labeledexpression)

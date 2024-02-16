@@ -27,4 +27,4 @@ class BanException : Exception()
 class AuthException : RuntimeException()
 ```
 
-[Source](https://arturbosch.github.io/detekt/exceptions.html#objectextendsthrowable)
+[Source](https://detekt.github.io/detekt/exceptions.html#objectextendsthrowable)

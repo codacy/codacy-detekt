@@ -14,4 +14,4 @@ val isEnabled: Int = 500
 val isEnabled: Boolean = false
 ```
 
-[Source](https://arturbosch.github.io/detekt/naming.html#nonbooleanpropertyprefixedwithis)
+[Source](https://detekt.github.io/detekt/naming.html#nonbooleanpropertyprefixedwithis)

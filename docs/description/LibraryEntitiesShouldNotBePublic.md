@@ -15,4 +15,4 @@ class A
 internal class A
 ```
 
-[Source](https://arturbosch.github.io/detekt/libraries.html#libraryentitiesshouldnotbepublic)
+[Source](https://detekt.github.io/detekt/style.html#libraryentitiesshouldnotbepublic)

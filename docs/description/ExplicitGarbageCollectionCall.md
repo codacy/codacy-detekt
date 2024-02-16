@@ -12,4 +12,4 @@ Runtime.getRuntime().gc()
 System.runFinalization()
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#explicitgarbagecollectioncall)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#explicitgarbagecollectioncall)

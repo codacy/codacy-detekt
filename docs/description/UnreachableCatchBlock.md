@@ -31,4 +31,4 @@ fun test() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#unreachablecatchblock)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#unreachablecatchblock)

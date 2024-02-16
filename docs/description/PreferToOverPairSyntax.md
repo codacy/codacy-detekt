@@ -15,4 +15,4 @@ val pair = Pair(1, 2)
 val pair = 1 to 2
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#prefertooverpairsyntax)
+[Source](https://detekt.github.io/detekt/style.html#prefertooverpairsyntax)

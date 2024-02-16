@@ -6,4 +6,4 @@ Long lines might be hard to read on smaller screens or printouts. Additionally, 
 in the codebase will help make the code more uniform.
 
 
-[Source](https://arturbosch.github.io/detekt/style.html#maxlinelength)
+[Source](https://detekt.github.io/detekt/style.html#maxlinelength)

@@ -34,4 +34,4 @@ fun foo(): Int {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#uselesspostfixexpression)
+[Source](https://detekt.github.io/detekt/potential-bugs.html#uselesspostfixexpression)

@@ -8,4 +8,4 @@ Set the `ignoreOverridden` parameter to `true` to exclude all functions which ar
 functions from the superclass or from an interface (i.e., functions declared with the override modifier).
 
 
-[Source](https://arturbosch.github.io/detekt/empty-blocks.html#emptyfunctionblock)
+[Source](https://detekt.github.io/detekt/empty-blocks.html#emptyfunctionblock)

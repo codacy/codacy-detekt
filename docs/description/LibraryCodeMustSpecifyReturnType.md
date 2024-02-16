@@ -27,4 +27,4 @@ class Parser {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/libraries.html#librarycodemustspecifyreturntype)
+[Source](https://detekt.github.io/detekt/style.html#librarycodemustspecifyreturntype)
