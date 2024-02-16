@@ -19,5 +19,18 @@ abstract class OnlyConcreteMembersInAbstractClass { // violation: no abstract me
     fun f() { }
 }
 ```
+## Compliant Code
+
+```kotlin
+interface OnlyAbstractMembersInInterface {
+    val i: Int
+    fun f()
+}
+
+class OnlyConcreteMembersInClass {
+    val i: Int = 0
+    fun f() { }
+}
+```
 
 [Source](https://arturbosch.github.io/detekt/style.html#unnecessaryabstractclass)

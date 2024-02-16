@@ -29,6 +29,11 @@
   "timeToFix" : 5,
   "description" : "The `suspend` modifier should not be used for functions that use a CoroutinesScope as receiver. You should use suspend functions without the receiver or use plain functions and use coroutineScope { } instead."
 }, {
+  "patternId" : "SuspendFunSwallowedCancellation",
+  "title" : "`runCatching` does not propagate `CancellationException`, don't use it with `suspend` lambda blocks.",
+  "timeToFix" : 5,
+  "description" : "`runCatching` does not propagate `CancellationException`, don't use it with `suspend` lambda blocks."
+}, {
   "patternId" : "EmptyCatchBlock",
   "title" : "Empty catch block detected. Empty catch blocks indicate that an exception is ignored and not handled.",
   "timeToFix" : 5,
@@ -265,9 +270,9 @@
   "description" : "Functions using expression statements have an implicit return type. Changing the type of the expression accidentally, changes the function return type. This may lead to backward incompatibility. Use a block statement to make clear this function will never return a value."
 }, {
   "patternId" : "NullableToStringCall",
-  "title" : "This call may return the string \"null\"",
+  "title" : "`toString()` on nullable receiver may return the string \"null\"",
   "timeToFix" : 5,
-  "description" : "This call may return the string \"null\""
+  "description" : "`toString()` on nullable receiver may return the string \"null\""
 }, {
   "patternId" : "UnreachableCatchBlock",
   "title" : "Unreachable catch block detected.",
@@ -275,14 +280,24 @@
   "description" : "Unreachable catch block detected."
 }, {
   "patternId" : "CastToNullableType",
-  "title" : "Disallow to cast to nullable types.",
+  "title" : "Use safe cast instead of unsafe cast to nullable types.",
   "timeToFix" : 5,
-  "description" : "Disallow to cast to nullable types."
+  "description" : "Use safe cast instead of unsafe cast to nullable types."
+}, {
+  "patternId" : "CastNullableToNonNullableType",
+  "title" : "Nullable type to non-null type cast is found. Consider using two assertions, `null` assertions and type cast",
+  "timeToFix" : 5,
+  "description" : "Nullable type to non-null type cast is found. Consider using two assertions, `null` assertions and type cast"
 }, {
   "patternId" : "UnusedUnaryOperator",
   "title" : "This unary operator is unused.",
   "timeToFix" : 5,
   "description" : "This unary operator is unused."
+}, {
+  "patternId" : "PropertyUsedBeforeDeclaration",
+  "title" : "Properties before declaration should not be used.",
+  "timeToFix" : 5,
+  "description" : "Properties before declaration should not be used."
 }, {
   "patternId" : "CommentOverPrivateFunction",
   "title" : "Comments for private functions should be avoided. Prefer giving the function an expressive name. Split it up in smaller, self-explaining functions if necessary.",
@@ -494,15 +509,30 @@
   "timeToFix" : 5,
   "description" : "Reports incorrect argument list wrapping"
 }, {
+  "patternId" : "BlockCommentInitialStarAlignment",
+  "title" : "Detect the alignment of the initial star in a block comment.",
+  "timeToFix" : 5,
+  "description" : "Detect the alignment of the initial star in a block comment."
+}, {
   "patternId" : "ChainWrapping",
   "title" : "Checks if condition chaining is wrapped right",
   "timeToFix" : 5,
   "description" : "Checks if condition chaining is wrapped right"
 }, {
+  "patternId" : "ClassName",
+  "title" : "Class or object name should start with an uppercase letter and use camel case.",
+  "timeToFix" : 5,
+  "description" : "Class or object name should start with an uppercase letter and use camel case."
+}, {
   "patternId" : "CommentSpacing",
   "title" : "Checks if comments have the right spacing",
   "timeToFix" : 5,
   "description" : "Checks if comments have the right spacing"
+}, {
+  "patternId" : "CommentWrapping",
+  "title" : "Reports mis-indented code",
+  "timeToFix" : 5,
+  "description" : "Reports mis-indented code"
 }, {
   "patternId" : "EnumEntryNameCase",
   "title" : "Reports enum entries with names that don't meet standard conventions.",
@@ -519,6 +549,31 @@
   "timeToFix" : 5,
   "description" : "Detects missing final newlines"
 }, {
+  "patternId" : "FunctionName",
+  "title" : "Function name should start with a lowercase letter (except factory methods) and use camel case.",
+  "timeToFix" : 5,
+  "description" : "Function name should start with a lowercase letter (except factory methods) and use camel case."
+}, {
+  "patternId" : "FunKeywordSpacing",
+  "title" : "Checks the spacing after the fun keyword.",
+  "timeToFix" : 5,
+  "description" : "Checks the spacing after the fun keyword."
+}, {
+  "patternId" : "FunctionReturnTypeSpacing",
+  "title" : "Checks the spacing between colon and return type.",
+  "timeToFix" : 5,
+  "description" : "Checks the spacing between colon and return type."
+}, {
+  "patternId" : "FunctionStartOfBodySpacing",
+  "title" : "Check for consistent spacing before start of function body.",
+  "timeToFix" : 5,
+  "description" : "Check for consistent spacing before start of function body."
+}, {
+  "patternId" : "FunctionTypeReferenceSpacing",
+  "title" : "Checks the spacing before and after the angle brackets of a type argument list.",
+  "timeToFix" : 5,
+  "description" : "Checks the spacing before and after the angle brackets of a type argument list."
+}, {
   "patternId" : "ImportOrdering",
   "title" : "Detects imports in non default order",
   "timeToFix" : 5,
@@ -529,10 +584,20 @@
   "timeToFix" : 5,
   "description" : "Reports mis-indented code"
 }, {
+  "patternId" : "KdocWrapping",
+  "title" : "Reports mis-indented code",
+  "timeToFix" : 5,
+  "description" : "Reports mis-indented code"
+}, {
   "patternId" : "MaximumLineLength",
   "title" : "Reports lines with exceeded length",
   "timeToFix" : 5,
   "description" : "Reports lines with exceeded length"
+}, {
+  "patternId" : "ModifierListSpacing",
+  "title" : "Checks the spacing between the modifiers in and after the last modifier in a modifier list.",
+  "timeToFix" : 5,
+  "description" : "Checks the spacing between the modifiers in and after the last modifier in a modifier list."
 }, {
   "patternId" : "ModifierOrdering",
   "title" : "Detects modifiers in non default order",
@@ -605,9 +670,14 @@
   "description" : "Detects unused imports"
 }, {
   "patternId" : "NoWildcardImports",
-  "title" : "Detects wildcast import usages",
+  "title" : "Detects wildcard imports",
   "timeToFix" : 5,
-  "description" : "Detects wildcast import usages"
+  "description" : "Detects wildcard imports"
+}, {
+  "patternId" : "NullableTypeSpacing",
+  "title" : "Ensure no spaces in nullable type.",
+  "timeToFix" : 5,
+  "description" : "Ensure no spaces in nullable type."
 }, {
   "patternId" : "PackageName",
   "title" : "Checks package name is formatted correctly",
@@ -618,6 +688,21 @@
   "title" : "Detects mis-aligned parameter lists",
   "timeToFix" : 5,
   "description" : "Detects mis-aligned parameter lists"
+}, {
+  "patternId" : "ParameterWrapping",
+  "title" : "Type or value of functions and class parameters must wrap if parameters don't fit on a single line",
+  "timeToFix" : 5,
+  "description" : "Type or value of functions and class parameters must wrap if parameters don't fit on a single line"
+}, {
+  "patternId" : "PropertyName",
+  "title" : "Reports incorrect property name.",
+  "timeToFix" : 5,
+  "description" : "Reports incorrect property name."
+}, {
+  "patternId" : "PropertyWrapping",
+  "title" : "Type or value of properties must wrap if parameters don't fit on a single line",
+  "timeToFix" : 5,
+  "description" : "Type or value of properties must wrap if parameters don't fit on a single line"
 }, {
   "patternId" : "SpacingAroundAngleBrackets",
   "title" : "Reports spaces around angle brackets",
@@ -684,6 +769,11 @@
   "timeToFix" : 5,
   "description" : "Declarations and declarations with comments should have an empty space between."
 }, {
+  "patternId" : "SpacingBetweenFunctionNameAndOpeningParenthesis",
+  "title" : "Ensure consistent spacing between function name and opening parenthesis.",
+  "timeToFix" : 5,
+  "description" : "Ensure consistent spacing between function name and opening parenthesis."
+}, {
   "patternId" : "StringTemplate",
   "title" : "Detects simplifications in template strings",
   "timeToFix" : 5,
@@ -699,17 +789,17 @@
   "timeToFix" : 5,
   "description" : "Rule to mandate/forbid trailing commas at declaration sites"
 }, {
+  "patternId" : "UnnecessaryParenthesesBeforeTrailingLambda",
+  "title" : "Ensures there are no unnecessary parentheses before a trailing lambda",
+  "timeToFix" : 5,
+  "description" : "Ensures there are no unnecessary parentheses before a trailing lambda"
+}, {
   "patternId" : "Wrapping",
   "title" : "Reports missing newlines (e.g. between parentheses of a multi-line function call",
   "timeToFix" : 5,
   "description" : "Reports missing newlines (e.g. between parentheses of a multi-line function call"
 }, {
-  "patternId" : "BlockCommentInitialStarAlignment",
-  "title" : "Detect the alignment of the initial star in a block comment.",
-  "timeToFix" : 5,
-  "description" : "Detect the alignment of the initial star in a block comment."
-}, {
-  "patternId" : "CommentWrapping",
+  "patternId" : "ContextReceiverMapping",
   "title" : "Reports mis-indented code",
   "timeToFix" : 5,
   "description" : "Reports mis-indented code"
@@ -719,55 +809,65 @@
   "timeToFix" : 5,
   "description" : "Detect discouraged comment locations."
 }, {
-  "patternId" : "FunctionReturnTypeSpacing",
-  "title" : "Checks the spacing between colon and return type.",
+  "patternId" : "EnumWrapping",
+  "title" : "An enum should be a single line, or each enum entry has to be placed on a separate line.",
   "timeToFix" : 5,
-  "description" : "Checks the spacing between colon and return type."
-}, {
-  "patternId" : "FunKeywordSpacing",
-  "title" : "Checks the spacing after the fun keyword.",
-  "timeToFix" : 5,
-  "description" : "Checks the spacing after the fun keyword."
+  "description" : "An enum should be a single line, or each enum entry has to be placed on a separate line."
 }, {
   "patternId" : "FunctionSignature",
   "title" : "Format signature to be single when possible, multiple lines otherwise.",
   "timeToFix" : 5,
   "description" : "Format signature to be single when possible, multiple lines otherwise."
 }, {
-  "patternId" : "FunctionStartOfBodySpacing",
-  "title" : "Check for consistent spacing before start of function body.",
+  "patternId" : "IfElseBracing",
+  "title" : "All branches must be wrapped in curly braces if any branches are wrapped.",
   "timeToFix" : 5,
-  "description" : "Check for consistent spacing before start of function body."
+  "description" : "All branches must be wrapped in curly braces if any branches are wrapped."
 }, {
-  "patternId" : "FunctionTypeReferenceSpacing",
-  "title" : "Checks the spacing before and after the angle brackets of a type argument list.",
+  "patternId" : "IfElseWrapping",
+  "title" : "A single line if-statement may contain no more than one else-branch.",
   "timeToFix" : 5,
-  "description" : "Checks the spacing before and after the angle brackets of a type argument list."
+  "description" : "A single line if-statement may contain no more than one else-branch."
 }, {
-  "patternId" : "KdocWrapping",
-  "title" : "Reports mis-indented code",
+  "patternId" : "MultilineExpressionWrapping",
+  "title" : "Multiline expression on the right hand side of an expression must start on a separate line.",
   "timeToFix" : 5,
-  "description" : "Reports mis-indented code"
+  "description" : "Multiline expression on the right hand side of an expression must start on a separate line."
 }, {
-  "patternId" : "ModifierListSpacing",
-  "title" : "Checks the spacing between the modifiers in and after the last modifier in a modifier list.",
+  "patternId" : "NoBlankLineInList",
+  "title" : "Disallow blank lines in lists before, between or after any list element.",
   "timeToFix" : 5,
-  "description" : "Checks the spacing between the modifiers in and after the last modifier in a modifier list."
+  "description" : "Disallow blank lines in lists before, between or after any list element."
 }, {
-  "patternId" : "NullableTypeSpacing",
-  "title" : "Ensure no spaces in nullable type.",
+  "patternId" : "NoConsecutiveComments",
+  "title" : "Disallow consecutive comments in most cases.",
   "timeToFix" : 5,
-  "description" : "Ensure no spaces in nullable type."
+  "description" : "Disallow consecutive comments in most cases."
+}, {
+  "patternId" : "NoEmptyFirstLineInClassBody",
+  "title" : "Disallow blank lines at start of a class body.",
+  "timeToFix" : 5,
+  "description" : "Disallow blank lines at start of a class body."
+}, {
+  "patternId" : "NoSingleLineBlockComment",
+  "title" : "Reports single block line comments",
+  "timeToFix" : 5,
+  "description" : "Reports single block line comments"
 }, {
   "patternId" : "ParameterListSpacing",
   "title" : "Ensure consistent spacing inside the parameter list.",
   "timeToFix" : 5,
   "description" : "Ensure consistent spacing inside the parameter list."
 }, {
-  "patternId" : "SpacingBetweenFunctionNameAndOpeningParenthesis",
-  "title" : "Ensure consistent spacing between function name and opening parenthesis.",
+  "patternId" : "StringTemplateIndent",
+  "title" : "Enforce consistent multiline string template indentation which are post-fixed with .trimIndent()",
   "timeToFix" : 5,
-  "description" : "Ensure consistent spacing between function name and opening parenthesis."
+  "description" : "Enforce consistent multiline string template indentation which are post-fixed with .trimIndent()"
+}, {
+  "patternId" : "TryCatchFinallySpacing",
+  "title" : "Enforce consistent spacing in try-catch-finally blocks.",
+  "timeToFix" : 5,
+  "description" : "Enforce consistent spacing in try-catch-finally blocks."
 }, {
   "patternId" : "TypeArgumentListSpacing",
   "title" : "Reports spaces in the type reference before a function.",
@@ -778,11 +878,6 @@
   "title" : "Check spacing after a type parameter list in function and class declarations.",
   "timeToFix" : 5,
   "description" : "Check spacing after a type parameter list in function and class declarations."
-}, {
-  "patternId" : "UnnecessaryParenthesesBeforeTrailingLambda",
-  "title" : "Ensures there are no unnecessary parentheses before a trailing lambda",
-  "timeToFix" : 5,
-  "description" : "Ensures there are no unnecessary parentheses before a trailing lambda"
 }, {
   "patternId" : "MatchingDeclarationName",
   "title" : "If a source file contains only a single non-private top-level class or object, the file name should reflect the case-sensitive name plus the .kt extension.",
@@ -994,6 +1089,11 @@
   "timeToFix" : 5,
   "description" : "Equals() method is called with null as parameter. Consider using == to compare to null."
 }, {
+  "patternId" : "ForbiddenAnnotation",
+  "title" : "Avoid using this annotation.",
+  "timeToFix" : 5,
+  "description" : "Avoid using this annotation."
+}, {
   "patternId" : "ForbiddenComment",
   "title" : "Flags a forbidden comment.",
   "timeToFix" : 5,
@@ -1090,9 +1190,9 @@
   "description" : "Member with protected visibility in final class is private. Consider using private or internal as modifier."
 }, {
   "patternId" : "SerialVersionUIDInSerializableClass",
-  "title" : "A class which implements the Serializable interface does not define a correct serialVersionUID field. The serialVersionUID field should be a constant long value inside a companion object.",
+  "title" : "A class which implements the Serializable interface does not define a correct serialVersionUID field. The serialVersionUID field should be a private constant long value inside a companion object.",
   "timeToFix" : 5,
-  "description" : "A class which implements the Serializable interface does not define a correct serialVersionUID field. The serialVersionUID field should be a constant long value inside a companion object."
+  "description" : "A class which implements the Serializable interface does not define a correct serialVersionUID field. The serialVersionUID field should be a private constant long value inside a companion object."
 }, {
   "patternId" : "MagicNumber",
   "title" : "Report magic numbers. Magic number is a numeric literal that is not defined as a constant and hence it's unclear what the purpose of this number is. It's better to declare such numbers as constants and give them a proper name.",
@@ -1124,15 +1224,25 @@
   "timeToFix" : 5,
   "description" : "Unused Imports are dead code and should be removed."
 }, {
+  "patternId" : "UnusedParameter",
+  "title" : "Function parameter is unused and should be removed.",
+  "timeToFix" : 5,
+  "description" : "Function parameter is unused and should be removed."
+}, {
   "patternId" : "UnusedPrivateClass",
   "title" : "Private class is unused and should be removed.",
   "timeToFix" : 5,
   "description" : "Private class is unused and should be removed."
 }, {
   "patternId" : "UnusedPrivateMember",
-  "title" : "Private member is unused and should be removed.",
+  "title" : "Private function is unused and should be removed.",
   "timeToFix" : 5,
-  "description" : "Private member is unused and should be removed."
+  "description" : "Private function is unused and should be removed."
+}, {
+  "patternId" : "UnusedPrivateProperty",
+  "title" : "Property is unused and should be removed.",
+  "timeToFix" : 5,
+  "description" : "Property is unused and should be removed."
 }, {
   "patternId" : "ExpressionBodySyntax",
   "title" : "Functions with exact one statement, the return statement, can be rewritten with ExpressionBodySyntax.",
@@ -1159,6 +1269,11 @@
   "timeToFix" : 5,
   "description" : "The `apply` usage is unnecessary and can be removed."
 }, {
+  "patternId" : "UnnecessaryBracesAroundTrailingLambda",
+  "title" : "Braces around trailing lambda is unnecessary.",
+  "timeToFix" : 5,
+  "description" : "Braces around trailing lambda is unnecessary."
+}, {
   "patternId" : "UnnecessaryFilter",
   "title" : "`filter()` with other collection operations may be simplified.",
   "timeToFix" : 5,
@@ -1179,10 +1294,15 @@
   "timeToFix" : 5,
   "description" : "Pair was created using the Pair constructor, using the to syntax is preferred."
 }, {
-  "patternId" : "MandatoryBracesIfStatements",
-  "title" : "Multi-line if statement was found that does not have braces. These braces should be added to improve readability.",
+  "patternId" : "BracesOnIfStatements",
+  "title" : "Braces do not comply with the specified policy",
   "timeToFix" : 5,
-  "description" : "Multi-line if statement was found that does not have braces. These braces should be added to improve readability."
+  "description" : "Braces do not comply with the specified policy"
+}, {
+  "patternId" : "BracesOnWhenStatements",
+  "title" : "Braces do not comply with the specified policy",
+  "timeToFix" : 5,
+  "description" : "Braces do not comply with the specified policy"
 }, {
   "patternId" : "MandatoryBracesLoops",
   "title" : "A multi-line loop was found that does not have braces. These should be added to improve readability.",
@@ -1284,15 +1404,20 @@
   "timeToFix" : 5,
   "description" : "The indentation of the raw String should be consistent"
 }, {
+  "patternId" : "StringShouldBeRawString",
+  "title" : "The string can be converted to raw string.",
+  "timeToFix" : 5,
+  "description" : "The string can be converted to raw string."
+}, {
   "patternId" : "UseIsNullOrEmpty",
   "title" : "Use `isNullOrEmpty()` call instead of `x == null || x.isEmpty()`.",
   "timeToFix" : 5,
   "description" : "Use `isNullOrEmpty()` call instead of `x == null || x.isEmpty()`."
 }, {
   "patternId" : "UseOrEmpty",
-  "title" : "Use `orEmpty()` call instead of `?: emptyList()`",
+  "title" : "Use `orEmpty()` call instead of `?:` with empty collection factory methods",
   "timeToFix" : 5,
-  "description" : "Use `orEmpty()` call instead of `?: emptyList()`"
+  "description" : "Use `orEmpty()` call instead of `?:` with empty collection factory methods"
 }, {
   "patternId" : "UseAnyOrNoneInsteadOfFind",
   "title" : "Use `any` or `none` instead of `find` and `null` checks.",
@@ -1318,6 +1443,16 @@
   "title" : "Use `sumOf` instead of `flatMap` and `size/count` calls",
   "timeToFix" : 5,
   "description" : "Use `sumOf` instead of `flatMap` and `size/count` calls"
+}, {
+  "patternId" : "DoubleNegativeLambda",
+  "title" : "Double negative from a function name expressed in the negative (like `takeUnless`) with a lambda block that also contains negation. This is more readable when rewritten using a positive form of the function (like `takeIf`).",
+  "timeToFix" : 5,
+  "description" : "Double negative from a function name expressed in the negative (like `takeUnless`) with a lambda block that also contains negation. This is more readable when rewritten using a positive form of the function (like `takeIf`)."
+}, {
+  "patternId" : "UseLet",
+  "title" : "Use `?.let {}` instead of if/else with a null block when checking for nullable values",
+  "timeToFix" : 5,
+  "description" : "Use `?.let {}` instead of if/else with a null block when checking for nullable values"
 }, {
   "patternId" : "ForbiddenPublicDataClass",
   "title" : "The data classes are bad for the binary compatibility in public APIs. Avoid to use it.",

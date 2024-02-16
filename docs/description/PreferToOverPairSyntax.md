@@ -2,7 +2,7 @@
 
 This rule detects the usage of the Pair constructor to create pairs of values.
 
-Using <value1> to <value2> is preferred.
+Using `<value1>` to `<value2>` is preferred.
 
 ## Noncompliant Code
 

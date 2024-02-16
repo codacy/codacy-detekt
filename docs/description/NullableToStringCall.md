@@ -1,6 +1,6 @@
 # NullableToStringCall
 
-Turn on this rule to flag 'toString' calls with a nullable receiver that may return the string "null".
+Reports `toString()` calls with a nullable receiver that may return the string "null".
 
 ## Noncompliant Code
 

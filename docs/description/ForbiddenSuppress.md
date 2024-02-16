@@ -1,8 +1,10 @@
 # ForbiddenSuppress
 
-This rule allows to set a list of rules whose suppression is forbidden.
+Report suppressions of all forbidden rules.
+
+This rule allows to set a list of [rules] whose suppression is forbidden.
 This can be used to discourage the abuse of the `Suppress` and `SuppressWarnings` annotations.
-Detekt will report suppression of all forbidden rules.
+
 This rule is not capable of reporting suppression of itself, as that's a language feature with precedence.
 
 ## Noncompliant Code

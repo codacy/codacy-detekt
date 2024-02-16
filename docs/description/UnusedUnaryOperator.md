@@ -1,6 +1,6 @@
 # UnusedUnaryOperator
 
-This rule detects unused unary operators.
+Detects unused unary operators.
 
 ## Noncompliant Code
 

@@ -1,9 +1,9 @@
 name := "codacy-detekt"
 
-scalaVersion := "2.13.6"
-kotlinVersion := "1.6.21"
+scalaVersion := "2.13.12"
+kotlinVersion := "1.9.22"
 
-lazy val detektVersion = Def.setting("1.22.0")
+lazy val detektVersion = Def.setting("1.23.5")
 
 Compile / sourceGenerators += Def.task {
   val file = (Compile / sourceManaged).value / "codacy" / "detekt" / "Versions.scala"
@@ -13,13 +13,14 @@ Compile / sourceGenerators += Def.task {
                     |}
                     |""".stripMargin)
   Seq(file)
-}.taskValue 
+}.taskValue
 
 resolvers += Resolver.jcenterRepo
 
 libraryDependencies ++= {
   Seq(
-    "com.codacy" %% "codacy-engine-scala-seed" % "6.0.1",
+    "com.codacy" %% "codacy-engine-scala-seed" % "6.1.2",
+    "com.github.pathikrit" %% "better-files" % "3.9.2",
     "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
     "io.gitlab.arturbosch.detekt" % "detekt-core" % detektVersion.value,
     "io.gitlab.arturbosch.detekt" % "detekt-formatting" % detektVersion.value,

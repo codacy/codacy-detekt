@@ -1,8 +1,7 @@
 # CastToNullableType
 
-Disallow to cast to nullable types.
-There are cases where `as String?` is misused as safe cast (`as? String`).
-So if you want to prevent those cases, turn on this rule.
+Reports unsafe cast to nullable types.
+`as String?` is unsafed and may be misused as safe cast (`as? String`).
 
 ## Noncompliant Code
 

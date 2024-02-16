@@ -184,13 +184,17 @@ object DocGenerator {
           r.getRules.asScala
         case r: Rule =>
           Seq(r)
+        case r: BaseRule =>
+          Seq.empty
       }
     } yield flattenedRules
 
   private def getExtendedDescriptions(version: String): Map[String, String] = {
     val tmpDirectory = File.newTemporaryDirectory()
 
-    Process(Seq("git", "clone", "--branch", s"v$version", "https://github.com/detekt/detekt", tmpDirectory.pathAsString)).!
+    Process(
+      Seq("git", "clone", "--branch", s"v$version", "https://github.com/detekt/detekt", tmpDirectory.pathAsString)
+    ).!
 
     val detektRootFolder = File(tmpDirectory.pathAsString)
 
@@ -200,7 +204,7 @@ object DocGenerator {
       .filter(_.pathAsString.endsWith(".kt"))
       .map(_.path)
 
-    val collector = new DetektCollector()
+    val collector = new DetektCollector(Map.empty.asJava)
     val processingSettings = ProcessingSettingsFactory.create(Seq.empty.asJava)
     val compiler = new KtTreeCompiler(processingSettings, new ProjectSpecBuilder().build(), new KtCompiler())
 

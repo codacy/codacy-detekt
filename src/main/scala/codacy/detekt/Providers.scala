@@ -14,7 +14,6 @@ import io.gitlab.arturbosch.detekt.libraries.RuleLibrariesProvider
 import io.gitlab.arturbosch.detekt.authors.RuleAuthorsProvider
 import io.gitlab.arturbosch.detekt.sample.extensions.SampleProvider
 
-
 object Providers {
 
   val list = List(

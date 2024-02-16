@@ -12,19 +12,11 @@ will be evaluated to a number consisting of Eastern-Arabic (non-ASCII) digits.
 
 ```kotlin
 String.format("Timestamp: %d", System.currentTimeMillis())
-
-val str: String = getString()
-str.toUpperCase()
-str.toLowerCase()
 ```
 ## Compliant Code
 
 ```kotlin
 String.format(Locale.US, "Timestamp: %d", System.currentTimeMillis())
-
-val str: String = getString()
-str.toUpperCase(Locale.US)
-str.toLowerCase(Locale.US)
 ```
 
 [Source](https://arturbosch.github.io/detekt/potential-bugs.html#implicitdefaultlocale)

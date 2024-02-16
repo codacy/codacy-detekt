@@ -1,6 +1,6 @@
 {
   "name" : "detekt",
-  "version" : "1.22.0",
+  "version" : "1.23.5",
   "patterns" : [ {
     "patternId" : "GlobalCoroutineUsage",
     "level" : "Warning",
@@ -28,6 +28,11 @@
     "enabled" : false
   }, {
     "patternId" : "SuspendFunWithCoroutineScopeReceiver",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "SuspendFunSwallowedCancellation",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
@@ -282,7 +287,17 @@
     "category" : "ErrorProne",
     "enabled" : false
   }, {
+    "patternId" : "CastNullableToNonNullableType",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "UnusedUnaryOperator",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "PropertyUsedBeforeDeclaration",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
@@ -497,12 +512,27 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "BlockCommentInitialStarAlignment",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "ChainWrapping",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "ClassName",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "CommentSpacing",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "CommentWrapping",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -522,6 +552,31 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "FunctionName",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "FunKeywordSpacing",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "FunctionReturnTypeSpacing",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "FunctionStartOfBodySpacing",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "FunctionTypeReferenceSpacing",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "ImportOrdering",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -532,7 +587,17 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "KdocWrapping",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "MaximumLineLength",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "ModifierListSpacing",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -612,12 +677,32 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "NullableTypeSpacing",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "PackageName",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
   }, {
     "patternId" : "ParameterListWrapping",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "ParameterWrapping",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "PropertyName",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "PropertyWrapping",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -687,6 +772,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "SpacingBetweenFunctionNameAndOpeningParenthesis",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "StringTemplate",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -702,17 +792,17 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "UnnecessaryParenthesesBeforeTrailingLambda",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "Wrapping",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "BlockCommentInitialStarAlignment",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "CommentWrapping",
+    "patternId" : "ContextReceiverMapping",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -722,12 +812,7 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "FunctionReturnTypeSpacing",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "FunKeywordSpacing",
+    "patternId" : "EnumWrapping",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -737,27 +822,37 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "FunctionStartOfBodySpacing",
+    "patternId" : "IfElseBracing",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "FunctionTypeReferenceSpacing",
+    "patternId" : "IfElseWrapping",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "KdocWrapping",
+    "patternId" : "MultilineExpressionWrapping",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "ModifierListSpacing",
+    "patternId" : "NoBlankLineInList",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "NullableTypeSpacing",
+    "patternId" : "NoConsecutiveComments",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "NoEmptyFirstLineInClassBody",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "NoSingleLineBlockComment",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -767,7 +862,12 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "SpacingBetweenFunctionNameAndOpeningParenthesis",
+    "patternId" : "StringTemplateIndent",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "TryCatchFinallySpacing",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -778,11 +878,6 @@
     "enabled" : false
   }, {
     "patternId" : "TypeParameterListSpacing",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : false
-  }, {
-    "patternId" : "UnnecessaryParenthesesBeforeTrailingLambda",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -997,6 +1092,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "ForbiddenAnnotation",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "ForbiddenComment",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -1127,12 +1227,22 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "UnusedParameter",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
     "patternId" : "UnusedPrivateClass",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
   }, {
     "patternId" : "UnusedPrivateMember",
+    "level" : "Warning",
+    "category" : "ErrorProne",
+    "enabled" : false
+  }, {
+    "patternId" : "UnusedPrivateProperty",
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
@@ -1162,6 +1272,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "UnnecessaryBracesAroundTrailingLambda",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "UnnecessaryFilter",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -1182,7 +1297,12 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
-    "patternId" : "MandatoryBracesIfStatements",
+    "patternId" : "BracesOnIfStatements",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "BracesOnWhenStatements",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false
@@ -1287,6 +1407,11 @@
     "category" : "CodeStyle",
     "enabled" : false
   }, {
+    "patternId" : "StringShouldBeRawString",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
     "patternId" : "UseIsNullOrEmpty",
     "level" : "Info",
     "category" : "CodeStyle",
@@ -1318,6 +1443,16 @@
     "enabled" : false
   }, {
     "patternId" : "UseSumOfInsteadOfFlatMapSize",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "DoubleNegativeLambda",
+    "level" : "Info",
+    "category" : "CodeStyle",
+    "enabled" : false
+  }, {
+    "patternId" : "UseLet",
     "level" : "Info",
     "category" : "CodeStyle",
     "enabled" : false

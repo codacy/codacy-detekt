@@ -1,6 +1,6 @@
 # ArrayPrimitive
 
-Using Array<Primitive> leads to implicit boxing and performance hit. Prefer using Kotlin specialized Array
+Using `Array<Primitive>` leads to implicit boxing and performance hit. Prefer using Kotlin specialized Array
 Instances.
 
 As stated in the Kotlin [documentation](https://kotlinlang.org/docs/basic-types.html#arrays) Kotlin has

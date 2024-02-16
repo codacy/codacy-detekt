@@ -1,8 +1,9 @@
 # ForbiddenMethodCall
 
-This rule allows to set a list of forbidden methods or constructors. This can be used to discourage the use
+Reports all method or constructor invocations that are forbidden.
+
+This rule allows to set a list of forbidden [methods] or constructors. This can be used to discourage the use
 of unstable, experimental or deprecated methods, especially for methods imported from external libraries.
-Detekt will then report all method or constructor invocations that are forbidden.
 
 ## Noncompliant Code
 
