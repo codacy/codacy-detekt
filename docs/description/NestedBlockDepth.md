@@ -6,4 +6,4 @@ its hidden complexity. It might become harder to understand edge-cases of the fu
 Prefer extracting the nested code into well-named functions to make it easier to understand.
 
 
-[Source](https://detekt.github.io/detekt/complexity.html#nestedblockdepth)
+[Source](https://detekt.dev/docs/rules/complexity#nestedblockdepth)

@@ -23,4 +23,4 @@ class B() : I
 class A(val b: B) : I by b
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#usedataclass)
+[Source](https://detekt.dev/docs/rules/style#usedataclass)

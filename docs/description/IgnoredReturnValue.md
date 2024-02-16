@@ -19,4 +19,4 @@ if (42 == returnsValue()) {}
 val x = returnsValue()
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#ignoredreturnvalue)
+[Source](https://detekt.dev/docs/rules/potential-bugs#ignoredreturnvalue)

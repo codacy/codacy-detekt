@@ -17,4 +17,4 @@ class Module(@param:Inject private val foo: String) // violation: unnecessary @p
 class Module(@Inject private val foo: String)
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#unnecessaryannotationusesitetarget)
+[Source](https://detekt.dev/docs/rules/style#unnecessaryannotationusesitetarget)

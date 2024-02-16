@@ -25,4 +25,4 @@ fun foo() { }
 override fun foo() = Unit
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#optionalunit)
+[Source](https://detekt.dev/docs/rules/style#optionalunit)

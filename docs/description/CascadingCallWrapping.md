@@ -18,4 +18,4 @@ foo()
 .baz()
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#cascadingcallwrapping)
+[Source](https://detekt.dev/docs/rules/style#cascadingcallwrapping)

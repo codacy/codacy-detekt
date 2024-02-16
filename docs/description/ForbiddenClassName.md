@@ -4,4 +4,4 @@ Reports class names which are forbidden per configuration. By default, this rule
 Examples for forbidden names might be too generic class names like `...Manager`.
 
 
-[Source](https://detekt.github.io/detekt/naming.html#forbiddenclassname)
+[Source](https://detekt.dev/docs/rules/naming#forbiddenclassname)

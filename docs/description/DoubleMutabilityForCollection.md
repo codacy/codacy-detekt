@@ -29,4 +29,4 @@ var mySet = setOf(1,2,3)
 var myMap = mapOf("answer" to 42)
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#doublemutabilityforcollection)
+[Source](https://detekt.dev/docs/rules/potential-bugs#doublemutabilityforcollection)

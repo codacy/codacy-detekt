@@ -1,6 +1,6 @@
 # LateinitUsage
 
-Turn on this rule to flag usages of the lateinit modifier.
+Reports usages of the lateinit modifier.
 
 Using lateinit for property initialization can be error-prone and the actual initialization is not
 guaranteed. Try using constructor injection or delegation to initialize properties.
@@ -14,4 +14,4 @@ class Foo {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#lateinitusage)
+[Source](https://detekt.dev/docs/rules/potential-bugs#lateinitusage)

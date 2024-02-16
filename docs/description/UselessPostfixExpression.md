@@ -1,6 +1,6 @@
 # UselessPostfixExpression
 
-This rule reports postfix expressions (++, --) which are unused and thus unnecessary.
+Reports postfix expressions (++, --) which are unused and thus unnecessary.
 This leads to confusion as a reader of the code might think the value will be incremented/decremented.
 However, the value is replaced with the original value which might lead to bugs.
 
@@ -34,4 +34,4 @@ fun foo(): Int {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#uselesspostfixexpression)
+[Source](https://detekt.dev/docs/rules/potential-bugs#uselesspostfixexpression)

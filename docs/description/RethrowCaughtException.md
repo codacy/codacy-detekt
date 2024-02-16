@@ -48,4 +48,4 @@ fun foo() {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/exceptions.html#rethrowcaughtexception)
+[Source](https://detekt.dev/docs/rules/exceptions#rethrowcaughtexception)

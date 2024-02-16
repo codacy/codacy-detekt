@@ -96,7 +96,7 @@ object Detekt extends Tool {
                 }
 
               val isInConfig = patternDef.isDefined
-              (patternId.value, (Map(("active", isInConfig)) ++ parameters).asJava)
+              (patternId.value, (Map[String, Any](("active", isInConfig)) ++ parameters).asJava)
           }
 
           (category.value.toLowerCase, (Map(("active", patternsRaw.nonEmpty)) ++ patterns).asJava)
@@ -134,6 +134,8 @@ object Detekt extends Tool {
           r.getRules.asScala
         case r: Rule =>
           Seq(r)
+        case r: BaseRule =>
+          Seq.empty
       }.toSeq
     }.toMap
   }

@@ -27,4 +27,4 @@ fun foo() {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/exceptions.html#instanceofcheckforexception)
+[Source](https://detekt.dev/docs/rules/exceptions#instanceofcheckforexception)

@@ -23,4 +23,4 @@ val isFoo = if (str.startsWith("foo") && hasCorrectEnding()) {
 fun hasCorrectEnding() = return !str.endsWith("foo") && !str.endsWith("bar") && !str.endsWith("_")
 ```
 
-[Source](https://detekt.github.io/detekt/complexity.html#complexcondition)
+[Source](https://detekt.dev/docs/rules/complexity#complexcondition)

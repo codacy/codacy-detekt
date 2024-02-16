@@ -46,4 +46,4 @@ fun baz(set: Set<Int>): List<Int> {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#redundanthigherordermapusage)
+[Source](https://detekt.dev/docs/rules/style#redundanthigherordermapusage)

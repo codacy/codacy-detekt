@@ -27,4 +27,4 @@ val x = getenv()?.run {
 } ?: emptyList()
 ```
 
-[Source](https://detekt.github.io/detekt/complexity.html#replacesafecallchainwithrun)
+[Source](https://detekt.dev/docs/rules/complexity#replacesafecallchainwithrun)

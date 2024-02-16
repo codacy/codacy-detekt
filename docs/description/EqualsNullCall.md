@@ -14,4 +14,4 @@ fun isNull(str: String) = str.equals(null)
 fun isNull(str: String) = str == null
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#equalsnullcall)
+[Source](https://detekt.dev/docs/rules/style#equalsnullcall)

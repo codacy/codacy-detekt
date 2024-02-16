@@ -23,4 +23,4 @@ fun stuff() {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#expressionbodysyntax)
+[Source](https://detekt.dev/docs/rules/style#expressionbodysyntax)

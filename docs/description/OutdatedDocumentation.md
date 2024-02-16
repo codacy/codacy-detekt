@@ -37,4 +37,4 @@ class MyClass(someParam: String, val someProp: String)
 fun <T, S> myFun(someParam: String)
 ```
 
-[Source](https://detekt.github.io/detekt/comments.html#outdateddocumentation)
+[Source](https://detekt.dev/docs/rules/comments#outdateddocumentation)

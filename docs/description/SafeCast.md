@@ -19,4 +19,4 @@ fun numberMagic(number: Number) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#safecast)
+[Source](https://detekt.dev/docs/rules/style#safecast)

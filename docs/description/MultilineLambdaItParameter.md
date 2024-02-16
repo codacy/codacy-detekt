@@ -51,4 +51,4 @@ val digits = 1234.let { explicit ->
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#multilinelambdaitparameter)
+[Source](https://detekt.dev/docs/rules/style#multilinelambdaitparameter)

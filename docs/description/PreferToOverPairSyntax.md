@@ -2,7 +2,7 @@
 
 This rule detects the usage of the Pair constructor to create pairs of values.
 
-Using <value1> to <value2> is preferred.
+Using `<value1>` to `<value2>` is preferred.
 
 ## Noncompliant Code
 
@@ -15,4 +15,4 @@ val pair = Pair(1, 2)
 val pair = 1 to 2
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#prefertooverpairsyntax)
+[Source](https://detekt.dev/docs/rules/style#prefertooverpairsyntax)

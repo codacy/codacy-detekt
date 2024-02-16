@@ -7,4 +7,4 @@ the only whitespace chars that are allowed in a source file are the line termina
 and the ASCII horizontal space character (0x20). Strings containing tabs are allowed.
 
 
-[Source](https://detekt.github.io/detekt/style.html#notabs)
+[Source](https://detekt.dev/docs/rules/style#notabs)

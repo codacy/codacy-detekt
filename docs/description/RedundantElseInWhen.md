@@ -1,6 +1,6 @@
 # RedundantElseInWhen
 
-Turn on this rule to flag `when` expressions that contain a redundant `else` case. This occurs when it can be
+Reports `when` expressions that contain a redundant `else` case. This occurs when it can be
 verified that all cases are already covered when checking cases on an enum or sealed class.
 
 ## Noncompliant Code
@@ -47,4 +47,4 @@ fun whenOnEnumCompliant2(c: Color) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#redundantelseinwhen)
+[Source](https://detekt.dev/docs/rules/potential-bugs#redundantelseinwhen)

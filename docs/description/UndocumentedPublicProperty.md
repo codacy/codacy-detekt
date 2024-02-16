@@ -6,4 +6,4 @@ If the codebase should have documentation on all public properties enable this r
 Overridden properties are excluded by this rule.
 
 
-[Source](https://detekt.github.io/detekt/comments.html#undocumentedpublicproperty)
+[Source](https://detekt.dev/docs/rules/comments#undocumentedpublicproperty)

@@ -28,4 +28,4 @@ for (i in 1..10) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/performance.html#foreachonrange)
+[Source](https://detekt.dev/docs/rules/performance#foreachonrange)

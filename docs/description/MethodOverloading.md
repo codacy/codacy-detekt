@@ -6,4 +6,4 @@ Method overloading tightly couples these methods together which might make the c
 Refactor these methods and try to use optional parameters instead to prevent some of the overloading.
 
 
-[Source](https://detekt.github.io/detekt/complexity.html#methodoverloading)
+[Source](https://detekt.dev/docs/rules/complexity#methodoverloading)

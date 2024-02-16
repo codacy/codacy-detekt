@@ -6,4 +6,4 @@ split up large classes into smaller classes. These smaller classes are then easi
 things.
 
 
-[Source](https://detekt.github.io/detekt/complexity.html#largeclass)
+[Source](https://detekt.dev/docs/rules/complexity#largeclass)

@@ -26,4 +26,4 @@ How are you?
 """Hello World! How are you?"""
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#trimmultilinerawstring)
+[Source](https://detekt.dev/docs/rules/style#trimmultilinerawstring)

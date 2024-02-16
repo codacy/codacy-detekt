@@ -15,4 +15,4 @@ val myConstant = "abc"
 const val MY_CONSTANT = "abc"
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#maybeconst)
+[Source](https://detekt.dev/docs/rules/style#maybeconst)

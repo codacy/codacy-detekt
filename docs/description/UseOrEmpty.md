@@ -19,4 +19,4 @@ fun test(x: List<Int>?, s: String?) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#useorempty)
+[Source](https://detekt.dev/docs/rules/style#useorempty)

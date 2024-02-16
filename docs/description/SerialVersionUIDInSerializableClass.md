@@ -1,7 +1,9 @@
 # SerialVersionUIDInSerializableClass
 
 Classes which implement the `Serializable` interface should also correctly declare a `serialVersionUID`.
-This rule verifies that a `serialVersionUID` was correctly defined.
+This rule verifies that a `serialVersionUID` was correctly defined and declared as `private`.
+
+[More about `SerialVersionUID`](https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html)
 
 ## Noncompliant Code
 
@@ -24,4 +26,4 @@ class CorrectSerializable : Serializable {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#serialversionuidinserializableclass)
+[Source](https://detekt.dev/docs/rules/style#serialversionuidinserializableclass)

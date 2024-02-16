@@ -67,4 +67,4 @@ fun foo(a: Int) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#canbenonnullable)
+[Source](https://detekt.dev/docs/rules/style#canbenonnullable)

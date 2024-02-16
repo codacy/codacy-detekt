@@ -25,4 +25,4 @@ class Foo {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#wrongequalstypeparameter)
+[Source](https://detekt.dev/docs/rules/potential-bugs#wrongequalstypeparameter)

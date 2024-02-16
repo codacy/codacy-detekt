@@ -29,4 +29,4 @@ class Foo { // Foo.kt
 fun Bar.toFoo(): Foo = ...
 ```
 
-[Source](https://detekt.github.io/detekt/naming.html#matchingdeclarationname)
+[Source](https://detekt.dev/docs/rules/naming#matchingdeclarationname)

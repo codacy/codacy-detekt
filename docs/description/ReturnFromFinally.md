@@ -18,4 +18,4 @@ fun foo() {
 val a: String = try { "s" } catch (e: Exception) { "e" } finally { "f" }
 ```
 
-[Source](https://detekt.github.io/detekt/exceptions.html#returnfromfinally)
+[Source](https://detekt.dev/docs/rules/exceptions#returnfromfinally)

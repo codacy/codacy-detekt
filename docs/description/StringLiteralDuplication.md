@@ -28,4 +28,4 @@ class Foo {
 }
 ```
 
-[Source](https://detekt.github.ioekt/complexity.html#stringliteralduplication)
+[Source](https://detekt.dev/docs/rules/complexity#stringliteralduplication)

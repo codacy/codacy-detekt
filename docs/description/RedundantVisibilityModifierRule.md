@@ -23,4 +23,4 @@ interface Foo {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#redundantvisibilitymodifierrule)
+[Source](https://detekt.dev/docs/rules/style#redundantvisibilitymodifierrule)

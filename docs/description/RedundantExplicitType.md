@@ -17,4 +17,4 @@ fun function() {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#redundantexplicittype)
+[Source](https://detekt.dev/docs/rules/style#redundantexplicittype)

@@ -24,4 +24,4 @@ fun foo(bar: Int) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/exceptions.html#toogenericexceptionthrown)
+[Source](https://detekt.dev/docs/rules/exceptions#toogenericexceptionthrown)

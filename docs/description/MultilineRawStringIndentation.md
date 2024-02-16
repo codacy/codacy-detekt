@@ -32,4 +32,4 @@ val a = """
 """.trimMargin()
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#multilinerawstringindentation)
+[Source](https://detekt.dev/docs/rules/style#multilinerawstringindentation)

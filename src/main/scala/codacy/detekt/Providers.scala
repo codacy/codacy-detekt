@@ -10,19 +10,25 @@ import io.gitlab.arturbosch.detekt.rules.exceptions.ExceptionsProvider
 import io.gitlab.arturbosch.detekt.rules.naming.NamingProvider
 import io.gitlab.arturbosch.detekt.rules.performance.PerformanceProvider
 import io.gitlab.arturbosch.detekt.rules.style.StyleGuideProvider
+import io.gitlab.arturbosch.detekt.libraries.RuleLibrariesProvider
+import io.gitlab.arturbosch.detekt.authors.RuleAuthorsProvider
+import io.gitlab.arturbosch.detekt.sample.extensions.SampleProvider
 
 object Providers {
 
   val list = List(
+    new CoroutinesProvider,
+    new EmptyCodeProvider,
+    new PotentialBugProvider,
     new CommentSmellProvider,
     new ComplexityProvider,
-    new EmptyCodeProvider,
     new ExceptionsProvider,
     new FormattingProvider,
     new NamingProvider,
     new PerformanceProvider,
-    new PotentialBugProvider,
     new StyleGuideProvider,
-    new CoroutinesProvider
+    new RuleLibrariesProvider,
+    new RuleAuthorsProvider,
+    new SampleProvider
   )
 }

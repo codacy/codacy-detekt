@@ -1,6 +1,6 @@
 # NullableToStringCall
 
-Turn on this rule to flag 'toString' calls with a nullable receiver that may return the string "null".
+Reports `toString()` calls with a nullable receiver that may return the string "null".
 
 ## Noncompliant Code
 
@@ -25,4 +25,4 @@ fun bar(a: Any?): String {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#nullabletostringcall)
+[Source](https://detekt.dev/docs/rules/potential-bugs#nullabletostringcall)

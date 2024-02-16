@@ -20,4 +20,4 @@ list.sumOf { it.foo.count { foo -> foo > 2 } }
 listOf(listOf(1), listOf(2, 3)).sumOf { it.size }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#usesumofinsteadofflatmapsize)
+[Source](https://detekt.dev/docs/rules/style#usesumofinsteadofflatmapsize)
