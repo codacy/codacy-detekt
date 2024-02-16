@@ -142,4 +142,4 @@ when (a) {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#bracesonwhenstatements)
+[Source](https://detekt.dev/docs/rules/style#bracesonwhenstatements)

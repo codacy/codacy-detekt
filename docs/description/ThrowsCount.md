@@ -24,4 +24,4 @@ fun foo(i: Int) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#throwscount)
+[Source](https://detekt.dev/docs/rules/style#throwscount)

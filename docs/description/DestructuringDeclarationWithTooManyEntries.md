@@ -17,4 +17,4 @@ data class FewerElements(val a: Int, val b: Int, val c: Int)
 val (a, b, c) = TooManyElements(1, 2, 3)
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#destructuringdeclarationwithtoomanyentries)
+[Source](https://detekt.dev/docs/rules/style#destructuringdeclarationwithtoomanyentries)

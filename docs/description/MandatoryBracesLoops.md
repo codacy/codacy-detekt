@@ -38,4 +38,4 @@ do {
 do println("Hello, world") while (true)
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#mandatorybracesloops)
+[Source](https://detekt.dev/docs/rules/style#mandatorybracesloops)

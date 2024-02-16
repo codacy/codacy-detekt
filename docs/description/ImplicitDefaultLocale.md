@@ -19,4 +19,4 @@ String.format("Timestamp: %d", System.currentTimeMillis())
 String.format(Locale.US, "Timestamp: %d", System.currentTimeMillis())
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#implicitdefaultlocale)
+[Source](https://detekt.dev/docs/rules/potential-bugs#implicitdefaultlocale)

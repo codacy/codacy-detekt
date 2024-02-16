@@ -26,4 +26,4 @@ fun foo(bar: Int) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/exceptions.html#throwingexceptionswithoutmessageorcause)
+[Source](https://detekt.dev/docs/rules/exceptions#throwingexceptionswithoutmessageorcause)

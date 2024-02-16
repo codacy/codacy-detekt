@@ -14,4 +14,4 @@ fun functionReturningConstantString() = "1"
 const val constantString = "1"
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#functiononlyreturningconstant)
+[Source](https://detekt.dev/docs/rules/style#functiononlyreturningconstant)

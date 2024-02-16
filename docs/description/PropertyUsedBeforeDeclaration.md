@@ -35,4 +35,4 @@ fun main() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#propertyusedbeforedeclaration)
+[Source](https://detekt.dev/docs/rules/potential-bugs#propertyusedbeforedeclaration)

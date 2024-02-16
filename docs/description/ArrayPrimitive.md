@@ -21,4 +21,4 @@ fun function(array: IntArray) { }
 fun returningFunction(): DoubleArray { }
 ```
 
-[Source](https://detekt.github.io/detekt/performance.html#arrayprimitive)
+[Source](https://detekt.dev/docs/rules/performance#arrayprimitive)

@@ -19,4 +19,4 @@ config.apply {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#unnecessaryapply)
+[Source](https://detekt.dev/docs/rules/style#unnecessaryapply)

@@ -5,4 +5,4 @@ Exempt from this rule are imports resulting from references to elements within K
 from destructuring declarations (componentN imports).
 
 
-[Source](https://detekt.github.io/detekt/style.html#unusedimports)
+[Source](https://detekt.dev/docs/rules/style#unusedimports)

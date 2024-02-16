@@ -17,4 +17,4 @@ data class C(val a: String) // violation: public data class
 internal data class C(val a: String)
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#forbiddenpublicdataclass)
+[Source](https://detekt.dev/docs/rules/libraries#forbiddenpublicdataclass)

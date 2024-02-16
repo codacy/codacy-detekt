@@ -29,4 +29,4 @@ class Test {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/comments.html#kdocreferencesnonpublicproperty)
+[Source](https://detekt.dev/docs/rules/comments#kdocreferencesnonpublicproperty)

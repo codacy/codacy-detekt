@@ -15,4 +15,4 @@ fun foo() {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/exceptions.html#throwingexceptionfromfinally)
+[Source](https://detekt.dev/docs/rules/exceptions#throwingexceptionfromfinally)

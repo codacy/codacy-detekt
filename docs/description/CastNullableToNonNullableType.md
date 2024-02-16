@@ -24,4 +24,4 @@ fun foo(bar: Any?) {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/potential-bugs.html#castnullabletononnullabletype)
+[Source](https://detekt.dev/docs/rules/potential-bugs#castnullabletononnullabletype)

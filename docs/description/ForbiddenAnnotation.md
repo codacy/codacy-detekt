@@ -16,4 +16,4 @@ class SomeClass()
 class SomeClass()
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#forbiddenannotation)
+[Source](https://detekt.dev/docs/rules/style#forbiddenannotation)

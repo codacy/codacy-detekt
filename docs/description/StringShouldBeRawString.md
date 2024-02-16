@@ -37,4 +37,4 @@ val windowJson = """
 val patRegex = """/^(\/[^\/]+){0,2}\/?$/gm"""
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#stringshouldberawstring)
+[Source](https://detekt.dev/docs/rules/style#stringshouldberawstring)

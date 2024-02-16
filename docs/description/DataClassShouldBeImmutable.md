@@ -21,4 +21,4 @@ data class ImmutableDataClass(
 )
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#dataclassshouldbeimmutable)
+[Source](https://detekt.dev/docs/rules/style#dataclassshouldbeimmutable)

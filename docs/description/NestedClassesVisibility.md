@@ -24,4 +24,4 @@ internal class Outer {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#nestedclassesvisibility)
+[Source](https://detekt.dev/docs/rules/style#nestedclassesvisibility)

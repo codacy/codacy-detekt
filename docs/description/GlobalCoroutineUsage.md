@@ -31,4 +31,4 @@ fun onDestroy() {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/coroutines.html#globalcoroutineusage)
+[Source](https://detekt.dev/docs/rules/coroutines#globalcoroutineusage)

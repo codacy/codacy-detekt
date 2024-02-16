@@ -10,4 +10,4 @@ class A : Any()
 class B : Object()
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#unnecessaryinheritance)
+[Source](https://detekt.dev/docs/rules/style#unnecessaryinheritance)

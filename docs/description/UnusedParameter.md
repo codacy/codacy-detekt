@@ -17,4 +17,4 @@ println(used)
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#unusedparameter)
+[Source](https://detekt.dev/docs/rules/style#unusedparameter)

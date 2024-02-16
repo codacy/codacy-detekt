@@ -22,4 +22,4 @@ if (foo) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/performance.html#unnecessarypartofbinaryexpression)
+[Source](https://detekt.dev/docs/rules/performance#unnecessarypartofbinaryexpression)

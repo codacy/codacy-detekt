@@ -24,4 +24,4 @@ val x = listOf(1, 2, 3)
     .none { it > 1 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#unnecessaryfilter)
+[Source](https://detekt.dev/docs/rules/style#unnecessaryfilter)

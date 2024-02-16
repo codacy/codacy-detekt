@@ -19,4 +19,4 @@ value != false
 value == true
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#nullablebooleancheck)
+[Source](https://detekt.dev/docs/rules/style#nullablebooleancheck)

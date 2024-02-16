@@ -31,4 +31,4 @@ val map = emptyMap<String, String>()
 map.getOrElse("key", { "" })
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#mapgetwithnotnullassertionoperator)
+[Source](https://detekt.dev/docs/rules/potential-bugs#mapgetwithnotnullassertionoperator)

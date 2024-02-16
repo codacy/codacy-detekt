@@ -14,4 +14,4 @@ The latter should be preferred as it is more readable.
 @NegativeCase(["..."])
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#usearrayliteralsinannotations)
+[Source](https://detekt.dev/docs/rules/style#usearrayliteralsinannotations)

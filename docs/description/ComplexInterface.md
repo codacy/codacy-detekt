@@ -8,4 +8,4 @@ Large interfaces should be split into smaller interfaces which have a clear resp
 to understand and implement.
 
 
-[Source](https://detekt.github.io/detekt/complexity.html#complexinterface)
+[Source](https://detekt.dev/docs/rules/complexity#complexinterface)

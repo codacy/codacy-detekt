@@ -4,4 +4,4 @@ If a rule [report]s issues using [Entity.from] with [KtNamedDeclaration.getNameI
 then it can be replaced with [Entity.atName] for more semantic code and better baseline support.
 
 
-[Source](https://arturbosch.github.io/detekt/ruleauthors.html#useentityatname)
+[Source](https://detekt.dev/docs/rules/ruleauthors#useentityatname)

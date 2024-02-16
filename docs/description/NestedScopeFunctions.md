@@ -27,4 +27,4 @@ first.b = this.a
 second.c = first.b
 ```
 
-[Source](https://detekt.github.io/detekt/complexity.html#nestedscopefunctions)
+[Source](https://detekt.dev/docs/rules/complexity#nestedscopefunctions)

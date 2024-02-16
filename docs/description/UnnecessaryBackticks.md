@@ -13,4 +13,4 @@ class `HelloWorld`
 class HelloWorld
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#unnecessarybackticks)
+[Source](https://detekt.dev/docs/rules/style#unnecessarybackticks)

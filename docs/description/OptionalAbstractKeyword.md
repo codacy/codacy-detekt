@@ -21,4 +21,4 @@ interface Foo {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#optionalabstractkeyword)
+[Source](https://detekt.dev/docs/rules/style#optionalabstractkeyword)

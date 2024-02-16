@@ -277,7 +277,7 @@ object DocGenerator {
         |$description
         |$nonCompliantCodeExampleMarkdown$compliantCodeExampleMarkdown
         |
-        |[Source](https://detekt.github.ioleSetName.toLowerCase}.html#${ruleName.toLowerCase})
+        |[Source](https://detekt.dev/docs/rules/${ruleSetName.toLowerCase}#${ruleName.toLowerCase})
         |""".stripMargin
   }
 }

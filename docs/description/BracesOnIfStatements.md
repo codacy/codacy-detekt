@@ -133,4 +133,4 @@ else
     f
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#bracesonifstatements)
+[Source](https://detekt.dev/docs/rules/style#bracesonifstatements)

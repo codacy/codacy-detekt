@@ -24,4 +24,4 @@ fun test() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#unnecessarybracesaroundtrailinglambda)
+[Source](https://detekt.dev/docs/rules/style#unnecessarybracesaroundtrailinglambda)

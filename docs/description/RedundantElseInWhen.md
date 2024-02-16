@@ -47,4 +47,4 @@ fun whenOnEnumCompliant2(c: Color) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#redundantelseinwhen)
+[Source](https://detekt.dev/docs/rules/potential-bugs#redundantelseinwhen)

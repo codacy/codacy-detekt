@@ -14,4 +14,4 @@ class Foo {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#lateinitusage)
+[Source](https://detekt.dev/docs/rules/potential-bugs#lateinitusage)

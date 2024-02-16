@@ -5,4 +5,4 @@ If the codebase should have documentation on all public functions enable this ru
 Overridden functions are excluded by this rule.
 
 
-[Source](https://detekt.github.io/detekt/comments.html#undocumentedpublicfunction)
+[Source](https://detekt.dev/docs/rules/comments#undocumentedpublicfunction)

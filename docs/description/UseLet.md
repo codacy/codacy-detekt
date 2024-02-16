@@ -16,4 +16,4 @@ x?.let { it.transform() }
 x?.let { y }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#uselet)
+[Source](https://detekt.dev/docs/rules/style#uselet)

@@ -69,4 +69,4 @@ fun foo() { }
 /* STOPSHIP: */
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#forbiddencomment)
+[Source](https://detekt.dev/docs/rules/style#forbiddencomment)

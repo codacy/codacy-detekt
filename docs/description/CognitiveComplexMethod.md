@@ -16,4 +16,4 @@ The statements that increase the complexity or the nesting level are as follows.
 - __Additional Complexity Increments by Nesting Level__ - `if`, `when`, `for`, `while`, `do while`, `catch`
 
 
-[Source](https://detekt.github.io/detekt/complexity.html#cognitivecomplexmethod)
+[Source](https://detekt.dev/docs/rules/complexity#cognitivecomplexmethod)

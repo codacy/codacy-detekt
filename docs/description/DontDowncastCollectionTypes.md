@@ -21,4 +21,4 @@ val list : List<Int> = getAList()
 list.toMutableList().add(42)
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#dontdowncastcollectiontypes)
+[Source](https://detekt.dev/docs/rules/potential-bugs#dontdowncastcollectiontypes)

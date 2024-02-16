@@ -37,4 +37,4 @@ when(c) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#elsecaseinsteadofexhaustivewhen)
+[Source](https://detekt.dev/docs/rules/potential-bugs#elsecaseinsteadofexhaustivewhen)

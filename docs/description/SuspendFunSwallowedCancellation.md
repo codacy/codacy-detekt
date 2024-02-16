@@ -64,4 +64,4 @@ suspend fun foo() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/coroutines.html#suspendfunswallowedcancellation)
+[Source](https://detekt.dev/docs/rules/coroutines#suspendfunswallowedcancellation)

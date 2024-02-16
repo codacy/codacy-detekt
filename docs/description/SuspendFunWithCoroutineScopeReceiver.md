@@ -33,4 +33,4 @@ suspend fun foo() = coroutineScope {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/coroutines.html#suspendfunwithcoroutinescopereceiver)
+[Source](https://detekt.dev/docs/rules/coroutines#suspendfunwithcoroutinescopereceiver)

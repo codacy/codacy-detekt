@@ -15,4 +15,4 @@ val a: String? = null
 val b = a?.length
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#unnecessarysafecall)
+[Source](https://detekt.dev/docs/rules/potential-bugs#unnecessarysafecall)

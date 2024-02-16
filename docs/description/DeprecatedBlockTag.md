@@ -31,4 +31,4 @@ fun printThenNewline(what: String) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/comments.html#deprecatedblocktag)
+[Source](https://detekt.dev/docs/rules/comments#deprecatedblocktag)

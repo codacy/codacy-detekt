@@ -33,4 +33,4 @@ class OnlyConcreteMembersInClass {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#unnecessaryabstractclass)
+[Source](https://detekt.dev/docs/rules/style#unnecessaryabstractclass)

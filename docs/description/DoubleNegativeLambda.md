@@ -16,4 +16,4 @@ fun Int.evenOrNull() = takeUnless { it % 2 != 0 }
 fun Int.evenOrNull() = takeIf { it % 2 == 0 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#doublenegativelambda)
+[Source](https://detekt.dev/docs/rules/style#doublenegativelambda)

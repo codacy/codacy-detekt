@@ -28,4 +28,4 @@ fun foo() {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#unnecessaryparentheses)
+[Source](https://detekt.dev/docs/rules/style#unnecessaryparentheses)

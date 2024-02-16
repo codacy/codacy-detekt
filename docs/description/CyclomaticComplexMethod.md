@@ -19,4 +19,4 @@ Each one of them adds one to the complexity count.
 [Reference](https://kotlinlang.org/docs/scope-functions.html)
 
 
-[Source](https://detekt.github.io/detekt/complexity.html#cyclomaticcomplexmethod)
+[Source](https://detekt.dev/docs/rules/complexity#cyclomaticcomplexmethod)

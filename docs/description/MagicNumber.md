@@ -34,4 +34,4 @@ class User {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#magicnumber)
+[Source](https://detekt.dev/docs/rules/style#magicnumber)

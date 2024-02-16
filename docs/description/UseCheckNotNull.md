@@ -13,4 +13,4 @@ check(x != null)
 checkNotNull(x)
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#usechecknotnull)
+[Source](https://detekt.dev/docs/rules/style#usechecknotnull)

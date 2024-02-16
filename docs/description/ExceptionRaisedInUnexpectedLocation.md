@@ -16,4 +16,4 @@ class Foo {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/exceptions.html#exceptionraisedinunexpectedlocation)
+[Source](https://detekt.dev/docs/rules/exceptions#exceptionraisedinunexpectedlocation)

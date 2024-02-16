@@ -6,4 +6,4 @@ If these private functions are unused they should be removed. Otherwise, this de
 can lead to confusion and potential bugs.
 
 
-[Source](https://detekt.github.io/detekt/style.html#unusedprivatemember)
+[Source](https://detekt.dev/docs/rules/style#unusedprivatemember)

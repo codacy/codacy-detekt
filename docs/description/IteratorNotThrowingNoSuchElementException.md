@@ -30,4 +30,4 @@ class MyIterator : Iterator<String> {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#iteratornotthrowingnosuchelementexception)
+[Source](https://detekt.dev/docs/rules/potential-bugs#iteratornotthrowingnosuchelementexception)

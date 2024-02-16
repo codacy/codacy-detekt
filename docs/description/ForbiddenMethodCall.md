@@ -15,4 +15,4 @@ fun main() {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#forbiddenmethodcall)
+[Source](https://detekt.dev/docs/rules/style#forbiddenmethodcall)

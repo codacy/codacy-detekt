@@ -21,4 +21,4 @@ fun f() {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#unreachablecode)
+[Source](https://detekt.dev/docs/rules/potential-bugs#unreachablecode)

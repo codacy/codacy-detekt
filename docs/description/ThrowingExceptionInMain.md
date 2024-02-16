@@ -12,4 +12,4 @@ fun main(args: Array<String>) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/exceptions.html#throwingexceptioninmain)
+[Source](https://detekt.dev/docs/rules/exceptions#throwingexceptioninmain)

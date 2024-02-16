@@ -16,4 +16,4 @@ for (str in strs) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#loopwithtoomanyjumpstatements)
+[Source](https://detekt.dev/docs/rules/style#loopwithtoomanyjumpstatements)

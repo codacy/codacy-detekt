@@ -24,4 +24,4 @@ fun greet() {
 }
 ```
 
-[Source](https://arturbosch.github.io/detekt/style.html#unusedprivateproperty)
+[Source](https://detekt.dev/docs/rules/style#unusedprivateproperty)

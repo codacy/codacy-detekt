@@ -18,4 +18,4 @@ fun foo(a: Any?) {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/potential-bugs.html#casttonullabletype)
+[Source](https://detekt.dev/docs/rules/potential-bugs#casttonullabletype)

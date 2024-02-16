@@ -21,4 +21,4 @@ Foo {
 }
 ```
 
-[Source](https://detekt.github.io/detekt/style.html#objectliteraltolambda)
+[Source](https://detekt.dev/docs/rules/style#objectliteraltolambda)
