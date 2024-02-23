@@ -1481,15 +1481,5 @@
     "level" : "Warning",
     "category" : "ErrorProne",
     "enabled" : false
-  }, {
-    "patternId" : "TooManyFunctions",
-    "level" : "Info",
-    "category" : "CodeStyle",
-    "enabled" : true
-  }, {
-    "patternId" : "TooManyFunctionsTwo",
-    "level" : "Warning",
-    "category" : "ErrorProne",
-    "enabled" : false
   } ]
 }

@@ -1,6 +1,8 @@
 package codacy.detekt
 
+import io.gitlab.arturbosch.detekt.authors.RuleAuthorsProvider
 import io.gitlab.arturbosch.detekt.formatting.FormattingProvider
+import io.gitlab.arturbosch.detekt.libraries.RuleLibrariesProvider
 import io.gitlab.arturbosch.detekt.rules.bugs.PotentialBugProvider
 import io.gitlab.arturbosch.detekt.rules.complexity.ComplexityProvider
 import io.gitlab.arturbosch.detekt.rules.coroutines.CoroutinesProvider
@@ -10,9 +12,6 @@ import io.gitlab.arturbosch.detekt.rules.exceptions.ExceptionsProvider
 import io.gitlab.arturbosch.detekt.rules.naming.NamingProvider
 import io.gitlab.arturbosch.detekt.rules.performance.PerformanceProvider
 import io.gitlab.arturbosch.detekt.rules.style.StyleGuideProvider
-import io.gitlab.arturbosch.detekt.libraries.RuleLibrariesProvider
-import io.gitlab.arturbosch.detekt.authors.RuleAuthorsProvider
-import io.gitlab.arturbosch.detekt.sample.extensions.SampleProvider
 
 object Providers {
 
@@ -28,7 +27,6 @@ object Providers {
     new PerformanceProvider,
     new StyleGuideProvider,
     new RuleLibrariesProvider,
-    new RuleAuthorsProvider,
-    new SampleProvider
+    new RuleAuthorsProvider
   )
 }
