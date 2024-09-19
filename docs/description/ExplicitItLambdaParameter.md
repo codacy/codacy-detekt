@@ -20,6 +20,7 @@ collection.zipWithNext { it, next -> Pair(it, next) }
 
 ```kotlin
 a?.let { it.plus(1) } // Much better to use implicit it
+a?.let { value: Int -> value.plus(1) } // Better as states the type more clearly
 foo.flatMapObservable(Observable::fromIterable) // Here we can have a method reference
 
 // For multiline blocks it is usually better come up with a clear and more meaningful name
