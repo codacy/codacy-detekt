@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### KDoc Comment Placement Error
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#kdoc-wrapping) for documentation.
 
 **Description:**
 Your KDoc comment does not adhere to the required formatting standards. Specifically, a KDoc comment must start and end on a line that does not contain any other code elements. This helps maintain clarity and readability in your documentation.

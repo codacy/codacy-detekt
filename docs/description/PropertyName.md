@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Enforce Naming of Property
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/experimental/#property-naming) for documentation.
 
 **Description:**
 This linting error occurs when the naming convention of a property does not comply with the expected standards. Proper naming is crucial for code readability and maintainability, as it helps convey the purpose of the property clearly to other developers.

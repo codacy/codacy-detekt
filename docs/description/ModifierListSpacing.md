@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing in Modifier Lists
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#modifier-list-spacing) for documentation.
 
 **Description:**
 This linting error indicates that there is inconsistent spacing between modifiers in a modifier list, particularly after the last modifier. Proper formatting of modifiers enhances code readability and maintains a consistent style throughout your codebase.

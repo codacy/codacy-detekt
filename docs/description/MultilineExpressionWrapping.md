@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Multiline Expression Formatting
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/experimental/#multiline-expression-wrapping) for documentation.
 
 #### Description:
 This linting error occurs when a multiline expression is placed on the right-hand side of an expression without starting on a new line. In Kotlin, multiline expressions should begin on a separate line to enhance readability and maintain coding standards. However, there's an exception for expressions within return statements, as placing them on a new line would lead to compilation errors.

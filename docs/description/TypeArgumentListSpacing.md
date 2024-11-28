@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Incorrect Spacing Around Angle Brackets
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/experimental/#type-argument-list-spacing) for documentation.
 
 **Description:**
 This linting error occurs when there is improper spacing before and after the angle brackets (`<` and `>`) in a type argument list. Proper formatting is essential for maintaining code readability and consistency.

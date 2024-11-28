@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Enum Formatting
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/experimental/#enum-wrapping) for documentation.
 
 **Error Description:**
 This linting error occurs when the formatting of an enum in your Kotlin code does not adhere to the specified style guidelines. According to the ktlint rules, an enum declaration should be formatted in one of two ways:

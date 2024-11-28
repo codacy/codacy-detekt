@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Around Dots
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#dot-spacing) for documentation.
 
 **Description:**  
 This linting error occurs when there is inconsistent spacing around the dot (`.`) operator in your Kotlin code. Consistent spacing is crucial for maintaining readability and adhering to Kotlin coding conventions.

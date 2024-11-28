@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Invalid Package Name Format
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#package-name) for documentation.
 
 #### Description
 This linting error occurs when the package name in your Kotlin code does not adhere to the required naming convention. The package name must match the regular expression: 

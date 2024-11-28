@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Missing Blank Line Between Declarations and Comments
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#blank-line-between-declaration-with-comments) for documentation.
 
 **Description:**
 This linting error occurs when there are comments associated with your declarations (like functions or variables) that are not separated by a blank line. To enhance code readability and maintainability, it is important to follow the convention of adding a blank line between a declaration and its preceding comment.

@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Function Naming Convention
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/experimental/#function-naming) for documentation.
 
 **Description:**
 This linting error is triggered when a function does not adhere to the specified naming conventions. Consistent naming conventions are crucial for code readability and maintainability, allowing developers to understand the purpose of functions at a glance.

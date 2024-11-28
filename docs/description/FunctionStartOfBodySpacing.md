@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Before Function Body
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#function-start-of-body-spacing) for documentation.
 
 **Description:**  
 This linting error occurs when there is inconsistent or incorrect spacing before the start of a function body in your Kotlin code. Consistent spacing is important for readability and maintaining a uniform coding style.

@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Before Function Parenthesis
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#spacing-between-function-name-and-opening-parenthesis) for documentation.
 
 **Description:**
 This linting error occurs when there is inconsistent spacing between a function name and its opening parenthesis. Maintaining consistent spacing enhances code readability and adheres to Kotlin style guidelines.

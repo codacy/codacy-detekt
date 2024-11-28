@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Around Function Return Type
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#function-return-type-spacing) for documentation.
 
 **Description:**
 This linting error occurs when there is inconsistent spacing around the return type of a function in your Kotlin code. Proper formatting is essential for maintaining code readability and consistency across your codebase. 

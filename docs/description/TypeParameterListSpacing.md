@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Spacing After Type Parameter List in Function and Class Declarations
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/experimental/#type-parameter-list-spacing) for documentation.
 
 **Description**: This linting error occurs when there is improper spacing after the type parameter list in your function or class declarations. Proper formatting is essential for code readability and maintenance.
 

@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing After `fun` Keyword
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#fun-keyword-spacing) for documentation.
 
 #### Description
 This linting error occurs when there is inconsistent spacing after the `fun` keyword in your Kotlin code. Consistent formatting is crucial for readability and maintainability, and Kotlin style guidelines recommend having a single space between the `fun` keyword and the function name.

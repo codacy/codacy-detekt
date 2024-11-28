@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Around Parentheses
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#parenthesis-spacing) for documentation.
 
 **Description:**
 This linting error occurs when there is inconsistent spacing around parentheses in your code. Consistent spacing is important for readability and maintaining a clean code style. 

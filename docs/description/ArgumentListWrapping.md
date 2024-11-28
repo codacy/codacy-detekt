@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Argument Formatting Issue
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#argument-list-wrapping) for documentation.
 
 **Description:**
 This linting error occurs when the formatting of function or method arguments does not adhere to the specified style guidelines. Specifically, all arguments must either be placed on the same line or each argument must be on a separate line. This ensures that the code remains readable and maintainable.

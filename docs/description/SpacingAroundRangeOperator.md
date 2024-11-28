@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Around Range Operators
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#range-spacing) for documentation.
 
 #### Description
 This linting error occurs when there is inconsistent or missing spacing around range operators in your Kotlin code. Consistent spacing improves code readability and maintains a standard coding style, which is essential for collaboration and code maintenance.

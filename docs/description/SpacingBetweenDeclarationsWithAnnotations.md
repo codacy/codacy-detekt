@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Missing Blank Line Between Annotations
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#blank-line-between-declarations-with-annotations) for documentation.
 
 **Error Description:**  
 In Kotlin, when you have multiple declarations with annotations, it's important to separate them with a blank line for better readability and adherence to coding standards. This helps to clearly distinguish between different declarations and enhances the overall structure of your code.

@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: No Spaces Around Angle Brackets
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#angle-bracket-spacing) for documentation.
 
 **Description:**
 This linting error occurs when there are spaces around angle brackets (`<` and `>`) in type declarations. In Kotlin, it is essential to keep angle brackets for generics tightly coupled with the type names without any intervening spaces. This ensures clarity and consistency in your code.

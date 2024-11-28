@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Parameter Line Length Exceeded
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#parameter-wrapping) for documentation.
 
 **Description**: This linting error occurs when a function or class parameter is too long to fit on a single line. When this happens, you need to wrap the type or value onto a new line to maintain readability and adhere to coding standards.
 

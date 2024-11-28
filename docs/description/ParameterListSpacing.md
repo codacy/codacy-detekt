@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Inside Parameter List
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/experimental/#parameter-list-spacing) for documentation.
 
 #### Description
 This linting error indicates that the spacing within the parameter list of a function is not consistent with the expected style guidelines. Proper formatting enhances code readability and maintainability, and adhering to consistent spacing conventions is an important aspect of clean code practices.

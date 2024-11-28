@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: No Spaces Around `::`
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#double-colon-spacing) for documentation.
 
 **Description:**
 This linting error occurs when there are spaces surrounding the double colon operator (`::`) in Kotlin code. The `::` operator is used for referencing a class or a member, and it should be formatted without any spaces to maintain code consistency and readability.

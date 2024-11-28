@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Around Keywords
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#keyword-spacing) for documentation.
 
 **Description**: This linting error occurs when there is inconsistent spacing around keywords in your Kotlin code. Maintaining consistent spacing enhances readability and helps adhere to coding standards.
 

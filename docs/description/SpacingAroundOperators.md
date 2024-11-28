@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Around Operators
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#operator-spacing) for documentation.
 
 #### Description
 This linting error occurs when there is inconsistent spacing around operators in your Kotlin code. Consistent spacing improves readability and helps maintain a clean code style, making it easier for you and your team to understand and maintain the code.

@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: No Spaces in a Nullable Type
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#nullable-type-spacing) for documentation.
 
 **Description:**
 This linting error occurs when there are unnecessary spaces in the declaration of a nullable type in Kotlin. Kotlin's syntax requires that the nullable type indicator (`?`) be directly adjacent to the type without any intervening spaces.

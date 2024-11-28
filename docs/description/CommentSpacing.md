@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Improper End-of-Line Comment Formatting
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#comment-spacing) for documentation.
 
 **Description:**
 Your code has an issue with the formatting of end-of-line comments. Specifically, the comment sign `//` must be preceded and followed by exactly one space. This helps maintain a consistent style and improves the readability of your code.

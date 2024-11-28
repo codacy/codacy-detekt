@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Single Line If-Statement Complexity
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/experimental/#if-else-wrapping)
 
 **Description:**
 This linting error occurs when a single line if-statement is not compliant with the ktlint guidelines. According to these guidelines, a single line if-statement should remain simple and straightforward. Specifically, it should adhere to the following rules:

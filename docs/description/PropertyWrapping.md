@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Property Exceeds Line Length
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#property-wrapping) for documentation.
 
 **Description:**
 This linting error occurs when a property declaration in your code is too long to fit on a single line. To maintain readability and adhere to coding standards, you need to wrap either the type or the value of the property onto a new line.

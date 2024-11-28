@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Annotations Should Be Separated by a Single Line Break
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#annotation-spacing) for documentation.
 
 **Description:**
 This linting error occurs when multiple annotations in your Kotlin code are not properly separated by a single line break. According to the ktlint style guide, it is essential for readability and consistency that annotations are clearly delineated.

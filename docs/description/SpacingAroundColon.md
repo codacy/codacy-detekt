@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Around Colons
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#colon-spacing) for documentation.
 
 #### Description
 This linting error indicates that there is inconsistent spacing around colons in your code. Proper formatting is essential for readability and maintaining a clean codebase. 

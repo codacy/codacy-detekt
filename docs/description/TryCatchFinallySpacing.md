@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing in Try-Catch-Finally Blocks
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/experimental/#try-catch-finally-spacing) for documentation.
 
 **Description:**
 This linting error occurs when the spacing within your `try`, `catch`, and `finally` blocks is inconsistent. Maintaining uniform spacing enhances code readability and adheres to Kotlin's style guidelines.

@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Chained Calls Formatting
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#chain-wrapping) for documentation.
 
 **Description:**
 When using chained calls in your Kotlin code, you must place the operators `.` (dot), `?.` (safe call), and `?:` (Elvis operator) on the next line. This formatting rule helps improve code readability and maintainability by clearly separating the chained calls from the preceding expressions.

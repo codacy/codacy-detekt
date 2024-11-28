@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Around Commas
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#comma-spacing) for documentation.
 
 **Description:**
 This linting error indicates that the spacing around commas in your code is not consistent. Proper spacing enhances code readability and maintains a clean coding style, which is essential for collaboration and maintenance.

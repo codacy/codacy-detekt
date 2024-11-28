@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: No Spaces Around Unary Operators
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#unary-operator-spacing) for documentation.
 
 **Description:**
 This linting error occurs when there are spaces placed around unary operators (like `++` or `--`) in your Kotlin code. According to Kotlin coding conventions, unary operators should not have spaces before or after them. This helps maintain a clean and consistent code style, making it easier to read and understand.

@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Inconsistent Spacing Around Curly Braces
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#curly-spacing) for documentation.
 
 **Description:**  
 This linting error indicates that there is inconsistent spacing around curly braces in your code. Proper spacing enhances readability and maintains a clean code style, which is essential for collaborative projects and long-term maintenance.

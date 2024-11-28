@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Function/Class Signature Formatting
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#parameter-list-wrapping) for documentation.
 
 **Description:**  
 When your function or class signature is too long to fit on a single line, it is essential to format each parameter on a separate line. This enhances readability and maintains consistency across your codebase.

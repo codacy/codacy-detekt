@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Block Comment Placement
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/standard/#comment-wrapping) for documentation.
 
 **Error Message:** A block comment should start and end on a line that does not contain any other element.
 

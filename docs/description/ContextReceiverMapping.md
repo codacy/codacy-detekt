@@ -4,7 +4,7 @@ _This pattern description was written by a Codacy bot for detekt. Send feedback 
 
 ## Description
 
-See [ktlint docs](### Linting Error: Content Receiver List Not Wrapped
+See [ktlint docs](https://pinterest.github.io/ktlint/0.50.0/rules/experimental/#content-receiver-wrapping) for documentation.
 
 **Error Description:**
 This linting error occurs when the content receiver list in your Kotlin code is not properly wrapped to a new line. Ktlint requires that the content receiver list is always placed on a separate line, regardless of the configured maximum line length. If the maximum line length is exceeded, it is also necessary to wrap the context receivers along with their projection types to new lines.
