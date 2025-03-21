@@ -1,6 +1,6 @@
 {
   "name" : "detekt",
-  "version" : "1.23.8",
+  "version" : "1.23.7",
   "patterns" : [ {
     "patternId" : "GlobalCoroutineUsage",
     "level" : "Warning",
