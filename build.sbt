@@ -3,13 +3,15 @@ name := "codacy-detekt"
 scalaVersion := "2.13.12"
 kotlinVersion := "1.9.22"
 
-lazy val detektVersion = Def.setting("1.23.7")
+lazy val detektVersion = Def.setting("1.23.8")
+lazy val detektCommit = Def.setting("b151e99bc55dd23c3cdd995cb2f2244f1832a3a5")
 
 Compile / sourceGenerators += Def.task {
   val file = (Compile / sourceManaged).value / "codacy" / "detekt" / "Versions.scala"
   IO.write(file, s"""package codacy.detekt
                     |object Versions {
                     |  val detektVersion: String = "${detektVersion.value}"
+                    |  val commit: String = "${detektCommit.value}"
                     |}
                     |""".stripMargin)
   Seq(file)
@@ -56,8 +58,7 @@ libraryDependencies ++= {
     "io.gitlab.arturbosch.detekt" % "detekt-utils" % detektVersion.value,
     "org.scala-lang.modules" %% "scala-parallel-collections" % "0.2.0",
     "org.yaml" % "snakeyaml" % "1.26",
-    "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.11.1",
-    "net.ruippeixotog" %% "scala-scraper" % "3.1.1"
+    "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.11.1"
   )
 }
 

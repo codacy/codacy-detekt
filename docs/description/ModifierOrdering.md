@@ -1,48 +1,28 @@
 # ModifierOrdering
 
-Multiple annotations should be on a separate line than the annotated declaration; annotations with parameters should each be on separate lines; annotations should be followed by a space
+Consistent order of modifiers
 
 ## Noncompliant Code
 
 ```kotlin
-// An annotation with parameter(s) is not allowed on same line as annotated construct
-@Suppress("Unused") class FooBar {
-    @Suppress("Unused") var foo: String
-    @Suppress("Unused") fun bar() {}
-}
-// Multiple annotation on same line as annotated construct are not allowed
-@Foo @Bar class FooBar {
-    @Foo @Bar var foo: String
-    @Foo @Bar fun bar() {}
-}
+
+    abstract class A {
+        open protected val v = ""
+        open suspend internal fun f(v: Any): Any = ""
+        lateinit protected var lv: String
+    }
+    
 ```
 ## Compliant Code
 
 ```kotlin
-// A single annotation (without parameters) is allowed on same line as annotated construct
-@FunctionalInterface class FooBar {
-    @JvmField var foo: String
-    @Test fun bar() {}
-}
-// A class or function parameter may have a single annotation with parameter(s) on the same line
-class Foo(@Path("fooId") val fooId: String)
-class Bar(
-    @NotNull("fooId") val fooId: String,
-    @NotNull("bar") bar: String
-)
-// Multiple annotations (without parameters) are allowed on the same line
-@Foo @Bar
-class FooBar {
-    @Foo @Bar
-    var foo: String
-    @Foo @Bar
-    fun bar() {}
-}
-// An array of annotations (without parameters) is allowed on same line as annotated construct
-@[Foo Bar] class FooBar2 {
-    @[Foo Bar] var foo: String
-    @[Foo Bar] fun bar() {}
-}
+
+    abstract class A {
+        protected open val v = ""
+        internal open suspend fun f(v: Any): Any = ""
+        protected lateinit var lv: String
+    }
+    
 ```
 
 [Source](https://detekt.dev/docs/rules/formatting#modifierordering)

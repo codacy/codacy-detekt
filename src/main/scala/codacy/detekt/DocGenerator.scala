@@ -75,7 +75,7 @@ object DocGenerator {
     val extendedDescriptions = getExtendedDescriptions(Versions.detektVersion)
 
     val extendedFormattingRulesDescriptions =
-      getExtendedFormattingDescriptions(formattingRuleIds, Versions.detektVersion)
+      getExtendedFormattingDescriptions(formattingRuleIds, Versions.commit, Versions.detektVersion)
 
     val patterns = Json.prettyPrint(
       Json.obj(
@@ -195,7 +195,7 @@ object DocGenerator {
       }
     } yield flattenedRules
 
-  private def formattingRuleIds: List[String] = {
+  private lazy val formattingRuleIds: List[String] = {
     val provider = new FormattingProvider
     val properties = Map("autoCorrect" -> false, "failFast" -> false).asJava
     val config = YamlConfigFactory.create(properties)
@@ -263,10 +263,14 @@ object DocGenerator {
       .to(Map)
   }
 
-  private def getExtendedFormattingDescriptions(rules: List[String], version: String): Map[String, String] = {
+  private def getExtendedFormattingDescriptions(
+      rules: List[String],
+      commit: String,
+      version: String
+  ): Map[String, String] = {
 
     FormattingRulesDescriptionBuilder
-      .build(rules, s"https://detekt.dev/docs/$version/rules/formatting")
+      .build(rules, commit, version)
       .map(
         rule =>
           (
@@ -275,8 +279,8 @@ object DocGenerator {
               rule.ruleSetName,
               rule.ruleName,
               rule.description,
-              rule.nonCompliantCodeExample,
-              rule.compliantCodeExample
+              rule.nonCompliantCodeExample.getOrElse(""),
+              rule.compliantCodeExample.getOrElse("")
             )
         )
       )
