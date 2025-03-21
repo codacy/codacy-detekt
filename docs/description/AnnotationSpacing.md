@@ -5,29 +5,33 @@ Annotations should be separated by a single line break.
 ## Noncompliant Code
 
 ```kotlin
-@JvmField
 
-fun foo() {}
+    @JvmField
 
-@Foo @Bar
-/**
- * block comment
- */
-class FooBar {
-}
+    fun foo() {}
+
+    @Foo @Bar
+    /**
+     * block comment
+     */
+    class FooBar {
+    }
+    
 ```
 ## Compliant Code
 
 ```kotlin
-@JvmField
-fun foo() {}
 
-/**
- * block comment
- */
-@Foo @Bar
-class FooBar {
-}
+    @JvmField
+    fun foo() {}
+
+    /**
+     * block comment
+     */
+    @Foo @Bar
+    class FooBar {
+    }
+    
 ```
 
 [Source](https://detekt.dev/docs/rules/formatting#annotationspacing)

@@ -1,80 +1,218 @@
 package codacy.detekt
 
-import net.ruippeixotog.scalascraper.browser.JsoupBrowser
-import net.ruippeixotog.scalascraper.dsl.DSL._
-import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-import net.ruippeixotog.scalascraper.model.Element
+import java.net.URL
+import scala.io.Source
 
 object FormattingRulesDescriptionBuilder extends App {
 
-  def build(rules: List[String], docsUrl: String): List[RuleDetails] = {
+  def build(rules: List[String], commit: String, version: String): List[RuleDetails] = {
 
-    val browser = JsoupBrowser()
-    val doc = browser.get(docsUrl)
+    val ruleSetName = "formatting"
 
-    val h3s = doc.toString.split("<h3").map(s => s"<h3$s").toList
+    val docsUrl = new URL(
+      s"https://raw.githubusercontent.com/detekt/detekt/$commit/website/versioned_docs/version-$version/rules/$ruleSetName.md"
+    )
 
-    val rulesUrls: List[(String, Option[String])] = rules
-      .map(rule => {
+    def formattingDocsUrl(formattingDocsVersion: String, file: String) =
+      s"https://raw.githubusercontent.com/pinterest/ktlint/refs/tags/$formattingDocsVersion/documentation/snapshot/docs/rules/$file.md"
 
-        val www = h3s
-          .find(h3 => h3.contains(rule))
-          .map(h => {
-            val header = browser.parseString(h)
-            val href = header >> element("p") >> element("a")
-            href.attr("href")
-          })
+    val content = Source.fromURL(docsUrl).mkString
 
-        (rule, www)
-      })
+    val rulesDocs = content.split("###").toList
 
-    rulesUrls.flatMap {
-      case (rule, Some(url)) =>
-        val ruleHtml = browser.get(url)
+    val rulesMap = rulesDocs
+      .filter(_.contains("[ktlint docs]"))
+      .map(extractRuleNameAndVersionAndFolderAndOriginalName)
+      .map(rule => rule.ruleName -> rule)
+      .toMap
 
-        val anchor = s"""id="${url.split("#")(1)}""""
+    val versionAndFolders = rulesMap.map {
+      case (_, RuleInformation(_, version, folder, _)) =>
+        VersionAndFile(version, folder)
+    }.toSet
 
-        val ruleHtmlString =
-          ruleHtml.toString.split("<h3").toList.find(_.contains(anchor)).map(s => s"<h3$s").getOrElse("")
+    val rulesByVersionFolder = versionAndFolders.map {
+      case VersionAndFile(version, folder) =>
+        (version, folder) -> Source.fromURL(formattingDocsUrl(version, folder)).mkString.replace("###", "##")
+    }.toMap
 
-        if (ruleHtmlString.isEmpty) None
-        else {
+    rules.map(
+      rule =>
+        rulesMap.get(rule).flatMap {
+          case RuleInformation(_, version, folder, originalName) =>
+            rulesByVersionFolder
+              .get((version, folder))
+              .flatMap(raw => {
+                extractNameAndDescriptionAndCompliantAndNonCompliantCode(raw, originalName) match {
+                  case Some((description, compliantCode, nonCompliantCode)) =>
+                    Some(RuleDetails(ruleSetName, rule, description, nonCompliantCode, compliantCode))
 
-          val doc2 = browser.parseString(ruleHtmlString)
+                  case None => None
+                }
+              })
+      }
+    )
+  }.flatten
 
-          val blocksOfCode = doc2 >> elementList("code")
+  private def extractRuleNameAndVersionAndFolderAndOriginalName(rawRule: String): RuleInformation = {
 
-          val nonEmptyBlocksOfCode = extractBlocksOfCode(blocksOfCode)
+    val rawRuleSplit = rawRule.split("\n").filter(_.nonEmpty)
 
-          nonEmptyBlocksOfCode.map {
-            case (compliantCode, nonCompliantCode) =>
-              val ruleSetName = "formatting"
-              val ruleName = rule
-              val description = (doc2 >> element("p")).ownText
+    val ruleName = rawRuleSplit(0).trim
 
-              RuleDetails(ruleSetName, ruleName, description, nonCompliantCode, compliantCode)
-          }
-        }
-      case _ => List.empty
+    val ruleUrl = rawRuleSplit(1).split("/")
+
+    val version = ruleUrl(4).trim
+    val folder = ruleUrl(6).trim
+    val originalName = ruleUrl(7).split("\\)")(0).tail.trim
+
+    RuleInformation(ruleName, version, folder, originalName)
+  }
+
+  private def extractNameAndDescriptionAndCompliantAndNonCompliantCode(
+      raw: String,
+      originalName: String
+  ): Option[(String, Option[String], Option[String])] = {
+
+    val originalNameNormalized = normalizeName(originalName)
+
+    val rawSplit = raw.split("Rule id:")
+
+    val ruleMdChunk = rawSplit.find(_.contains(originalNameNormalized))
+
+    val ruleMd = ruleMdChunk.map(_.split(originalNameNormalized)(1))
+
+    ruleMd.map(rule => {
+      val description = rule.split("===")(0).trim
+
+      val hasCompliantCode = rule.contains("""=== "[:material-heart:](#) Ktlint"""")
+      val hasNonCompliantCode = rule.contains("""=== "[:material-heart-off-outline:](#) Disallowed"""")
+
+      val compliantCodeSplit = rule.split("""Ktlint"""")
+
+      val compliantCode =
+        if (hasCompliantCode)
+          extractCode(compliantCodeSplit)
+        else None
+
+      val nonCompliantCodeSplit = rule.split("""Disallowed"""")
+
+      val nonCompliantCode =
+        if (hasNonCompliantCode)
+          extractCode(nonCompliantCodeSplit)
+        else None
+
+      (description, compliantCode, nonCompliantCode)
+    })
+  }
+
+  private def extractCode(codeChunks: Array[String]): Option[String] =
+    codeChunks.tail.headOption
+      .filter(_.contains("kotlin"))
+      .flatMap(_.split("kotlin").tail.headOption.flatMap(_.split("```").headOption))
+
+  private def normalizeName(snakeCaseName: String): String =
+    s"## ${capitalizeFirstLetter(snakeCaseName.split("-").mkString(" "))}"
+
+  private def capitalizeFirstLetter(input: String): String = {
+    if (input.isEmpty) {
+      input
+    } else {
+      input.head.toUpper + input.tail.toLowerCase
     }
   }
 
-  private def extractBlocksOfCode(blocksOfCode: List[Element]): Option[(String, String)] = {
+  private case class RuleInformation(ruleName: String, version: String, folder: String, originalName: String)
 
-    blocksOfCode.headOption.flatMap(
-      compliantCodeExample =>
-        blocksOfCode.tail.headOption.map(nonCompliantCodeExample => {
-          (compliantCodeExample.text, nonCompliantCodeExample.text)
-        })
-    )
+  private case class VersionAndFile(version: String, file: String)
 
-  }
+  val rules = List(
+    "AnnotationOnSeparateLine",
+    "AnnotationSpacing",
+    "ArgumentListWrapping",
+    "BlockCommentInitialStarAlignment",
+    "ChainWrapping",
+    "ClassName",
+    "CommentSpacing",
+    "CommentWrapping",
+    "EnumEntryNameCase",
+    "Filename",
+    "FinalNewline",
+    "FunctionName",
+    "FunKeywordSpacing",
+    "FunctionReturnTypeSpacing",
+    "FunctionStartOfBodySpacing",
+    "FunctionTypeReferenceSpacing",
+    "ImportOrdering",
+    "Indentation",
+    "KdocWrapping",
+    "MaximumLineLength",
+    "ModifierListSpacing",
+    "ModifierOrdering",
+    "MultiLineIfElse",
+    "NoBlankLineBeforeRbrace",
+    "NoBlankLinesInChainedMethodCalls",
+    "NoConsecutiveBlankLines",
+    "NoEmptyClassBody",
+    "NoEmptyFirstLineInMethodBlock",
+    "NoLineBreakAfterElse",
+    "NoLineBreakBeforeAssignment",
+    "NoMultipleSpaces",
+    "NoSemicolons",
+    "NoTrailingSpaces",
+    "NoUnitReturn",
+    "NoUnusedImports",
+    "NoWildcardImports",
+    "NullableTypeSpacing",
+    "PackageName",
+    "ParameterListWrapping",
+    "ParameterWrapping",
+    "PropertyName",
+    "PropertyWrapping",
+    "SpacingAroundAngleBrackets",
+    "SpacingAroundColon",
+    "SpacingAroundComma",
+    "SpacingAroundCurly",
+    "SpacingAroundDot",
+    "SpacingAroundDoubleColon",
+    "SpacingAroundKeyword",
+    "SpacingAroundOperators",
+    "SpacingAroundParens",
+    "SpacingAroundRangeOperator",
+    "SpacingAroundUnaryOperator",
+    "SpacingBetweenDeclarationsWithAnnotations",
+    "SpacingBetweenDeclarationsWithComments",
+    "SpacingBetweenFunctionNameAndOpeningParenthesis",
+    "StringTemplate",
+    "TrailingCommaOnCallSite",
+    "TrailingCommaOnDeclarationSite",
+    "UnnecessaryParenthesesBeforeTrailingLambda",
+    "Wrapping",
+    "ContextReceiverMapping",
+    "DiscouragedCommentLocation",
+    "EnumWrapping",
+    "FunctionSignature",
+    "IfElseBracing",
+    "IfElseWrapping",
+    "MultilineExpressionWrapping",
+    "NoBlankLineInList",
+    "NoConsecutiveComments",
+    "NoEmptyFirstLineInClassBody",
+    "NoSingleLineBlockComment",
+    "ParameterListSpacing",
+    "StringTemplateIndent",
+    "TryCatchFinallySpacing",
+    "TypeArgumentListSpacing",
+    "TypeParameterListSpacing",
+  )
+
+  build(rules, "b151e99bc55dd23c3cdd995cb2f2244f1832a3a5", "1.23.8")
 }
 
 case class RuleDetails(
     ruleSetName: String,
     ruleName: String,
     description: String,
-    nonCompliantCodeExample: String,
-    compliantCodeExample: String
+    nonCompliantCodeExample: Option[String],
+    compliantCodeExample: Option[String]
 )

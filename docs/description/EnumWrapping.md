@@ -5,31 +5,35 @@ An enum should be a single line, or each enum entry has to be placed on a separa
 ## Noncompliant Code
 
 ```kotlin
-enum class Foo {
-    A,
-    B, C,
-    D
-}
 
-enum class Foo {
-    A;
-    fun foo() = "foo"
-}
+    enum class Foo {
+        A,
+        B, C,
+        D
+    }
+
+    enum class Foo {
+        A;
+        fun foo() = "foo"
+    }
+    
 ```
 ## Compliant Code
 
 ```kotlin
-enum class Foo { A, B, C, D }
 
-enum class Foo {
-    A,
-    B,
-    C,
-    D,
-    ;
+    enum class Foo { A, B, C, D }
 
-    fun foo() = "foo"
-}
+    enum class Foo {
+        A,
+        B,
+        C,
+        D,
+        ;
+
+        fun foo() = "foo"
+    }
+    
 ```
 
 [Source](https://detekt.dev/docs/rules/formatting#enumwrapping)
