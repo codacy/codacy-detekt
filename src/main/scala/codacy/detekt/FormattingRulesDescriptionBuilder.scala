@@ -1,80 +1,163 @@
 package codacy.detekt
 
-import net.ruippeixotog.scalascraper.browser.JsoupBrowser
-import net.ruippeixotog.scalascraper.dsl.DSL._
-import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
-import net.ruippeixotog.scalascraper.model.Element
+import java.net.URL
+import scala.io.Source
+import scala.util.{Failure, Success, Using}
 
-object FormattingRulesDescriptionBuilder extends App {
+object FormattingRulesDescriptionBuilder {
 
-  def build(rules: List[String], docsUrl: String): List[RuleDetails] = {
+  def build(rules: List[String], commit: String, version: String): List[RuleDetails] = {
 
-    val browser = JsoupBrowser()
-    val doc = browser.get(docsUrl)
+    val ruleSetName = "formatting"
 
-    val h3s = doc.toString.split("<h3").map(s => s"<h3$s").toList
+    val docsUrl = new URL(
+      s"https://raw.githubusercontent.com/detekt/detekt/$commit/website/versioned_docs/version-$version/rules/$ruleSetName.md"
+    )
 
-    val rulesUrls: List[(String, Option[String])] = rules
-      .map(rule => {
+    def formattingDocsUrl(formattingDocsVersion: String, file: String) =
+      s"https://raw.githubusercontent.com/pinterest/ktlint/refs/tags/$formattingDocsVersion/documentation/snapshot/docs/rules/$file.md"
 
-        val www = h3s
-          .find(h3 => h3.contains(rule))
-          .map(h => {
-            val header = browser.parseString(h)
-            val href = header >> element("p") >> element("a")
-            href.attr("href")
-          })
+    val content = Using(Source.fromURL(docsUrl)) { reader =>
+      reader.mkString
+    } match {
+      case Failure(_) => None
+      case Success(value) => Some(value)
+    }
 
-        (rule, www)
+    val rulesDocs = content.map(_.split("###").toList)
+
+    val rulesMap = rulesDocs.map(
+      _.filter(_.contains("[ktlint docs]"))
+        .flatMap(extractRuleNameAndVersionAndFolderAndOriginalName)
+        .map(rule => rule.ruleName -> rule)
+        .toMap
+    )
+
+    val versionAndFolders = rulesMap.map(_.map {
+      case (_, RuleInformation(_, version, folder, _)) =>
+        VersionAndFile(version, folder)
+    }.toSet)
+
+    val rulesByVersionFolder = versionAndFolders.map(_.map {
+      case VersionAndFile(version, folder) =>
+        (version, folder) -> (Using(Source.fromURL(formattingDocsUrl(version, folder))) { reader =>
+          reader.mkString.replace("###", "##")
+        } match {
+          case Failure(_) => None
+          case Success(value) => Some(value)
+        })
+    }.toMap)
+
+    rules.map(
+      rule =>
+        rulesMap.flatMap(_.get(rule).flatMap {
+          case RuleInformation(_, version, folder, originalName) =>
+            rulesByVersionFolder
+              .get((version, folder))
+              .flatMap(
+                raw =>
+                  extractNameAndDescriptionAndCompliantAndNonCompliantCode(raw, originalName) match {
+                    case Some((description, compliantCode, nonCompliantCode)) =>
+                      Some(RuleDetails(ruleSetName, rule, description, nonCompliantCode, compliantCode))
+                    case _ => None
+                }
+              )
+        })
+    )
+  }.flatten
+
+  private def extractRuleNameAndVersionAndFolderAndOriginalName(rawRule: String): Option[RuleInformation] = {
+
+    val rawRuleSplit = rawRule.split("\n").filter(_.nonEmpty)
+
+    rawRuleSplit.headOption
+      .map(_.trim)
+      .flatMap(_ => {
+        rawRuleSplit.tail.headOption
+          .flatMap(
+            stuff =>
+              stuff.split("/").toList match {
+                case List(_, _, _, _, version, _, folder, originalName) =>
+                  originalName
+                    .split("\\)")
+                    .headOption
+                    .map(name => Some(RuleInformation(name, version, folder, name)))
+                case _ =>
+                  stuff.split("/").foreach(println)
+                  None
+            }
+          )
       })
+  }.flatten
 
-    rulesUrls.flatMap {
-      case (rule, Some(url)) =>
-        val ruleHtml = browser.get(url)
+  private def extractNameAndDescriptionAndCompliantAndNonCompliantCode(
+      raw: String,
+      originalName: String
+  ): Option[(String, Option[String], Option[String])] = {
 
-        val anchor = s"""id="${url.split("#")(1)}""""
+    val originalNameNormalized = normalizeName(originalName)
 
-        val ruleHtmlString =
-          ruleHtml.toString.split("<h3").toList.find(_.contains(anchor)).map(s => s"<h3$s").getOrElse("")
+    val rawSplit = raw.split("Rule id:")
 
-        if (ruleHtmlString.isEmpty) None
-        else {
+    val ruleMdChunk = rawSplit.find(_.contains(originalNameNormalized))
 
-          val doc2 = browser.parseString(ruleHtmlString)
+    val ruleMd = ruleMdChunk.flatMap(_.split(originalNameNormalized).headOption)
 
-          val blocksOfCode = doc2 >> elementList("code")
+    ruleMd.flatMap(rule => {
+      rule
+        .split("===")
+        .headOption
+        .map(_.trim)
+        .map(desc => {
 
-          val nonEmptyBlocksOfCode = extractBlocksOfCode(blocksOfCode)
+          val hasCompliantCode = rule.contains("""=== "[:material-heart:](#) Ktlint"""")
+          val hasNonCompliantCode = rule.contains("""=== "[:material-heart-off-outline:](#) Disallowed"""")
 
-          nonEmptyBlocksOfCode.map {
-            case (compliantCode, nonCompliantCode) =>
-              val ruleSetName = "formatting"
-              val ruleName = rule
-              val description = (doc2 >> element("p")).ownText
+          val compliantCodeSplit = rule.split("""Ktlint"""")
 
-              RuleDetails(ruleSetName, ruleName, description, nonCompliantCode, compliantCode)
-          }
-        }
-      case _ => List.empty
+          val compliantCode =
+            if (hasCompliantCode)
+              extractCode(compliantCodeSplit)
+            else None
+
+          val nonCompliantCodeSplit = rule.split("""Disallowed"""")
+
+          val nonCompliantCode =
+            if (hasNonCompliantCode)
+              extractCode(nonCompliantCodeSplit)
+            else None
+
+          (desc, compliantCode, nonCompliantCode)
+        })
+    })
+  }
+
+  private def extractCode(codeChunks: Array[String]): Option[String] =
+    codeChunks.tail.headOption
+      .filter(_.contains("kotlin"))
+      .flatMap(_.split("kotlin").tail.headOption.flatMap(_.split("```").headOption))
+
+  private def normalizeName(snakeCaseName: String): String =
+    s"## ${capitalizeFirstLetter(snakeCaseName.split("-").mkString(" "))}"
+
+  private def capitalizeFirstLetter(input: String): String = {
+    if (input.isEmpty) {
+      input
+    } else {
+      input.head.toUpper + input.tail.toLowerCase
     }
   }
 
-  private def extractBlocksOfCode(blocksOfCode: List[Element]): Option[(String, String)] = {
+  private case class RuleInformation(ruleName: String, version: String, folder: String, originalName: String)
 
-    blocksOfCode.headOption.flatMap(
-      compliantCodeExample =>
-        blocksOfCode.tail.headOption.map(nonCompliantCodeExample => {
-          (compliantCodeExample.text, nonCompliantCodeExample.text)
-        })
-    )
+  private case class VersionAndFile(version: String, file: String)
 
-  }
 }
 
 case class RuleDetails(
     ruleSetName: String,
     ruleName: String,
     description: String,
-    nonCompliantCodeExample: String,
-    compliantCodeExample: String
+    nonCompliantCodeExample: Option[String],
+    compliantCodeExample: Option[String]
 )

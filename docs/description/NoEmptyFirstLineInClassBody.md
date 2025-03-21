@@ -1,16 +1,25 @@
 # NoEmptyFirstLineInClassBody
 
-Important
+Detect blank lines at start of a class body.
 
 ## Noncompliant Code
 
 ```kotlin
-experimental
+
+    class Foo {
+
+        val foo = "foo"
+    }
+    
 ```
 ## Compliant Code
 
 ```kotlin
-0.47
+
+    class Foo {
+        val foo = "foo"
+    }
+    
 ```
 
 [Source](https://detekt.dev/docs/rules/formatting#noemptyfirstlineinclassbody)

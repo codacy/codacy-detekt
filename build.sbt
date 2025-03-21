@@ -56,8 +56,7 @@ libraryDependencies ++= {
     "io.gitlab.arturbosch.detekt" % "detekt-utils" % detektVersion.value,
     "org.scala-lang.modules" %% "scala-parallel-collections" % "0.2.0",
     "org.yaml" % "snakeyaml" % "1.26",
-    "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.11.1",
-    "net.ruippeixotog" %% "scala-scraper" % "3.1.1"
+    "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.11.1"
   )
 }
 
