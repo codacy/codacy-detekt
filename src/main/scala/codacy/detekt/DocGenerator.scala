@@ -5,7 +5,6 @@ import io.github.detekt.parser.KtCompiler
 import io.github.detekt.tooling.dsl.ProjectSpecBuilder
 import io.gitlab.arturbosch.detekt.api._
 import io.gitlab.arturbosch.detekt.core.KtTreeCompiler
-import io.gitlab.arturbosch.detekt.formatting.FormattingProvider
 import io.gitlab.arturbosch.detekt.generator.collection.DetektCollector
 import org.jetbrains.kotlin.psi.KtFile
 import play.api.libs.json.{JsArray, Json}
@@ -15,7 +14,7 @@ import scala.sys.process.Process
 
 object DocGenerator {
 
-  private val defaultPatterns = List(
+  val defaultPatterns = List(
     "EmptyCatchBlock",
     "StringLiteralDuplication",
     "CommentOverPrivateFunction",
@@ -74,9 +73,6 @@ object DocGenerator {
 
     val extendedDescriptions = getExtendedDescriptions(Versions.detektVersion)
 
-    val extendedFormattingRulesDescriptions =
-      getExtendedFormattingDescriptions(formattingRuleIds, Versions.detektVersion)
-
     val patterns = Json.prettyPrint(
       Json.obj(
         "name" -> "detekt",
@@ -91,9 +87,7 @@ object DocGenerator {
       Json
         .parse(
           Json
-            .toJson(
-              generateDescriptions(rules, descriptionsRoot, extendedDescriptions ++ extendedFormattingRulesDescriptions)
-            )
+            .toJson(generateDescriptions(rules, descriptionsRoot, extendedDescriptions))
             .toString
         )
         .as[JsArray]
@@ -190,30 +184,10 @@ object DocGenerator {
           r.getRules.asScala
         case r: Rule =>
           Seq(r)
-        case _: BaseRule =>
+        case r: BaseRule =>
           Seq.empty
       }
     } yield flattenedRules
-
-  private def formattingRuleIds: List[String] = {
-    val provider = new FormattingProvider
-    val properties = Map("autoCorrect" -> false, "failFast" -> false).asJava
-    val config = YamlConfigFactory.create(properties)
-    for {
-      rules <- provider
-        .instance(config)
-        .getRules
-        .asScala
-      flattenedRules <- rules match {
-        case r: MultiRule =>
-          r.getRules.asScala
-        case r: Rule =>
-          Seq(r)
-        case _: BaseRule =>
-          Seq.empty
-      }
-    } yield flattenedRules.getRuleId
-  }.toList
 
   private def getExtendedDescriptions(version: String): Map[String, String] = {
     val tmpDirectory = File.newTemporaryDirectory()
@@ -261,26 +235,6 @@ object DocGenerator {
           )
       )
       .to(Map)
-  }
-
-  private def getExtendedFormattingDescriptions(rules: List[String], version: String): Map[String, String] = {
-
-    FormattingRulesDescriptionBuilder
-      .build(rules, s"https://detekt.dev/docs/$version/rules/formatting")
-      .map(
-        rule =>
-          (
-            rule.ruleName,
-            generateMarkdown(
-              rule.ruleSetName,
-              rule.ruleName,
-              rule.description,
-              rule.nonCompliantCodeExample,
-              rule.compliantCodeExample
-            )
-        )
-      )
-      .toMap
   }
 
   private def isDetektRuleFolder(file: File) = {
