@@ -3,13 +3,15 @@ name := "codacy-detekt"
 scalaVersion := "2.13.12"
 kotlinVersion := "1.9.22"
 
-lazy val detektVersion = Def.setting("1.23.7")
+lazy val detektVersion = Def.setting("1.23.8")
+lazy val detektCommit = Def.setting("b151e99bc55dd23c3cdd995cb2f2244f1832a3a5")
 
 Compile / sourceGenerators += Def.task {
   val file = (Compile / sourceManaged).value / "codacy" / "detekt" / "Versions.scala"
   IO.write(file, s"""package codacy.detekt
                     |object Versions {
                     |  val detektVersion: String = "${detektVersion.value}"
+                    |  val commit: String = "${detektCommit.value}"
                     |}
                     |""".stripMargin)
   Seq(file)
